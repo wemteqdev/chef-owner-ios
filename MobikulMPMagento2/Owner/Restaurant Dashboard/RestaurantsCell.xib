@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="RestaurantsCell" rowHeight="75" id="KGk-i7-Jjw" userLabel="RestaurantsCell" customClass="RestaurantsCell" customModule="MobikulMPMagento2" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="606" height="75"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="606" height="74.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c6n-go-mGx">
+                        <rect key="frame" x="5" y="5" width="596" height="64.5"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="huge_buyers" translatesAutoresizingMaskIntoConstraints="NO" id="l50-RE-yj4">
+                                <rect key="frame" x="8" y="2.5" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="XgK-fy-tit"/>
+                                    <constraint firstAttribute="width" constant="60" id="mCO-uI-L0s"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Restaurant Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K3O-a4-zvE">
+                                <rect key="frame" x="56" y="9" width="500" height="17"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="l50-RE-yj4" firstAttribute="centerY" secondItem="c6n-go-mGx" secondAttribute="centerY" id="cKt-nG-JEm"/>
+                            <constraint firstItem="K3O-a4-zvE" firstAttribute="leading" secondItem="l50-RE-yj4" secondAttribute="trailing" constant="8" id="qC8-zO-Bar"/>
+                            <constraint firstItem="l50-RE-yj4" firstAttribute="leading" secondItem="c6n-go-mGx" secondAttribute="leading" constant="8" id="uVN-O9-D7Q"/>
+                            <constraint firstItem="K3O-a4-zvE" firstAttribute="top" secondItem="l50-RE-yj4" secondAttribute="top" id="vjx-Tl-Wit"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="c6n-go-mGx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="b8a-8B-5Nn"/>
+                    <constraint firstAttribute="bottom" secondItem="c6n-go-mGx" secondAttribute="bottom" constant="5" id="ere-bP-ksf"/>
+                    <constraint firstAttribute="trailing" secondItem="c6n-go-mGx" secondAttribute="trailing" constant="5" id="nYs-t1-bJf"/>
+                    <constraint firstItem="c6n-go-mGx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="v0q-GH-bIj"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="restaurantImage" destination="l50-RE-yj4" id="Sqp-ZC-zY7"/>
+                <outlet property="restaurantName" destination="K3O-a4-zvE" id="rEg-GY-0yM"/>
+            </connections>
+            <point key="canvasLocation" x="-118" y="-29.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="huge_buyers" width="60" height="60"/>
+    </resources>
+</document>

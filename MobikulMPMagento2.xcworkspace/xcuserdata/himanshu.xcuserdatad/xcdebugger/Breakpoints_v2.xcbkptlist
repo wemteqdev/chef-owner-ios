@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobikulMPMagento2/Market Place/Seller Profile/SellerMakeReviewController.swift"
+            timestampString = "557506353.6520751"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobikulMPMagento2/Check Out/BillingAddressPicker.swift"
+            timestampString = "557506353.652182"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobikulMPMagento2/Market Place/My Transaction/MyTransactionList.swift"
+            timestampString = "557506353.652244"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "callingHttppApi()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobikulMPMagento2/Cart/MyCart.swift"
+            timestampString = "557506353.6523"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "513"
+            endingLineNumber = "513"
+            landmarkName = "proceedToCheckOut(sender:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobikulMPMagento2/My Product Reviews/MyProductReviews.swift"
+            timestampString = "557506353.652356"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "220"
+            endingLineNumber = "220"
+            landmarkName = "productViewBtnClicked(index:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MobikulMPMagento2.MyProductReviews.productViewBtnClicked(index: Swift.Int) -&gt; ()"
+                  moduleName = "MobikulMPMagento2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/himanshu/Documents/Company%20project/Mobikul-Magento2MP-Demo-Latest/mobikul_Company_Demo_Magento2_MarketPlace_V4Theme_Mobile-app/MobikulMPMagento2/My%20Product%20Reviews/MyProductReviews.swift"
+                  timestampString = "557501236.434634"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "220"
+                  endingLineNumber = "220"
+                  offsetFromSymbolStart = "22">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MobikulMPMagento2.MyProductReviews.productViewBtnClicked(index: Swift.Int) -&gt; ()"
+                  moduleName = "MobikulMPMagento2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/himanshu/Documents/Company%20project/Mobikul-Magento2MP-Demo-Latest/mobikul_Company_Demo_Magento2_MarketPlace_V4Theme_Mobile-app/MobikulMPMagento2/My%20Product%20Reviews/MyProductReviews.swift"
+                  timestampString = "557501236.440333"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "220"
+                  endingLineNumber = "220"
+                  offsetFromSymbolStart = "1196">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobikulMPMagento2/Add New Address/AddEditAddress.swift"
+            timestampString = "557498459.1039211"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobikulMPMagento2/My Product Reviews/MyProductReviews.swift"
+            timestampString = "557506353.652493"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
+            landmarkName = "viewBtnClicked(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobikulMPMagento2/Home Controller/ViewController.swift"
+            timestampString = "557506353.652553"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "305"
+            endingLineNumber = "305"
+            landmarkName = "hotDealProductClick(name:image:id:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MobikulMPMagento2.ViewController.hotDealProductClick(name: Swift.String, image: Swift.String, id: Swift.String) -&gt; ()"
+                  moduleName = "MobikulMPMagento2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/himanshu/Documents/Company%20project/Mobikul-Magento2MP-Demo-Latest/mobikul_Company_Demo_Magento2_MarketPlace_V4Theme_Mobile-app/MobikulMPMagento2/Home%20Controller/ViewController.swift"
+                  timestampString = "557501236.462854"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "301"
+                  endingLineNumber = "301"
+                  offsetFromSymbolStart = "66">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MobikulMPMagento2.ViewController.hotDealProductClick(name: Swift.String, image: Swift.String, id: Swift.String) -&gt; ()"
+                  moduleName = "MobikulMPMagento2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/himanshu/Documents/Company%20project/Mobikul-Magento2MP-Demo-Latest/mobikul_Company_Demo_Magento2_MarketPlace_V4Theme_Mobile-app/MobikulMPMagento2/Home%20Controller/ViewController.swift"
+                  timestampString = "557501236.466408"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "301"
+                  endingLineNumber = "301"
+                  offsetFromSymbolStart = "956">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobikulMPMagento2/Home Controller/ViewController.swift"
+            timestampString = "557506353.652608"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "pushNotificationReceivedProductTap(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MobikulMPMagento2.ViewController.pushNotificationReceivedProductTap(Foundation.Notification) -&gt; ()"
+                  moduleName = "MobikulMPMagento2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/himanshu/Documents/Company%20project/Mobikul-Magento2MP-Demo-Latest/mobikul_Company_Demo_Magento2_MarketPlace_V4Theme_Mobile-app/MobikulMPMagento2/Home%20Controller/ViewController.swift"
+                  timestampString = "557501236.4759409"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "117"
+                  endingLineNumber = "117"
+                  offsetFromSymbolStart = "90">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MobikulMPMagento2.ViewController.pushNotificationReceivedProductTap(Foundation.Notification) -&gt; ()"
+                  moduleName = "MobikulMPMagento2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/himanshu/Documents/Company%20project/Mobikul-Magento2MP-Demo-Latest/mobikul_Company_Demo_Magento2_MarketPlace_V4Theme_Mobile-app/MobikulMPMagento2/Home%20Controller/ViewController.swift"
+                  timestampString = "557501236.478848"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "117"
+                  endingLineNumber = "117"
+                  offsetFromSymbolStart = "1768">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobikulMPMagento2/Home Controller/ProductTableViewCell.swift"
+            timestampString = "557506353.652662"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "409"
+            endingLineNumber = "409"
+            landmarkName = "callingExtraHttpApi()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

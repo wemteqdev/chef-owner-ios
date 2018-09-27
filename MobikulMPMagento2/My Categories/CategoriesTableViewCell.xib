@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="178" id="KGk-i7-Jjw" customClass="CategoriesTableViewCell" customModule="MobikulMPMagento2" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="178"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="177.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9NT-jb-jFv">
+                        <rect key="frame" x="10" y="10" width="300" height="157.5"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_placeholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="jUO-H6-bKV">
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="157.5"/>
+                            </imageView>
+                            <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0BT-va-4br">
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="157.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fAB-Ty-EAV">
+                                <rect key="frame" x="10" y="113.5" width="53.5" height="24"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="0BT-va-4br" secondAttribute="trailing" id="5im-G1-LSR"/>
+                            <constraint firstAttribute="trailing" secondItem="jUO-H6-bKV" secondAttribute="trailing" id="7CG-qN-XYr"/>
+                            <constraint firstItem="jUO-H6-bKV" firstAttribute="top" secondItem="9NT-jb-jFv" secondAttribute="top" id="9Fp-5I-4hp"/>
+                            <constraint firstItem="0BT-va-4br" firstAttribute="top" secondItem="9NT-jb-jFv" secondAttribute="top" id="DY7-ON-EVP"/>
+                            <constraint firstAttribute="bottom" secondItem="0BT-va-4br" secondAttribute="bottom" id="KEx-EK-KRJ"/>
+                            <constraint firstAttribute="bottom" secondItem="jUO-H6-bKV" secondAttribute="bottom" id="eIT-dQ-t9J"/>
+                            <constraint firstItem="fAB-Ty-EAV" firstAttribute="leading" secondItem="0BT-va-4br" secondAttribute="leading" constant="10" id="gi4-ua-h61"/>
+                            <constraint firstItem="fAB-Ty-EAV" firstAttribute="bottom" secondItem="0BT-va-4br" secondAttribute="bottom" constant="-20" id="h6F-If-J03"/>
+                            <constraint firstItem="jUO-H6-bKV" firstAttribute="leading" secondItem="9NT-jb-jFv" secondAttribute="leading" id="qNC-Pz-qjo"/>
+                            <constraint firstItem="0BT-va-4br" firstAttribute="leading" secondItem="9NT-jb-jFv" secondAttribute="leading" id="vgx-SE-zwH"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="9NT-jb-jFv" secondAttribute="trailing" constant="10" id="DNs-MU-ePc"/>
+                    <constraint firstAttribute="bottom" secondItem="9NT-jb-jFv" secondAttribute="bottom" constant="10" id="Yxm-we-bbo"/>
+                    <constraint firstItem="9NT-jb-jFv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="aZe-o6-hSm"/>
+                    <constraint firstItem="9NT-jb-jFv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="znN-qC-TwD"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="backgroundImageView" destination="jUO-H6-bKV" id="Ct5-aP-XQp"/>
+                <outlet property="categoryName" destination="fAB-Ty-EAV" id="Qm6-qu-NKJ"/>
+                <outlet property="mainView" destination="9NT-jb-jFv" id="c16-jQ-KxE"/>
+            </connections>
+            <point key="canvasLocation" x="-282" y="-220"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ic_placeholder.png" width="500" height="500"/>
+    </resources>
+</document>

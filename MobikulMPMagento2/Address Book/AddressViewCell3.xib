@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AddressViewCell3" rowHeight="170" id="KGk-i7-Jjw" customClass="AddressViewCell3" customModule="MobikulMPMagento2" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="515" height="170"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="515" height="169.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CWr-n1-srr">
+                        <rect key="frame" x="10" y="10" width="495" height="149.5"/>
+                        <subviews>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fwg-oV-IaJ">
+                                <rect key="frame" x="10" y="10" width="475" height="18"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="apN-hg-XNp">
+                                <rect key="frame" x="15" y="48" width="44" height="91.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="EDIT /"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HvQ-te-OHn">
+                                <rect key="frame" x="67" y="48" width="57" height="90.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="DELETE"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="apN-hg-XNp" secondAttribute="bottom" constant="10" id="2Qa-ag-GYQ"/>
+                            <constraint firstItem="apN-hg-XNp" firstAttribute="top" secondItem="fwg-oV-IaJ" secondAttribute="bottom" constant="20" id="33g-xX-j00"/>
+                            <constraint firstItem="apN-hg-XNp" firstAttribute="centerY" secondItem="HvQ-te-OHn" secondAttribute="centerY" id="8jj-Rq-NAe"/>
+                            <constraint firstItem="HvQ-te-OHn" firstAttribute="top" secondItem="fwg-oV-IaJ" secondAttribute="bottom" constant="20" id="BIO-3H-AwG"/>
+                            <constraint firstAttribute="trailing" secondItem="fwg-oV-IaJ" secondAttribute="trailing" constant="10" id="KhD-Yp-zSa"/>
+                            <constraint firstItem="HvQ-te-OHn" firstAttribute="leading" secondItem="apN-hg-XNp" secondAttribute="trailing" constant="8" id="Lfk-6M-52c"/>
+                            <constraint firstItem="fwg-oV-IaJ" firstAttribute="leading" secondItem="CWr-n1-srr" secondAttribute="leading" constant="10" id="aUB-3h-eeA"/>
+                            <constraint firstItem="apN-hg-XNp" firstAttribute="leading" secondItem="CWr-n1-srr" secondAttribute="leading" constant="15" id="fVn-fm-fkV"/>
+                            <constraint firstItem="fwg-oV-IaJ" firstAttribute="top" secondItem="CWr-n1-srr" secondAttribute="top" constant="10" id="luo-Br-fpA"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="CWr-n1-srr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="IAo-5E-nCX"/>
+                    <constraint firstAttribute="trailing" secondItem="CWr-n1-srr" secondAttribute="trailing" constant="10" id="WeM-jz-NGL"/>
+                    <constraint firstAttribute="bottom" secondItem="CWr-n1-srr" secondAttribute="bottom" constant="10" id="eYy-hP-0SO"/>
+                    <constraint firstItem="CWr-n1-srr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="n4B-UH-ql3"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="addressValue" destination="fwg-oV-IaJ" id="3it-9l-ehg"/>
+                <outlet property="deleteButton" destination="HvQ-te-OHn" id="1Yc-EI-Ncq"/>
+                <outlet property="editButton" destination="apN-hg-XNp" id="Heb-IK-kYW"/>
+                <outlet property="mainView" destination="CWr-n1-srr" id="LJU-u2-S71"/>
+            </connections>
+            <point key="canvasLocation" x="-72.5" y="-11"/>
+        </tableViewCell>
+    </objects>
+</document>

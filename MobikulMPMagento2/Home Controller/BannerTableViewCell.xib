@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="256" id="KGk-i7-Jjw" customClass="BannerTableViewCell" customModule="MobikulMPMagento2" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="438" height="256"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="438" height="255.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="j9W-GG-xVA">
+                        <rect key="frame" x="0.0" y="0.0" width="438" height="255.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" priority="999" constant="70" id="72j-pH-PpO"/>
+                        </constraints>
+                        <inset key="scrollIndicatorInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="BN1-aC-3dn">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                    </collectionView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QZB-IE-CJl" customClass="CHIPageControlPaprika" customModule="MobikulMPMagento2" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="215.5" width="438" height="40"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="YIk-vp-xQZ"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="j9W-GG-xVA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="9fb-V4-LjZ"/>
+                    <constraint firstAttribute="bottom" secondItem="j9W-GG-xVA" secondAttribute="bottom" id="IxX-eu-dZx"/>
+                    <constraint firstItem="j9W-GG-xVA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ewl-dy-dKy"/>
+                    <constraint firstItem="QZB-IE-CJl" firstAttribute="trailing" secondItem="j9W-GG-xVA" secondAttribute="trailing" id="fPs-CX-Q1u"/>
+                    <constraint firstAttribute="trailing" secondItem="j9W-GG-xVA" secondAttribute="trailing" id="jee-3K-5g5"/>
+                    <constraint firstItem="QZB-IE-CJl" firstAttribute="leading" secondItem="j9W-GG-xVA" secondAttribute="leading" id="kYV-xi-nGK"/>
+                    <constraint firstItem="QZB-IE-CJl" firstAttribute="bottom" secondItem="j9W-GG-xVA" secondAttribute="bottom" id="xqL-n0-SPP"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="bannerCollectionView" destination="j9W-GG-xVA" id="llR-EH-zcv"/>
+                <outlet property="bannerCollectionViewHeight" destination="72j-pH-PpO" id="qyr-eO-k0J"/>
+                <outlet property="pageControl" destination="QZB-IE-CJl" id="8Kp-fU-re4"/>
+            </connections>
+            <point key="canvasLocation" x="-676" y="-108"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="categorycell" id="gTV-IL-0wX" customClass="CategoryCell" customModule="Magento2V4Theme" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="244" height="202"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="244" height="202"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_placeholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="S4g-eO-ITi">
+                        <rect key="frame" x="0.0" y="0.0" width="244" height="172"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UhL-0h-4Dv">
+                        <rect key="frame" x="0.0" y="173" width="244" height="29"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="UhL-0h-4Dv" firstAttribute="trailing" secondItem="S4g-eO-ITi" secondAttribute="trailing" id="67a-x1-QbK"/>
+                <constraint firstItem="UhL-0h-4Dv" firstAttribute="leading" secondItem="S4g-eO-ITi" secondAttribute="leading" id="EZd-Qr-K3C"/>
+                <constraint firstItem="UhL-0h-4Dv" firstAttribute="top" secondItem="S4g-eO-ITi" secondAttribute="bottom" constant="1" id="Tg1-3m-Pz1"/>
+                <constraint firstItem="S4g-eO-ITi" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Xyp-4b-WMy"/>
+                <constraint firstAttribute="bottom" secondItem="UhL-0h-4Dv" secondAttribute="bottom" id="a7k-ba-IaW"/>
+                <constraint firstAttribute="bottom" secondItem="S4g-eO-ITi" secondAttribute="bottom" constant="30" id="daA-YT-4Qj"/>
+                <constraint firstAttribute="trailing" secondItem="S4g-eO-ITi" secondAttribute="trailing" id="fPr-N0-20y"/>
+                <constraint firstItem="S4g-eO-ITi" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="xUr-nO-saH"/>
+            </constraints>
+            <size key="customSize" width="244" height="202"/>
+            <connections>
+                <outlet property="imageView" destination="S4g-eO-ITi" id="uNV-oR-ezE"/>
+                <outlet property="labelName" destination="UhL-0h-4Dv" id="Lhz-0T-civ"/>
+            </connections>
+            <point key="canvasLocation" x="-108" y="35"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="ic_placeholder.png" width="500" height="500"/>
+    </resources>
+</document>

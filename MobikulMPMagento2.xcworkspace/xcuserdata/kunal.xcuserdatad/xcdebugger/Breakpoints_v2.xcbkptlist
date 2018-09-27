@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobikulMPMagento2/My Profile/MyProfileController.swift"
+            timestampString = "551339094.2849931"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "MyProfileController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MobikulMPMagento2.MyProfileController.imageForCategoryMenu.getter : Swift.String"
+                  moduleName = "MobikulMPMagento2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kunal/Documents/Documents/Company%20Project%20in%20Swift/APP%20STORE%20M2%20App_version%204/MobikulMPMagento2/MobikulMPMagento2/My%20Profile/MyProfileController.swift"
+                  timestampString = "541356491.365415"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "128">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MobikulMPMagento2.MyProfileController.imageForCategoryMenu.setter : Swift.String"
+                  moduleName = "MobikulMPMagento2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kunal/Documents/Documents/Company%20Project%20in%20Swift/APP%20STORE%20M2%20App_version%204/MobikulMPMagento2/MobikulMPMagento2/My%20Profile/MyProfileController.swift"
+                  timestampString = "541356491.367813"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "162">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MobikulMPMagento2.MyProfileController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; MobikulMPMagento2.MyProfileController"
+                  moduleName = "MobikulMPMagento2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kunal/Documents/Documents/Company%20Project%20in%20Swift/APP%20STORE%20M2%20App_version%204/MobikulMPMagento2/MobikulMPMagento2/My%20Profile/MyProfileController.swift"
+                  timestampString = "541356491.369608"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "2872">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MobikulMPMagento2.MyProfileController.init(coder: __ObjC.NSCoder) -&gt; Swift.Optional&lt;MobikulMPMagento2.MyProfileController&gt;"
+                  moduleName = "MobikulMPMagento2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kunal/Documents/Documents/Company%20Project%20in%20Swift/APP%20STORE%20M2%20App_version%204/MobikulMPMagento2/MobikulMPMagento2/My%20Profile/MyProfileController.swift"
+                  timestampString = "541356491.371737"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "2797">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobikulMPMagento2/MARKET PLACE/Seller Credit Memo details/CreditMemoDetailsController.swift"
+            timestampString = "542225718.3403569"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobikulMPMagento2/Customer Order Details/CustomerOrderDetails.swift"
+            timestampString = "543234755.2807389"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

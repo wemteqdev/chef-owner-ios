@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EmptyNewAddressView" customModule="Magento2V4Theme" customModuleProvider="target">
+            <connections>
+                <outlet property="addressButton" destination="OnJ-bQ-N9J" id="IKe-pa-eSg"/>
+                <outlet property="childView" destination="G9h-Vv-KSq" id="QH2-uS-we1"/>
+                <outlet property="containerView" destination="iN0-l3-epB" id="npN-OM-a9d"/>
+                <outlet property="emptyImages" destination="siw-EC-r2v" id="dg1-Rj-nTg"/>
+                <outlet property="labelMessage" destination="LBw-mJ-hMq" id="apa-6s-52d"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G9h-Vv-KSq">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty_order" translatesAutoresizingMaskIntoConstraints="NO" id="siw-EC-r2v">
+                            <rect key="frame" x="0.0" y="233.5" width="375" height="200"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="200" id="ITa-79-CmZ"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You don’t have any address in your address book yet, add an address now" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LBw-mJ-hMq">
+                            <rect key="frame" x="10" y="442" width="355" height="33.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OnJ-bQ-N9J">
+                            <rect key="frame" x="112.5" y="483" width="150" height="40"/>
+                            <color key="backgroundColor" red="1" green="0.21562500239999999" blue="0.2249873017" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="150" id="CIb-K4-flh"/>
+                                <constraint firstAttribute="height" constant="40" id="NeE-nt-cYV"/>
+                            </constraints>
+                            <state key="normal" title="Add Address">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="siw-EC-r2v" firstAttribute="leading" secondItem="G9h-Vv-KSq" secondAttribute="leading" id="0fm-XJ-dlS"/>
+                        <constraint firstItem="LBw-mJ-hMq" firstAttribute="top" secondItem="siw-EC-r2v" secondAttribute="bottom" constant="8.5" id="WQv-ob-NR1"/>
+                        <constraint firstItem="OnJ-bQ-N9J" firstAttribute="top" secondItem="LBw-mJ-hMq" secondAttribute="bottom" constant="7.5" id="dVi-9t-zRs"/>
+                        <constraint firstItem="OnJ-bQ-N9J" firstAttribute="centerX" secondItem="LBw-mJ-hMq" secondAttribute="centerX" id="jNY-F5-EXs"/>
+                        <constraint firstAttribute="trailing" secondItem="siw-EC-r2v" secondAttribute="trailing" id="jO7-GV-ulk"/>
+                        <constraint firstItem="LBw-mJ-hMq" firstAttribute="trailing" secondItem="siw-EC-r2v" secondAttribute="trailing" constant="-10" id="ny7-p1-36g"/>
+                        <constraint firstItem="LBw-mJ-hMq" firstAttribute="leading" secondItem="siw-EC-r2v" secondAttribute="leading" constant="10" id="tyV-YV-5dS"/>
+                        <constraint firstItem="siw-EC-r2v" firstAttribute="centerY" secondItem="G9h-Vv-KSq" secondAttribute="centerY" id="yyS-ue-zqS"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="G9h-Vv-KSq" secondAttribute="bottom" id="CyO-EX-4zM"/>
+                <constraint firstAttribute="trailing" secondItem="G9h-Vv-KSq" secondAttribute="trailing" id="La1-fC-iNy"/>
+                <constraint firstItem="G9h-Vv-KSq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="g1I-pY-1YX"/>
+                <constraint firstItem="G9h-Vv-KSq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="tq6-LS-Tpb"/>
+            </constraints>
+            <point key="canvasLocation" x="-249.5" y="75.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="empty_order" width="1125" height="603"/>
+    </resources>
+</document>

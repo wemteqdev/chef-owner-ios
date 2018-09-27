@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="compareproductValue" id="gTV-IL-0wX" customClass="CompareProductAttributeValueCollectionView" customModule="Magento2MobikulNew" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="226" height="126"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="226" height="126"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VGe-9Y-iSw">
+                        <rect key="frame" x="5" y="5" width="216" height="116"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="VGe-9Y-iSw" secondAttribute="trailing" constant="5" id="9Gq-Sd-R9I"/>
+                <constraint firstAttribute="bottom" secondItem="VGe-9Y-iSw" secondAttribute="bottom" constant="5" id="MPa-UV-xlh"/>
+                <constraint firstItem="VGe-9Y-iSw" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="OgY-11-9ub"/>
+                <constraint firstItem="VGe-9Y-iSw" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="hkR-pH-nLB"/>
+            </constraints>
+            <size key="customSize" width="226" height="126"/>
+            <connections>
+                <outlet property="value" destination="VGe-9Y-iSw" id="tpN-5d-YTP"/>
+            </connections>
+            <point key="canvasLocation" x="-115" y="-87"/>
+        </collectionViewCell>
+    </objects>
+</document>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SellerShipmentTableViewCell" rowHeight="121" id="KGk-i7-Jjw" customClass="SellerShipmentTableViewCell" customModule="MobikulMPMagento2" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="516" height="121"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="516" height="120.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7x-Sf-8ei">
+                        <rect key="frame" x="10" y="10" width="496" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vcd-Sc-pAW">
+                        <rect key="frame" x="10" y="39" width="496" height="30"/>
+                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Crl-jj-MGu">
+                        <rect key="frame" x="10" y="77" width="496" height="30"/>
+                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="p7x-Sf-8ei" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="4uT-X3-H5t"/>
+                    <constraint firstItem="Crl-jj-MGu" firstAttribute="trailing" secondItem="Vcd-Sc-pAW" secondAttribute="trailing" id="FoF-ow-39f"/>
+                    <constraint firstAttribute="bottom" secondItem="Crl-jj-MGu" secondAttribute="bottom" constant="13.5" id="Gnv-34-0iP"/>
+                    <constraint firstItem="Crl-jj-MGu" firstAttribute="top" secondItem="Vcd-Sc-pAW" secondAttribute="bottom" constant="8" id="Mnv-ER-tfo"/>
+                    <constraint firstAttribute="trailing" secondItem="p7x-Sf-8ei" secondAttribute="trailing" constant="10" id="Mqb-jH-LRi"/>
+                    <constraint firstItem="Crl-jj-MGu" firstAttribute="leading" secondItem="Vcd-Sc-pAW" secondAttribute="leading" id="XaT-jK-kik"/>
+                    <constraint firstItem="Vcd-Sc-pAW" firstAttribute="top" secondItem="p7x-Sf-8ei" secondAttribute="bottom" constant="8" id="r3c-ld-fcs"/>
+                    <constraint firstItem="p7x-Sf-8ei" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="v65-gi-5ya"/>
+                    <constraint firstItem="Vcd-Sc-pAW" firstAttribute="leading" secondItem="p7x-Sf-8ei" secondAttribute="leading" id="xrp-pN-j1T"/>
+                    <constraint firstItem="Vcd-Sc-pAW" firstAttribute="trailing" secondItem="p7x-Sf-8ei" secondAttribute="trailing" id="yVt-vD-icN"/>
+                    <constraint firstItem="p7x-Sf-8ei" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="zxt-9f-Ntt"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="carriertextField" destination="Vcd-Sc-pAW" id="wSO-Sj-LTe"/>
+                <outlet property="shipmentValue" destination="p7x-Sf-8ei" id="dky-El-CFZ"/>
+                <outlet property="trackingtextField" destination="Crl-jj-MGu" id="Dr9-rQ-WUA"/>
+            </connections>
+            <point key="canvasLocation" x="-73" y="-47.5"/>
+        </tableViewCell>
+    </objects>
+</document>

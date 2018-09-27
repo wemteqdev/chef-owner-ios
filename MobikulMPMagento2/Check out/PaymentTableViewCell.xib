@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PaymentTableViewCell" rowHeight="68" id="KGk-i7-Jjw" customClass="PaymentTableViewCell" customModule="Magento2V4Theme" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="472" height="68"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="472" height="67.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K4J-8P-jtj">
+                        <rect key="frame" x="15" y="24" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="Wmy-fH-gbY"/>
+                            <constraint firstAttribute="width" constant="20" id="xgv-K7-rwG"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yst-dR-RV6">
+                        <rect key="frame" x="45" y="10" width="417" height="47.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Yst-dR-RV6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="3IE-8i-eFd"/>
+                    <constraint firstItem="Yst-dR-RV6" firstAttribute="leading" secondItem="K4J-8P-jtj" secondAttribute="trailing" constant="10" id="Elz-98-myR"/>
+                    <constraint firstAttribute="bottom" secondItem="Yst-dR-RV6" secondAttribute="bottom" constant="10" id="HCD-w6-ZWR"/>
+                    <constraint firstItem="K4J-8P-jtj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="cOy-D0-SfV"/>
+                    <constraint firstAttribute="trailing" secondItem="Yst-dR-RV6" secondAttribute="trailing" constant="10" id="i70-Gs-PRR"/>
+                    <constraint firstItem="K4J-8P-jtj" firstAttribute="centerY" secondItem="Yst-dR-RV6" secondAttribute="centerY" id="tiz-Pv-GFA"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="methodDescription" destination="Yst-dR-RV6" id="J5N-f0-t8W"/>
+                <outlet property="roundImageView" destination="K4J-8P-jtj" id="piK-tn-cU7"/>
+            </connections>
+            <point key="canvasLocation" x="-109" y="-1"/>
+        </tableViewCell>
+    </objects>
+</document>

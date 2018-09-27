@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="bannerImageCell" id="gTV-IL-0wX" customClass="BannerImageCell" customModule="MobikulMPMagento2" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="277" height="107"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="277" height="107"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_placeholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="s0F-XS-Gj7">
+                        <rect key="frame" x="15" y="5" width="247" height="97"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </imageView>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="s0F-XS-Gj7" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="Bg3-en-ItN"/>
+                <constraint firstItem="s0F-XS-Gj7" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="EoQ-rc-bQy"/>
+                <constraint firstAttribute="trailing" secondItem="s0F-XS-Gj7" secondAttribute="trailing" constant="15" id="OIE-hJ-FpN"/>
+                <constraint firstAttribute="bottom" secondItem="s0F-XS-Gj7" secondAttribute="bottom" constant="5" id="wuv-3n-CkK"/>
+            </constraints>
+            <size key="customSize" width="277" height="107"/>
+            <connections>
+                <outlet property="bannerImageView" destination="s0F-XS-Gj7" id="dbx-FR-Aiw"/>
+            </connections>
+            <point key="canvasLocation" x="-111.5" y="-146.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="ic_placeholder.png" width="500" height="500"/>
+    </resources>
+</document>
