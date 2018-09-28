@@ -46,7 +46,7 @@ class CustomerLogin: UIViewController {
         super.viewDidLoad()
         self.tabBarController?.tabBar.isHidden = true
         
-        
+        defaults.set("1", forKey: "storeId")
         /* pastelView = PastelView(frame: view.bounds)
         
         // Custom Direction
@@ -138,21 +138,21 @@ class CustomerLogin: UIViewController {
     
     
     override func viewDidAppear(_ animated: Bool) {
-        /*if(self.moveToSignal != "cart"){
+        if(self.moveToSignal != "cart"){
             if defaults.object(forKey: "touchIdFlag") as! String == "1"{
                 let  AC = UIAlertController(title: GlobalData.sharedInstance.language(key: "alert"), message: GlobalData.sharedInstance.language(key: "loginbytouchid"), preferredStyle: .alert)
                 let okBtn = UIAlertAction(title: GlobalData.sharedInstance.language(key: "ok"), style:.default, handler: {(_ action: UIAlertAction) -> Void in
                     self.configureTouchIdBeforeLogin()
-                    
+         
                 })
                 let cancelBtn = UIAlertAction(title: GlobalData.sharedInstance.language(key: "cancel"), style:.destructive, handler: {(_ action: UIAlertAction) -> Void in
-                    
+         
                 })
                 AC.addAction(okBtn)
                 AC.addAction(cancelBtn)
                 self.present(AC, animated: true, completion: {  })
             }
-        }*/
+        }
     }
     
     @IBAction func signupClick(_ sender: UIButton) {
@@ -364,8 +364,8 @@ class CustomerLogin: UIViewController {
     }
     @IBAction func LoginClick(_ sender: UIButton) {
         view.endEditing(true)
-        self.performSegue(withIdentifier: "tohome", sender: self)
-        /*emailId = emailIdField.text!
+       
+        emailId = emailIdField.text!
         password = passwordtextField.text!
         var isValid = 0;
         var errorMessage = ""
@@ -385,7 +385,7 @@ class CustomerLogin: UIViewController {
         }else{
             whichApiToProcess = ""
             callingHttppApi()
-        }*/
+        }
     }
     
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

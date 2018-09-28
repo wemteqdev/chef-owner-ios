@@ -89,7 +89,7 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+  
         if showFeature == true{
             
             if featuredProductCollectionModel.count > 0{
@@ -147,14 +147,12 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
                     cell.layer.cornerRadius = 8
                     cell.wishListButton.isHidden = true
                 
-                    //GlobalData.sharedInstance.getImageFromUrl(imageUrl:featuredProductCollectionModel[indexPath.row].image , imageView: cell.productImage)
-                   // cell.productName.text = featuredProductCollectionModel[indexPath.row].name
-                   // cell.productPrice.text = featuredProductCollectionModel[indexPath.row].price
-                    cell.productName.text = "Orange"
-                    cell.productPrice.text = "$49.00"
-                    cell.layoutIfNeeded()
+                    GlobalData.sharedInstance.getImageFromUrl(imageUrl:featuredProductCollectionModel[indexPath.row].image , imageView: cell.productImage)
+                    cell.productName.text = featuredProductCollectionModel[indexPath.row].name
+                    cell.productPrice.text = featuredProductCollectionModel[indexPath.row].price
+                    
                 
-                    self.productCollectionViewHeight.constant = SCREEN_WIDTH / 2 + 70
+                    //self.productCollectionViewHeight.constant = SCREEN_WIDTH / 2 + 70
                      self.productCollectionViewWidth.constant = prodcutCollectionView.contentSize.width
                    cell.addButton.tag = indexPath.row
                     cell.addButton.addTarget(self, action: #selector(addButtonClick(sender:)), for: .touchUpInside)
@@ -168,7 +166,7 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
                 
                 
                 
-                    /*if featuredProductCollectionModel[indexPath.row].isInWishList{
+                    if featuredProductCollectionModel[indexPath.row].isInWishList{
                         cell.wishListButton.setImage(UIImage(named: "ic_wishlist_fill")!, for: .normal)
                         
                     }else{
@@ -197,7 +195,7 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
                             cell.specialPrice.isHidden = true;
                         }
                         
-                    }*/
+                    }
                     cell.layoutIfNeeded()
                     //self.productCollectionViewHeight.constant = self.prodcutCollectionView.contentSize.height
                 
@@ -208,15 +206,14 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
                     self.productCollectionViewHeight.constant = self.prodcutCollectionView.contentSize.height
                     cell.layer.borderColor = UIColor().HexToColor(hexString: LIGHTGREY).cgColor
                     cell.layer.borderWidth = 0.5
-                    cell.imageView.image = UIImage(named: "product_image")
-                    /*cell.name.text = featuredProductCollectionModel[indexPath.row].name
-                    cell.price.text =  featuredProductCollectionModel[indexPath.row].price*/
+
+                    cell.imageView.image = UIImage(named: "ic_placeholder.png")
+                    cell.name.text = featuredProductCollectionModel[indexPath.row].name
+                    cell.price.text =  featuredProductCollectionModel[indexPath.row].price
+
                     //cell.descriptionData.text = featuredProductCollectionModel[indexPath.row].descriptionData
-                    cell.name.text = "Orange"
-                    cell.price.text =  "$49/00"
-                    cell.descriptionData.text = "Delicious Orange"
                    
-                    /*GlobalData.sharedInstance.getImageFromUrl(imageUrl:featuredProductCollectionModel[indexPath.row].image , imageView: cell.imageView)*/
+                    GlobalData.sharedInstance.getImageFromUrl(imageUrl:featuredProductCollectionModel[indexPath.row].image , imageView: cell.imageView)
                     cell.wishList_Button.tag = indexPath.row
                     cell.compare_Button.tag = indexPath.row
                     cell.compare_Button.addTarget(self, action: #selector(addToCompare(sender:)), for: .touchUpInside)
@@ -226,7 +223,7 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
                     cell.specialPrice.isHidden = true
                     
                     
-                   /* if featuredProductCollectionModel[indexPath.row].isInWishList{
+                    if featuredProductCollectionModel[indexPath.row].isInWishList{
                         cell.wishList_Button.setImage(UIImage(named: "ic_wishlist_fill")!, for: .normal)
                     }else{
                         cell.wishList_Button.setImage(UIImage(named: "ic_wishlist_empty")!, for: .normal)
@@ -251,7 +248,7 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
                             cell.price.text =  featuredProductCollectionModel[indexPath.row].price
                             cell.specialPrice.isHidden = true
                         }
-                    }*/
+                    }
                     return cell
                 }
 
@@ -331,20 +328,18 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
         if homeViewController.change == false{
             return CGSize(width: collectionView.frame.size.width, height: collectionView.frame.size.width/2 )
         }else{
-            return CGSize(width: collectionView.frame.size.width/2 - 16 , height: collectionView.frame.size.width/2 + 70 )
+            return CGSize(width: collectionView.frame.size.width/2 - 16 , height: collectionView.frame.size.width/2 + 200 )
             //return CGSize(width: collectionView.frame.size.width/2, height:SCREEN_WIDTH/2.5 + 120)
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if showFeature == true{
-            delegate.productClick(name: "ProductName", image: "image", id: "id")
-            
-            //delegate.productClick(name: featuredProductCollectionModel[indexPath.row].name, image: featuredProductCollectionModel[indexPath.row].image, id: featuredProductCollectionModel[indexPath.row].productID)
+            delegate.productClick(name: featuredProductCollectionModel[indexPath.row].name, image: featuredProductCollectionModel[indexPath.row].image, id: featuredProductCollectionModel[indexPath.row].productID)
             
         }else{
             
-                //delegate.productClick(name: productCollectionModel[indexPath.row].name, image: productCollectionModel[indexPath.row].image, id: productCollectionModel[indexPath.row].productID)
+                delegate.productClick(name: productCollectionModel[indexPath.row].name, image: productCollectionModel[indexPath.row].image, id: productCollectionModel[indexPath.row].productID)
             
         }
     }
@@ -391,16 +386,15 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
     
     @objc func addToCompare(sender: UIButton){
         if showFeature == true{
-            //delegate.newAndFeartureAddToCompare(productID: featuredProductCollectionModel[sender.tag].productID)
-            delegate.newAndFeartureAddToCompare(productID: "4")
+            delegate.newAndFeartureAddToCompare(productID: featuredProductCollectionModel[sender.tag].productID)
         }else{
             delegate.newAndFeartureAddToCompare(productID: productCollectionModel[sender.tag].productID)
         }
     }
     @objc func addButtonClick(sender: UIButton){
         if showFeature == true{
-            //delegate.productClick(name: featuredProductCollectionModel[sender.tag].name, image: featuredProductCollectionModel[sender.tag].image, id: featuredProductCollectionModel[sender.tag].productID )
-            delegate.productClick(name: "Orange", image: "product_image", id: "4")
+            delegate.productClick(name: featuredProductCollectionModel[sender.tag].name, image: featuredProductCollectionModel[sender.tag].image, id: featuredProductCollectionModel[sender.tag].productID )
+           
         }else{
             delegate.productClick(name: productCollectionModel[sender.tag].name, image: productCollectionModel[sender.tag].image, id: productCollectionModel[sender.tag].productID )
             

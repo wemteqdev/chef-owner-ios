@@ -174,8 +174,8 @@ class Chef_ProductViewController: UIViewController,chef_productViewControllerHan
         GlobalVariables.hometableView = productTableView
         self.homeViewModel.homeViewController = self;
         self.productTableView.separatorColor = UIColor.clear
-        //print("View Didload")
-       // callingHttppApi();
+        print("View Didload")
+        callingHttppApi();
         self.productTableView.reloadDataWithAutoSizingCellWorkAround()
         //ThemeManager.applyTheme(bar:(self.navigationController?.navigationBar)!)
     }
