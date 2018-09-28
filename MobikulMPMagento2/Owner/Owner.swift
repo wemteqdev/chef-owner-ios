@@ -48,11 +48,6 @@ class Owner: UIViewController{
     @IBOutlet weak var profile_owner: UILabel!
     var swipeGesture  = UISwipeGestureRecognizer()
     @IBOutlet weak var scrollView: UIScrollView!
-    /*
-    @IBOutlet weak var ownerProfileTableView: UITableView!
-    var sinInView:NSMutableArray = [""]
-    var profileData:NSMutableArray = []
- */
     
     var mainCollection:JSON!
     var showType = 0;
@@ -70,7 +65,7 @@ class Owner: UIViewController{
         } else if showTypeController.selectedSegmentIndex == 3{
             showType = 3;
         }
-        /*
+        
         if (Owner.callingApiSucceed){
             var chartData: [BarChartData] = self.createChartDataCollection();
             print("chartData", chartData)
@@ -98,20 +93,6 @@ class Owner: UIViewController{
                 self.addDiagramTotalElement(diagramData: Owner.ownerDashboardModelView.diagramYearlyTotal);
             }
         }
-         */
-        var chartData: [BarChartData] = self.createChartDataCollection();
-        print("chartData", chartData)
-        
-        self.barChartView.removeAllArrangedSubviews();
-        self.indexChartView.removeAllArrangedSubviews();
-        self.diagramTotalView.removeAllArrangedSubviews();
-        
-        for data in chartData {
-            self.addIndexElement(timeGraphData: data)
-            self.addGraphElement(timeGraphData: data);
-        }
-        
-        self.addDiagramTotalElementTemp();
     }
     @objc func swipwView(_ sender : UISwipeGestureRecognizer){
         UIView.animate(withDuration: 1.0) {
@@ -151,43 +132,22 @@ class Owner: UIViewController{
             scrollView.isUserInteractionEnabled = true
             swipeGesture.direction = direction
         }
-     //   self.callingHttppApi();
+        self.callingHttppApi();
     }
     
     func callingHttppApi(){
         var requstParams = [String:Any]();
-        requstParams["username"] = "o@owner.com"
-        requstParams["password"] = "owner123!"
-        requstParams["websiteId"] = DEFAULT_WEBSITE_ID
-        let width = String(format:"%f", SCREEN_WIDTH * UIScreen.main.scale)
-        requstParams["width"] = width
-        /*
-        GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"mobikulhttp/customer/logIn", currentView: self){success,responseObject in
-            if success == 1{
-                print("login succeed");
-                if responseObject?.object(forKey: "storeId") != nil{
-                    let storeId:String = String(format: "%@", responseObject!.object(forKey: "storeId") as! CVarArg)
-                    if storeId != "0"{
-                        defaults .set(storeId, forKey: "storeId")
-                    }
-                }
-                
-                self.view.isUserInteractionEnabled = true
-                self.doFurtherProcessingWithResult(data:responseObject!)
-            }
-        }
-        */
-        self.view.isUserInteractionEnabled = false
-        Owner.callingApiSucceed = false;
+        
         requstParams = [String:Any]();
         requstParams["websiteId"] = DEFAULT_WEBSITE_ID
-        requstParams["width"] = width
         let customerId = defaults.object(forKey:"customerId");
         if customerId != nil{
             requstParams["customerToken"] = customerId
             requstParams["customerId"] = customerId
         }
         
+        self.view.isUserInteractionEnabled = false
+        Owner.callingApiSucceed = false;
         GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"wemteqchef/owner/dashboard", currentView: self){success,responseObject in
             if success == 1{
                 if responseObject?.object(forKey: "storeId") != nil{
@@ -245,7 +205,7 @@ class Owner: UIViewController{
     private func createChartDataCollection () -> [BarChartData] {
         
         var chatDataArray = [BarChartData]();
-        /*
+        
         var orderTotal = Owner.ownerDashboardModelView.orderYearlyTotal;
         var orderString = Owner.ownerDashboardModelView.orderYearlyIndexString;
         if (showType == 0)
@@ -265,7 +225,7 @@ class Owner: UIViewController{
         }
         print("orderTotal:", orderTotal)
         print("orderString:", orderString)
-        */
+        /*
         var orderTotal = [
             [32.1, 35.5, 95.4, 67.0, 53.5, 87.0, 72.2],
             [52.1, 25.5, 105.4, 37.0, 53.5, 47.0, 92.2],
@@ -273,20 +233,25 @@ class Owner: UIViewController{
             [232.1, 185.5, 165.4, 267.0, 153.5, 117.0, 192.2]
         ];
         var orderString = ["09-14", "09-15", "09-16", "09-17", "09-18", "09-19", "09-20"];
-        /*
+         */
+        
         let maxData = orderTotal.max()
         for ind in 0...orderTotal.count-1 {
-            let percent = orderTotal[ind] / maxData! * 100
+            var percent:Double = 0.0;
+            if(maxData != 0){
+                percent = orderTotal[ind] / maxData! * 100
+            }
             let chartData = BarChartData.init(order: 0, amount: String(format:"%.1f", orderTotal[ind]), indexData: orderString[ind], percentage: percent)
             chatDataArray.append(chartData);
         }
-        */
+        /*
         let maxData = orderTotal[showType].max()
         for ind in 0...orderTotal[showType].count-1 {
             let percent = orderTotal[showType][ind] / maxData! * 100
             let chartData = BarChartData.init(order: 0, amount: String(format:"%.1f", orderTotal[showType][ind]), indexData: orderString[ind], percentage: percent)
             chatDataArray.append(chartData);
         }
+         */
         return chatDataArray
     }
     
@@ -386,7 +351,12 @@ class Owner: UIViewController{
         let changeStringLabel = UILabel()
         changeLabel.textColor = UIColor(red: 39/255, green: 183/255, blue: 100/255, alpha: 1.0);
         //changeLabel.text = String(format: "%d",diagramData.ordersCount);
-        changeLabel.text = String(format: "↑90%%");
+        if(diagramData.percentage >= 0) {
+            changeLabel.text = String(format: "↑%0.1f%%", diagramData.percentage);
+        } else {
+            changeLabel.text = String(format: "↓%0.1f%%", diagramData.percentage);
+        }
+        print("diagram percent:", changeLabel.text);
         changeLabel.font = UIFont.boldSystemFont(ofSize: purchaseLabelHeight)
         changeLabel.textAlignment = .center
         
@@ -660,20 +630,36 @@ class Owner: UIViewController{
         */
         profile_name.text = "Owner"
         profile_owner.text = "Owner"
-        
-        var chartData: [BarChartData] = self.createChartDataCollection();
-        print("chartData", chartData)
-        
-        self.barChartView.removeAllArrangedSubviews();
-        self.indexChartView.removeAllArrangedSubviews();
-        self.diagramTotalView.removeAllArrangedSubviews();
-        
-        for data in chartData {
-            self.addIndexElement(timeGraphData: data)
-            self.addGraphElement(timeGraphData: data);
+        if (Owner.callingApiSucceed) {
+            var chartData: [BarChartData] = self.createChartDataCollection();
+            print("chartData", chartData)
+            
+            self.barChartView.removeAllArrangedSubviews();
+            self.indexChartView.removeAllArrangedSubviews();
+            self.diagramTotalView.removeAllArrangedSubviews();
+            
+            for data in chartData {
+                self.addIndexElement(timeGraphData: data)
+                self.addGraphElement(timeGraphData: data);
+            }
+            
+            if(self.showType == 0)
+            {
+                self.addDiagramTotalElement(diagramData: Owner.ownerDashboardModelView.diagramDailyTotal);
+            }
+            else if(self.showType == 1)
+            {
+                self.addDiagramTotalElement(diagramData: Owner.ownerDashboardModelView.diagramWeeklyTotal);
+            }
+            else if(self.showType == 2)
+            {
+                self.addDiagramTotalElement(diagramData: Owner.ownerDashboardModelView.diagramMonthlyTotal);
+            }
+            else if(self.showType == 3)
+            {
+                self.addDiagramTotalElement(diagramData: Owner.ownerDashboardModelView.diagramYearlyTotal);
+            }
         }
-        
-        self.addDiagramTotalElementTemp();
     }
    
     override func viewWillDisappear(_ animated: Bool) {

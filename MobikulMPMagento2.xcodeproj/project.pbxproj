@@ -1365,8 +1365,8 @@
 			isa = PBXGroup;
 			children = (
 				57F6259D2151697F000F1CD5 /* Chef_MyOrders.swift */,
-				57F625A121516A32000F1CD5 /* Chef_MyOrderTableViewCell.swift */,
 				57F625A221516A32000F1CD5 /* Chef_MyOrderTableViewCell.xib */,
+				57F625A121516A32000F1CD5 /* Chef_MyOrderTableViewCell.swift */,
 				57F625A721516A6B000F1CD5 /* Chef_MyOrdersModel.swift */,
 				57F83DF32153CF6000BC9DCB /* Chef_MyOrderTableViewCellDesign.swift */,
 				57F83DF42153CF6000BC9DCB /* Chef_MyOrderTableViewCellDesign.xib */,
