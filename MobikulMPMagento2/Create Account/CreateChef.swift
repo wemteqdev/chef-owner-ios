@@ -59,9 +59,9 @@ class CreateChef: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource{
         
         submitButton.setTitleColor(UIColor().HexToColor(hexString: "4265A0"), for: .normal)
         baselineView.layer.cornerRadius = 2.5
-        
+        //self.defaults.set("0", forKey: "storeId")
 
-        //self.callingHttppApi()
+        self.callingHttppApi()
         
         // Do any additional setup after loading the view.
     }
@@ -86,6 +86,7 @@ class CreateChef: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource{
                 var requstParams = [String:Any]();
                 let quoteId = self.defaults.object(forKey:"quoteId");
                 let deviceToken = self.defaults.object(forKey:"deviceToken");
+                print(self.defaults.object(forKey:"storeId") as! String)
                 requstParams["storeId"] = self.defaults.object(forKey:"storeId") as! String
                 requstParams["websiteId"] = DEFAULT_WEBSITE_ID
                 if quoteId != nil{
@@ -165,7 +166,14 @@ class CreateChef: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource{
             }
             else{
                 var requstParams = [String:Any]();
-                requstParams["storeId"] = self.defaults.object(forKey:"storeId") as! String
+                if self.defaults.object(forKey: "storeId") != nil{
+                    requstParams["storeId"] = self.defaults.object(forKey: "storeId") as! String
+                }
+                else{
+                    requstParams["storeId"] = "0"
+                    
+                }
+                //requstParams["storeId"] = self.defaults.object(forKey:"storeId") as! String
                 GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"wemteqchef/directory/countrylist", currentView: self){success,responseObject in
                     if success == 1{
                         print(responseObject)
@@ -192,8 +200,8 @@ class CreateChef: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource{
         var errorMessage = "";
         var isValid:Int = 1;
         print("calling")
-        self.performSegue(withIdentifier: "dashboard", sender: self)
-        /*if firstnameTextField.text == ""{
+        
+        if firstnameTextField.text == ""{
             isValid = 0;
             errorMessage = GlobalData.sharedInstance.language(key: "pleasefillfirstname");
         }else if secondnameTextField.text == ""{
@@ -261,22 +269,21 @@ class CreateChef: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource{
                 callingHttppApi()
                 
             }
-        }*/
+        }
     }
     @IBAction func countryClick(_ sender: UITextField) {
-//        let thePicker = UIPickerView()
-//        thePicker.tag = 1000;
-//        countryTextField.inputView = thePicker
-//        thePicker.delegate = self
+        let thePicker = UIPickerView()
+        thePicker.tag = 1000;
+        countryTextField.inputView = thePicker
+        thePicker.delegate = self
     }
     @IBAction func stateClick(_ sender: UITextField) {
-//        if self.createAccountModel.countryData[currentCountryRow].stateData.count > 0{
-//            let thePicker = UIPickerView()
-//            thePicker.tag = 2000;
-//            stateTextField.inputView = thePicker
-//            thePicker.delegate = self
-//        }
-        
+        if self.createAccountModel.countryData[currentCountryRow].stateData.count > 0{
+            let thePicker = UIPickerView()
+            thePicker.tag = 2000;
+            stateTextField.inputView = thePicker
+            thePicker.delegate = self
+        }
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if(pickerView.tag == 1000){
