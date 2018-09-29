@@ -10,10 +10,8 @@ import UIKit
 
 class Chef_MyCart: UIViewController ,UITableViewDelegate, UITableViewDataSource,UITextFieldDelegate {
     
-    
-    
     let defaults = UserDefaults.standard
-    var myCartViewModel:MyCartViewModel!
+    var myCartViewModel:Chef_MyCartViewModel!
     var extraHeight:CGFloat = 0
     var whichApiToProcess = ""
     var itemId:String = ""
@@ -23,6 +21,7 @@ class Chef_MyCart: UIViewController ,UITableViewDelegate, UITableViewDataSource,
     var keyBoardshownFlag:Int = 0
     var proceedToCheckout:Bool = true
     var emptyView:EmptyNewAddressView!
+    @IBOutlet weak var proceedToCheckOutButton:UIButton!
     
     @IBOutlet weak var cartTableView: UITableView!
     override func viewDidLoad() {
@@ -266,7 +265,7 @@ class Chef_MyCart: UIViewController ,UITableViewDelegate, UITableViewDataSource,
                     print(responseObject)
                     self.view.isUserInteractionEnabled = true
                     GlobalData.sharedInstance.dismissLoader()
-                    self.myCartViewModel = MyCartViewModel(data: JSON(responseObject as! NSDictionary))
+                    self.myCartViewModel = Chef_MyCartViewModel(data: JSON(responseObject as! NSDictionary))
                     self.doFurtherProcessingWithResult()
                     
                 }else if success == 2{
@@ -304,7 +303,7 @@ class Chef_MyCart: UIViewController ,UITableViewDelegate, UITableViewDataSource,
     }
     
     public func numberOfSections(in tableView: UITableView) -> Int{
-        return 2
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
@@ -317,10 +316,10 @@ class Chef_MyCart: UIViewController ,UITableViewDelegate, UITableViewDataSource,
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0{
-            cartTableView.register(UINib(nibName: "CartTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
-            let cell:CartTableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CartTableViewCell
+            cartTableView.register(UINib(nibName: "Chef_MyCartTableViewCell", bundle: nil), forCellReuseIdentifier: "chef_mycartcell")
+            let cell:Chef_MyCartTableViewCell = tableView.dequeueReusableCell(withIdentifier: "chef_mycartcell") as! Chef_MyCartTableViewCell
             cell.productNameLabelValue.text = myCartViewModel.getCartItems[indexPath.row].name
-            cell.qtyValue.text = myCartViewModel.getCartItems[indexPath.row].qty
+            cell.qtyValue.setTitle(myCartViewModel.getCartItems[indexPath.row].qty, for: .normal)
             
             cell.priceLabelValue.text = myCartViewModel.getCartItems[indexPath.row].price
             cell.subtotalLabelValue.text  = myCartViewModel.getCartItems[indexPath.row].subtotal
@@ -351,27 +350,35 @@ class Chef_MyCart: UIViewController ,UITableViewDelegate, UITableViewDataSource,
                 }
                 optionData = optionData+childValue+"\n"
             }
-            cell.stepperButton.value = Double(myCartViewModel.getCartItems[indexPath.row].qty)!
-            cell.stepperButton.tag = indexPath.row
+//            cell.stepperButton.value = Double(myCartViewModel.getCartItems[indexPath.row].qty)!
+            cell.plusButton.tag = indexPath.row
+            cell.minusButton.tag = indexPath.row
             cell.myCartViewModel = self.myCartViewModel;
-            cell.optionMessage.text = optionData
-            cell.moveToWishListButton.tag = indexPath.row
-            cell.moveToWishListButton.addTarget(self, action: #selector(moveToWishList(sender:)), for: .touchUpInside)
+//            cell.optionMessage.text = optionData
+//            cell.moveToWishListButton.tag = indexPath.row
+//            cell.moveToWishListButton.addTarget(self, action: #selector(moveToWishList(sender:)), for: .touchUpInside)
             
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(openProduct))
             cell.productImageView.addGestureRecognizer(tapGesture)
             cell.productImageView.tag = indexPath.row
             cell.productImageView.isUserInteractionEnabled = true
-            cell.removeButton.tag = indexPath.row
-            cell.removeButton.addTarget(self, action: #selector(removeItem(sender:)), for: .touchUpInside)
+//            cell.removeButton.tag = indexPath.row
+//            cell.removeButton.addTarget(self, action: #selector(removeItem(sender:)), for: .touchUpInside)
             
             let customerId = defaults.object(forKey:"customerId");
             if customerId != nil{
-                cell.moveToWishListButton.isHidden = false;
+                //cell.moveToWishListButton.isHidden = false;
             }else{
-                cell.moveToWishListButton.isHidden = true;
+                //cell.moveToWishListButton.isHidden = true;
             }
             cell.selectionStyle = .none
+            
+            if proceedToCheckout == false{
+                self.proceedToCheckOutButton.isHidden = true;
+            }else{
+                self.proceedToCheckOutButton.isHidden = false;
+            }
+            
             return cell
         }else{
             cartTableView.register(UINib(nibName: "ExtraCartTableViewCell", bundle: nil), forCellReuseIdentifier: "extracell")
@@ -399,7 +406,7 @@ class Chef_MyCart: UIViewController ,UITableViewDelegate, UITableViewDataSource,
             }else{
                 cell.cancelButton.isHidden = false
             }
-            cell.proceedToCheckOutButton.addTarget(self, action: #selector(proceedToCheckOut(sender:)), for: .touchUpInside)
+            //cell.proceedToCheckOutButton.addTarget(self, action: #selector(proceedToCheckOut(sender:)), for: .touchUpInside)
             cell.applyButton.addTarget(self, action: #selector(applyCouponCode(sender:)), for: .touchUpInside)
             cell.cancelButton.addTarget(self, action: #selector(cancelCouponCode(sender:)), for: .touchUpInside)
                         
@@ -415,7 +422,7 @@ class Chef_MyCart: UIViewController ,UITableViewDelegate, UITableViewDataSource,
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0{
-            return UITableViewAutomaticDimension
+            return self.view.bounds.size.width / 3
         }else{
             return 370;
         }
@@ -506,7 +513,7 @@ class Chef_MyCart: UIViewController ,UITableViewDelegate, UITableViewDataSource,
     func cancelDeletePlanet(alertAction: UIAlertAction!) {
     }
     
-    @objc func proceedToCheckOut(sender: UIButton){
+    @IBAction func proceedToCheckOut(_ sender: UIButton){
         
         //check for minimum order
         if myCartViewModel.myCartExtraData.grandUnformatedValue < myCartViewModel.myCartExtraData.minimumAmount {

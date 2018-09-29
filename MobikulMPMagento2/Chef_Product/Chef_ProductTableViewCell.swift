@@ -152,7 +152,7 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
                     cell.productPrice.text = featuredProductCollectionModel[indexPath.row].price
                     
                 
-                    //self.productCollectionViewHeight.constant = SCREEN_WIDTH / 2 + 70
+                    self.productCollectionViewHeight.constant = SCREEN_WIDTH / 2 + 120
                      self.productCollectionViewWidth.constant = prodcutCollectionView.contentSize.width
                    cell.addButton.tag = indexPath.row
                     cell.addButton.addTarget(self, action: #selector(addButtonClick(sender:)), for: .touchUpInside)
@@ -328,7 +328,7 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
         if homeViewController.change == false{
             return CGSize(width: collectionView.frame.size.width, height: collectionView.frame.size.width/2 )
         }else{
-            return CGSize(width: collectionView.frame.size.width/2 - 16 , height: collectionView.frame.size.width/2 + 200 )
+            return CGSize(width: collectionView.frame.size.width/2 - 16 , height: collectionView.frame.size.width/2 + 70 )
             //return CGSize(width: collectionView.frame.size.width/2, height:SCREEN_WIDTH/2.5 + 120)
         }
     }

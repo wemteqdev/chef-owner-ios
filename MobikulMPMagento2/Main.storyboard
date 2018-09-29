@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ySd-1f-FUO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="G75-iq-Gnd">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -3107,13 +3107,46 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="SVp-4T-wj2">
+                                <rect key="frame" x="0.0" y="687" width="414" height="49"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ljl-3i-rqD">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iEQ-sv-H4z">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                                                <color key="backgroundColor" red="0.16078431369999999" green="0.65098039220000004" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <state key="normal" title="CHECK OUT">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="proceedToCheckOut:" destination="9wu-2B-6TO" eventType="touchUpInside" id="a28-67-ADO"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="iEQ-sv-H4z" firstAttribute="leading" secondItem="ljl-3i-rqD" secondAttribute="leading" id="J5V-ul-Mie"/>
+                                            <constraint firstAttribute="trailing" secondItem="iEQ-sv-H4z" secondAttribute="trailing" id="ONw-r7-OLS"/>
+                                            <constraint firstItem="iEQ-sv-H4z" firstAttribute="top" secondItem="ljl-3i-rqD" secondAttribute="top" id="gY4-H9-3zQ"/>
+                                            <constraint firstAttribute="bottom" secondItem="iEQ-sv-H4z" secondAttribute="bottom" id="sEu-y5-De1"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.16078431369999999" green="0.65098039220000004" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="SVp-4T-wj2" firstAttribute="height" secondItem="MM2-Bz-veF" secondAttribute="height" multiplier="1/15" id="7wG-id-nKS"/>
                             <constraint firstItem="n0Q-dn-y91" firstAttribute="top" secondItem="EEl-Il-Bp4" secondAttribute="bottom" id="Frk-My-Ah7"/>
                             <constraint firstItem="n0Q-dn-y91" firstAttribute="leading" secondItem="mQp-4U-Diy" secondAttribute="leading" id="X1W-lm-IPY"/>
+                            <constraint firstItem="mQp-4U-Diy" firstAttribute="bottom" secondItem="SVp-4T-wj2" secondAttribute="bottom" id="Xqj-nf-7yT"/>
+                            <constraint firstItem="SVp-4T-wj2" firstAttribute="centerX" secondItem="mQp-4U-Diy" secondAttribute="centerX" id="ceN-6q-AKP"/>
                             <constraint firstItem="joG-CE-5mo" firstAttribute="top" secondItem="n0Q-dn-y91" secondAttribute="bottom" id="lTT-c0-Kg6"/>
                             <constraint firstItem="mQp-4U-Diy" firstAttribute="trailing" secondItem="n0Q-dn-y91" secondAttribute="trailing" id="s5c-i1-Qnw"/>
+                            <constraint firstItem="SVp-4T-wj2" firstAttribute="width" secondItem="MM2-Bz-veF" secondAttribute="width" id="yzc-qp-w5G"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mQp-4U-Diy"/>
                         <connections>
@@ -3123,6 +3156,8 @@
                     <navigationItem key="navigationItem" id="YFO-w2-21g"/>
                     <connections>
                         <outlet property="cartTableView" destination="n0Q-dn-y91" id="Njv-v1-Jt4"/>
+                        <outlet property="proceedToCheckOutButton" destination="iEQ-sv-H4z" id="52M-5O-Kuc"/>
+                        <segue destination="myO-yO-SLD" kind="show" identifier="proceedtocheckout" id="kp9-vR-xGq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GhG-Qk-CPb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -4341,6 +4376,9 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                                 <state key="normal" title="ADD TO CART">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="addToCart:" destination="35i-NC-Eu3" eventType="touchUpInside" id="aV3-Di-Had"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -4365,6 +4403,9 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                         <outlet property="part1" destination="Mpd-S9-t9w" id="2EV-RN-dEf"/>
                         <outlet property="part2" destination="X9R-RR-UFy" id="9aU-Yi-0hj"/>
                         <outlet property="part3" destination="3AW-zC-AsV" id="QVG-Hn-w96"/>
+                        <outlet property="productImage" destination="hKk-Ng-kBh" id="ou4-yv-I77"/>
+                        <outlet property="productnameLabel" destination="WUN-dp-jvD" id="f42-di-LE1"/>
+                        <outlet property="productpriceLabel" destination="nvu-7C-5ql" id="NhS-1d-SHw"/>
                         <outlet property="reviewBorder" destination="uJn-wG-ARF" id="Td1-Km-oyc"/>
                         <outlet property="reviewButton" destination="ohn-IZ-knb" id="6UW-oe-6uY"/>
                     </connections>
@@ -14962,7 +15003,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
         <segue reference="K1F-9a-BTF"/>
         <segue reference="un3-HS-DRX"/>
         <segue reference="7Qu-d1-AVV"/>
-        <segue reference="Tya-qA-9Y8"/>
+        <segue reference="kp9-vR-xGq"/>
         <segue reference="16k-gN-gk7"/>
         <segue reference="1IN-nY-tFS"/>
         <segue reference="1kv-3A-ZEC"/>

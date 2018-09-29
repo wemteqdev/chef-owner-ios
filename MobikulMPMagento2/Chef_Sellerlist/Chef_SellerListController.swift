@@ -49,10 +49,10 @@ class Chef_SellerListController: UIViewController ,UITableViewDelegate, UITableV
         self.tableView.separatorColor = UIColor.clear
         searchTextField.placeholder = "Search Supplier By Shop Name";
         
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        tableView.reloadData()
-        //callingHttppApi()
+//        self.tableView.delegate = self
+//        self.tableView.dataSource = self
+//        tableView.reloadData()
+        callingHttppApi()
         
     }
     func callingHttppApi(){
@@ -70,7 +70,7 @@ class Chef_SellerListController: UIViewController ,UITableViewDelegate, UITableV
         GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"mobikulmphttp/marketplace/sellerlist", currentView: self){success,responseObject in
             if success == 1{
                 self.view.isUserInteractionEnabled = true
-                GlobalData.sharedInstance.dismissLoader()
+
                 var dict = JSON(responseObject as! NSDictionary)
                 if dict["success"].boolValue == true{
                     self.sellerListViewModel = Chef_SellerListViewModel(data:dict)
@@ -78,11 +78,12 @@ class Chef_SellerListController: UIViewController ,UITableViewDelegate, UITableV
                     self.tableView.dataSource = self
                     self.tableView.reloadData()
                     
+                    
                 }else{
                     GlobalData.sharedInstance.showErrorSnackBar(msg: dict["message"].stringValue)
                 }
                 
-                
+                GlobalData.sharedInstance.dismissLoader()
                 print("dsd", responseObject)
                 
             }else if success == 2{
@@ -101,21 +102,18 @@ class Chef_SellerListController: UIViewController ,UITableViewDelegate, UITableV
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        //return self.sellerListViewModel.sellerListModel.count
-        return 4
+        return self.sellerListViewModel.sellerListModel.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Chef_SellerListViewCell", for: indexPath) as! Chef_SellerListViewCell
-        /*cell.sellerName.setTitle(self.sellerListViewModel.sellerListModel[indexPath.row].shopTitle , for: .normal)
+    cell.sellerName.setTitle(self.sellerListViewModel.sellerListModel[indexPath.row].shopTitle , for: .normal)
         cell.noOfProducts.text = self.sellerListViewModel.sellerListModel[indexPath.row].productCount
-        GlobalData.sharedInstance.getImageFromUrl(imageUrl: self.sellerListViewModel.sellerListModel[indexPath.row].logo, imageView: cell.sellerImage)*/
+        GlobalData.sharedInstance.getImageFromUrl(imageUrl: self.sellerListViewModel.sellerListModel[indexPath.row].logo, imageView: cell.sellerImage)
         
-        cell.sellerName.setTitle("Supplier Name" , for: .normal)
-        cell.noOfProducts.text = "5"
-        //GlobalData.sharedInstance.getImageFromUrl(imageUrl: self.sellerListViewModel.sellerListModel[indexPath.row].logo, imageView: cell.sellerImage)
-        cell.sellerImage.image = UIImage(named: "ic_profile")
+        GlobalData.sharedInstance.getImageFromUrl(imageUrl: self.sellerListViewModel.sellerListModel[indexPath.row].logo, imageView: cell.sellerImage)
+        //cell.sellerImage.image = UIImage(named: "ic_profile")
         
         cell.sellerName.addTarget(self, action: #selector(seeSellerProfile(sender:)), for: .touchUpInside)
         cell.sellerName.isUserInteractionEnabled = true;
@@ -141,6 +139,7 @@ class Chef_SellerListController: UIViewController ,UITableViewDelegate, UITableV
     }
     
     @objc func viewAllData(sender: UIButton){
+        tabBarController?.selectedIndex = 1
 //        self.sellerId = self.sellerListViewModel.sellerListModel[sender.tag].sellerId
 //        self.sellername = self.sellerListViewModel.sellerListModel[sender.tag].shopTitle
 //        self.performSegue( withIdentifier: "productcategory", sender: self)

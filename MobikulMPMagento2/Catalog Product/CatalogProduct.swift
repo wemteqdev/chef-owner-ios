@@ -477,18 +477,18 @@ class CatalogProduct: UIViewController {
                         }}
                 }
                 // download data
-                if (self.linkJson["links"]["linksPurchasedSeparately"].string == "1") {
-                    let downloadOptionUIView = dynamicView.viewWithTag(6000)!
-                    for i in 0..<self.linkJson["links"]["linkData"].count {
-                        var linksOption = self.linkJson["links"]["linkData"][i]
-                        let switchValue:UISwitch = downloadOptionUIView.viewWithTag(i + 1)! as! UISwitch
-                        if switchValue.isOn {
-                            selectedDownloadableProduct[linksOption["id"].string!] = linksOption["id"].string
-                        }else{
-                            selectedDownloadableProduct[linksOption["id"].string!] = ""
-                        }
-                    }
-                }
+//                if (self.linkJson["links"]["linksPurchasedSeparately"].string == "1") {
+//                    let downloadOptionUIView = dynamicView.viewWithTag(6000)!
+//                    for i in 0..<self.linkJson["links"]["linkData"].count {
+//                        var linksOption = self.linkJson["links"]["linkData"][i]
+//                        let switchValue:UISwitch = downloadOptionUIView.viewWithTag(i + 1)! as! UISwitch
+//                        if switchValue.isOn {
+//                            selectedDownloadableProduct[linksOption["id"].string!] = linksOption["id"].string
+//                        }else{
+//                            selectedDownloadableProduct[linksOption["id"].string!] = ""
+//                        }
+//                    }
+//                }
                 
                 // custome data
                 if(self.customeJson["customOptions"].count > 0){
@@ -2566,7 +2566,7 @@ class CatalogProduct: UIViewController {
                 GlobalData.sharedInstance.showErrorSnackBar(msg: errorMessage)
             }
         }
-        
+
         
         /////////////////////////////////////////// grouped data //////////////////////////////////////////////////
         

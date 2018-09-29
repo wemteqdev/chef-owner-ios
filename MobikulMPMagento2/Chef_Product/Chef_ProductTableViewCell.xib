@@ -88,7 +88,7 @@
                 <outlet property="productCollectionViewHeight" destination="HkS-D2-hZ1" id="U5r-Rl-5N3"/>
                 <outlet property="productCollectionViewWidth" destination="TN2-uI-Y3A" id="ues-dE-lFA"/>
             </connections>
-            <point key="canvasLocation" x="-122" y="-53"/>
+            <point key="canvasLocation" x="-122.5" y="-53"/>
         </tableViewCell>
     </objects>
 </document>

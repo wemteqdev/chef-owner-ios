@@ -34,17 +34,17 @@ class Chef_MyOrdersModel: NSObject {
 
 
 class Chef_MyOrdersCollectionViewModel {
-    var myOrderCollectionModel = [MyOrdersModel]()
+    var myOrderCollectionModel = [Chef_MyOrdersModel]()
     var extra:Extra!
     init(data:JSON) {
         for i in 0..<data["orderList"].count{
             let dict = data["orderList"][i];
-            myOrderCollectionModel.append(MyOrdersModel(data: dict))
+            myOrderCollectionModel.append(Chef_MyOrdersModel(data: dict))
         }
         extra = Extra(data: data)
     }
     
-    var getMyOrdersCollectionData:Array<MyOrdersModel>{
+    var getMyOrdersCollectionData:Array<Chef_MyOrdersModel>{
         return myOrderCollectionModel
     }
     
@@ -55,7 +55,7 @@ class Chef_MyOrdersCollectionViewModel {
     func setMyOrderCollectionData(data:JSON){
         for i in 0..<data["orderList"].count{
             let dict = data["orderList"][i];
-            myOrderCollectionModel.append(MyOrdersModel(data: dict))
+            myOrderCollectionModel.append(Chef_MyOrdersModel(data: dict))
         }
     }
     

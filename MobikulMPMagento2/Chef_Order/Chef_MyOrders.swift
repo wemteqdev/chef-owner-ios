@@ -43,16 +43,16 @@ class Chef_MyOrders: UIViewController ,UITableViewDelegate, UITableViewDataSourc
         pageNumber = 1
         loadPageRequestFlag = true
         whichApiDataToprocess = ""
-        //callingHttppApi()
-        self.doFurtherProcessingWithResult()
+        callingHttppApi()
+        
         
         self.myOrderTableView.separatorColor = UIColor.clear
         
         //myOrderTableView.register(UINib(nibName: "Chef_MyOrderTableViewCell", bundle: nil), forCellReuseIdentifier: "Chef_MyOrderTableViewCell")
         myOrderTableView.register(UINib(nibName: "Chef_MyOrderTableViewCellDesign", bundle: nil), forCellReuseIdentifier: "chef_myorderdesign")
-        //myOrderTableView.rowHeight = UITableViewAutomaticDimension
+        myOrderTableView.rowHeight = UITableViewAutomaticDimension
         myOrderTableView.rowHeight = 120
-        self.myOrderTableView.estimatedRowHeight = 50
+        //self.myOrderTableView.estimatedRowHeight = 50
         
         emptyView = EmptyNewAddressView(frame: self.view.frame)
         self.view.addSubview(emptyView)
@@ -91,7 +91,7 @@ class Chef_MyOrders: UIViewController ,UITableViewDelegate, UITableViewDataSourc
         pageNumber = 1
         loadPageRequestFlag = true
         whichApiDataToprocess = ""
-        //callingHttppApi()
+        callingHttppApi()
         refreshControl.endRefreshing()
     }
     
@@ -168,77 +168,92 @@ class Chef_MyOrders: UIViewController ,UITableViewDelegate, UITableViewDataSourc
             if self.pageNumber == 1{
                 GlobalData.sharedInstance.dismissLoader()
             }
+            
             self.loadPageRequestFlag = true
             self.view.isUserInteractionEnabled = true
             self.myOrderTableView.isHidden = false
             self.myOrderTableView.delegate = self
             self.myOrderTableView.dataSource = self
             self.myOrderTableView.reloadData()
-            
-            /*if self.myOrderCollectionData.getMyOrdersCollectionData.count > 0{
+
+            if self.myOrderCollectionData.getMyOrdersCollectionData.count > 0{
                 self.myOrderTableView.isHidden = false
                 self.emptyView.isHidden  = true
             }else{
                 self.myOrderTableView.isHidden = true
                 self.emptyView.isHidden  = false
-            }*/
+            }
         }
     }
     
     //MARK:- UITableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return self.myOrderCollectionData.getMyOrdersCollectionData.count
-        return 4
+        return self.myOrderCollectionData.getMyOrdersCollectionData.count
+
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //let cell:Chef_MyOrderTableViewCell = tableView.dequeueReusableCell(withIdentifier: "Chef_MyOrderTableViewCell") as! Chef_MyOrderTableViewCell
         let cell:Chef_MyOrderTableViewCellDesign = tableView.dequeueReusableCell(withIdentifier: "chef_myorderdesign") as! Chef_MyOrderTableViewCellDesign
-
-        //cell.statusButton.
-        /*cell.orderId.text = self.myOrderCollectionData.getMyOrdersCollectionData[indexPath.row].orderId
-        cell.placedOnDate.text = self.myOrderCollectionData.getMyOrdersCollectionData[indexPath.row].order_Date
-        cell.orderDetails.text = self.myOrderCollectionData.getMyOrdersCollectionData[indexPath.row].order_total
-        cell.shipToValue.text = self.myOrderCollectionData.getMyOrdersCollectionData[indexPath.row].ship_To
-        cell.statusMessage.text = " "+self.myOrderCollectionData.getMyOrdersCollectionData[indexPath.row].status+" "
-        
-        
         
         if self.myOrderCollectionData.getMyOrdersCollectionData[indexPath.row].status.lowercased() == "pending"{
-            cell.statusMessage.backgroundColor = UIColor().HexToColor(hexString: ORANGECOLOR)
-            cell.statusMessage.textColor = UIColor.white
-        }else if self.myOrderCollectionData.getMyOrdersCollectionData[indexPath.row].status.lowercased() == "complete"{
-            cell.statusMessage.backgroundColor = UIColor().HexToColor(hexString: GREEN_COLOR)
-            cell.statusMessage.textColor = UIColor.white
-        }else if self.myOrderCollectionData.getMyOrdersCollectionData[indexPath.row].status.lowercased() == "processing"{
-            cell.statusMessage.backgroundColor = UIColor().HexToColor(hexString: GREEN_COLOR)
-            cell.statusMessage.textColor = UIColor.white
-        }else if self.myOrderCollectionData.getMyOrdersCollectionData[indexPath.row].status.lowercased() == "cancel"{
-            cell.statusMessage.backgroundColor = UIColor().HexToColor(hexString: REDCOLOR)
-            cell.statusMessage.textColor = UIColor.white
-        }
-        
-        if self.myOrderCollectionData.getMyOrdersCollectionData[indexPath.row].canReorder  == true {
-            cell.reorderButton.tag = indexPath.row
-            cell.reorderButton.addTarget(self, action: #selector(reorderClick(sender:)), for: .touchUpInside)
-            cell.reorderButton.isUserInteractionEnabled = true
-            cell.reorderButton.isHidden = false
-        }else{
-            cell.reorderButton.isHidden = true
-        }
-        
-        cell.viewOrderButton.tag = indexPath.row
-        cell.viewOrderButton.addTarget(self, action: #selector(viewOrderClick(sender:)), for: .touchUpInside)
-        cell.viewOrderButton.isUserInteractionEnabled = true*/
-        cell.selectionStyle = .none
+                    cell.statusButton.backgroundColor = UIColor().HexToColor(hexString: ORANGECOLOR).withAlphaComponent(0.3)
+                    cell.statusButton.setTitleColor(UIColor().HexToColor(hexString: ORANGECOLOR), for: .normal)
+                }else if self.myOrderCollectionData.getMyOrdersCollectionData[indexPath.row].status.lowercased() == "complete"{
+                    cell.statusButton.backgroundColor = UIColor().HexToColor(hexString: GREEN_COLOR).withAlphaComponent(0.3)
+                    cell.statusButton.setTitleColor(UIColor().HexToColor(hexString: GREEN_COLOR), for: .normal)
+                }else if self.myOrderCollectionData.getMyOrdersCollectionData[indexPath.row].status.lowercased() == "processing"{
+                    cell.statusButton.backgroundColor = UIColor().HexToColor(hexString: GREEN_COLOR).withAlphaComponent(0.3)
+                    cell.statusButton.setTitleColor(UIColor().HexToColor(hexString: GREEN_COLOR), for: .normal)
+                }else if self.myOrderCollectionData.getMyOrdersCollectionData[indexPath.row].status.lowercased() == "cancel"{
+                    cell.statusButton.backgroundColor = UIColor().HexToColor(hexString: REDCOLOR).withAlphaComponent(0.3)
+                    cell.statusButton.setTitleColor(UIColor().HexToColor(hexString: REDCOLOR), for: .normal)
+                }
+
+       
+        cell.orderId.text = self.myOrderCollectionData.getMyOrdersCollectionData[indexPath.row].orderId
+        cell.placedonDate.text = self.myOrderCollectionData.getMyOrdersCollectionData[indexPath.row].order_Date
+        cell.ordertotal.text = self.myOrderCollectionData.getMyOrdersCollectionData[indexPath.row].order_total
+//        cell.shipToValue.text = self.myOrderCollectionData.getMyOrdersCollectionData[indexPath.row].ship_To
+//        cell.statusMessage.text = " "+self.myOrderCollectionData.getMyOrdersCollectionData[indexPath.row].status+" "
+//
+//
+//
+//        if self.myOrderCollectionData.getMyOrdersCollectionData[indexPath.row].status.lowercased() == "pending"{
+//            cell.statusMessage.backgroundColor = UIColor().HexToColor(hexString: ORANGECOLOR)
+//            cell.statusMessage.textColor = UIColor.white
+//        }else if self.myOrderCollectionData.getMyOrdersCollectionData[indexPath.row].status.lowercased() == "complete"{
+//            cell.statusMessage.backgroundColor = UIColor().HexToColor(hexString: GREEN_COLOR)
+//            cell.statusMessage.textColor = UIColor.white
+//        }else if self.myOrderCollectionData.getMyOrdersCollectionData[indexPath.row].status.lowercased() == "processing"{
+//            cell.statusMessage.backgroundColor = UIColor().HexToColor(hexString: GREEN_COLOR)
+//            cell.statusMessage.textColor = UIColor.white
+//        }else if self.myOrderCollectionData.getMyOrdersCollectionData[indexPath.row].status.lowercased() == "cancel"{
+//            cell.statusMessage.backgroundColor = UIColor().HexToColor(hexString: REDCOLOR)
+//            cell.statusMessage.textColor = UIColor.white
+//        }
+//
+//        if self.myOrderCollectionData.getMyOrdersCollectionData[indexPath.row].canReorder  == true {
+//            cell.reorderButton.tag = indexPath.row
+//            cell.reorderButton.addTarget(self, action: #selector(reorderClick(sender:)), for: .touchUpInside)
+//            cell.reorderButton.isUserInteractionEnabled = true
+//            cell.reorderButton.isHidden = false
+//        }else{
+//            cell.reorderButton.isHidden = true
+//        }
+//
+//        cell.viewOrderButton.tag = indexPath.row
+//        cell.viewOrderButton.addTarget(self, action: #selector(viewOrderClick(sender:)), for: .touchUpInside)
+//        cell.viewOrderButton.isUserInteractionEnabled = true
+//        cell.selectionStyle = .none
         return cell
     }
     
     //for showing the activity loader
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
-        /*let lastSectionIndex = tableView.numberOfSections - 1
+        let lastSectionIndex = tableView.numberOfSections - 1
         let lastRowIndex = tableView.numberOfRows(inSection: lastSectionIndex) - 1
         if indexPath.section ==  lastSectionIndex && indexPath.row == lastRowIndex {
             // print("this is the last cell")
@@ -256,7 +271,7 @@ class Chef_MyOrders: UIViewController ,UITableViewDelegate, UITableViewDataSourc
                     self.myOrderTableView.tableFooterView?.isHidden = true
                 }
             }
-        }*/
+        }
     }
     
     @objc func reorderClick(sender: UIButton){
@@ -271,7 +286,7 @@ class Chef_MyOrders: UIViewController ,UITableViewDelegate, UITableViewDataSourc
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        /*let currentCellCount = self.myOrderTableView.numberOfRows(inSection: 0)
+        let currentCellCount = self.myOrderTableView.numberOfRows(inSection: 0)
         for cell: UITableViewCell in self.myOrderTableView.visibleCells {
             indexPathValue = self.myOrderTableView.indexPath(for: cell)!
             if indexPathValue.row == self.myOrderTableView.numberOfRows(inSection: 0) - 1 {
@@ -282,7 +297,7 @@ class Chef_MyOrders: UIViewController ,UITableViewDelegate, UITableViewDataSourc
                     callingHttppApi()
                 }
             }
-        }*/
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

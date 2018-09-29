@@ -10,6 +10,10 @@ import UIKit
 
 class Chef_MyOrderTableViewCellDesign: UITableViewCell {
     @IBOutlet weak var statusButton:UIButton!
+    @IBOutlet weak var placedonDate:UILabel!
+    @IBOutlet weak var orderId:UILabel!
+    @IBOutlet weak var ordertotal:UILabel!
+   
     
     override func awakeFromNib() {
         super.awakeFromNib()
