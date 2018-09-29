@@ -130,21 +130,20 @@ class RestaurantsDashboardController: UIViewController, UITableViewDelegate, UIT
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        /*
+        
         print("searchActive:", searchActive);
         filtered = Owner.ownerDashboardModelView.restaurantInfos.filter({ (restaurantInfo: RestaurantInfoModel) -> Bool in
             
             return restaurantInfo.restaurantName.lowercased().contains(searchText.lowercased())
         })
-         */
-        /*
+        
         if(filtered.count == 0){
             searchActive = false;
         } else {
             searchActive = true;
         }
-        */
-        //self.restaurantsTableView.reloadData()
+        
+        self.restaurantsTableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -166,15 +165,15 @@ class RestaurantsDashboardController: UIViewController, UITableViewDelegate, UIT
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        /*
+        
         if (searchActive) {
             return filtered.count
         }
         if (Owner.callingApiSucceed){
             return Owner.ownerDashboardModelView.restaurantInfos.count;
         }
-         */
-        return 15;
+        
+        return 0;
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -183,7 +182,7 @@ class RestaurantsDashboardController: UIViewController, UITableViewDelegate, UIT
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:RestaurantsCell = tableView.dequeueReusableCell(withIdentifier: "RestaurantsCell") as! RestaurantsCell
-        /*
+        
         if (searchActive) {
             if(filtered.count == 0)
             {
@@ -198,8 +197,8 @@ class RestaurantsDashboardController: UIViewController, UITableViewDelegate, UIT
             cell.restaurantName.text = Owner.ownerDashboardModelView.restaurantInfos[indexPath.section].restaurantName as? String;
             cell.restaurantImage.image = UIImage(named: "ic_signin")!
         }
-         */
-        cell.restaurantImage.image = UIImage(named: "ic_signin")!
+        
+        //cell.restaurantImage.image = UIImage(named: "ic_signin")!
         cell.selectionStyle = .none
         return cell;
     }

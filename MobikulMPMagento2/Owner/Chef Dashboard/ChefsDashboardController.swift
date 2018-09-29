@@ -133,21 +133,21 @@ class ChefsDashboardController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        /*
+        
         print("searchActive:", searchActive);
         filtered = Owner.ownerDashboardModelView.chefInfos.filter({ (chefInfo: ChefInfoModel) -> Bool in
             print("chefEmail: ", chefInfo.chefEmail);
             return chefInfo.chefEmail.lowercased().contains(searchText.lowercased())
         })
-        */
-        /*
+        
+        
         if(filtered.count == 0){
             searchActive = false;
         } else {
             searchActive = true;
         }
-        */
-        //self.chefsTableView.reloadData()
+        
+        self.chefsTableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -169,15 +169,15 @@ class ChefsDashboardController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        /*
+        
         if (searchActive) {
             return filtered.count
         }
         if (Owner.callingApiSucceed){
             return Owner.ownerDashboardModelView.chefInfos.count;
         }
-         */
-        return 15;
+        
+        return 0;
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -186,7 +186,7 @@ class ChefsDashboardController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:ChefsCell = tableView.dequeueReusableCell(withIdentifier: "ChefsCell") as! ChefsCell
-        /*
+        
         if (searchActive) {
             if(filtered.count == 0)
             {
@@ -206,8 +206,8 @@ class ChefsDashboardController: UIViewController, UITableViewDelegate, UITableVi
             cell.restaruantName.text = Owner.ownerDashboardModelView.chefInfos[indexPath.section].restaurantName as? String;
             cell.chefImage.image = UIImage(named: "ic_signin")!
         }
-         */
-        cell.chefImage.image = UIImage(named: "ic_signin")!
+        
+        //cell.chefImage.image = UIImage(named: "ic_signin")!
         cell.selectionStyle = .none
         return cell;
     }
@@ -225,7 +225,7 @@ extension ChefsDashboardController: CustomAlertViewDelegate {
     func okButtonTapped(textFieldValue: String) {
         print("TextField has value: \(textFieldValue)")
         self.addChefEmail = textFieldValue;
-        //self.callingHttppApi();
+        self.callingHttppApi();
     }
     
     func cancelButtonTapped() {

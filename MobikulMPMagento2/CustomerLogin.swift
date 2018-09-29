@@ -213,7 +213,7 @@ class CustomerLogin: UIViewController {
             requstParams["websiteId"] = DEFAULT_WEBSITE_ID
             let width = String(format:"%f", SCREEN_WIDTH * UIScreen.main.scale)
             requstParams["width"] = width
-            GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"mobikulhttp/customer/logIn", currentView: self){success,responseObject in
+            GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"wemteqchef/customer/logIn", currentView: self){success,responseObject in
                 if success == 1{
                     if responseObject?.object(forKey: "storeId") != nil{
                         let storeId:String = String(format: "%@", responseObject!.object(forKey: "storeId") as! CVarArg)
