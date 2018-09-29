@@ -74,18 +74,18 @@ class Chef_ExtraCartData:NSObject{
 }
 
 class Chef_MyCartViewModel:NSObject{
-    var myCartModel = [MyCartModel]()
+    var myCartModel = [Chef_MyCartModel]()
     var myCartExtraData:ExtraCartData!
     
     init(data:JSON){
         let arrayData = data["items"].arrayObject! as NSArray
-        myCartModel =  arrayData.map({(value) -> MyCartModel in
-            return  MyCartModel(data:JSON(value))
+        myCartModel =  arrayData.map({(value) -> Chef_MyCartModel in
+            return  Chef_MyCartModel(data:JSON(value))
         })
         myCartExtraData = ExtraCartData(data: data)
     }
     
-    var getCartItems:Array<MyCartModel>{
+    var getCartItems:Array<Chef_MyCartModel>{
         return myCartModel
     }
     

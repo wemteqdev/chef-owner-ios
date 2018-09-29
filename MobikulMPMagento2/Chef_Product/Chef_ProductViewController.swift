@@ -43,11 +43,12 @@ class Chef_ProductViewController: UIViewController,chef_productViewControllerHan
     }
     
     func productClick(name: String, image: String, id: String) {
-        /*let vc = self.storyboard?.instantiateViewController(withIdentifier: "catalogproduct") as! CatalogProduct
+        //let vc = self.storyboard?.instantiateViewController(withIdentifier: "catalogproduct") as! CatalogProduct
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "chef_productdetail") as! Chef_DashboardViewController
         vc.productName = name
         vc.productImageUrl = image
-        vc.productId = id*/
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "chef_productdetail") as! Chef_DashboardViewController
+        vc.productId = id
+
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -394,8 +395,9 @@ class Chef_ProductViewController: UIViewController,chef_productViewControllerHan
     }
 
     @objc func cartButtonClick(sender: UIButton){
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "chef_cartexview") as! Chef_exMyCart
-      
+        //let vc = self.storyboard?.instantiateViewController(withIdentifier: "chef_cartexview") as! Chef_exMyCart
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "chef_cartview") as! Chef_MyCart
+        
         self.navigationController?.pushViewController(vc, animated: true)
     }
     @objc func searchButtonClick(sender: UIButton){

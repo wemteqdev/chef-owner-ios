@@ -117,6 +117,9 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="orderId" destination="ows-Bx-VvL" id="H6s-j8-zZW"/>
+                <outlet property="ordertotal" destination="Xbi-Sq-Uqh" id="maH-S9-QOC"/>
+                <outlet property="placedonDate" destination="YvQ-0g-rqH" id="BGi-ar-zwi"/>
                 <outlet property="statusButton" destination="gVq-Uo-1Zy" id="omD-j4-tep"/>
             </connections>
             <point key="canvasLocation" x="-287" y="-137"/>
