@@ -17,7 +17,7 @@ class CustomerLogin: UIViewController {
     @IBOutlet weak var passwordtextField: UIFloatLabelTextField!
     @IBOutlet weak var forgotPasswordButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var loginownerButton: UIButton!
+
     @IBOutlet weak var googlesignButton: UIButton!
     @IBOutlet weak var facebooksignButton: UIButton!
     
@@ -32,6 +32,7 @@ class CustomerLogin: UIViewController {
     let kMsgShowReason = "🌛 Try to dismiss this screen 🌜"
     var errorMessage:String = ""
     var NotAgainCallTouchId :Bool = false
+    var isOwner:Bool = false
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -82,11 +83,7 @@ class CustomerLogin: UIViewController {
         loginButton.layer.cornerRadius = 25
         loginButton.layer.masksToBounds = true
         
-        loginownerButton.setTitleColor(UIColor().HexToColor(hexString: "5897FF"), for: .normal)
-        loginownerButton.backgroundColor = UIColor(red: 1, green: 1, blue:1, alpha: 1)
-        
-        loginownerButton.layer.cornerRadius = 25
-        loginownerButton.layer.masksToBounds = true
+  
         
     //loginButton.setTitle(GlobalData.sharedInstance.language(key: "login"), for: .normal)
         
@@ -213,7 +210,7 @@ class CustomerLogin: UIViewController {
             requstParams["websiteId"] = DEFAULT_WEBSITE_ID
             let width = String(format:"%f", SCREEN_WIDTH * UIScreen.main.scale)
             requstParams["width"] = width
-            GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"wemteqchef/customer/logIn", currentView: self){success,responseObject in
+            GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"mobikulhttp/customer/logIn", currentView: self){success,responseObject in
                 if success == 1{
                     if responseObject?.object(forKey: "storeId") != nil{
                         let storeId:String = String(format: "%@", responseObject!.object(forKey: "storeId") as! CVarArg)
@@ -235,6 +232,7 @@ class CustomerLogin: UIViewController {
     func doFurtherProcessingWithResult(data:AnyObject){
         GlobalData.sharedInstance.dismissLoader()
         print(data)
+        
         let responseData = JSON(data as! NSDictionary)
         if responseData["success"].boolValue == true{
             defaults.set(responseData["customerEmail"].stringValue, forKey: "customerEmail")
@@ -263,15 +261,18 @@ class CustomerLogin: UIViewController {
                 }
             }
             
-            if responseData["isAdmin"].intValue == 0{
-                defaults.set("f", forKey: "isAdmin")
+            if responseData["isOwner"].intValue == 0{
+                defaults.set("f", forKey: "isOwner")
             }else{
-                defaults.set("t", forKey: "isAdmin")
+                self.isOwner = true;
+                defaults.set("t", forKey: "isOwner")
             }
             
             if responseData["isSeller"].intValue == 0{
                 defaults.set("f", forKey: "isSeller")
             }else{
+                GlobalData.sharedInstance.showErrorSnackBar(msg: "Sorry. Sellers are not allowed to login.")
+                return
                 defaults.set("t", forKey: "isSeller")
             }
             
@@ -465,9 +466,15 @@ class CustomerLogin: UIViewController {
         defaults.set("0", forKey: "touchIdFlag");
         defaults.synchronize()
         //self.tabBarController?.tabBar.isHidden = false
-        self.performSegue(withIdentifier: "tohome", sender: self)
-        
+        if self.isOwner == true {
+            self.performSegue(withIdentifier: "toowner", sender: self)
+        }
+        else {
+            self.performSegue(withIdentifier: "tohome", sender: self)
+        }
     }
+    
+    
     
     func goToDashBoardWithTouchId(){
         defaults.set("1", forKey: "touchIdFlag");
@@ -475,7 +482,12 @@ class CustomerLogin: UIViewController {
         defaults.set(password, forKey: "TouchPasswordValue")
         defaults.synchronize()
         //self.tabBarController?.tabBar.isHidden = false
-        self.performSegue(withIdentifier: "tohome", sender: self)
+        if self.isOwner == true {
+            self.performSegue(withIdentifier: "toowner", sender: self)
+        }
+        else {
+            self.performSegue(withIdentifier: "tohome", sender: self)
+        }
     }
     
     
