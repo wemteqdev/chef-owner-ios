@@ -846,7 +846,7 @@
                                                     <constraint firstAttribute="height" constant="50" id="I7x-GV-11d"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                <state key="normal" title="Sign In as Chef">
+                                                <state key="normal" title="Sign In">
                                                     <color key="titleColor" red="0.34553931659999998" green="0.59092947809999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
