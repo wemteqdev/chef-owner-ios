@@ -103,15 +103,9 @@ class DetailPage: UIViewController{
             requstParams["customerType"] = pageType + 1;
         }
         
-        var apiName:String = "";
-        if (pageType == 1) {//chef
-            apiName = "wemteqchef/order/cheforders";
-        } else if (pageType == 2) {//restaurant
-            apiName = "wemteqchef/order/restaurantorders";
-        }
         self.view.isUserInteractionEnabled = false
         self.callingApiSucceed = false;
-        GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:apiName, currentView: self){success,responseObject in
+        GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"wemteqchef/order/cheforders", currentView: self){success,responseObject in
             if success == 1{
                 if responseObject?.object(forKey: "storeId") != nil{
                     let storeId:String = String(format: "%@", responseObject!.object(forKey: "storeId") as! CVarArg)

@@ -206,6 +206,7 @@ class RestaurantsDashboardController: UIViewController, UITableViewDelegate, UIT
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "detailPage") as! DetailPage
         vc.pageType = 2;
+        vc.customerId = Owner.ownerDashboardModelView.restaurantInfos[indexPath.section].restaurantId;
         self.navigationController?.pushViewController(vc, animated: true)
     }
             

@@ -10,10 +10,12 @@ import Foundation
 
 class RestaurantInfoModel: NSObject {
     var restaurantName: String = "";
+    var restaurantId: Int!;
     var chefData = [ChefInfoModel]();
     
     init(data:JSON) {
         restaurantName = data["restaurantName"].stringValue;
+        restaurantId = data["restaurantId"].intValue;
         if let chefArrayData = data["chefsData"].arrayObject{
             chefData =  chefArrayData.map({(value) -> ChefInfoModel in
                 return  ChefInfoModel(data:JSON(value))
