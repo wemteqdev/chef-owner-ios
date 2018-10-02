@@ -118,27 +118,27 @@
             <point key="canvasLocation" x="-47" y="725"/>
         </scene>
         <!--Detail-->
-        <scene sceneID="efN-Ke-zQx">
+        <scene sceneID="39S-gx-bcY">
             <objects>
-                <viewController storyboardIdentifier="detailPage" id="Fiu-Lq-7lj" userLabel="Detail" customClass="DetailPage" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="4S2-Xt-RmA">
+                <viewController storyboardIdentifier="detailPage2" id="ZM1-1f-lYh" userLabel="Detail" customClass="DetailPage" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wil-hK-w3x">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Rv-dW-9m6">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kHQ-1k-Gh6">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vYu-vn-ii1" userLabel="Sales Insights">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s5w-Q4-ADk" userLabel="Sales Insights">
                                         <rect key="frame" x="10" y="10" width="275" height="50"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sales_insight" translatesAutoresizingMaskIntoConstraints="NO" id="ZtH-4w-d7X" userLabel="img_sales_insight">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sales_insight" translatesAutoresizingMaskIntoConstraints="NO" id="HIn-LH-mxt" userLabel="img_sales_insight">
                                                 <rect key="frame" x="10" y="8" width="40" height="40"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="1wp-Yl-uLz"/>
-                                                    <constraint firstAttribute="width" constant="40" id="spJ-Wj-wQv"/>
+                                                    <constraint firstAttribute="height" constant="40" id="Shz-Rp-eDu"/>
+                                                    <constraint firstAttribute="width" constant="40" id="vK2-LO-epD"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sales Insights" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fn8-Jh-48V" userLabel="label_sales_insight">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sales Insights" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LFC-1M-cxS" userLabel="label_sales_insight">
                                                 <rect key="frame" x="58" y="18" width="106" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -146,18 +146,18 @@
                                             </label>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="275" id="0ZA-Lb-dGX"/>
-                                            <constraint firstItem="Fn8-Jh-48V" firstAttribute="centerY" secondItem="ZtH-4w-d7X" secondAttribute="centerY" id="EZB-3M-5De"/>
-                                            <constraint firstItem="ZtH-4w-d7X" firstAttribute="top" secondItem="vYu-vn-ii1" secondAttribute="top" constant="8" id="IFp-Sg-hga"/>
-                                            <constraint firstItem="Fn8-Jh-48V" firstAttribute="leading" secondItem="ZtH-4w-d7X" secondAttribute="trailing" constant="8" id="Iat-yF-xXS"/>
-                                            <constraint firstAttribute="height" constant="50" id="dtP-8i-B6t"/>
-                                            <constraint firstItem="ZtH-4w-d7X" firstAttribute="leading" secondItem="vYu-vn-ii1" secondAttribute="leading" constant="10" id="eGk-cO-wO2"/>
+                                            <constraint firstItem="LFC-1M-cxS" firstAttribute="leading" secondItem="HIn-LH-mxt" secondAttribute="trailing" constant="8" id="6FH-jP-zWk"/>
+                                            <constraint firstItem="LFC-1M-cxS" firstAttribute="centerY" secondItem="HIn-LH-mxt" secondAttribute="centerY" id="Q4z-va-ZKV"/>
+                                            <constraint firstAttribute="height" constant="50" id="drz-uu-l7u"/>
+                                            <constraint firstAttribute="width" constant="275" id="eER-uK-6MZ"/>
+                                            <constraint firstItem="HIn-LH-mxt" firstAttribute="top" secondItem="s5w-Q4-ADk" secondAttribute="top" constant="8" id="nyC-91-18X"/>
+                                            <constraint firstItem="HIn-LH-mxt" firstAttribute="leading" secondItem="s5w-Q4-ADk" secondAttribute="leading" constant="10" id="ySf-6h-Yph"/>
                                         </constraints>
                                     </view>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="eTW-qb-SNV" userLabel="Segmented Tabs">
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="iNQ-Pi-dfU" userLabel="Segmented Tabs">
                                         <rect key="frame" x="20" y="70" width="255" height="41"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="32w-m2-eJm"/>
+                                            <constraint firstAttribute="height" constant="40" id="gAY-Cf-iZN"/>
                                         </constraints>
                                         <segments>
                                             <segment title="Today"/>
@@ -166,78 +166,214 @@
                                             <segment title="Yearly"/>
                                         </segments>
                                         <connections>
-                                            <action selector="SegmentValueChanged:" destination="Fiu-Lq-7lj" eventType="valueChanged" id="uhs-y8-JEd"/>
+                                            <action selector="SegmentValueChanged:" destination="ZM1-1f-lYh" eventType="valueChanged" id="02o-hT-KFG"/>
                                         </connections>
                                     </segmentedControl>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="bottom" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="hEn-Fk-DRE" userLabel="Diagram Total">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="bottom" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="vle-Yg-JWP" userLabel="Diagram Total">
                                         <rect key="frame" x="20" y="120" width="255" height="60"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="Md6-nk-uZD"/>
+                                            <constraint firstAttribute="height" constant="60" id="kBU-zj-6Ea"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="bottom" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="29l-FA-86d" userLabel="Bar Chart">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="bottom" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="HZ0-WR-7rT" userLabel="Bar Chart">
                                         <rect key="frame" x="20" y="185" width="255" height="150"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="150" id="FSL-vR-KmD"/>
+                                            <constraint firstAttribute="height" constant="150" id="xfy-Te-vcD"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="bottom" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="I9P-Id-GsW" userLabel="Index Chart View">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="bottom" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="mKu-p7-QHy" userLabel="Index Chart View">
                                         <rect key="frame" x="20" y="335" width="255" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="uG5-uh-kzY"/>
+                                            <constraint firstAttribute="height" constant="30" id="nje-nt-Pm3"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="5wQ-HR-Fsq" userLabel="Order Totals View">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="5lR-VI-oxh" userLabel="Order Totals View">
                                         <rect key="frame" x="20" y="375" width="255" height="400"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="400" id="Rvd-Fg-0rh"/>
+                                            <constraint firstAttribute="height" constant="400" id="2N5-Tv-cdZ"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="5wQ-HR-Fsq" firstAttribute="trailing" secondItem="I9P-Id-GsW" secondAttribute="trailing" id="63a-h5-gP5"/>
-                                    <constraint firstItem="eTW-qb-SNV" firstAttribute="top" secondItem="vYu-vn-ii1" secondAttribute="bottom" constant="10" id="9Ll-oG-c83"/>
-                                    <constraint firstItem="I9P-Id-GsW" firstAttribute="top" secondItem="29l-FA-86d" secondAttribute="bottom" id="Clh-B6-zjB"/>
-                                    <constraint firstItem="vYu-vn-ii1" firstAttribute="top" secondItem="0Rv-dW-9m6" secondAttribute="top" constant="10" id="FcC-8I-bsC"/>
-                                    <constraint firstItem="29l-FA-86d" firstAttribute="trailing" secondItem="hEn-Fk-DRE" secondAttribute="trailing" id="G3t-A7-W20"/>
-                                    <constraint firstItem="5wQ-HR-Fsq" firstAttribute="top" secondItem="I9P-Id-GsW" secondAttribute="bottom" constant="10" id="He5-Vn-k59"/>
-                                    <constraint firstItem="29l-FA-86d" firstAttribute="leading" secondItem="hEn-Fk-DRE" secondAttribute="leading" id="OMz-XP-xGP"/>
-                                    <constraint firstItem="I9P-Id-GsW" firstAttribute="trailing" secondItem="29l-FA-86d" secondAttribute="trailing" id="RHD-B2-yLs"/>
-                                    <constraint firstItem="hEn-Fk-DRE" firstAttribute="top" secondItem="eTW-qb-SNV" secondAttribute="bottom" constant="10" id="UBM-gB-tXh"/>
-                                    <constraint firstItem="5wQ-HR-Fsq" firstAttribute="leading" secondItem="I9P-Id-GsW" secondAttribute="leading" id="UgS-dH-ESF"/>
-                                    <constraint firstItem="29l-FA-86d" firstAttribute="top" secondItem="hEn-Fk-DRE" secondAttribute="bottom" constant="5" id="XAe-P5-Zn6"/>
-                                    <constraint firstAttribute="trailing" secondItem="eTW-qb-SNV" secondAttribute="trailing" constant="10" id="eHY-A2-wxh"/>
-                                    <constraint firstItem="I9P-Id-GsW" firstAttribute="leading" secondItem="29l-FA-86d" secondAttribute="leading" id="gZv-nh-Q16"/>
-                                    <constraint firstItem="hEn-Fk-DRE" firstAttribute="leading" secondItem="eTW-qb-SNV" secondAttribute="leading" id="i4k-JK-d6x"/>
-                                    <constraint firstItem="hEn-Fk-DRE" firstAttribute="trailing" secondItem="eTW-qb-SNV" secondAttribute="trailing" id="kh6-cf-jk4"/>
-                                    <constraint firstAttribute="bottom" secondItem="5wQ-HR-Fsq" secondAttribute="bottom" constant="20" id="odC-h7-7Te"/>
-                                    <constraint firstItem="eTW-qb-SNV" firstAttribute="leading" secondItem="vYu-vn-ii1" secondAttribute="leading" constant="10" id="ubC-3u-PHc"/>
-                                    <constraint firstItem="vYu-vn-ii1" firstAttribute="leading" secondItem="0Rv-dW-9m6" secondAttribute="leading" constant="10" id="wBC-5Q-W2m"/>
+                                    <constraint firstItem="s5w-Q4-ADk" firstAttribute="leading" secondItem="kHQ-1k-Gh6" secondAttribute="leading" constant="10" id="222-WN-dc5"/>
+                                    <constraint firstItem="iNQ-Pi-dfU" firstAttribute="top" secondItem="s5w-Q4-ADk" secondAttribute="bottom" constant="10" id="4fU-rI-WXd"/>
+                                    <constraint firstItem="HZ0-WR-7rT" firstAttribute="leading" secondItem="vle-Yg-JWP" secondAttribute="leading" id="6ly-Uf-Lmm"/>
+                                    <constraint firstItem="iNQ-Pi-dfU" firstAttribute="leading" secondItem="s5w-Q4-ADk" secondAttribute="leading" constant="10" id="D4M-Wl-tHK"/>
+                                    <constraint firstItem="5lR-VI-oxh" firstAttribute="trailing" secondItem="mKu-p7-QHy" secondAttribute="trailing" id="DBB-bY-RqQ"/>
+                                    <constraint firstItem="mKu-p7-QHy" firstAttribute="top" secondItem="HZ0-WR-7rT" secondAttribute="bottom" id="JtR-Fs-krV"/>
+                                    <constraint firstItem="mKu-p7-QHy" firstAttribute="leading" secondItem="HZ0-WR-7rT" secondAttribute="leading" id="LIf-5R-gIQ"/>
+                                    <constraint firstItem="5lR-VI-oxh" firstAttribute="leading" secondItem="mKu-p7-QHy" secondAttribute="leading" id="NdB-FD-PrG"/>
+                                    <constraint firstItem="vle-Yg-JWP" firstAttribute="trailing" secondItem="iNQ-Pi-dfU" secondAttribute="trailing" id="Oi9-N8-IdN"/>
+                                    <constraint firstAttribute="trailing" secondItem="iNQ-Pi-dfU" secondAttribute="trailing" constant="10" id="V7q-b0-Qf1"/>
+                                    <constraint firstItem="mKu-p7-QHy" firstAttribute="trailing" secondItem="HZ0-WR-7rT" secondAttribute="trailing" id="XYH-3o-zJ6"/>
+                                    <constraint firstItem="HZ0-WR-7rT" firstAttribute="top" secondItem="vle-Yg-JWP" secondAttribute="bottom" constant="5" id="b6C-Eo-PCw"/>
+                                    <constraint firstAttribute="bottom" secondItem="5lR-VI-oxh" secondAttribute="bottom" constant="20" id="fGf-0c-U79"/>
+                                    <constraint firstItem="vle-Yg-JWP" firstAttribute="leading" secondItem="iNQ-Pi-dfU" secondAttribute="leading" id="jPM-cO-EN8"/>
+                                    <constraint firstItem="vle-Yg-JWP" firstAttribute="top" secondItem="iNQ-Pi-dfU" secondAttribute="bottom" constant="10" id="pea-TO-RUc"/>
+                                    <constraint firstItem="HZ0-WR-7rT" firstAttribute="trailing" secondItem="vle-Yg-JWP" secondAttribute="trailing" id="qzB-Yi-qnn"/>
+                                    <constraint firstItem="s5w-Q4-ADk" firstAttribute="top" secondItem="kHQ-1k-Gh6" secondAttribute="top" constant="10" id="yHK-WQ-34E"/>
+                                    <constraint firstItem="5lR-VI-oxh" firstAttribute="top" secondItem="mKu-p7-QHy" secondAttribute="bottom" constant="10" id="zZo-vf-BFH"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="0Rv-dW-9m6" firstAttribute="top" secondItem="V53-Rp-g9K" secondAttribute="top" id="4Hl-HR-ISp"/>
-                            <constraint firstItem="0Rv-dW-9m6" firstAttribute="trailing" secondItem="V53-Rp-g9K" secondAttribute="trailing" id="80C-wY-wfS"/>
-                            <constraint firstItem="0Rv-dW-9m6" firstAttribute="leading" secondItem="V53-Rp-g9K" secondAttribute="leading" id="g1h-hX-DpB"/>
-                            <constraint firstItem="V53-Rp-g9K" firstAttribute="bottom" secondItem="0Rv-dW-9m6" secondAttribute="bottom" id="jNu-s0-xwM"/>
+                            <constraint firstItem="kHQ-1k-Gh6" firstAttribute="leading" secondItem="MbR-ka-KS1" secondAttribute="leading" id="Cg9-5T-Kgd"/>
+                            <constraint firstItem="kHQ-1k-Gh6" firstAttribute="top" secondItem="MbR-ka-KS1" secondAttribute="top" id="HwP-qf-Lcp"/>
+                            <constraint firstItem="kHQ-1k-Gh6" firstAttribute="trailing" secondItem="MbR-ka-KS1" secondAttribute="trailing" id="tkD-6e-IfK"/>
+                            <constraint firstItem="kHQ-1k-Gh6" firstAttribute="bottom" secondItem="MbR-ka-KS1" secondAttribute="bottom" id="yNh-HH-dvl"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="V53-Rp-g9K"/>
+                        <viewLayoutGuide key="safeArea" id="MbR-ka-KS1"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Owner" id="Noo-H6-2V8"/>
+                    <navigationItem key="navigationItem" title="Owner" id="0ZN-gd-Axi"/>
                     <connections>
-                        <outlet property="barChartView" destination="29l-FA-86d" id="mys-AK-iqE"/>
-                        <outlet property="diagramTotalView" destination="hEn-Fk-DRE" id="aIU-SA-joA"/>
-                        <outlet property="indexChartView" destination="I9P-Id-GsW" id="yEw-ki-BVO"/>
-                        <outlet property="ordersTotalView" destination="5wQ-HR-Fsq" id="vCY-be-ZaY"/>
-                        <outlet property="salesInsightView" destination="vYu-vn-ii1" id="gTG-ZQ-NCt"/>
-                        <outlet property="showTypeController" destination="eTW-qb-SNV" id="6Aj-tW-P1x"/>
+                        <outlet property="barChartView" destination="HZ0-WR-7rT" id="EDh-Zg-Ros"/>
+                        <outlet property="diagramTotalView" destination="vle-Yg-JWP" id="qL5-UB-2id"/>
+                        <outlet property="indexChartView" destination="mKu-p7-QHy" id="A0Z-YH-TG0"/>
+                        <outlet property="ordersTotalView" destination="5lR-VI-oxh" id="u8c-Pr-1Na"/>
+                        <outlet property="salesInsightView" destination="s5w-Q4-ADk" id="feu-lg-aes"/>
+                        <outlet property="showTypeController" destination="iNQ-Pi-dfU" id="fi3-Ah-VC8"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9aj-M8-e4p" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FpY-hD-KeJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2420" y="1497.3013493253375"/>
+            <point key="canvasLocation" x="-2902" y="1496"/>
+        </scene>
+        <!--DetailPage-->
+        <scene sceneID="eGw-SB-fvK">
+            <objects>
+                <viewController storyboardIdentifier="detailPage" id="zgp-sb-590" userLabel="DetailPage" customClass="DetailPage" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1dp-1W-6Pf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nyo-zC-jYu">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l0z-p4-TGs" userLabel="content view">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="810"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p8I-tc-Lk6" userLabel="Sales Insights">
+                                                <rect key="frame" x="10" y="10" width="354" height="50"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sales_insight" translatesAutoresizingMaskIntoConstraints="NO" id="d6h-Hp-H4l" userLabel="img_sales_insight">
+                                                        <rect key="frame" x="10" y="8" width="40" height="40"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="40" id="K2e-tS-Gyo"/>
+                                                            <constraint firstAttribute="height" constant="40" id="m7G-Zq-Q31"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sales Insights" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D1M-zE-amI" userLabel="label_sales_insight">
+                                                        <rect key="frame" x="58" y="18" width="106" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="d6h-Hp-H4l" firstAttribute="top" secondItem="p8I-tc-Lk6" secondAttribute="top" constant="8" id="1fP-8g-kSy"/>
+                                                    <constraint firstItem="D1M-zE-amI" firstAttribute="centerY" secondItem="d6h-Hp-H4l" secondAttribute="centerY" id="3X3-eV-qsM"/>
+                                                    <constraint firstItem="D1M-zE-amI" firstAttribute="leading" secondItem="d6h-Hp-H4l" secondAttribute="trailing" constant="8" id="MfM-6y-IjK"/>
+                                                    <constraint firstItem="d6h-Hp-H4l" firstAttribute="leading" secondItem="p8I-tc-Lk6" secondAttribute="leading" constant="10" id="grB-7a-rI5"/>
+                                                    <constraint firstAttribute="height" constant="50" id="o7A-oJ-3gp"/>
+                                                </constraints>
+                                            </view>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Jz4-CH-2My" userLabel="Segmented Tabs">
+                                                <rect key="frame" x="10" y="70" width="354" height="41"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="3H1-7U-aat"/>
+                                                </constraints>
+                                                <segments>
+                                                    <segment title="Today"/>
+                                                    <segment title="Weekly"/>
+                                                    <segment title="Monthly"/>
+                                                    <segment title="Yearly"/>
+                                                </segments>
+                                                <connections>
+                                                    <action selector="SegmentValueChanged:" destination="zgp-sb-590" eventType="valueChanged" id="5ht-HC-uHQ"/>
+                                                </connections>
+                                            </segmentedControl>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="bottom" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Ilr-th-3YR" userLabel="Diagram Total">
+                                                <rect key="frame" x="10" y="120" width="354" height="60"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="60" id="C8p-QC-pC6"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="bottom" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="vnS-FR-41E" userLabel="Bar Chart">
+                                                <rect key="frame" x="10" y="190" width="354" height="150"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="150" id="kKy-Cu-697"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="bottom" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="IaO-S7-yq5" userLabel="Index Chart View">
+                                                <rect key="frame" x="10" y="345" width="354" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="1TN-Gd-AEe"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="rzW-hZ-fzz" userLabel="Order Total View">
+                                                <rect key="frame" x="10" y="390" width="354" height="400"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="400" id="YQY-nr-PVB"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="Jz4-CH-2My" firstAttribute="leading" secondItem="p8I-tc-Lk6" secondAttribute="leading" id="5lA-8c-TK9"/>
+                                            <constraint firstItem="vnS-FR-41E" firstAttribute="trailing" secondItem="Ilr-th-3YR" secondAttribute="trailing" id="GQk-zk-KFp"/>
+                                            <constraint firstItem="Ilr-th-3YR" firstAttribute="trailing" secondItem="Jz4-CH-2My" secondAttribute="trailing" id="N69-2b-67D"/>
+                                            <constraint firstItem="vnS-FR-41E" firstAttribute="top" secondItem="Ilr-th-3YR" secondAttribute="bottom" constant="10" id="OWW-Jh-h4i"/>
+                                            <constraint firstAttribute="trailing" secondItem="p8I-tc-Lk6" secondAttribute="trailing" constant="10" id="PPg-iZ-BdY"/>
+                                            <constraint firstItem="Ilr-th-3YR" firstAttribute="leading" secondItem="Jz4-CH-2My" secondAttribute="leading" id="RAf-Un-6CQ"/>
+                                            <constraint firstItem="IaO-S7-yq5" firstAttribute="leading" secondItem="vnS-FR-41E" secondAttribute="leading" id="UWf-sv-E5H"/>
+                                            <constraint firstItem="rzW-hZ-fzz" firstAttribute="top" secondItem="IaO-S7-yq5" secondAttribute="bottom" constant="15" id="VIl-4j-ai1"/>
+                                            <constraint firstItem="IaO-S7-yq5" firstAttribute="top" secondItem="vnS-FR-41E" secondAttribute="bottom" constant="5" id="Vwy-dv-tTf"/>
+                                            <constraint firstItem="Ilr-th-3YR" firstAttribute="top" secondItem="Jz4-CH-2My" secondAttribute="bottom" constant="10" id="Wy4-Rp-fOu"/>
+                                            <constraint firstItem="Jz4-CH-2My" firstAttribute="trailing" secondItem="p8I-tc-Lk6" secondAttribute="trailing" id="aSO-q6-wqp"/>
+                                            <constraint firstItem="p8I-tc-Lk6" firstAttribute="top" secondItem="l0z-p4-TGs" secondAttribute="top" constant="10" id="abX-bn-kxD"/>
+                                            <constraint firstItem="p8I-tc-Lk6" firstAttribute="leading" secondItem="l0z-p4-TGs" secondAttribute="leading" constant="10" id="hE0-Py-2A4"/>
+                                            <constraint firstAttribute="bottom" secondItem="rzW-hZ-fzz" secondAttribute="bottom" constant="20" symbolic="YES" id="mic-OM-lvp"/>
+                                            <constraint firstItem="vnS-FR-41E" firstAttribute="leading" secondItem="Ilr-th-3YR" secondAttribute="leading" id="mrU-La-Awx"/>
+                                            <constraint firstItem="IaO-S7-yq5" firstAttribute="trailing" secondItem="vnS-FR-41E" secondAttribute="trailing" id="tzo-eb-6pP"/>
+                                            <constraint firstItem="rzW-hZ-fzz" firstAttribute="leading" secondItem="IaO-S7-yq5" secondAttribute="leading" id="uj3-rI-A55"/>
+                                            <constraint firstItem="rzW-hZ-fzz" firstAttribute="trailing" secondItem="IaO-S7-yq5" secondAttribute="trailing" id="zQk-XR-vQO"/>
+                                            <constraint firstItem="Jz4-CH-2My" firstAttribute="top" secondItem="p8I-tc-Lk6" secondAttribute="bottom" constant="10" id="zhl-b6-Hfb"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="l0z-p4-TGs" secondAttribute="trailing" id="eq2-lo-PZX"/>
+                                    <constraint firstItem="l0z-p4-TGs" firstAttribute="centerX" secondItem="Nyo-zC-jYu" secondAttribute="centerX" id="l6V-oF-Ubg"/>
+                                    <constraint firstItem="l0z-p4-TGs" firstAttribute="leading" secondItem="Nyo-zC-jYu" secondAttribute="leading" id="lZC-zC-HDc"/>
+                                    <constraint firstAttribute="bottom" secondItem="l0z-p4-TGs" secondAttribute="bottom" id="nuv-ny-xgW"/>
+                                    <constraint firstItem="l0z-p4-TGs" firstAttribute="top" secondItem="Nyo-zC-jYu" secondAttribute="top" id="o9k-6W-grf"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="a8x-0i-Qql" firstAttribute="bottom" secondItem="Nyo-zC-jYu" secondAttribute="bottom" id="3HN-hq-fHj"/>
+                            <constraint firstItem="Nyo-zC-jYu" firstAttribute="trailing" secondItem="a8x-0i-Qql" secondAttribute="trailing" id="7b4-fd-d5o"/>
+                            <constraint firstItem="Nyo-zC-jYu" firstAttribute="top" secondItem="a8x-0i-Qql" secondAttribute="top" id="dsK-Zp-cix"/>
+                            <constraint firstItem="Nyo-zC-jYu" firstAttribute="leading" secondItem="a8x-0i-Qql" secondAttribute="leading" id="hkx-pq-e0E"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="a8x-0i-Qql"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Owner" id="bw6-Co-hoo"/>
+                    <connections>
+                        <outlet property="barChartView" destination="vnS-FR-41E" id="uNv-52-c6u"/>
+                        <outlet property="diagramTotalView" destination="Ilr-th-3YR" id="xYq-q6-lnx"/>
+                        <outlet property="indexChartView" destination="IaO-S7-yq5" id="mEr-Sp-oI2"/>
+                        <outlet property="ordersTotalView" destination="rzW-hZ-fzz" id="fhh-w2-6ic"/>
+                        <outlet property="salesInsightView" destination="p8I-tc-Lk6" id="sVS-x4-JqQ"/>
+                        <outlet property="showTypeController" destination="Jz4-CH-2My" id="E7l-VG-6ad"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s8t-tM-EGu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2231.1999999999998" y="1496.4017991004498"/>
         </scene>
         <!--Map-->
         <scene sceneID="rhX-9a-NLQ">

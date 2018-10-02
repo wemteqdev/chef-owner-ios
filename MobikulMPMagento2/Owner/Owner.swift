@@ -160,6 +160,7 @@ class Owner: UIViewController{
                 self.view.isUserInteractionEnabled = true
                 Owner.callingApiSucceed = true
                 var dict = JSON(responseObject as! NSDictionary)
+                print("jsonData:", responseObject);
                 if dict["success"].boolValue == true{
                     Owner.ownerDashboardModelView = OwnerDashBoardViewModel(data:dict)
                     var chartData: [BarChartData] = self.createChartDataCollection();
@@ -357,7 +358,7 @@ class Owner: UIViewController{
             changeLabel.text = String(format: "↓%0.1f%%", diagramData.percentage);
         }
         print("diagram percent:", changeLabel.text);
-        changeLabel.font = UIFont.boldSystemFont(ofSize: purchaseLabelHeight)
+        changeLabel.font = UIFont.boldSystemFont(ofSize: 15)
         changeLabel.textAlignment = .center
         
         changeLabel.heightAnchor.constraint(equalToConstant: purchaseLabelHeight).isActive = true
@@ -623,12 +624,13 @@ class Owner: UIViewController{
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        /*
+        
         if defaults.object(forKey: "customerName") != nil{
             profile_name.text = defaults.object(forKey: "customerName") as? String
-        }
-        */
-        profile_name.text = "Owner"
+        } else {
+            profile_name.text = "Owner"
+        } 
+        
         profile_owner.text = "Owner"
         if (Owner.callingApiSucceed) {
             var chartData: [BarChartData] = self.createChartDataCollection();
@@ -666,33 +668,4 @@ class Owner: UIViewController{
         super.viewWillDisappear(true)
         navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
     }
-    /*
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 250
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:OwnerProfileTableViewCell = tableView.dequeueReusableCell(withIdentifier: "OwnerProfileTableViewCell") as! OwnerProfileTableViewCell
-        if defaults.object(forKey: "customerEmail") != nil{
-            cell.profileEmail.text = defaults.object(forKey: "customerEmail") as? String
-        }
-        if defaults.object(forKey: "customerName") != nil{
-            cell.profileName.text = defaults.object(forKey: "customerName") as? String
-        }
-        if defaults.object(forKey: "profilePicture") != nil{
-            let imageUrl = defaults.object(forKey: "profilePicture") as? String
-            GlobalData.sharedInstance.getImageFromUrl(imageUrl: imageUrl!, imageView: cell.profileImage)
-        }
-        if defaults.object(forKey: "profileBanner") != nil{
-            let imageUrl = defaults.object(forKey: "profileBanner") as? String
-            GlobalData.sharedInstance.getImageFromUrl(imageUrl: imageUrl!, imageView: cell.profileBannerImage)
-        }
-        cell.selectionStyle = .none
-        return cell
-    }
- */
 }
