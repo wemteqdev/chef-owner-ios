@@ -136,6 +136,7 @@ class CustomerLogin: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         if(self.moveToSignal != "cart"){
+            /*
             if defaults.object(forKey: "touchIdFlag") as! String == "1"{
                 let  AC = UIAlertController(title: GlobalData.sharedInstance.language(key: "alert"), message: GlobalData.sharedInstance.language(key: "loginbytouchid"), preferredStyle: .alert)
                 let okBtn = UIAlertAction(title: GlobalData.sharedInstance.language(key: "ok"), style:.default, handler: {(_ action: UIAlertAction) -> Void in
@@ -149,6 +150,8 @@ class CustomerLogin: UIViewController {
                 AC.addAction(cancelBtn)
                 self.present(AC, animated: true, completion: {  })
             }
+             */
+             self.configureTouchIdBeforeLogin()
         }
     }
     
@@ -287,6 +290,7 @@ class CustomerLogin: UIViewController {
             
             if defaults.object(forKey: "touchIdFlag") != nil && self.NotAgainCallTouchId == false{
                 if defaults.object(forKey: "touchIdFlag") as! String == "0"{
+                    /*
                     let  AC = UIAlertController(title: GlobalData.sharedInstance.language(key: "alert"), message: GlobalData.sharedInstance.language(key: "wouldyouliketoconnectappwithtouchid"), preferredStyle: .alert)
                     let okBtn = UIAlertAction(title: GlobalData.sharedInstance.language(key: "ok"), style:.default, handler: {(_ action: UIAlertAction) -> Void in
                         self.configureTouchIdafterLogin();
@@ -301,8 +305,10 @@ class CustomerLogin: UIViewController {
                     AC.addAction(cancelBtn)
                     //self.present(AC, animated: true, completion: {  })
                     self.present(AC, animated: true, completion: {  })
-                    
+                    */
+                    self.configureTouchIdafterLogin();
                 }else if defaults.object(forKey: "touchIdFlag") as! String == "1" {
+                    /*
                     let  AC = UIAlertController(title: GlobalData.sharedInstance.language(key: "alert"), message: GlobalData.sharedInstance.language(key: "wouldyouliketoresetthepreviouscredentailsandsavethiscredentialfortouchid"), preferredStyle: .alert)
                     let okBtn = UIAlertAction(title: GlobalData.sharedInstance.language(key: "ok"), style:.default, handler: {(_ action: UIAlertAction) -> Void in
                         self.configureTouchIdafterLogin();
@@ -317,6 +323,8 @@ class CustomerLogin: UIViewController {
                     AC.addAction(cancelBtn)
                     //self.parent!.present(AC, animated: true, completion: {  })
                     self.present(AC, animated: true, completion: {  })
+                     */
+                    self.configureTouchIdafterLogin();
                 }
                 else{
                     self.tabBarController?.tabBar.isHidden = false

@@ -14,12 +14,15 @@ class RestaurantInfoModel: NSObject {
     var chefData = [ChefInfoModel]();
     
     init(data:JSON) {
+        print("restaurantinfo: ", data);
         restaurantName = data["restaurantName"].stringValue;
         restaurantId = data["restaurantId"].intValue;
-        if let chefArrayData = data["chefsData"].arrayObject{
-            chefData =  chefArrayData.map({(value) -> ChefInfoModel in
-                return  ChefInfoModel(data:JSON(value))
-            })
+        if let chefArrayData = data["chefData"].arrayObject{
+            if(chefArrayData.count != 0){
+                chefData =  chefArrayData.map({(value) -> ChefInfoModel in
+                    return  ChefInfoModel(data:JSON(value))
+                })
+            }
         }
     }
 }
@@ -48,20 +51,24 @@ class ChefInfoModel: NSObject {
 
 class AddChefInfoModel: NSObject {
     var isAddSuccess: Bool = false;
+    var errorMessage: String = "";
     var chefInfo: ChefInfoModel!;
     
     init(data:JSON) {
         isAddSuccess = data["addChefSuccess"].boolValue;
+        errorMessage = data["errorMessage"].stringValue;
         chefInfo = ChefInfoModel(data:data["chefInfo"]);
     }
 }
 
 class AddRestaurantInfoModel: NSObject {
     var isAddSuccess: Bool = false;
+    var errorMessage: String = "";
     var restaurantInfo: RestaurantInfoModel!;
     
     init(data:JSON) {
         isAddSuccess = data["addRestaurantSuccess"].boolValue;
+        errorMessage = data["errorMessage"].stringValue;
         restaurantInfo = RestaurantInfoModel(data:data["restaurantInfo"]);
     }
 }

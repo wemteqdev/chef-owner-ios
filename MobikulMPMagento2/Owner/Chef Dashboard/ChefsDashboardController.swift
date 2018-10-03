@@ -18,7 +18,8 @@ class ChefsDashboardController: UIViewController, UITableViewDelegate, UITableVi
     var searchActive : Bool = false
     var filtered:[ChefInfoModel] = [];
     var addChefEmail:String = "";
-    
+    var addChefRestaurantId: Int = -1;
+    static var chefDashboardModelView:ChefDashboardModelView!;
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.setBackgroundImage(UIImage(named: "back_color"), for: UIBarMetrics.default)
@@ -53,7 +54,7 @@ class ChefsDashboardController: UIViewController, UITableViewDelegate, UITableVi
     //---add chef------
     
     @IBAction func addChef(_ sender: Any) {
-        let customAlert = self.storyboard?.instantiateViewController(withIdentifier: "customAddAlertView") as! CustomAlertView
+        let customAlert = self.storyboard?.instantiateViewController(withIdentifier: "addChefAlertView") as! AddChefAlertView
         customAlert.providesPresentationContextTransitionStyle = true
         customAlert.definesPresentationContext = true
         customAlert.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
@@ -75,7 +76,7 @@ class ChefsDashboardController: UIViewController, UITableViewDelegate, UITableVi
             requstParams["customerId"] = customerId
         }
         requstParams["isChefOrRestaurant"] = 1; //chef
-        requstParams["restaurantId"] = 6;
+        requstParams["restaurantId"] = addChefRestaurantId;
         requstParams["addChefEmail"] = addChefEmail;
         
         GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"wemteqchef/owner/addcustomer", currentView: self){success,responseObject in
@@ -96,7 +97,7 @@ class ChefsDashboardController: UIViewController, UITableViewDelegate, UITableVi
                         Owner.ownerDashboardModelView.chefInfos.append(chefInfo.chefInfo);
                         self.chefsTableView.reloadData();
                     } else {
-                        let alertController = UIAlertController(title: "Error", message: "Failed to add chef.", preferredStyle: .alert)
+                        let alertController = UIAlertController(title: "Error", message: chefInfo.errorMessage, preferredStyle: .alert)
                         let action2 = UIAlertAction(title: "OK", style: .cancel) { (action:UIAlertAction) in
                             print("You've pressed cancel");
                         }
@@ -221,11 +222,13 @@ class ChefsDashboardController: UIViewController, UITableViewDelegate, UITableVi
             
 }
 
-extension ChefsDashboardController: CustomAlertViewDelegate {
+extension ChefsDashboardController: AddChefAlertViewDelegate {
     
-    func okButtonTapped(textFieldValue: String) {
+    func okButtonTapped(textFieldValue: String, restaurantIdValue: Int) {
         print("TextField has value: \(textFieldValue)")
+        print("restaurantIdValue has value: \(restaurantIdValue)")
         self.addChefEmail = textFieldValue;
+        self.addChefRestaurantId = restaurantIdValue;
         self.callingHttppApi();
     }
     
