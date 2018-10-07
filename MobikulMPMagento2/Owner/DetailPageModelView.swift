@@ -8,91 +8,7 @@
 
 import Foundation
 
-class SupplierInfoModel: NSObject {
-    var supplierName: String = "";
-    var supplierId: Int!;
-    var chefData = [ChefInfoModel]();
-    
-    init(data:JSON) {
-        print("restaurantinfo: ", data);
-        supplierName = data["restaurantName"].stringValue;
-        supplierId = data["restaurantId"].intValue;
-        if let chefArrayData = data["chefData"].arrayObject{
-            if(chefArrayData.count != 0){
-                chefData =  chefArrayData.map({(value) -> ChefInfoModel in
-                    return  ChefInfoModel(data:JSON(value))
-                })
-            }
-        }
-    }
-}
-
-class RestaurantInfoModel: NSObject {
-    var restaurantName: String = "";
-    var restaurantId: Int!;
-    var chefData = [ChefInfoModel]();
-    
-    init(data:JSON) {
-        print("restaurantinfo: ", data);
-        restaurantName = data["restaurantName"].stringValue;
-        restaurantId = data["restaurantId"].intValue;
-        if let chefArrayData = data["chefData"].arrayObject{
-            if(chefArrayData.count != 0){
-                chefData =  chefArrayData.map({(value) -> ChefInfoModel in
-                    return  ChefInfoModel(data:JSON(value))
-                })
-            }
-        }
-    }
-}
-
-class ChefInfoModel: NSObject {
-    var chefEmail: String = "";
-    var chefId: Int = 0;
-    var restaurantId: Int = 0;
-    var restaurantName: String = "";
-    var chefFirstName: String = "";
-    var chefLastName: String = "";
-    var chefGender: Int = 0;
-    var chefIsActive: Int = 0;
-    
-    init(data:JSON) {
-        chefEmail = data["email"].stringValue;
-        chefId = data["entity_id"].intValue;
-        restaurantId = data["group_id"].intValue;
-        chefFirstName = data["firstname"].stringValue;
-        chefLastName = data["lastname"].stringValue;
-        chefGender = data["gender"].intValue;
-        chefIsActive = data["is_active"].intValue;
-        restaurantName = data["restaurantName"].stringValue;
-    }
-}
-
-class AddChefInfoModel: NSObject {
-    var isAddSuccess: Bool = false;
-    var errorMessage: String = "";
-    var chefInfo: ChefInfoModel!;
-    
-    init(data:JSON) {
-        isAddSuccess = data["addChefSuccess"].boolValue;
-        errorMessage = data["errorMessage"].stringValue;
-        chefInfo = ChefInfoModel(data:data["chefInfo"]);
-    }
-}
-
-class AddRestaurantInfoModel: NSObject {
-    var isAddSuccess: Bool = false;
-    var errorMessage: String = "";
-    var restaurantInfo: RestaurantInfoModel!;
-    
-    init(data:JSON) {
-        isAddSuccess = data["addRestaurantSuccess"].boolValue;
-        errorMessage = data["errorMessage"].stringValue;
-        restaurantInfo = RestaurantInfoModel(data:data["restaurantInfo"]);
-    }
-}
-
-class OwnerDashBoardViewModel: NSObject {
+class DetailPageModelView: NSObject {
     //---for graph data-----
     var orderDailyTotal:[Double] = [];
     var orderWeeklyTotal:[Double] = [];
@@ -107,14 +23,18 @@ class OwnerDashBoardViewModel: NSObject {
     var diagramWeeklyTotal: DiagramTotalData!;
     var diagramMonthlyTotal: DiagramTotalData!;
     var diagramYearlyTotal: DiagramTotalData!;
-    //---for chef/restaurant info------
-    var chefInfos = [ChefInfoModel]();
-    var restaurantInfos = [RestaurantInfoModel]();
+    var monthlyCreditMemosCount: Int!;
+    var monthlyCompleteOrdersCount: Int!;
+    var monthlyPendingOrdersCount: Int!;
     
     init(data:JSON){
+        monthlyCreditMemosCount = data["monthlyCreditMemosCount"].intValue;
+        monthlyCompleteOrdersCount = data["monthlyCompleteOrdersCount"].intValue;
+        monthlyPendingOrdersCount = data["monthlyPendingOrdersCount"].intValue;
         //----------Get Graph Data(For daily, weekly, monthly, yearly)--------------
         if let arrayData = data["orderYearlyTotal"].arrayObject{
             orderYearlyTotal = arrayData as! [Double];
+            print("orderYearlyTotal:", orderYearlyTotal);
         }
         if let arrayData = data["orderMonthlyTotal"].arrayObject{
             orderMonthlyTotal = arrayData as! [Double];
@@ -169,19 +89,6 @@ class OwnerDashBoardViewModel: NSObject {
             percent = orderYearlyTotal[orderYearlyTotal.count-1] * 100;
         }
         diagramYearlyTotal = DiagramTotalData.init(ordersCount: data["yearlyOrdersCount"].intValue, ordersTotal: String(format:"%.1f",orderYearlyTotal[orderYearlyTotal.count-1]), supplierCounts: 0, percentage: percent);
-        //-------------Get Chef Info--------------------------
-        if let chefArrayData = data["chefsInfo"].arrayObject{
-            chefInfos =  chefArrayData.map({(value) -> ChefInfoModel in
-                return  ChefInfoModel(data:JSON(value))
-            })
-        }
-        print("chefCount:" + String(format: "%d", chefInfos.count));
-        //-------------Get Restaurant Info------------------------
-        if let restaurantArrayData = data["restaurantsInfo"].arrayObject{
-            restaurantInfos =  restaurantArrayData.map({(value) -> RestaurantInfoModel in
-                return  RestaurantInfoModel(data:JSON(value))
-            })
-        }
-        print("restaurantCount:" + String(format: "%d", restaurantInfos.count));
+        
     }
 }

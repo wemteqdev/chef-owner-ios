@@ -13,7 +13,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <viewController id="kh9-2C-QRI" customClass="CustomAlertView" customModule="MobikulMPMagento2" customModuleProvider="target">
+        <viewController restorationIdentifier="addChefAlertView" id="kh9-2C-QRI" customClass="AddChefAlertView" customModule="MobikulMPMagento2" customModuleProvider="target">
             <view key="view" contentMode="scaleToFill" id="0KC-Cw-h8u">
                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -84,8 +84,23 @@
                                             <constraint firstAttribute="height" constant="30" id="PCJ-GO-e6e"/>
                                         </constraints>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="INg-VY-j9y" customClass="SkyFloatingLabelTextField" customModule="MobikulMPMagento2" customModuleProvider="target">
+                                        <rect key="frame" x="10" y="155" width="332" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="i85-0n-4Qv"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Select Restaurant"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="restaurantTextFieldClick:" destination="kh9-2C-QRI" eventType="editingDidBegin" id="fwK-aH-Zdy"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -96,12 +111,15 @@
                                     <constraint firstItem="4jI-is-BIj" firstAttribute="trailing" secondItem="h5F-fV-GJ5" secondAttribute="trailing" id="7Oa-jl-jxF"/>
                                     <constraint firstItem="NUL-EB-cbQ" firstAttribute="top" secondItem="iCx-5z-Yfk" secondAttribute="top" constant="10" id="7tr-vX-RbG"/>
                                     <constraint firstItem="HDB-4T-lek" firstAttribute="leading" secondItem="NUL-EB-cbQ" secondAttribute="leading" constant="30" id="8vk-Jj-RhL"/>
+                                    <constraint firstItem="INg-VY-j9y" firstAttribute="top" secondItem="4jI-is-BIj" secondAttribute="bottom" constant="15" id="AxB-KM-Qta"/>
                                     <constraint firstItem="iCA-hH-AZ1" firstAttribute="top" secondItem="NUL-EB-cbQ" secondAttribute="bottom" constant="10" id="Oql-rQ-Fif"/>
                                     <constraint firstAttribute="bottom" secondItem="HDB-4T-lek" secondAttribute="bottom" id="TjH-q1-qnZ"/>
                                     <constraint firstItem="HDB-4T-lek" firstAttribute="trailing" secondItem="NUL-EB-cbQ" secondAttribute="trailing" constant="-30" id="XJy-KB-1QQ"/>
                                     <constraint firstItem="iCA-hH-AZ1" firstAttribute="leading" secondItem="NUL-EB-cbQ" secondAttribute="leading" id="YDf-m7-YWf"/>
+                                    <constraint firstItem="INg-VY-j9y" firstAttribute="leading" secondItem="4jI-is-BIj" secondAttribute="leading" id="ZQR-bC-qce"/>
                                     <constraint firstItem="h5F-fV-GJ5" firstAttribute="top" secondItem="iCA-hH-AZ1" secondAttribute="bottom" id="dkR-yI-Suf"/>
                                     <constraint firstItem="h5F-fV-GJ5" firstAttribute="leading" secondItem="iCA-hH-AZ1" secondAttribute="leading" id="iaJ-Xl-cIA"/>
+                                    <constraint firstItem="INg-VY-j9y" firstAttribute="trailing" secondItem="4jI-is-BIj" secondAttribute="trailing" id="nx6-c3-XiC"/>
                                     <constraint firstItem="h5F-fV-GJ5" firstAttribute="trailing" secondItem="NUL-EB-cbQ" secondAttribute="trailing" id="nxU-YJ-uyO"/>
                                     <constraint firstItem="NUL-EB-cbQ" firstAttribute="leading" secondItem="iCx-5z-Yfk" secondAttribute="leading" constant="10" id="wd1-NR-xp5"/>
                                     <constraint firstAttribute="trailing" secondItem="NUL-EB-cbQ" secondAttribute="trailing" constant="10" id="z08-EB-Y4Q"/>
@@ -132,9 +150,10 @@
                 <outlet property="chefEmailTextField" destination="4jI-is-BIj" id="4s8-4r-0vC"/>
                 <outlet property="infoLabel" destination="iCA-hH-AZ1" id="dAA-qb-wbY"/>
                 <outlet property="okButton" destination="HDB-4T-lek" id="jdO-oe-Km6"/>
+                <outlet property="restaurantTextField" destination="INg-VY-j9y" id="mtw-16-kfO"/>
                 <outlet property="titleLabel" destination="dd2-5v-BOt" id="DMA-wf-cyH"/>
             </connections>
-            <point key="canvasLocation" x="462" y="60"/>
+            <point key="canvasLocation" x="461.5" y="59.5"/>
         </viewController>
     </objects>
 </document>

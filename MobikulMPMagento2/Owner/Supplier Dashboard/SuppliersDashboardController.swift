@@ -60,6 +60,7 @@ class SuppliersDashboardController: UIViewController, UITableViewDelegate, UITab
     //---add chef------
     
     @IBAction func addChef(_ sender: Any) {
+        /*
         let customAlert = self.storyboard?.instantiateViewController(withIdentifier: "customAddAlertView") as! CustomAlertView
         customAlert.providesPresentationContextTransitionStyle = true
         customAlert.definesPresentationContext = true
@@ -67,6 +68,7 @@ class SuppliersDashboardController: UIViewController, UITableViewDelegate, UITab
         customAlert.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         customAlert.delegate = self
         self.present(customAlert, animated: true, completion: nil)
+ */
     }
     
     func callingHttppApi(){
@@ -226,7 +228,7 @@ class SuppliersDashboardController: UIViewController, UITableViewDelegate, UITab
     }
             
 }
-
+/*
 extension SuppliersDashboardController: CustomAlertViewDelegate {
     
     func okButtonTapped(textFieldValue: String) {
@@ -239,3 +241,4 @@ extension SuppliersDashboardController: CustomAlertViewDelegate {
         print("cancelButtonTapped")
     }
 }
+*/

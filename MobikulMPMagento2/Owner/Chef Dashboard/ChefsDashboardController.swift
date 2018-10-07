@@ -8,7 +8,22 @@
 
 import Foundation
 
-class ChefsDashboardController: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate, UISearchBarDelegate {
+class ChefsDashboardController: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate, UISearchBarDelegate, removeFromOwnerHandlerDelegate {
+    
+    func removeButtonClick(id: Int) {
+        print("id:", id);
+        
+        let alertController = UIAlertController(title: "Alert", message: "Are you sure to remove this chef?", preferredStyle: .alert)
+        let action1 = UIAlertAction(title: "Yes", style: .default) { (action:UIAlertAction) in
+            self.callingHttppApiForRemoveChef(id: id);
+        }
+        let action2 = UIAlertAction(title: "No", style: .cancel) { (action:UIAlertAction) in
+            print("You've pressed cancel");
+        }
+        alertController.addAction(action2)
+        alertController.addAction(action1)
+        self.present(alertController, animated: true, completion: nil)
+    }
     
     @IBOutlet weak var chefsTableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -18,7 +33,8 @@ class ChefsDashboardController: UIViewController, UITableViewDelegate, UITableVi
     var searchActive : Bool = false
     var filtered:[ChefInfoModel] = [];
     var addChefEmail:String = "";
-    
+    var addChefRestaurantId: Int = -1;
+    static var chefDashboardModelView:ChefDashboardModelView!;
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.setBackgroundImage(UIImage(named: "back_color"), for: UIBarMetrics.default)
@@ -53,7 +69,7 @@ class ChefsDashboardController: UIViewController, UITableViewDelegate, UITableVi
     //---add chef------
     
     @IBAction func addChef(_ sender: Any) {
-        let customAlert = self.storyboard?.instantiateViewController(withIdentifier: "customAddAlertView") as! CustomAlertView
+        let customAlert = self.storyboard?.instantiateViewController(withIdentifier: "addChefAlertView") as! AddChefAlertView
         customAlert.providesPresentationContextTransitionStyle = true
         customAlert.definesPresentationContext = true
         customAlert.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
@@ -75,7 +91,7 @@ class ChefsDashboardController: UIViewController, UITableViewDelegate, UITableVi
             requstParams["customerId"] = customerId
         }
         requstParams["isChefOrRestaurant"] = 1; //chef
-        requstParams["restaurantId"] = 6;
+        requstParams["restaurantId"] = addChefRestaurantId;
         requstParams["addChefEmail"] = addChefEmail;
         
         GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"wemteqchef/owner/addcustomer", currentView: self){success,responseObject in
@@ -96,7 +112,7 @@ class ChefsDashboardController: UIViewController, UITableViewDelegate, UITableVi
                         Owner.ownerDashboardModelView.chefInfos.append(chefInfo.chefInfo);
                         self.chefsTableView.reloadData();
                     } else {
-                        let alertController = UIAlertController(title: "Error", message: "Failed to add chef.", preferredStyle: .alert)
+                        let alertController = UIAlertController(title: "Error", message: chefInfo.errorMessage, preferredStyle: .alert)
                         let action2 = UIAlertAction(title: "OK", style: .cancel) { (action:UIAlertAction) in
                             print("You've pressed cancel");
                         }
@@ -115,6 +131,65 @@ class ChefsDashboardController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
+    func callingHttppApiForRemoveChef(id: Int){
+        var requstParams = [String:Any]();
+        
+        GlobalData.sharedInstance.showLoader()
+        self.view.isUserInteractionEnabled = false
+        requstParams = [String:Any]();
+        requstParams["websiteId"] = DEFAULT_WEBSITE_ID
+        let customerId = defaults.object(forKey:"customerId");
+        if customerId != nil{
+            requstParams["customerToken"] = customerId
+            requstParams["customerId"] = customerId
+        }
+        requstParams["chefId"] = id; //chef
+        
+        GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"wemteqchef/owner/removechef", currentView: self){success,responseObject in
+            if success == 1{
+                if responseObject?.object(forKey: "storeId") != nil{
+                    let storeId:String = String(format: "%@", responseObject!.object(forKey: "storeId") as! CVarArg)
+                    if storeId != "0"{
+                        defaults .set(storeId, forKey: "storeId")
+                    }
+                }
+                GlobalData.sharedInstance.dismissLoader()
+                self.view.isUserInteractionEnabled = true
+                var dict = JSON(responseObject as! NSDictionary)
+                if dict["success"].boolValue == true{
+                    var message = "";
+                    var title = "";
+                    if dict["removeChefSuccess"] == true {
+                        message = "Chef removed successfully"
+                        title = "Success";
+                        for index in 0...Owner.ownerDashboardModelView.chefInfos.count - 1 {
+                            if (Owner.ownerDashboardModelView.chefInfos[index].chefId == id){
+                                Owner.ownerDashboardModelView.chefInfos.remove(at: index);
+                                break;
+                            }
+                        }
+                        self.chefsTableView.reloadData();
+                    } else {
+                        message = "Chef removing is failed"
+                        title = "Error";
+                    }
+                    let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                    let action2 = UIAlertAction(title: "OK", style: .cancel) { (action:UIAlertAction) in
+                        print("You've pressed cancel");
+                    }
+                    alertController.addAction(action2)
+                    self.present(alertController, animated: true, completion: nil)
+                }else{
+                    GlobalData.sharedInstance.showErrorSnackBar(msg: dict["message"].stringValue)
+                }
+                
+            }else if success == 2{
+                GlobalData.sharedInstance.dismissLoader()
+                self.callingHttppApi()
+            }
+            print("addChef", responseObject)
+        }
+    }
     //---search bar----
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchActive = true;
@@ -197,6 +272,7 @@ class ChefsDashboardController: UIViewController, UITableViewDelegate, UITableVi
                     filtered[indexPath.section].chefLastName as? String;
                 cell.restaruantName.text = filtered[indexPath.section].restaurantName as? String;
                 cell.chefImage.image = UIImage(named: "ic_signin")!
+                cell.chefId = filtered[indexPath.section].chefId;
             }
         }
         else
@@ -205,26 +281,31 @@ class ChefsDashboardController: UIViewController, UITableViewDelegate, UITableVi
                 Owner.ownerDashboardModelView.chefInfos[indexPath.section].chefLastName as? String;
             cell.restaruantName.text = Owner.ownerDashboardModelView.chefInfos[indexPath.section].restaurantName as? String;
             cell.chefImage.image = UIImage(named: "ic_signin")!
+            cell.chefId = Owner.ownerDashboardModelView.chefInfos[indexPath.section].chefId;
         }
         
         //cell.chefImage.image = UIImage(named: "ic_signin")!
         cell.selectionStyle = .none
+        cell.delegate = self;
         return cell;
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "detailPage") as! DetailPage
         vc.pageType = 1;
+        vc.customerId = Owner.ownerDashboardModelView.chefInfos[indexPath.section].chefId;
         self.navigationController?.pushViewController(vc, animated: true)
     }
             
 }
 
-extension ChefsDashboardController: CustomAlertViewDelegate {
+extension ChefsDashboardController: AddChefAlertViewDelegate {
     
-    func okButtonTapped(textFieldValue: String) {
+    func okButtonTapped(textFieldValue: String, restaurantIdValue: Int) {
         print("TextField has value: \(textFieldValue)")
+        print("restaurantIdValue has value: \(restaurantIdValue)")
         self.addChefEmail = textFieldValue;
+        self.addChefRestaurantId = restaurantIdValue;
         self.callingHttppApi();
     }
     

@@ -6,7 +6,7 @@
 //  Copyright © 2017 dluque. All rights reserved.
 //
 
-protocol CustomAlertViewDelegate: class {
+protocol AddRestaurantAlertViewDelegate: class {
     func okButtonTapped(textFieldValue: String)
     func cancelButtonTapped()
 }

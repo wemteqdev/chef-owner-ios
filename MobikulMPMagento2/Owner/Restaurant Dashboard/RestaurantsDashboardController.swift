@@ -51,15 +51,16 @@ class RestaurantsDashboardController: UIViewController, UITableViewDelegate, UIT
     //---add restaurant------
     
     @IBAction func addRestaurant(_ sender: Any) {
-        let customAlert = self.storyboard?.instantiateViewController(withIdentifier: "customAddAlertView") as! CustomAlertView
+        let customAlert = self.storyboard?.instantiateViewController(withIdentifier: "addRestaurantAlertView") as! AddRestaurantAlertView
         customAlert.providesPresentationContextTransitionStyle = true
         customAlert.definesPresentationContext = true
         customAlert.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         customAlert.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         customAlert.delegate = self
         self.present(customAlert, animated: true, completion: nil)
+ 
     }
-    
+ 
     func callingHttppApi(){
         var requstParams = [String:Any]();
         
@@ -87,13 +88,14 @@ class RestaurantsDashboardController: UIViewController, UITableViewDelegate, UIT
                 self.view.isUserInteractionEnabled = true
                 var dict = JSON(responseObject as! NSDictionary)
                 if dict["success"].boolValue == true{
-                    var restaurantInfo = AddRestaurantInfoModel(data:dict["addRestaurant"]);
+                    print("addRestaurant dict", dict["addRestaurant"]);
+                    let restaurantInfo = AddRestaurantInfoModel(data:dict["addRestaurant"]);
                     if restaurantInfo.isAddSuccess == true {
                         print("restaurantInfo:", restaurantInfo.restaurantInfo);
                         Owner.ownerDashboardModelView.restaurantInfos.append(restaurantInfo.restaurantInfo);
                         self.restaurantsTableView.reloadData();
                     } else {
-                        let alertController = UIAlertController(title: "Error", message: "Failed to add restaurant.", preferredStyle: .alert)
+                        let alertController = UIAlertController(title: "Error", message: restaurantInfo.errorMessage, preferredStyle: .alert)
                         let action2 = UIAlertAction(title: "OK", style: .cancel) { (action:UIAlertAction) in
                             print("You've pressed cancel");
                         }
@@ -206,17 +208,18 @@ class RestaurantsDashboardController: UIViewController, UITableViewDelegate, UIT
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "detailPage") as! DetailPage
         vc.pageType = 2;
+        vc.customerId = Owner.ownerDashboardModelView.restaurantInfos[indexPath.section].restaurantId;
         self.navigationController?.pushViewController(vc, animated: true)
     }
             
 }
 
-extension RestaurantsDashboardController: CustomAlertViewDelegate {
+extension RestaurantsDashboardController: AddRestaurantAlertViewDelegate {
     
     func okButtonTapped(textFieldValue: String) {
         print("TextField has value: \(textFieldValue)")
         self.addRestaurantName = textFieldValue;
-        //self.callingHttppApi();
+        self.callingHttppApi();
     }
     
     func cancelButtonTapped() {
