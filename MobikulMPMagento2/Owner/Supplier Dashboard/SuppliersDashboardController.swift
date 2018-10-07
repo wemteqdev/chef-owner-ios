@@ -22,11 +22,107 @@ class SuppliersDashboardController: UIViewController, UITableViewDelegate, UITab
     var addSupplierEmail:String = "";
     var callingApiSucceed: Bool = false;
     var suppliersInfo:SuppliersViewModel!;
+    var selectedSupplierId = 0;
+    var selectedSupplierName = "";
     
     func viewMapClick(id:String)
     {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "mapView") as! MapViewController
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func browseCategory(id: Int, name: String)
+    {
+        self.selectedSupplierName = name;
+        self.selectedSupplierId = id;
+        self.performSegue( withIdentifier: "productcategory", sender: self)
+    }
+    
+    func signupSupplier(id:Int)
+    {
+        self.selectedSupplierId = id;
+        let alertController = UIAlertController(title: "Alert", message: "Are you sure to sign up this supplier?", preferredStyle: .alert)
+        let action1 = UIAlertAction(title: "Yes", style: .default) { (action:UIAlertAction) in
+            self.callingHttppApiForApproveSupplier(id: id);
+        }
+        let action2 = UIAlertAction(title: "No", style: .cancel) { (action:UIAlertAction) in
+            print("You've pressed cancel");
+        }
+        alertController.addAction(action2)
+        alertController.addAction(action1)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func callingHttppApiForApproveSupplier(id: Int){
+        var requstParams = [String:Any]();
+        
+        GlobalData.sharedInstance.showLoader()
+        self.view.isUserInteractionEnabled = false
+        requstParams = [String:Any]();
+        requstParams["websiteId"] = DEFAULT_WEBSITE_ID
+        let customerId = defaults.object(forKey:"customerId");
+        if customerId != nil{
+            requstParams["customerToken"] = customerId
+            requstParams["customerId"] = customerId
+        }
+        requstParams["supplierId"] = id; //supplier
+        
+        GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"wemteqchef/supplier/approvesupplier", currentView: self){success,responseObject in
+            if success == 1{
+                if responseObject?.object(forKey: "storeId") != nil{
+                    let storeId:String = String(format: "%@", responseObject!.object(forKey: "storeId") as! CVarArg)
+                    if storeId != "0"{
+                        defaults .set(storeId, forKey: "storeId")
+                    }
+                }
+                GlobalData.sharedInstance.dismissLoader()
+                self.view.isUserInteractionEnabled = true
+                var dict = JSON(responseObject as! NSDictionary)
+                if dict["success"].boolValue == true{
+                    var message = "";
+                    var title = "";
+                    if dict["approveSupplierSucceed"] == true {
+                        message = "Supplier approved successfully"
+                        title = "Success";
+                        for index in 0...self.suppliersInfo.suppliersInfo.count - 1 {
+                            if (self.suppliersInfo.suppliersInfo[index].supplierId == id){
+                                self.suppliersInfo.suppliersInfo[index].status = 1;
+                                break;
+                            }
+                        }
+                        self.suppliersTableView.reloadData();
+                    } else {
+                        message = "Supplier approving is failed"
+                        title = "Error";
+                    }
+                    let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                    let action2 = UIAlertAction(title: "OK", style: .cancel) { (action:UIAlertAction) in
+                        print("You've pressed cancel");
+                    }
+                    alertController.addAction(action2)
+                    self.present(alertController, animated: true, completion: nil)
+                }else{
+                    GlobalData.sharedInstance.showErrorSnackBar(msg: dict["message"].stringValue)
+                }
+                
+            }else if success == 2{
+                GlobalData.sharedInstance.dismissLoader()
+                self.callingHttppApi()
+            }
+            print("supplier approve", responseObject)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier! == "sellerprofile") {
+            let viewController:SellerDetailsViewController = segue.destination as UIViewController as! SellerDetailsViewController
+            //viewController.profileUrl = sellerId;
+        }else if (segue.identifier! == "productcategory") {
+            let viewController:SupplierProductcategory = segue.destination as UIViewController as! SupplierProductcategory
+            viewController.categoryName = String(selectedSupplierName);
+            viewController.categoryType = "marketplace";
+            viewController.sellerId = String(selectedSupplierId);
+        }
     }
     
     override func viewDidLoad() {
@@ -87,6 +183,7 @@ class SuppliersDashboardController: UIViewController, UITableViewDelegate, UITab
             requstParams["customerToken"] = customerId
             requstParams["customerId"] = customerId
         }
+        requstParams["customerType"] =  1; //owner
         self.callingApiSucceed = false;
         GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"wemteqchef/supplier/getsuppliers", currentView: self){success,responseObject in
             if success == 1{
@@ -193,6 +290,8 @@ class SuppliersDashboardController: UIViewController, UITableViewDelegate, UITab
                 else {
                     cell.supplierName.text = filtered[indexPath.section].supplierName as? String;
                     cell.supplierImage.image = UIImage(named: "ic_signin")!
+                    cell.supplierId = filtered[indexPath.section].supplierId;
+                    cell.status = filtered[indexPath.section].status;
                     if (filtered[indexPath.section].status == 1) {
                         cell.statusButton.backgroundColor = UIColor(red: 233/255, green: 248/255, blue: 239/255, alpha: 1.0);
                         cell.statusButton.layer.borderColor = UIColor(red: 39/255, green: 183/255, blue: 100/255, alpha: 1.0).cgColor;
@@ -212,6 +311,8 @@ class SuppliersDashboardController: UIViewController, UITableViewDelegate, UITab
             {
                 cell.supplierName.text = self.suppliersInfo.suppliersInfo[indexPath.section].supplierName as? String;
                 cell.supplierImage.image = UIImage(named: "ic_signin")!
+                cell.supplierId = self.suppliersInfo.suppliersInfo[indexPath.section].supplierId;
+                cell.status = self.suppliersInfo.suppliersInfo[indexPath.section].status;
                 if (self.suppliersInfo.suppliersInfo[indexPath.section].status == 1) {
                     cell.statusButton.backgroundColor = UIColor(red: 233/255, green: 248/255, blue: 239/255, alpha: 1.0);
                     cell.statusButton.layer.borderColor = UIColor(red: 39/255, green: 183/255, blue: 100/255, alpha: 1.0).cgColor;
