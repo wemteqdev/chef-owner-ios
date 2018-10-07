@@ -165,6 +165,7 @@ class ChefsDashboardController: UIViewController, UITableViewDelegate, UITableVi
                         for index in 0...Owner.ownerDashboardModelView.chefInfos.count - 1 {
                             if (Owner.ownerDashboardModelView.chefInfos[index].chefId == id){
                                 Owner.ownerDashboardModelView.chefInfos.remove(at: index);
+                                break;
                             }
                         }
                         self.chefsTableView.reloadData();
