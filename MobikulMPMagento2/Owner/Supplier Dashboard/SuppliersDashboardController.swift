@@ -18,14 +18,17 @@ class SuppliersDashboardController: UIViewController, UITableViewDelegate, UITab
     @IBOutlet weak var searchBarView: UIView!
     
     var searchActive : Bool = false
-    var filtered:[ChefInfoModel] = [];
+    var filtered:[SupplierInfoModel] = [];
     var addSupplierEmail:String = "";
+    var callingApiSucceed: Bool = false;
+    var suppliersInfo:SuppliersViewModel!;
     
     func viewMapClick(id:String)
     {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "mapView") as! MapViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,6 +51,7 @@ class SuppliersDashboardController: UIViewController, UITableViewDelegate, UITab
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.callingHttppApi();
         suppliersTableView.dataSource = self
         suppliersTableView.delegate = self
         suppliersTableView.reloadData()
@@ -83,11 +87,8 @@ class SuppliersDashboardController: UIViewController, UITableViewDelegate, UITab
             requstParams["customerToken"] = customerId
             requstParams["customerId"] = customerId
         }
-        requstParams["isChefOrRestaurant"] = 1; //chef
-        requstParams["restaurantId"] = 6;
-        requstParams["addSupplierEmail"] = addSupplierEmail;
-        /*
-        GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"wemteqchef/owner/addcustomer", currentView: self){success,responseObject in
+        self.callingApiSucceed = false;
+        GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"wemteqchef/supplier/getsuppliers", currentView: self){success,responseObject in
             if success == 1{
                 if responseObject?.object(forKey: "storeId") != nil{
                     let storeId:String = String(format: "%@", responseObject!.object(forKey: "storeId") as! CVarArg)
@@ -99,30 +100,19 @@ class SuppliersDashboardController: UIViewController, UITableViewDelegate, UITab
                 self.view.isUserInteractionEnabled = true
                 var dict = JSON(responseObject as! NSDictionary)
                 if dict["success"].boolValue == true{
-                    var chefInfo = AddChefInfoModel(data:dict["addChef"]);
-                    if chefInfo.isAddSuccess == true {
-                        print("chefInfo:", chefInfo.chefInfo);
-                        Owner.ownerDashboardModelView.chefInfos.append(chefInfo.chefInfo);
-                        self.suppliersTableView.reloadData();
-                    } else {
-                        let alertController = UIAlertController(title: "Error", message: "Failed to add chef.", preferredStyle: .alert)
-                        let action2 = UIAlertAction(title: "OK", style: .cancel) { (action:UIAlertAction) in
-                            print("You've pressed cancel");
-                        }
-                        alertController.addAction(action2)
-                        self.present(alertController, animated: true, completion: nil)
-                    }
+                    self.suppliersInfo = SuppliersViewModel(data:dict);
+                    print("supplierInfo:", self.suppliersInfo.suppliersInfo);
+                    self.callingApiSucceed = true;
+                    self.suppliersTableView.reloadData();
                 }else{
                     GlobalData.sharedInstance.showErrorSnackBar(msg: dict["message"].stringValue)
                 }
-                
             }else if success == 2{
                 GlobalData.sharedInstance.dismissLoader()
                 self.callingHttppApi()
             }
-            print("addChef", responseObject)
+            print("supplier", responseObject)
         }
-         */
     }
     
     //---search bar----
@@ -143,21 +133,21 @@ class SuppliersDashboardController: UIViewController, UITableViewDelegate, UITab
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        /*
-        print("searchActive:", searchActive);
-        filtered = Owner.ownerDashboardModelView.chefInfos.filter({ (chefInfo: ChefInfoModel) -> Bool in
-            print("chefEmail: ", chefInfo.chefEmail);
-            return chefInfo.chefEmail.lowercased().contains(searchText.lowercased())
-        })
-         */
-        /*
-        if(filtered.count == 0){
-            searchActive = false;
-        } else {
-            searchActive = true;
+        if(self.callingApiSucceed){
+            print("searchActive:", searchActive);
+            filtered = self.suppliersInfo.suppliersInfo.filter({ (supplierInfo: SupplierInfoModel) -> Bool in
+                print("supplierEmail: ", supplierInfo.email);
+                return supplierInfo.email.lowercased().contains(searchText.lowercased())
+            })
+            
+            if(filtered.count == 0){
+                searchActive = false;
+            } else {
+                searchActive = true;
+            }
+            
+            self.suppliersTableView.reloadData()
         }
-        */
-        //self.suppliersTableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -179,13 +169,13 @@ class SuppliersDashboardController: UIViewController, UITableViewDelegate, UITab
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        /*
-        if (searchActive) {
-            return filtered.count
+        if(self.callingApiSucceed){
+            if (searchActive) {
+                return filtered.count
+            }
+            return self.suppliersInfo.suppliersInfo.count;
         }
-        return Owner.ownerDashboardModelView.chefInfos.count;
-        */
-        return 15;
+        return 0;
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -194,28 +184,49 @@ class SuppliersDashboardController: UIViewController, UITableViewDelegate, UITab
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:SuppliersCell = tableView.dequeueReusableCell(withIdentifier: "SuppliersCell") as! SuppliersCell
-        /*
-        if (searchActive) {
-            if(filtered.count == 0)
+        if (self.callingApiSucceed){
+            if (searchActive) {
+                if(filtered.count == 0)
+                {
+                    cell.supplierName.text = "No Result";
+                }
+                else {
+                    cell.supplierName.text = filtered[indexPath.section].supplierName as? String;
+                    cell.supplierImage.image = UIImage(named: "ic_signin")!
+                    if (filtered[indexPath.section].status == 1) {
+                        cell.statusButton.backgroundColor = UIColor(red: 233/255, green: 248/255, blue: 239/255, alpha: 1.0);
+                        cell.statusButton.layer.borderColor = UIColor(red: 39/255, green: 183/255, blue: 100/255, alpha: 1.0).cgColor;
+                        cell.statusButton.layer.borderWidth = 1;
+                        cell.statusButton.setTitleColor(UIColor(red: 39/255, green: 183/255, blue: 243/255, alpha: 1.0), for: .normal)
+                        cell.statusButton.setTitle("Browse Catalogue", for: .normal);
+                    } else {
+                        cell.statusButton.backgroundColor = UIColor(red: 243/255, green: 243/255, blue: 243/255, alpha: 1.0);
+                        cell.statusButton.layer.borderColor = UIColor(red: 136/255, green: 136/255, blue: 136/255, alpha: 1.0).cgColor;
+                        cell.statusButton.layer.borderWidth = 1;
+                        cell.statusButton.setTitleColor(UIColor(red: 39/255, green: 183/255, blue: 100/255, alpha: 1.0), for: .normal)
+                        cell.statusButton.setTitle("Sign Up", for: .normal);
+                    }
+                }
+            }
+            else
             {
-                cell.chefName.text = "No Result";
-            }
-            else {
-                cell.chefName.text = filtered[indexPath.section].chefFirstName + " " +
-                    filtered[indexPath.section].chefLastName as? String;
-                cell.restaruantName.text = filtered[indexPath.section].restaurantName as? String;
-                cell.chefImage.image = UIImage(named: "ic_signin")!
+                cell.supplierName.text = self.suppliersInfo.suppliersInfo[indexPath.section].supplierName as? String;
+                cell.supplierImage.image = UIImage(named: "ic_signin")!
+                if (self.suppliersInfo.suppliersInfo[indexPath.section].status == 1) {
+                    cell.statusButton.backgroundColor = UIColor(red: 233/255, green: 248/255, blue: 239/255, alpha: 1.0);
+                    cell.statusButton.layer.borderColor = UIColor(red: 39/255, green: 183/255, blue: 100/255, alpha: 1.0).cgColor;
+                    cell.statusButton.layer.borderWidth = 1;
+                    cell.statusButton.setTitleColor(UIColor(red: 39/255, green: 183/255, blue: 243/255, alpha: 1.0), for: .normal)
+                    cell.statusButton.setTitle("Browse Catalogue", for: .normal);
+                } else {
+                    cell.statusButton.backgroundColor = UIColor(red: 243/255, green: 243/255, blue: 243/255, alpha: 1.0);
+                    cell.statusButton.layer.borderColor = UIColor(red: 136/255, green: 136/255, blue: 136/255, alpha: 1.0).cgColor;
+                    cell.statusButton.layer.borderWidth = 1;
+                    cell.statusButton.setTitleColor(UIColor(red: 39/255, green: 183/255, blue: 100/255, alpha: 1.0), for: .normal)
+                    cell.statusButton.setTitle("Sign Up", for: .normal);
+                }
             }
         }
-        else
-        {
-            cell.chefName.text = Owner.ownerDashboardModelView.chefInfos[indexPath.section].chefFirstName + " " +
-                Owner.ownerDashboardModelView.chefInfos[indexPath.section].chefLastName as? String;
-            cell.restaruantName.text = Owner.ownerDashboardModelView.chefInfos[indexPath.section].restaurantName as? String;
-            cell.chefImage.image = UIImage(named: "ic_signin")!
-        }
-         */
-        cell.supplierImage.image = UIImage(named: "ic_signin")!
         cell.delegate = self;
         cell.selectionStyle = .none
         return cell;
