@@ -53,7 +53,7 @@ class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPicker
         if categoryMenuData.count > indexPath.row {
             let contentForThisRow  = categoryMenuData[indexPath.row]
             cell.labelName.text = contentForThisRow as? String
-            cell.backgroundColor = UIColor .black;
+            //cell.backgroundColor = UIColor .black;
 
             for i in 0..<homeViewModel.categoryImage.count{
                 print("IMAGESSSS!!!!!")

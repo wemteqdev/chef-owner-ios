@@ -53,7 +53,8 @@
                                 <constraint firstItem="5Da-5V-p9R" firstAttribute="top" secondItem="fa7-6R-2vl" secondAttribute="bottom" id="khm-qH-bdn"/>
                             </constraints>
                         </view>
-                        <blurEffect style="extraLight"/>
+                        <color key="backgroundColor" red="0.16078431369999999" green="0.65098039220000004" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <blurEffect style="light"/>
                     </visualEffectView>
                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CRd-Pf-DzJ">
                         <rect key="frame" x="533" y="10" width="80" height="30"/>

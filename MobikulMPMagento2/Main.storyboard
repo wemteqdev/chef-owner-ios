@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ySd-1f-FUO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="G75-iq-Gnd">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -412,7 +412,7 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ikk-iu-P0U">
-                                <rect key="frame" x="4" y="54" width="406" height="569"/>
+                                <rect key="frame" x="4" y="0.0" width="406" height="623"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="AiC-x2-bsu">
                                     <size key="itemSize" width="150" height="150"/>
@@ -444,6 +444,7 @@
                             <constraint firstItem="b9i-Qq-vKi" firstAttribute="bottom" secondItem="eJk-tH-whL" secondAttribute="bottom" constant="50" id="0et-F6-oea"/>
                             <constraint firstItem="b9i-Qq-vKi" firstAttribute="trailing" secondItem="eJk-tH-whL" secondAttribute="trailing" constant="20" id="Ba6-aj-ooN"/>
                             <constraint firstItem="EkL-gS-CZE" firstAttribute="leading" secondItem="kOQ-iF-zUQ" secondAttribute="leadingMargin" constant="-16" id="D2S-Cc-zlX"/>
+                            <constraint firstItem="ikk-iu-P0U" firstAttribute="top" secondItem="b9i-Qq-vKi" secondAttribute="top" id="FUh-Kx-McZ"/>
                             <constraint firstItem="ikk-iu-P0U" firstAttribute="leading" secondItem="kOQ-iF-zUQ" secondAttribute="leadingMargin" constant="-16" id="GZX-1d-WvO"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ikk-iu-P0U" secondAttribute="trailing" constant="-16" id="NjN-Ti-dep"/>
                             <constraint firstItem="ZZq-o6-zbQ" firstAttribute="top" secondItem="ikk-iu-P0U" secondAttribute="bottom" id="Omw-tY-hLd"/>
@@ -452,6 +453,11 @@
                             <constraint firstAttribute="trailingMargin" secondItem="EkL-gS-CZE" secondAttribute="trailing" constant="-16" id="udj-II-f55"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="b9i-Qq-vKi"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Tgg-un-IIH"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="OEb-mc-lDA">
                         <barButtonItem key="backBarButtonItem" title=" " id="dey-il-5a6"/>
@@ -4713,11 +4719,11 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                         <viewControllerLayoutGuide type="bottom" id="5S7-Db-6HR"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ix5-HX-Tr1">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="77b-s3-Hnx">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="177" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lVa-kK-66D">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="667"/>
@@ -4776,14 +4782,14 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                                 </constraints>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CIp-yh-Q3Z">
-                                <rect key="frame" x="0.0" y="597" width="414" height="40"/>
+                                <rect key="frame" x="0.0" y="533" width="414" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="tqM-c9-wxU"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7pV-mG-j8f">
-                                <rect key="frame" x="187" y="597" width="80" height="30"/>
+                                <rect key="frame" x="187" y="533" width="80" height="30"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="QOZ-uK-TrQ"/>
@@ -4795,7 +4801,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="63K-Re-ERt">
-                                <rect key="frame" x="0.0" y="637" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="573" width="414" height="50"/>
                                 <color key="backgroundColor" red="0.16078431369999999" green="0.65098039220000004" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="2pw-AG-i2K"/>
@@ -4806,19 +4812,19 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                                 </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qco-rX-79H">
-                                <rect key="frame" x="296" y="597" width="42" height="21"/>
+                                <rect key="frame" x="296" y="533" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$21.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WKA-7E-beh">
-                                <rect key="frame" x="341" y="597" width="53" height="21"/>
+                                <rect key="frame" x="341" y="533" width="53" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.2680753448" blue="0.10537877280000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Promotion: $0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L1W-hw-WPD">
-                                <rect key="frame" x="310.66666666666669" y="618" width="83.333333333333314" height="12"/>
+                                <rect key="frame" x="310.66666666666669" y="554" width="83.333333333333314" height="12"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="12" id="5QV-6G-9Fb"/>
                                     <constraint firstAttribute="width" constant="83.666666666666686" id="TrO-0Z-XmH"/>
@@ -4828,7 +4834,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Enter Promotional Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Blu-Ez-Kam">
-                                <rect key="frame" x="20" y="597" width="157" height="30"/>
+                                <rect key="frame" x="20" y="533" width="157" height="30"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -14753,11 +14759,11 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
             <objects>
                 <viewController id="PMI-XJ-Vk4" customClass="Chef_ProfileViewController" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PoT-Pp-pjm">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8hP-aJ-2sR">
-                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -14810,10 +14816,10 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
             </objects>
             <point key="canvasLocation" x="-4812" y="1174"/>
         </scene>
-        <!--Owner-->
+        <!--Chef-->
         <scene sceneID="kgd-7v-t4R">
             <objects>
-                <viewController id="MCe-9Y-aPy" customClass="Owner" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="MCe-9Y-aPy" customClass="Chef_DashboardView" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ORl-c1-GAa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -14837,7 +14843,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="owner" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qc2-6r-zIQ">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Chef" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qc2-6r-zIQ">
                                                 <rect key="frame" x="166" y="142" width="48" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -14948,7 +14954,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="g7z-BV-Q6t"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Owner" id="kAM-Og-Zc5"/>
+                    <navigationItem key="navigationItem" title="Chef" id="kAM-Og-Zc5"/>
                     <connections>
                         <outlet property="barChartView" destination="yJX-Kl-5AJ" id="Brn-F6-twt"/>
                         <outlet property="diagramTotalView" destination="CFo-zn-pnA" id="XtT-gz-vgC"/>
@@ -14960,6 +14966,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                         <outlet property="scrollView" destination="c7T-42-P8A" id="ffh-1R-IAw"/>
                         <outlet property="showTypeController" destination="Jhk-hS-8qQ" id="3Lc-1q-0v0"/>
                         <outlet property="user_info_view" destination="eAY-lk-u5D" id="WiC-7L-Pea"/>
+                        <segue destination="PMI-XJ-Vk4" kind="show" identifier="toprofileview" id="dUg-MO-FKg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="71R-Py-Mfg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -15031,7 +15038,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
         <segue reference="un3-HS-DRX"/>
         <segue reference="7Qu-d1-AVV"/>
         <segue reference="kp9-vR-xGq"/>
-        <segue reference="gP0-fs-xZN"/>
+        <segue reference="6qv-Xv-DRt"/>
         <segue reference="N2m-HW-kYV"/>
         <segue reference="Ix9-K4-5sQ"/>
         <segue reference="5gt-HY-6Mn"/>
