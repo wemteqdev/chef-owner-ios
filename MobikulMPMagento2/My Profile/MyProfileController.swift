@@ -21,7 +21,7 @@ class MyProfileController: UIViewController,UITableViewDelegate, UITableViewData
     var sinInView:NSMutableArray = [""]
     var profileData:NSMutableArray = []
     var showUserProfile:Bool = false
-    var homeViewModel : HomeViewModel!
+    var homeViewModel : Chef_HomeViewModel!
     var imageForCategoryMenu:String = ""
     var imageData:NSData!
     var uploadImage:String = ""
@@ -36,9 +36,9 @@ class MyProfileController: UIViewController,UITableViewDelegate, UITableViewData
         myProfileTableView.rowHeight = UITableViewAutomaticDimension
         self.myProfileTableView.estimatedRowHeight = 50
         self.myProfileTableView.separatorColor = UIColor.clear
-        let paymentViewNavigationController = self.tabBarController?.viewControllers?[0]
+        let paymentViewNavigationController = self.tabBarController?.viewControllers?[1]
         let nav = paymentViewNavigationController as! UINavigationController;
-        let paymentMethodViewController = nav.viewControllers[0] as! ViewController
+        let paymentMethodViewController = nav.viewControllers[0] as! Chef_ProductViewController
         homeViewModel = paymentMethodViewController.homeViewModel;
         
         cmsData = []

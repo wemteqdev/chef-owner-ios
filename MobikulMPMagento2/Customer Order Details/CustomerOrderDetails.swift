@@ -20,7 +20,7 @@ class CustomerOrderDetails: UIViewController,UITableViewDelegate,UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.navigationBar.applyNavigationGradient(colors:GRADIENTCOLOR)
+        //navigationController?.navigationBar.applyNavigationGradient(colors:GRADIENTCOLOR)
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         tableView.register(UINib(nibName: "AddressUITableViewCell", bundle: nil), forCellReuseIdentifier: "address")
         tableView.register(UINib(nibName: "OrderInfoItemList", bundle: nil), forCellReuseIdentifier: "OrderInfoItemList")

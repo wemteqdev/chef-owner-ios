@@ -83,6 +83,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="ProductLabel" destination="oji-8k-I7Z" id="cCv-Zj-sYZ"/>
                 <outlet property="newProductLabel" destination="G2M-xR-15a" id="gKK-4h-Xg7"/>
                 <outlet property="prodcutCollectionView" destination="4sm-8y-aSL" id="eZP-pS-XGB"/>
                 <outlet property="productCollectionViewHeight" destination="HkS-D2-hZ1" id="U5r-Rl-5N3"/>

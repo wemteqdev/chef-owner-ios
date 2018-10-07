@@ -9,7 +9,86 @@
 import UIKit
 import SwiftMessages
 var badge:String? = nil
-class Chef_ProductViewController: UIViewController,chef_productViewControllerHandlerDelegate,bannerViewControllerHandlerDelegate,CategoryViewControllerHandlerDelegate,hotDealProductViewControllerHandlerDelegate,UISearchBarDelegate,RecentProductViewControllerHandlerDelegate, UITabBarControllerDelegate {
+class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource,chef_productViewControllerHandlerDelegate,bannerViewControllerHandlerDelegate,CategoryViewControllerHandlerDelegate,hotDealProductViewControllerHandlerDelegate,UISearchBarDelegate,RecentProductViewControllerHandlerDelegate, UITabBarControllerDelegate {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return 3
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if row == 1 {
+            return "Sort by product rating"
+        }
+        else if row == 2 {
+            return "Sort by product name"
+        }
+        else {
+            return "Sort by product price"
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
+        if row == 1 {
+            sortBy = "rating"
+            self.sortField.text = "Sort by product rating"
+        }
+        else if row == 2 {
+            self.sortField.text = "Sort by product name"
+            sortBy = "name"
+        }
+        else {
+            self.sortField.text = "Sort by product price"
+            sortBy = "price"
+        }
+    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return categoryMenuData.count + 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "categorycell", for: indexPath) as! CategoryCell
+        if categoryMenuData.count > indexPath.row {
+            let contentForThisRow  = categoryMenuData[indexPath.row]
+            cell.labelName.text = contentForThisRow as? String
+            cell.backgroundColor = UIColor .black;
+
+            for i in 0..<homeViewModel.categoryImage.count{
+                print("IMAGESSSS!!!!!")
+                print(homeViewModel.categoryImage[i].bannerImage)
+                if tempCategoryId[indexPath.row] as! String == homeViewModel.categoryImage[i].id{
+                    GlobalData.sharedInstance.getImageFromUrl(imageUrl:homeViewModel.categoryImage[i].bannerImage , imageView: cell.imageView)
+                    break;
+                }
+            }
+        }
+        else {
+            cell.labelName.text = "All Categories"
+            cell.backgroundColor = UIColor .black;
+        }
+        //cell.imageView.image = UIImage(named: "product_image")
+        //cell.labelName.text = "Category"
+        return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+      
+        return CGSize(width: collectionView.frame.size.width/2 - 16 , height: collectionView.frame.size.height )
+            //return CGSize(width: collectionView.frame.size.width/2, height:SCREEN_WIDTH/2.5 + 120)
+        
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if categoryMenuData.count > indexPath.row {
+            categoryId = tempCategoryId[indexPath.row] as! String
+        }
+        else {
+            categoryId = ""
+        }
+        callingHttppApi()
+    }
+    
+    
     func hotDealProductClick(name: String, image: String, id: String) {
         
     }
@@ -58,9 +137,9 @@ class Chef_ProductViewController: UIViewController,chef_productViewControllerHan
     
     func newAndFeartureAddToCompare(productID: String) {
         self.productId = productID;
-        self.showSuccessMessgae(data: "Successfully added to compare list")
-        //whichApiToProcess = "addtocompare"
-        //callingExtraHttpApi()
+        //self.showSuccessMessgae(data: "Successfully added to compare list")
+        whichApiToProcess = "addtocompare"
+        callingExtraHttpApi()
     }
     
     func viewAllClick(type: String) {
@@ -72,6 +151,12 @@ class Chef_ProductViewController: UIViewController,chef_productViewControllerHan
             categoryType = "featureproduct"
             categoryName = "Feature Product"
             categoryId = ""
+            print("GODDDDDD")
+            print(homeViewModel.allProductCollectionModel.count)
+            if homeViewModel.allProductCollectionModel.count >= self.limitedCount {
+                self.limitedCount += 5
+                callingHttppApi()
+            }
         }
         //self.performSegue(withIdentifier: "productcategory", sender: self)
     }
@@ -87,19 +172,31 @@ class Chef_ProductViewController: UIViewController,chef_productViewControllerHan
     var responseObject : AnyObject!
     @IBOutlet weak var productTableView: UITableView!
     @IBOutlet weak var changeViewButton: UIButton!
+    @IBOutlet weak var sortField: UITextField!
     @IBOutlet weak var filterButton: UIButton!
     @IBOutlet weak var BannerView: UIView!
-    @IBOutlet weak var filterView: UIView!
+    @IBOutlet weak var filterView: UICollectionView!
+    @IBOutlet weak var filterCoverView: UIView!
     
+    var productcategory: NSMutableArray = [];
+    var tempCategoryData : NSMutableArray = [];
+    var tempCategoryId : NSMutableArray = [];
+    var categoryMenuData:NSMutableArray = []
+    var headingTitleData:NSMutableArray = []
+    var categoryDict :NSDictionary = [:]
+    var categoryName:String!
+    var categoryId:String!
+    var categoryChildData:NSArray!
+    var sortBy:String = ""
     
     var homeViewModel : Chef_HomeViewModel!
     var productName:String = ""
     var productId:String = ""
     var productImage:String = ""
-    var categoryId:String = ""
-    var categoryName:String = ""
+
     var categoryType:String = ""
     var whichApiToProcess:String = ""
+    var limitedCount:Int = 5
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -131,7 +228,9 @@ class Chef_ProductViewController: UIViewController,chef_productViewControllerHan
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        filterView.isHidden = true
+        
+        filterView.register(UINib(nibName: "CategoryCell", bundle: nil), forCellWithReuseIdentifier: "categorycell")
+        filterCoverView.isHidden = true
  
         // Do any additional setup after loading the view.
         let origImage = UIImage(named: "ic_filter")
@@ -161,9 +260,10 @@ class Chef_ProductViewController: UIViewController,chef_productViewControllerHan
         
         navigationBarAppearace.tintColor = UIColor.white
    
+        filterView.delegate = self
+        filterView.dataSource = self
+        
        
-        
-        
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         self.navigationController?.navigationBar.tintColor = UIColor.white
         self.navigationItem.title = GlobalData.sharedInstance.language(key: "product")
@@ -183,6 +283,7 @@ class Chef_ProductViewController: UIViewController,chef_productViewControllerHan
 
     func callingHttppApi(){
         DispatchQueue.main.async {
+            
             self.view.isUserInteractionEnabled = false
             GlobalData.sharedInstance.showLoader()
             var requstParams = [String:Any]();
@@ -200,7 +301,12 @@ class Chef_ProductViewController: UIViewController,chef_productViewControllerHan
             requstParams["websiteId"] = "1"
             let width = String(format:"%f", SCREEN_WIDTH * UIScreen.main.scale)
             requstParams["width"] = width
-            let apiName = "mobikulhttp/catalog/homePageData"
+            requstParams["pageSize"] = String(self.limitedCount)
+            requstParams["category"] = self.categoryId
+            requstParams["sortby"] = self.sortBy
+            requstParams["supplier"] = "1"
+            print(requstParams)
+            let apiName = "wemteqchef/catalog/homePageData"
             GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:apiName, currentView: self){success,responseObject in
                 if success == 1 {
                     
@@ -232,6 +338,21 @@ class Chef_ProductViewController: UIViewController,chef_productViewControllerHan
                                 GlobalData.sharedInstance.dismissLoader(); self.productTableView.reloadDataWithAutoSizingCellWorkAround()
                                 //self.navigationController?.isNavigationBarHidden = true
                                 self.tabBarController?.tabBar.isHidden = false
+                                let categoryDataItemsArray  = self.homeViewModel.cateoryData;
+                                self.categoryChildData =   categoryDataItemsArray!["children"] as? NSArray;
+                                self.tempCategoryData = []
+                                self.tempCategoryId = []
+                                if let itemsArray = self.categoryChildData{
+                                    for (item) in itemsArray{
+                                        let cData:NSDictionary = item as! NSDictionary;
+                                        self.tempCategoryData.add(cData["name"] as? String? ?? "empty");
+                                        self.tempCategoryId.add(cData["category_id"] as? String? ?? "empty")
+                                        
+                                    }
+                                }
+                               
+                                self.categoryMenuData = self.tempCategoryData;
+                                self.filterView.reloadData()
                                 /*UIView.animate(withDuration: 0.5, animations: {
                                  self.launchView?.view.alpha = 0.0
                                  }) { _ in
@@ -269,6 +390,16 @@ class Chef_ProductViewController: UIViewController,chef_productViewControllerHan
             viewController.categoryType = self.categoryType
         }
     }
+    @IBAction func sortFieldClick(_ sender: UITextField)
+    {
+        let thePicker = UIPickerView()
+        sortField.inputView = thePicker
+        thePicker.delegate = self
+    }
+    @IBAction func sortFieldEditEnd(_ sender: UITextField)
+    {
+        callingHttppApi()
+    }
     @IBAction func changeView(_ sender: UIButton)
     {
         if change == false{
@@ -294,7 +425,7 @@ class Chef_ProductViewController: UIViewController,chef_productViewControllerHan
     @IBAction func filtered(_ sender: UIButton)
     {
         UIView.animate(withDuration: 0.3, delay: 0, options: .layoutSubviews, animations: {
-            self.filterView.isHidden = !self.filterView.isHidden
+            self.filterCoverView.isHidden = !self.filterCoverView.isHidden
             self.BannerView.isHidden = !self.BannerView.isHidden
         })
     }
@@ -393,6 +524,7 @@ class Chef_ProductViewController: UIViewController,chef_productViewControllerHan
         infoConfig.duration = .forever
         SwiftMessages.show(config: infoConfig, view: info)
     }
+   
 
     @objc func cartButtonClick(sender: UIButton){
         //let vc = self.storyboard?.instantiateViewController(withIdentifier: "chef_cartexview") as! Chef_exMyCart
@@ -406,6 +538,7 @@ class Chef_ProductViewController: UIViewController,chef_productViewControllerHan
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
+    
     /*
     // MARK: - Navigation
 

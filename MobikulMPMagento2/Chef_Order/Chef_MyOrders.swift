@@ -195,23 +195,27 @@ class Chef_MyOrders: UIViewController ,UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //let cell:Chef_MyOrderTableViewCell = tableView.dequeueReusableCell(withIdentifier: "Chef_MyOrderTableViewCell") as! Chef_MyOrderTableViewCell
-        let cell:Chef_MyOrderTableViewCellDesign = tableView.dequeueReusableCell(withIdentifier: "chef_myorderdesign") as! Chef_MyOrderTableViewCellDesign
-        
+        let cell:Chef_MyOrderTableViewCellDesign = tableView.dequeueReusableCell(withIdentifier: "chef_myorderdesign") as! Chef_MyOrderTableViewCellDesign        
         if self.myOrderCollectionData.getMyOrdersCollectionData[indexPath.row].status.lowercased() == "pending"{
-                    cell.statusButton.backgroundColor = UIColor().HexToColor(hexString: ORANGECOLOR).withAlphaComponent(0.3)
-                    cell.statusButton.setTitleColor(UIColor().HexToColor(hexString: ORANGECOLOR), for: .normal)
+                    cell.statusButton.backgroundColor = UIColor().HexToColor(hexString: LIGHTGREY).withAlphaComponent(0.1)
+                    cell.statusButton.setTitleColor(UIColor().HexToColor(hexString: LIGHTGREY), for: .normal)
+            cell.statusButton.layer.borderColor = UIColor().HexToColor(hexString: LIGHTGREY).cgColor
+            
                 }else if self.myOrderCollectionData.getMyOrdersCollectionData[indexPath.row].status.lowercased() == "complete"{
-                    cell.statusButton.backgroundColor = UIColor().HexToColor(hexString: GREEN_COLOR).withAlphaComponent(0.3)
+                    cell.statusButton.backgroundColor = UIColor().HexToColor(hexString: GREEN_COLOR).withAlphaComponent(0.1)
                     cell.statusButton.setTitleColor(UIColor().HexToColor(hexString: GREEN_COLOR), for: .normal)
+                    cell.statusButton.layer.borderColor = UIColor().HexToColor(hexString: GREEN_COLOR).cgColor
                 }else if self.myOrderCollectionData.getMyOrdersCollectionData[indexPath.row].status.lowercased() == "processing"{
-                    cell.statusButton.backgroundColor = UIColor().HexToColor(hexString: GREEN_COLOR).withAlphaComponent(0.3)
-                    cell.statusButton.setTitleColor(UIColor().HexToColor(hexString: GREEN_COLOR), for: .normal)
+                    cell.statusButton.backgroundColor = UIColor().HexToColor(hexString: ORANGECOLOR).withAlphaComponent(0.1)
+                    cell.statusButton.setTitleColor(UIColor().HexToColor(hexString: ORANGECOLOR), for: .normal)
+                    cell.statusButton.layer.borderColor = UIColor().HexToColor(hexString: ORANGECOLOR).cgColor
                 }else if self.myOrderCollectionData.getMyOrdersCollectionData[indexPath.row].status.lowercased() == "cancel"{
-                    cell.statusButton.backgroundColor = UIColor().HexToColor(hexString: REDCOLOR).withAlphaComponent(0.3)
+                    cell.statusButton.backgroundColor = UIColor().HexToColor(hexString: REDCOLOR).withAlphaComponent(0.1)
                     cell.statusButton.setTitleColor(UIColor().HexToColor(hexString: REDCOLOR), for: .normal)
+                    cell.statusButton.layer.borderColor = UIColor().HexToColor(hexString: REDCOLOR).cgColor
                 }
 
-       
+        cell.statusButton.setTitle(self.myOrderCollectionData.getMyOrdersCollectionData[indexPath.row].status, for: .normal)
         cell.orderId.text = self.myOrderCollectionData.getMyOrdersCollectionData[indexPath.row].orderId
         cell.placedonDate.text = self.myOrderCollectionData.getMyOrdersCollectionData[indexPath.row].order_Date
         cell.ordertotal.text = self.myOrderCollectionData.getMyOrdersCollectionData[indexPath.row].order_total
@@ -272,6 +276,13 @@ class Chef_MyOrders: UIViewController ,UITableViewDelegate, UITableViewDataSourc
                 }
             }
         }
+    }
+    func tableView(_ tableView: UITableView,
+                   didSelectRowAt indexPath: IndexPath)
+    {
+        print("didSelectRow")
+        self.orderId = self.myOrderCollectionData.getMyOrdersCollectionData[indexPath.row].orderId
+        self.performSegue(withIdentifier: "customerorderdetails", sender: self)
     }
     
     @objc func reorderClick(sender: UIButton){

@@ -139,10 +139,10 @@ class Chef_SellerListController: UIViewController ,UITableViewDelegate, UITableV
     }
     
     @objc func viewAllData(sender: UIButton){
-        tabBarController?.selectedIndex = 1
-//        self.sellerId = self.sellerListViewModel.sellerListModel[sender.tag].sellerId
-//        self.sellername = self.sellerListViewModel.sellerListModel[sender.tag].shopTitle
-//        self.performSegue( withIdentifier: "productcategory", sender: self)
+        //tabBarController?.selectedIndex = 1
+        self.sellerId = self.sellerListViewModel.sellerListModel[sender.tag].sellerId
+        self.sellername = self.sellerListViewModel.sellerListModel[sender.tag].shopTitle
+        self.performSegue( withIdentifier: "productcategory", sender: self)
     }
     @objc func viewMap(sender: UIButton){        
         self.performSegue( withIdentifier: "mapview", sender: self)

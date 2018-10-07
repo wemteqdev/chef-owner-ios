@@ -60,15 +60,18 @@ class Productcategory: UIViewController,UICollectionViewDelegate,UICollectionVie
     @IBOutlet weak var ic_grid_list_imageview: UIImageView!
     @IBOutlet weak var gridListbyLabel: UILabel!
     @IBOutlet weak var upArrow: UIImageView!
-    
+    @IBOutlet weak var filterView: UIView!
+    @IBOutlet weak var sortView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.applyNavigationGradient(colors:GRADIENTCOLOR)
+        //navigationController?.navigationBar.applyNavigationGradient(colors:GRADIENTCOLOR)
+       filterView.isHidden = true
+         sortView.isHidden = true
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         self.navigationItem.title = categoryName
         whichApiToProcess = ""
-        let nib = UINib(nibName: "ProductImageCell", bundle:nil)
-        self.productCollectionView.register(nib, forCellWithReuseIdentifier: "productimagecell")
+        let nib = UINib(nibName: "Chef_ProductImageCell", bundle:nil)
+        self.productCollectionView.register(nib, forCellWithReuseIdentifier: "chef_productimagecell")
         
         let refreshControl = UIRefreshControl()
         let attributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
@@ -142,8 +145,8 @@ class Productcategory: UIViewController,UICollectionViewDelegate,UICollectionVie
         }else{
             ic_grid_list_imageview.image = UIImage(named: "ic_grid")
             change = false
-            let nib = UINib(nibName: "ListCollectionViewCell", bundle:nil)
-            self.productCollectionView.register(nib, forCellWithReuseIdentifier: "listcollectionview")
+            let nib = UINib(nibName: "Chef_ListCollectionViewCell", bundle:nil)
+            self.productCollectionView.register(nib, forCellWithReuseIdentifier: "chef_listcollectionview")
             productCollectionView.reloadData()
             gridListbyLabel.text = GlobalData.sharedInstance.language(key: "grid")
         }
@@ -652,12 +655,14 @@ class Productcategory: UIViewController,UICollectionViewDelegate,UICollectionVie
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if change == true{
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "productimagecell", for: indexPath) as! ProductImageCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "chef_productimagecell", for: indexPath) as! Chef_ProductImageCell
             cell.layer.borderColor = UIColor().HexToColor(hexString: LIGHTGREY).cgColor
             cell.layer.borderWidth = 0.5
             cell.productImage.image = UIImage(named: "ic_placeholder.png")
             cell.productName.text = productCollectionViewModel.getProductCollectionData[indexPath.row].productName
             cell.productPrice.text =  productCollectionViewModel.getProductCollectionData[indexPath.row].price
+            cell.addButton.tag = indexPath.row
+            cell.addButton.addTarget(self, action: #selector(addButtonClick(sender:)), for: .touchUpInside)
             GlobalData.sharedInstance.getImageFromUrl(imageUrl:productCollectionViewModel.getProductCollectionData[indexPath.row].productImage , imageView: cell.productImage)
             cell.specialPrice.isHidden = true
             if productCollectionViewModel.getProductCollectionData[indexPath.row].isInWishlist == true{
@@ -698,13 +703,15 @@ class Productcategory: UIViewController,UICollectionViewDelegate,UICollectionVie
             }
             return cell
         }else{
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "listcollectionview", for: indexPath) as! ListCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "chef_listcollectionview", for: indexPath) as! Chef_ListCollectionViewCell
             cell.layer.borderColor = UIColor().HexToColor(hexString: LIGHTGREY).cgColor
             cell.layer.borderWidth = 0.5
             cell.imageView.image = UIImage(named: "ic_placeholder.png")
             cell.name.text = productCollectionViewModel.getProductCollectionData[indexPath.row].productName
             cell.price.text =  productCollectionViewModel.getProductCollectionData[indexPath.row].price
             cell.descriptionData.text = productCollectionViewModel.getProductCollectionData[indexPath.row].descriptionData
+            cell.addButton.tag = indexPath.row
+            cell.addButton.addTarget(self, action: #selector(addButtonClick(sender:)), for: .touchUpInside)
             GlobalData.sharedInstance.getImageFromUrl(imageUrl:productCollectionViewModel.getProductCollectionData[indexPath.row].productImage , imageView: cell.imageView)
             cell.wishList_Button.tag = indexPath.row
             cell.compare_Button.tag = indexPath.row
@@ -740,6 +747,13 @@ class Productcategory: UIViewController,UICollectionViewDelegate,UICollectionVie
             }
             return cell
         }
+    }
+    @objc func addButtonClick(sender: UIButton){
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "chef_productdetail") as! Chef_DashboardViewController
+        vc.productImageUrl = productCollectionViewModel.getProductCollectionData[sender.tag].productImage
+        vc.productName = productCollectionViewModel.getProductCollectionData[sender.tag].productName
+        vc.productId = productCollectionViewModel.getProductCollectionData[sender.tag].id
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func addToWishList(sender: UIButton){
@@ -907,7 +921,7 @@ class Productcategory: UIViewController,UICollectionViewDelegate,UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "catalogproduct") as! CatalogProduct
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "chef_productdetail") as! Chef_DashboardViewController
         vc.productImageUrl = productCollectionViewModel.getProductCollectionData[indexPath.row].productImage
         vc.productName = productCollectionViewModel.getProductCollectionData[indexPath.row].productName
         vc.productId = productCollectionViewModel.getProductCollectionData[indexPath.row].id
