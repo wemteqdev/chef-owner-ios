@@ -18,6 +18,7 @@ class Chef_MyCartTableViewCell: UITableViewCell {
     @IBOutlet weak var plusButton:UIButton!
     @IBOutlet weak var errorMessage:UILabel!
     var myCartViewModel:Chef_MyCartViewModel!
+    var myCartView:UITableView!
     var kilos:Int = 0
 
     override func awakeFromNib() {
@@ -37,6 +38,7 @@ class Chef_MyCartTableViewCell: UITableViewCell {
         }
         qtyValue.setTitle(String(kilos), for: .normal)
         myCartViewModel.setQtyDataToCartModel(data: String(kilos), pos: sender.tag)
+        myCartView.reloadData()
     }
     @IBAction func minusClick(_ sender: UIButton) {
         kilos = Int(qtyValue.title(for: .normal)!)! - 1
@@ -45,5 +47,8 @@ class Chef_MyCartTableViewCell: UITableViewCell {
         }
         qtyValue.setTitle(String(kilos), for: .normal)
         myCartViewModel.setQtyDataToCartModel(data: String(kilos), pos: sender.tag)
+        print(sender.tag)
+        print(kilos)
+        myCartView.reloadData()
     }
 }

@@ -322,7 +322,7 @@ class Chef_MyCart: UIViewController ,UITableViewDelegate, UITableViewDataSource,
             cell.qtyValue.setTitle(myCartViewModel.getCartItems[indexPath.row].qty, for: .normal)
             
             cell.priceLabelValue.text = myCartViewModel.getCartItems[indexPath.row].price
-            cell.subtotalLabelValue.text  = myCartViewModel.getCartItems[indexPath.row].subtotal
+            cell.subtotalLabelValue.text  = "Total " + myCartViewModel.getCartItems[indexPath.row].subtotal
             GlobalData.sharedInstance.getImageFromUrl(imageUrl: myCartViewModel.getCartItems[indexPath.row].imageUrl, imageView: cell.productImageView)
             var optionArray = myCartViewModel.getCartItems[indexPath.row].options
             
@@ -337,23 +337,25 @@ class Chef_MyCart: UIViewController ,UITableViewDelegate, UITableViewDataSource,
                 cell.errorMessage.isHidden = true
             }
             
-            var optionData:String = ""
-            
-            for i in 0..<optionArray.count{
-                var dict = optionArray[i] ;
-                optionData = optionData+dict["label"].stringValue+":"
-                var childValue:String = ""
-                if dict["value"].arrayValue.count > 0{
-                    for j in 0..<dict["value"].count{
-                        childValue = childValue+dict["value"][j].stringValue+","
-                    }
-                }
-                optionData = optionData+childValue+"\n"
-            }
+//            var optionData:String = ""
+//
+//            for i in 0..<optionArray.count{
+//                var dict = optionArray[i] ;
+//                optionData = optionData+dict["label"].stringValue+":"
+//                var childValue:String = ""
+//                if dict["value"].arrayValue.count > 0{
+//                    for j in 0..<dict["value"].count{
+//                        childValue = childValue+dict["value"][j].stringValue+","
+//                    }
+//                }
+//                optionData = optionData+childValue+"\n"
+//            }
 //            cell.stepperButton.value = Double(myCartViewModel.getCartItems[indexPath.row].qty)!
             cell.plusButton.tag = indexPath.row
             cell.minusButton.tag = indexPath.row
+            print(cell.minusButton.tag)
             cell.myCartViewModel = self.myCartViewModel;
+            cell.myCartView = self.cartTableView
 //            cell.optionMessage.text = optionData
 //            cell.moveToWishListButton.tag = indexPath.row
 //            cell.moveToWishListButton.addTarget(self, action: #selector(moveToWishList(sender:)), for: .touchUpInside)

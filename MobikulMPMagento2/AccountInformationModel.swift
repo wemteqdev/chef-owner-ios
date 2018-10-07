@@ -37,8 +37,11 @@ class AccountInformationModel: NSObject {
     var receivePrefixValue:String!
     var receiveSuffixValue:String!
     var taxValue:String!
-    
-    
+    var city:String!
+    var state:String!
+    var street:String!
+    var postcode:String!
+    var country:String!
     
     init(data: JSON) {
         self.dateFormat = data["dateFormat"].stringValue
@@ -69,7 +72,11 @@ class AccountInformationModel: NSObject {
         self.receivePrefixValue = data["prefixValue"].stringValue
         self.receiveSuffixValue = data["suffixValue"].stringValue
         self.taxValue = data["taxValue"].stringValue
-        
+        self.city = data["city"].stringValue
+        self.state = data["state"].stringValue
+        self.street = data["street"][0].stringValue
+        self.postcode = data["postcode"].stringValue
+        self.country = data["country"].stringValue
     }
 
     

@@ -137,10 +137,12 @@
 		575AEC0321487E57007983E7 /* SignInOrNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575AEC0221487E57007983E7 /* SignInOrNew.swift */; };
 		575AEC0F214993FF007983E7 /* Chef_Owner_Choice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575AEC0E214993FF007983E7 /* Chef_Owner_Choice.swift */; };
 		57AEA6CA2151CC090078A0BA /* Chef_TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AEA6C92151CC080078A0BA /* Chef_TabBarController.swift */; };
+		57B2E0932169D9F70029AC63 /* Chef_ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B2E0922169D9F70029AC63 /* Chef_ProfileViewController.swift */; };
 		57C6FFF5216404B800E5EABB /* Chef_CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C6FFF3216404B800E5EABB /* Chef_CategoryCollectionViewCell.swift */; };
 		57C6FFF6216404B800E5EABB /* Chef_CategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57C6FFF4216404B800E5EABB /* Chef_CategoryCollectionViewCell.xib */; };
 		57C8312B214A9B5B00CE5911 /* Forgotpassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C8312A214A9B5B00CE5911 /* Forgotpassword.swift */; };
 		57C83135214AB9C100CE5911 /* CreateChef.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C83134214AB9C100CE5911 /* CreateChef.swift */; };
+		57C99C68216A7A020026BC38 /* Chef_DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C99C67216A7A020026BC38 /* Chef_DashboardView.swift */; };
 		57D70B46215576E000952248 /* Chef_exMyCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D70B45215576E000952248 /* Chef_exMyCart.swift */; };
 		57F6259E2151697F000F1CD5 /* Chef_MyOrders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F6259D2151697F000F1CD5 /* Chef_MyOrders.swift */; };
 		57F625A321516A32000F1CD5 /* Chef_MyOrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F625A121516A32000F1CD5 /* Chef_MyOrderTableViewCell.swift */; };
@@ -704,10 +706,12 @@
 		575AEC0221487E57007983E7 /* SignInOrNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInOrNew.swift; sourceTree = "<group>"; };
 		575AEC0E214993FF007983E7 /* Chef_Owner_Choice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chef_Owner_Choice.swift; sourceTree = "<group>"; };
 		57AEA6C92151CC080078A0BA /* Chef_TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chef_TabBarController.swift; sourceTree = "<group>"; };
+		57B2E0922169D9F70029AC63 /* Chef_ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chef_ProfileViewController.swift; sourceTree = "<group>"; };
 		57C6FFF3216404B800E5EABB /* Chef_CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chef_CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		57C6FFF4216404B800E5EABB /* Chef_CategoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Chef_CategoryCollectionViewCell.xib; sourceTree = "<group>"; };
 		57C8312A214A9B5B00CE5911 /* Forgotpassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forgotpassword.swift; sourceTree = "<group>"; };
 		57C83134214AB9C100CE5911 /* CreateChef.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChef.swift; sourceTree = "<group>"; };
+		57C99C67216A7A020026BC38 /* Chef_DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chef_DashboardView.swift; sourceTree = "<group>"; };
 		57D70B45215576E000952248 /* Chef_exMyCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chef_exMyCart.swift; sourceTree = "<group>"; };
 		57F6259D2151697F000F1CD5 /* Chef_MyOrders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chef_MyOrders.swift; sourceTree = "<group>"; };
 		57F625A121516A32000F1CD5 /* Chef_MyOrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chef_MyOrderTableViewCell.swift; sourceTree = "<group>"; };
@@ -1077,6 +1081,7 @@
 		0C05709020408A8800EB527B /* MobikulMPMagento2 */ = {
 			isa = PBXGroup;
 			children = (
+				57B2E0892169D8C80029AC63 /* Chef_Profile */,
 				299D74B82159082E00248A67 /* Supplier Dashboard */,
 				29B11AE921555C5000980BA4 /* Owner */,
 				5721877321536C6200FACF86 /* Chef_Cart */,
@@ -1365,6 +1370,7 @@
 			isa = PBXGroup;
 			children = (
 				57F83DF72153D75200BC9DCB /* Chef_DashboardViewController.swift */,
+				57C99C67216A7A020026BC38 /* Chef_DashboardView.swift */,
 			);
 			path = Chef_Dashboard;
 			sourceTree = "<group>";
@@ -1385,6 +1391,14 @@
 				57C6FFF4216404B800E5EABB /* Chef_CategoryCollectionViewCell.xib */,
 			);
 			path = Chef_Product;
+			sourceTree = "<group>";
+		};
+		57B2E0892169D8C80029AC63 /* Chef_Profile */ = {
+			isa = PBXGroup;
+			children = (
+				57B2E0922169D9F70029AC63 /* Chef_ProfileViewController.swift */,
+			);
+			path = Chef_Profile;
 			sourceTree = "<group>";
 		};
 		57F6259A21516886000F1CD5 /* Chef_Order */ = {
@@ -2582,6 +2596,7 @@
 				0C05713020408BDC00EB527B /* ProgressView.swift in Sources */,
 				299D74CA2159209F00248A67 /* DetailPage.swift in Sources */,
 				A3B7D30F207DFE210026A3AF /* CreateAccountModel.swift in Sources */,
+				57B2E0932169D9F70029AC63 /* Chef_ProfileViewController.swift in Sources */,
 				A3B7D32F207DFE210026A3AF /* PaymentShipmentModel.swift in Sources */,
 				A3B7D24A207DFDBD0026A3AF /* SellerRatingViewCell.swift in Sources */,
 				A3B7D344207DFE210026A3AF /* MyOrderTableViewCell.swift in Sources */,
@@ -2654,6 +2669,7 @@
 				0C05713820408BDC00EB527B /* IQPreviousNextView.swift in Sources */,
 				0C05710520408BDB00EB527B /* OrangeClearStyle.swift in Sources */,
 				29B11AFA21555CC800980BA4 /* RestaurantsDashboardController.swift in Sources */,
+				57C99C68216A7A020026BC38 /* Chef_DashboardView.swift in Sources */,
 				A3B7D325207DFE210026A3AF /* BillingAddressPicker.swift in Sources */,
 				A3B7D31F207DFE210026A3AF /* FilteredTableViewCell.swift in Sources */,
 				A3B7D313207DFE210026A3AF /* CustomerOrderDetailsModel.swift in Sources */,

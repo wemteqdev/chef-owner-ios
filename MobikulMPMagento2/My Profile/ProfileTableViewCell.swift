@@ -23,6 +23,7 @@ class ProfileTableViewCell: UITableViewCell {
         profileImage.layer.masksToBounds = true
         editView.layer.cornerRadius = 5;
         editView.layer.masksToBounds = true
+        editView.isHidden = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
