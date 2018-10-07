@@ -8,16 +8,26 @@
 
 import UIKit
 
+@objc protocol removeFromOwnerHandlerDelegate: class {
+    func removeButtonClick(id:Int)
+}
+
 class ChefsCell: UITableViewCell {
     @IBOutlet weak var chefImage: UIImageView!
     @IBOutlet weak var chefName: UILabel!
     @IBOutlet weak var restaruantName: UILabel!
+    @IBOutlet weak var removeChefButton: UIButton!
+    
+    var chefId:Int = 0;
+    var delegate: removeFromOwnerHandlerDelegate!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         chefImage.layer.cornerRadius = 20;
         chefImage.layer.masksToBounds = true
         chefImage.layer.backgroundColor = UIColor().HexToColor(hexString: BUTTON_COLOR).cgColor
+        removeChefButton.layer.cornerRadius = 10;
+        removeChefButton.layer.masksToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -26,4 +36,7 @@ class ChefsCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func removeChefButtonClick(_ sender: Any) {
+        delegate.removeButtonClick(id: self.chefId);
+    }
 }

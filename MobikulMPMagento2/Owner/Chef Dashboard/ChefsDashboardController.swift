@@ -8,7 +8,22 @@
 
 import Foundation
 
-class ChefsDashboardController: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate, UISearchBarDelegate {
+class ChefsDashboardController: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate, UISearchBarDelegate, removeFromOwnerHandlerDelegate {
+    
+    func removeButtonClick(id: Int) {
+        print("id:", id);
+        
+        let alertController = UIAlertController(title: "Alert", message: "Are you sure to remove this chef?", preferredStyle: .alert)
+        let action1 = UIAlertAction(title: "Yes", style: .default) { (action:UIAlertAction) in
+            self.callingHttppApiForRemoveChef(id: id);
+        }
+        let action2 = UIAlertAction(title: "No", style: .cancel) { (action:UIAlertAction) in
+            print("You've pressed cancel");
+        }
+        alertController.addAction(action2)
+        alertController.addAction(action1)
+        self.present(alertController, animated: true, completion: nil)
+    }
     
     @IBOutlet weak var chefsTableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -116,6 +131,64 @@ class ChefsDashboardController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
+    func callingHttppApiForRemoveChef(id: Int){
+        var requstParams = [String:Any]();
+        
+        GlobalData.sharedInstance.showLoader()
+        self.view.isUserInteractionEnabled = false
+        requstParams = [String:Any]();
+        requstParams["websiteId"] = DEFAULT_WEBSITE_ID
+        let customerId = defaults.object(forKey:"customerId");
+        if customerId != nil{
+            requstParams["customerToken"] = customerId
+            requstParams["customerId"] = customerId
+        }
+        requstParams["chefId"] = id; //chef
+        
+        GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"wemteqchef/owner/removechef", currentView: self){success,responseObject in
+            if success == 1{
+                if responseObject?.object(forKey: "storeId") != nil{
+                    let storeId:String = String(format: "%@", responseObject!.object(forKey: "storeId") as! CVarArg)
+                    if storeId != "0"{
+                        defaults .set(storeId, forKey: "storeId")
+                    }
+                }
+                GlobalData.sharedInstance.dismissLoader()
+                self.view.isUserInteractionEnabled = true
+                var dict = JSON(responseObject as! NSDictionary)
+                if dict["success"].boolValue == true{
+                    var message = "";
+                    var title = "";
+                    if dict["removeChefSuccess"] == true {
+                        message = "Chef removed successfully"
+                        title = "Success";
+                        for index in 0...Owner.ownerDashboardModelView.chefInfos.count - 1 {
+                            if (Owner.ownerDashboardModelView.chefInfos[index].chefId == id){
+                                Owner.ownerDashboardModelView.chefInfos.remove(at: index);
+                            }
+                        }
+                        self.chefsTableView.reloadData();
+                    } else {
+                        message = "Chef removing is failed"
+                        title = "Error";
+                    }
+                    let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                    let action2 = UIAlertAction(title: "OK", style: .cancel) { (action:UIAlertAction) in
+                        print("You've pressed cancel");
+                    }
+                    alertController.addAction(action2)
+                    self.present(alertController, animated: true, completion: nil)
+                }else{
+                    GlobalData.sharedInstance.showErrorSnackBar(msg: dict["message"].stringValue)
+                }
+                
+            }else if success == 2{
+                GlobalData.sharedInstance.dismissLoader()
+                self.callingHttppApi()
+            }
+            print("addChef", responseObject)
+        }
+    }
     //---search bar----
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchActive = true;
@@ -198,6 +271,7 @@ class ChefsDashboardController: UIViewController, UITableViewDelegate, UITableVi
                     filtered[indexPath.section].chefLastName as? String;
                 cell.restaruantName.text = filtered[indexPath.section].restaurantName as? String;
                 cell.chefImage.image = UIImage(named: "ic_signin")!
+                cell.chefId = filtered[indexPath.section].chefId;
             }
         }
         else
@@ -206,10 +280,12 @@ class ChefsDashboardController: UIViewController, UITableViewDelegate, UITableVi
                 Owner.ownerDashboardModelView.chefInfos[indexPath.section].chefLastName as? String;
             cell.restaruantName.text = Owner.ownerDashboardModelView.chefInfos[indexPath.section].restaurantName as? String;
             cell.chefImage.image = UIImage(named: "ic_signin")!
+            cell.chefId = Owner.ownerDashboardModelView.chefInfos[indexPath.section].chefId;
         }
         
         //cell.chefImage.image = UIImage(named: "ic_signin")!
         cell.selectionStyle = .none
+        cell.delegate = self;
         return cell;
     }
     

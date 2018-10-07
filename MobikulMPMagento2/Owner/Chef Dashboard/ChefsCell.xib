@@ -40,12 +40,28 @@
                                 <color key="textColor" red="0.23963084816932678" green="0.70169287919998169" blue="0.96264594793319702" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VeK-li-yjP">
+                                <rect key="frame" x="501" y="17" width="85" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.62546115451388884" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="85" id="EFe-Rk-xc7"/>
+                                    <constraint firstAttribute="height" constant="30" id="hQK-mY-wzU"/>
+                                </constraints>
+                                <state key="normal" title="Remove">
+                                    <color key="titleColor" red="0.84705363069999995" green="0.9810029455" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="removeChefButtonClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="1FS-uJ-HWR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="IPm-6j-cPC" firstAttribute="leading" secondItem="l50-RE-yj4" secondAttribute="trailing" constant="8" id="BWb-I9-ksO"/>
                             <constraint firstItem="IPm-6j-cPC" firstAttribute="bottom" secondItem="l50-RE-yj4" secondAttribute="bottom" id="QBE-eE-Zs7"/>
                             <constraint firstItem="l50-RE-yj4" firstAttribute="centerY" secondItem="c6n-go-mGx" secondAttribute="centerY" id="cKt-nG-JEm"/>
+                            <constraint firstAttribute="trailing" secondItem="VeK-li-yjP" secondAttribute="trailing" constant="10" id="m0B-R8-Piw"/>
+                            <constraint firstItem="VeK-li-yjP" firstAttribute="centerY" secondItem="c6n-go-mGx" secondAttribute="centerY" id="os3-AX-5tR"/>
                             <constraint firstItem="K3O-a4-zvE" firstAttribute="leading" secondItem="l50-RE-yj4" secondAttribute="trailing" constant="8" id="qC8-zO-Bar"/>
                             <constraint firstItem="l50-RE-yj4" firstAttribute="leading" secondItem="c6n-go-mGx" secondAttribute="leading" constant="8" id="uVN-O9-D7Q"/>
                             <constraint firstItem="K3O-a4-zvE" firstAttribute="top" secondItem="l50-RE-yj4" secondAttribute="top" id="vjx-Tl-Wit"/>
@@ -62,6 +78,7 @@
             <connections>
                 <outlet property="chefImage" destination="l50-RE-yj4" id="E4y-9a-kf5"/>
                 <outlet property="chefName" destination="K3O-a4-zvE" id="h8V-Nn-NgV"/>
+                <outlet property="removeChefButton" destination="VeK-li-yjP" id="FXv-C2-VHB"/>
                 <outlet property="restaruantName" destination="IPm-6j-cPC" id="vnM-HQ-hY5"/>
             </connections>
             <point key="canvasLocation" x="-118" y="-29.5"/>

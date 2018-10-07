@@ -8,6 +8,25 @@
 
 import Foundation
 
+class SupplierInfoModel: NSObject {
+    var supplierName: String = "";
+    var supplierId: Int!;
+    var chefData = [ChefInfoModel]();
+    
+    init(data:JSON) {
+        print("restaurantinfo: ", data);
+        supplierName = data["restaurantName"].stringValue;
+        supplierId = data["restaurantId"].intValue;
+        if let chefArrayData = data["chefData"].arrayObject{
+            if(chefArrayData.count != 0){
+                chefData =  chefArrayData.map({(value) -> ChefInfoModel in
+                    return  ChefInfoModel(data:JSON(value))
+                })
+            }
+        }
+    }
+}
+
 class RestaurantInfoModel: NSObject {
     var restaurantName: String = "";
     var restaurantId: Int!;
