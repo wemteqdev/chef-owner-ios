@@ -97,10 +97,13 @@ class Chef_DashboardView: UIViewController{
         profile_view.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor).isActive = true
         self.navigationController?.isNavigationBarHidden = false
         //navigationController?.navigationBar.barTintColor = UIColor(red: 30/255, green: 161/255, blue: 243/255, alpha: 1.0);
+       
+        var gesture = UITapGestureRecognizer(target: self, action:  #selector (self.profileViewPage (_:)))
+        profile_view.addGestureRecognizer(gesture)
         navigationController?.navigationBar.setBackgroundImage(UIImage(named: "back_color"), for: UIBarMetrics.default)
         navigationController?.navigationBar.shadowImage = UIImage();
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
-        self.navigationItem.title = GlobalData.sharedInstance.language(key: "owner")
+        self.navigationItem.title = GlobalData.sharedInstance.language(key: "Chef")
         profile_view.backgroundColor = UIColor(red: 30/255, green: 161/255, blue: 243/255, alpha: 1.0);
         //profile_view.backgroundColor = UIColor(patternImage: UIImage(named: "back_color")!)
         self.profile_view.layer.shadowOpacity = 0;
@@ -128,7 +131,7 @@ class Chef_DashboardView: UIViewController{
         let customerId = defaults.object(forKey:"customerId");
         if customerId != nil{
             requstParams["customerToken"] = customerId
-            requstParams["customerId"] = customerId
+            requstParams["customerType"] = "2"
         }
         
         self.view.isUserInteractionEnabled = false
@@ -240,7 +243,9 @@ class Chef_DashboardView: UIViewController{
          */
         return chatDataArray
     }
-    
+    @objc func profileViewPage(_ sender:UITapGestureRecognizer){
+        self.performSegue(withIdentifier: "toprofileview", sender: self)
+    }
     private func heightPixelsDependOfPercentage (percentage: Double) -> CGFloat {
         let maxHeight: CGFloat = 120.0
         return (CGFloat(percentage) * maxHeight) / 100
@@ -613,10 +618,10 @@ class Chef_DashboardView: UIViewController{
         if defaults.object(forKey: "customerName") != nil{
             profile_name.text = defaults.object(forKey: "customerName") as? String
         } else {
-            profile_name.text = "Owner"
+            profile_name.text = "Chef"
         }
         
-        profile_owner.text = "Owner"
+        profile_owner.text = "Chef"
         if (Owner.callingApiSucceed) {
             var chartData: [BarChartData] = self.createChartDataCollection();
             print("chartData", chartData)
