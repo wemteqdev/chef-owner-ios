@@ -20,15 +20,19 @@ class Chef_DashboardViewController: UIViewController {
     @IBOutlet weak var compareBorder: UIView!
     @IBOutlet weak var part1: UIView!
     @IBOutlet weak var part2: UIView!
+    @IBOutlet weak var supplierName: UILabel!
     @IBOutlet weak var part3: UIView!
     @IBOutlet weak var compareView: UIView!
     @IBOutlet weak var addCartButton: UIButton!
+    @IBOutlet weak var productRate: UILabel!
     @IBOutlet weak var quantitytextField: UILabel!
     @IBOutlet weak var productnameLabel: UILabel!
     @IBOutlet weak var productpriceLabel: UILabel!
     @IBOutlet weak var addToCartIndicator: UIActivityIndicatorView!
     @IBOutlet weak var productImage: UIImageView!
+    @IBOutlet weak var productRateCount: UILabel!
     
+    @IBOutlet weak var productStarRating: HCSStarRatingView!
     var catalogProductViewModel:CatalogProductViewModel!
     var productId:String = ""
     var productName:String = ""
@@ -834,12 +838,12 @@ class Chef_DashboardViewController: UIViewController {
             ratingVal = ratingVal + val
             print("cccvv",ratingVal)
         }
-        
+        productStarRating.value = CGFloat((ratingVal/ratingCount) as Float)
 //        productRating.value = CGFloat((ratingVal/ratingCount) as Float)
-//        productRatingVal.text = "\(catalogProductViewModel.catalogProductModel.rating!)/5"
+        productRate.text = catalogProductViewModel.catalogProductModel.rating!
 //        productRatingCountVal.text = "\(catalogProductViewModel.reviewList.count) " + "ratings".localized
 //
-//        totalReviews.text = ("\(catalogProductViewModel.reviewList.count) \n" + "review".localized)
+        productRateCount.text = ("\(catalogProductViewModel.reviewList.count)" + "review".localized)
 //
 //        //add gesture on total reviews
 //        let addReviewGesture = UITapGestureRecognizer(target: self, action: #selector(CatalogProduct.totalReviewsClick(_:)))
@@ -892,7 +896,8 @@ class Chef_DashboardViewController: UIViewController {
 //
 //        /////////////////// Market Place ///////////////////
 //
-//        if catalogProductViewModel.sellerInformationData.sellerID != "" && catalogProductViewModel.sellerInformationData.sellerID != "0"{
+        if catalogProductViewModel.sellerInformationData.sellerID != "" && catalogProductViewModel.sellerInformationData.sellerID != "0"{
+            supplierName.text = catalogProductViewModel.sellerInformationData.sellerShopTitle;
 //            contactUsButton.setTitle("contactus".localized, for: .normal)
 //            contactUsButton.setTitleColor(UIColor().HexToColor(hexString: BUTTON_COLOR), for: .normal)
 //            sellerNameButton.setTitle(catalogProductViewModel.sellerInformationData.sellerShopTitle, for: .normal)
@@ -921,7 +926,7 @@ class Chef_DashboardViewController: UIViewController {
 //        }else{
 //            marketplaceHeightConstarints.constant = 0
 //            marketPlaceView.backgroundColor = UIColor.white
-//        }
+        }
 //
 //        ////////////////// grouped products //////////////////
 //

@@ -83,7 +83,7 @@ var sellerName:String!
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        let cell:ProfileCell = tableView.dequeueReusableCell(withIdentifier: "ProfileCell") as! ProfileCell
        cell.name.text = self.chatSellerListViewModel.chatSellerListModel[indexPath.row].name
-       GlobalData.sharedInstance.getImageFromUrl(imageUrl:  self.chatSellerListViewModel.chatSellerListModel[indexPath.row].profileImage, imageView:cell.profileImage)
+      // GlobalData.sharedInstance.getImageFromUrl(imageUrl:  self.chatSellerListViewModel.chatSellerListModel[indexPath.row].profileImage, imageView:cell.profileImage)
        cell.selectionStyle = .none
         return cell
     }

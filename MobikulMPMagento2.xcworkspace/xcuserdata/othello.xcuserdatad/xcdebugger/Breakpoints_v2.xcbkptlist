@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobikulMPMagento2/Create Account/CreateChef.swift"
-            timestampString = "560295209.7213809"
+            timestampString = "560617943.187101"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "80"
@@ -86,63 +86,49 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "MobikulMPMagento2.ChefsDashboardController.addChefEmail.getter : Swift.String"
+                  symbolName = "MobikulMPMagento2.ChefsDashboardController.removeButtonClick(id: Swift.Int) -&gt; ()"
                   moduleName = "MobikulMPMagento2"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Volumes/WORK/chef-ios-app/MobikulMPMagento2/Owner/Chef%20Dashboard/ChefsDashboardController.swift"
-                  timestampString = "560583024.351073"
+                  timestampString = "560626878.07548"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "20"
                   endingLineNumber = "20"
-                  offsetFromSymbolStart = "132">
+                  offsetFromSymbolStart = "652">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "MobikulMPMagento2.ChefsDashboardController.addChefEmail.setter : Swift.String"
+                  symbolName = "closure #2 (__ObjC.UIAlertAction) -&gt; () in MobikulMPMagento2.ChefsDashboardController.removeButtonClick(id: Swift.Int) -&gt; ()"
                   moduleName = "MobikulMPMagento2"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Volumes/WORK/chef-ios-app/MobikulMPMagento2/Owner/Chef%20Dashboard/ChefsDashboardController.swift"
-                  timestampString = "560583024.354425"
+                  timestampString = "560626878.077836"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "20"
-                  endingLineNumber = "20"
-                  offsetFromSymbolStart = "164">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MobikulMPMagento2.ChefsDashboardController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; MobikulMPMagento2.ChefsDashboardController"
-                  moduleName = "MobikulMPMagento2"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/WORK/chef-ios-app/MobikulMPMagento2/Owner/Chef%20Dashboard/ChefsDashboardController.swift"
-                  timestampString = "560583024.357834"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "20"
-                  endingLineNumber = "20"
-                  offsetFromSymbolStart = "881">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MobikulMPMagento2.ChefsDashboardController.init(coder: __ObjC.NSCoder) -&gt; Swift.Optional&lt;MobikulMPMagento2.ChefsDashboardController&gt;"
-                  moduleName = "MobikulMPMagento2"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/WORK/chef-ios-app/MobikulMPMagento2/Owner/Chef%20Dashboard/ChefsDashboardController.swift"
-                  timestampString = "560583024.360446"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "20"
-                  endingLineNumber = "20"
-                  offsetFromSymbolStart = "794">
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "12">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MobikulMPMagento2/Chef_Profile/Chef_PhotoViewCell.swift"
+            timestampString = "560586334.878584"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "awakeFromNib()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

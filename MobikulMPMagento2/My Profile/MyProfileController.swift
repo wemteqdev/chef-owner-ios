@@ -177,104 +177,104 @@ class MyProfileController: UIViewController,UITableViewDelegate, UITableViewData
             
             if indexPath.section == 1{
                 if indexPath.row == 0{
-                    cell.profileImage.image = UIImage(named: "ic_signin")!
+                    //cell.profileImage.image = UIImage(named: "ic_signin")!
                 }else if indexPath.row == 1{
-                    cell.profileImage.image = UIImage(named: "ic_notificationprofile")!
+                    //cell.profileImage.image = UIImage(named: "ic_notificationprofile")!
                 }else if indexPath.row == 2{
-                    cell.profileImage.image = UIImage(named: "ic_language")!
+                    //cell.profileImage.image = UIImage(named: "ic_language")!
                 }else if indexPath.row == 3{
-                    cell.profileImage.image = UIImage(named: "ic_currency")!
+                    //cell.profileImage.image = UIImage(named: "ic_currency")!
                 }else if indexPath.row == 4{
-                    cell.profileImage.image = UIImage(named: "ic_searchterms")!
+                    //cell.profileImage.image = UIImage(named: "ic_searchterms")!
                 }else if indexPath.row == 5{
-                    cell.profileImage.image = UIImage(named: "ic_searchterms")!
+                   // cell.profileImage.image = UIImage(named: "ic_searchterms")!
                 }else if indexPath.row == 6{
-                    cell.profileImage.image = UIImage(named: "ic_profilecompare")!
+                    //cell.profileImage.image = UIImage(named: "ic_profilecompare")!
                 }else if indexPath.row == 7{
-                    cell.profileImage.image = UIImage(named: "ic_privacy")!
+                    //cell.profileImage.image = UIImage(named: "ic_privacy")!
                 }else if indexPath.row == 8{
-                    cell.profileImage.image = UIImage(named: "ic_marketplace")!
+                    //cell.profileImage.image = UIImage(named: "ic_marketplace")!
                 }
             }else if indexPath.section == 2{
                 if indexPath.row == 0{
-                    cell.profileImage.image = UIImage(named: "ic_myorder")!
+                   // cell.profileImage.image = UIImage(named: "ic_myorder")!
                 }else if indexPath.row == 1{
-                    cell.profileImage.image = UIImage(named: "ic_currency")!
+                    //cell.profileImage.image = UIImage(named: "ic_currency")!
                 }else if indexPath.row == 2{
-                    cell.profileImage.image = UIImage(named: "ic_language")!
+                    //cell.profileImage.image = UIImage(named: "ic_language")!
                 }else if indexPath.row == 3{
-                    cell.profileImage.image = UIImage(named: "ic_mywishlist")!
+                    //cell.profileImage.image = UIImage(named: "ic_mywishlist")!
                 }else if indexPath.row == 4{
-                    cell.profileImage.image = UIImage(named: "ic_productreviews")!
+                    //cell.profileImage.image = UIImage(named: "ic_productreviews")!
                 }else if indexPath.row == 5{
-                    cell.profileImage.image = UIImage(named: "ic_accountinfo")!
+                   // cell.profileImage.image = UIImage(named: "ic_accountinfo")!
                 }else if indexPath.row == 6{
-                    cell.profileImage.image = UIImage(named: "ic_addressbook")!
+                    //cell.profileImage.image = UIImage(named: "ic_addressbook")!
                 }else if indexPath.row == 7{
-                    cell.profileImage.image = UIImage(named: "ic_profilecompare")!
+                    //cell.profileImage.image = UIImage(named: "ic_profilecompare")!
                 }else if indexPath.row == 8{
-                    cell.profileImage.image = UIImage(named: "ic_searchterms")!
+                    //cell.profileImage.image = UIImage(named: "ic_searchterms")!
                 }else if indexPath.row == 9{
-                    cell.profileImage.image = UIImage(named: "ic_advancesearch")!
+                    //cell.profileImage.image = UIImage(named: "ic_advancesearch")!
                 }else if indexPath.row == 10{
-                    cell.profileImage.image = UIImage(named: "ic_downloadable")!
+                    //cell.profileImage.image = UIImage(named: "ic_downloadable")!
                 }else if indexPath.row == 11{
-                    cell.profileImage.image = UIImage(named: "ic_privacy")!
+                   // cell.profileImage.image = UIImage(named: "ic_privacy")!
                 }
             }else if indexPath.section == 3{
                 if defaults.object(forKey: "isSeller") as! String == "t" && defaults.object(forKey: "isPending") as! String == "f"{
                     if indexPath.row == 0{
-                        cell.profileImage.image = UIImage(named: "ic_marketplace")!
+                       // cell.profileImage.image = UIImage(named: "ic_marketplace")!
                     }else if indexPath.row == 1{
-                        cell.profileImage.image = UIImage(named: "ic_sellerdashboard")!
+                      //  cell.profileImage.image = UIImage(named: "ic_sellerdashboard")!
                     }else if indexPath.row == 2{
-                        cell.profileImage.image = UIImage(named: "ic_sellerprofile")!
+                      //  cell.profileImage.image = UIImage(named: "ic_sellerprofile")!
                     }else if indexPath.row == 3{
-                        cell.profileImage.image = UIImage(named: "ic_sellerorder")!
+                       // cell.profileImage.image = UIImage(named: "ic_sellerorder")!
                     }else if indexPath.row == 4{
-                        cell.profileImage.image = UIImage(named: "ic_transaction")!
+                       // cell.profileImage.image = UIImage(named: "ic_transaction")!
                         
                     }else if indexPath.row == 5{
-                        cell.profileImage.image = UIImage(named: "ic_attributes")!
+                       // cell.profileImage.image = UIImage(named: "ic_attributes")!
                         
                     }
                     else if indexPath.row == 6{
-                        cell.profileImage.image = UIImage(named: "ic_myproduct")!
+                       // cell.profileImage.image = UIImage(named: "ic_myproduct")!
                     }else if indexPath.row == 7{
-                        cell.profileImage.image = UIImage(named: "ic_seller_print")!
+                       // cell.profileImage.image = UIImage(named: "ic_seller_print")!
                     }
                     
                     if defaults.object(forKey: "isAdmin") as? String == "f" {
                         if indexPath.row == 8{
-                            cell.profileImage.image = UIImage(named: "ic_askQuestion")!
+                           // cell.profileImage.image = UIImage(named: "ic_askQuestion")!
                         }else if indexPath.row == 9{
-                            cell.profileImage.image = UIImage(named: "ic_chat")!
+                           // cell.profileImage.image = UIImage(named: "ic_chat")!
                         }
                     }else{
                         if indexPath.row == 8{
-                            cell.profileImage.image = UIImage(named: "ic_chat")!
+                           // cell.profileImage.image = UIImage(named: "ic_chat")!
                         }
                     }
                     
                 }else if defaults.object(forKey: "isSeller") as! String == "t" && defaults.object(forKey: "isPending") as! String == "t"{
                     if indexPath.row == 0{
-                        cell.profileImage.image = UIImage(named: "ic_marketplace")!
+                       // cell.profileImage.image = UIImage(named: "ic_marketplace")!
                     }else if indexPath.row == 1{
-                        cell.profileImage.image = UIImage(named: "ic_sellerdashboard")!
+                      //  cell.profileImage.image = UIImage(named: "ic_sellerdashboard")!
                     }else if indexPath.row == 2{
-                        cell.profileImage.image = UIImage(named: "ic_askQuestion")!
+                       // cell.profileImage.image = UIImage(named: "ic_askQuestion")!
                     }
                     
                 }else if defaults.object(forKey: "isSeller") as! String == "f" && defaults.object(forKey: "isPending") as! String == "f"{
                     if indexPath.row == 0{
-                        cell.profileImage.image = UIImage(named: "ic_marketplace")!
+                       // cell.profileImage.image = UIImage(named: "ic_marketplace")!
                     }else if indexPath.row == 1{
-                        cell.profileImage.image = UIImage(named: "ic_becomeseller")!
+                       // cell.profileImage.image = UIImage(named: "ic_becomeseller")!
                     }
                 }
             }else if indexPath.section == 4{
                 if indexPath.row == 0{
-                    cell.profileImage.image = UIImage(named: "ic_logout")!
+                  //  cell.profileImage.image = UIImage(named: "ic_logout")!
                 }
             }
             cell.selectionStyle = .none

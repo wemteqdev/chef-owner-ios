@@ -9,14 +9,18 @@
 import UIKit
 
 class ProfileCell: UITableViewCell {
-@IBOutlet weak var profileImage: UIImageView!
-@IBOutlet weak var name: UILabel!
+//@IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var name: UILabel!
+    
+    @IBOutlet weak var changeButton: UIButton!
+    @IBOutlet weak var nameValue: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        profileImage.layer.cornerRadius = 20;
-        profileImage.layer.masksToBounds = true
-        profileImage.layer.backgroundColor = UIColor().HexToColor(hexString: BUTTON_COLOR).cgColor
+//        profileImage.layer.cornerRadius = 20;
+//        profileImage.layer.masksToBounds = true
+//        profileImage.layer.backgroundColor = UIColor().HexToColor(hexString: BUTTON_COLOR).cgColor
+        changeButton.isHidden = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
