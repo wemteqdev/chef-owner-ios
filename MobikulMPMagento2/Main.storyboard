@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="G75-iq-Gnd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ySd-1f-FUO">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -21,11 +21,11 @@
             <objects>
                 <viewController id="G75-iq-Gnd" customClass="SignInOrNew" customModule="MobikulMPMagento2" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Emo-In-emg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yta-BQ-yGw">
-                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vlr-7t-acu">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
@@ -303,11 +303,11 @@
                         <viewControllerLayoutGuide type="bottom" id="ZZq-o6-zbQ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kOQ-iF-zUQ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EkL-gS-CZE">
-                                <rect key="frame" x="4" y="64" width="406" height="54"/>
+                                <rect key="frame" x="4" y="0.0" width="406" height="54"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dse-LE-5cH">
                                         <rect key="frame" x="326" y="0.0" width="80" height="54"/>
@@ -412,7 +412,7 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ikk-iu-P0U">
-                                <rect key="frame" x="4" y="118" width="406" height="569"/>
+                                <rect key="frame" x="4" y="54" width="406" height="569"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="AiC-x2-bsu">
                                     <size key="itemSize" width="150" height="150"/>
@@ -432,7 +432,7 @@
                                 </cells>
                             </collectionView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eJk-tH-whL">
-                                <rect key="frame" x="364" y="607" width="30" height="30"/>
+                                <rect key="frame" x="364" y="543" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="Hg1-9z-AKi"/>
                                     <constraint firstAttribute="height" constant="30" id="oze-m9-t6S"/>
@@ -457,10 +457,12 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="dey-il-5a6"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="filterView" destination="tgA-Gd-CRf" id="rky-CM-3mY"/>
                         <outlet property="filterbyLabel" destination="RQ4-oH-GSi" id="AQt-Ul-ETk"/>
                         <outlet property="gridListbyLabel" destination="88g-hO-r0T" id="VQq-gA-Nbu"/>
                         <outlet property="ic_grid_list_imageview" destination="N8Y-dE-ref" id="McV-xQ-wNb"/>
                         <outlet property="productCollectionView" destination="ikk-iu-P0U" id="dTJ-Os-LGc"/>
+                        <outlet property="sortView" destination="byw-J8-Xk5" id="BVa-N0-qhN"/>
                         <outlet property="sortbyLabel" destination="fo7-It-wpe" id="qkC-AL-wAh"/>
                         <outlet property="upArrow" destination="eJk-tH-whL" id="e90-zA-BdI"/>
                         <segue destination="Dw8-07-Hqp" kind="show" identifier="comparelist" id="6qv-Xv-DRt"/>
@@ -490,11 +492,11 @@
             <objects>
                 <viewController id="Ycv-bR-OtB" customClass="StoreViewController" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ElB-X8-5y9">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="NvY-eb-Tzj">
-                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -749,11 +751,11 @@
             <objects>
                 <viewController id="MQL-Iv-HCB" customClass="MyProfileController" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="R3I-wQ-vhL">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ccc-Js-qm9">
-                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -803,11 +805,11 @@
             <objects>
                 <viewController id="YHF-GM-Vkp" customClass="CustomerLogin" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xgB-kL-S2O">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1vS-wg-UmM">
-                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SQ2-Mw-NcH">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
@@ -1059,11 +1061,11 @@
             <objects>
                 <viewController id="Gc1-HF-237" customClass="AddressBookController" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vRH-cY-TvC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SoL-fN-RSF">
-                                <rect key="frame" x="0.0" y="64" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_addnewaddress" translatesAutoresizingMaskIntoConstraints="NO" id="bvS-je-lWw">
                                         <rect key="frame" x="10" y="10" width="30" height="30"/>
@@ -1093,7 +1095,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="es7-l4-UMg">
-                                <rect key="frame" x="0.0" y="114" width="414" height="573"/>
+                                <rect key="frame" x="0.0" y="50" width="414" height="573"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -2564,11 +2566,11 @@
                         <viewControllerLayoutGuide type="bottom" id="chO-X8-0vC"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Osd-Xx-VhQ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="1200"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1087"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Nf-cg-Y0G">
-                                <rect key="frame" x="0.0" y="64" width="375" height="1087"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="1087"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jh2-Yv-WfO">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="850"/>
@@ -2871,11 +2873,11 @@
                         <viewControllerLayoutGuide type="bottom" id="CsM-X8-byq"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fRF-8Z-57N">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="218" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qs3-1J-nzs">
-                                <rect key="frame" x="4" y="64" width="406" height="623"/>
+                                <rect key="frame" x="4" y="0.0" width="406" height="623"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="218" id="7iB-pK-DpE">
@@ -2948,6 +2950,7 @@
                     <navigationItem key="navigationItem" id="tqC-9b-hXi"/>
                     <connections>
                         <outlet property="myOrderTableView" destination="pcH-7K-Ct8" id="Eum-Xv-AMx"/>
+                        <segue destination="XmM-cD-fvK" kind="show" identifier="customerorderdetails" id="Ix9-K4-5sQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0dX-bq-eib" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2963,11 +2966,11 @@
                         <viewControllerLayoutGuide type="bottom" id="VKW-dK-tYl"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="pCg-8D-Wha">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="mYb-So-o2l">
-                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -3183,11 +3186,11 @@
                         <viewControllerLayoutGuide type="bottom" id="dAp-lD-w6p"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="EXe-wC-SBT">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dir-LW-ajL">
-                                <rect key="frame" x="4" y="0.0" width="406" height="736"/>
+                                <rect key="frame" x="4" y="-64" width="406" height="736"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="7JY-De-tFd" customClass="NotificationTableViewCell" customModule="MobikulMPMagento2" customModuleProvider="target">
@@ -3228,11 +3231,11 @@
                         <viewControllerLayoutGuide type="bottom" id="3GQ-CH-uzO"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="6UK-qd-EQf">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="235" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1QW-dm-xkb">
-                                <rect key="frame" x="4" y="0.0" width="406" height="687"/>
+                                <rect key="frame" x="4" y="-64" width="406" height="687"/>
                                 <color key="backgroundColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="emptyCell" id="jE1-oD-59Z">
@@ -4485,11 +4488,11 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                         <viewControllerLayoutGuide type="bottom" id="sga-21-WwN"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="lri-Jx-9zh">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="0F5-gg-Fs3">
-                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -4518,11 +4521,11 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
             <objects>
                 <viewController id="Pmp-1W-LZe" customClass="MyProductListController" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Oaz-qA-SU4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ns-ev-Ag5">
-                                <rect key="frame" x="10" y="74" width="394" height="40"/>
+                                <rect key="frame" x="10" y="10" width="394" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="DcA-c7-Ssi"/>
                                 </constraints>
@@ -4532,7 +4535,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3uc-WG-Kt4">
-                                <rect key="frame" x="0.0" y="124" width="414" height="563"/>
+                                <rect key="frame" x="0.0" y="60" width="414" height="563"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -6049,11 +6052,11 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                         <viewControllerLayoutGuide type="bottom" id="o6k-zQ-h96"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="IfJ-uB-NwG">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UE3-uJ-9aA">
-                                <rect key="frame" x="4" y="0.0" width="406" height="687"/>
+                                <rect key="frame" x="4" y="-64" width="406" height="687"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tbl-AZ-y29">
                                         <rect key="frame" x="0.0" y="0.0" width="406" height="4000"/>
@@ -7677,11 +7680,11 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
             <objects>
                 <viewController id="7p7-X8-GKh" customClass="SellerDashBoardController" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jiW-YN-y9R">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5TG-ss-BWX">
-                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -7708,11 +7711,11 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
             <objects>
                 <viewController id="Iow-QT-fkY" customClass="SellerProfileController" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AJE-h2-hmy">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sDx-Xk-fEu">
-                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wyC-SX-Cyl">
                                         <rect key="frame" x="0.0" y="0.0" width="413" height="2500"/>
@@ -8442,7 +8445,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                                 </constraints>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lee-l6-0MZ">
-                                <rect key="frame" x="10" y="637" width="394" height="40"/>
+                                <rect key="frame" x="10" y="573" width="394" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="kAe-iQ-M1u"/>
                                 </constraints>
@@ -8508,11 +8511,11 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
             <objects>
                 <viewController id="lRV-zv-chZ" customClass="SellerOrderViewController" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9bo-Cp-hPZ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xbY-ai-hZ1">
-                                <rect key="frame" x="0.0" y="64" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y1t-tt-uTa">
                                         <rect key="frame" x="0.0" y="0.0" width="207" height="50"/>
@@ -8543,7 +8546,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TAm-9x-gYo">
-                                <rect key="frame" x="0.0" y="114" width="414" height="573"/>
+                                <rect key="frame" x="0.0" y="50" width="414" height="573"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -8591,11 +8594,11 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
             <objects>
                 <viewController id="XWm-fQ-Y0p" customClass="SellerInvoiceShippingDownloadController" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="f8I-b5-F8b">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yjS-cs-W5K" customClass="SkyFloatingLabelTextField" customModule="MobikulMPMagento2" customModuleProvider="target">
-                                <rect key="frame" x="10" y="84" width="394" height="40"/>
+                                <rect key="frame" x="10" y="20" width="394" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="4PT-s8-XsQ"/>
                                 </constraints>
@@ -8607,7 +8610,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Lg-ya-Wdf" customClass="SkyFloatingLabelTextField" customModule="MobikulMPMagento2" customModuleProvider="target">
-                                <rect key="frame" x="10" y="154" width="394" height="40"/>
+                                <rect key="frame" x="10" y="90" width="394" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="PGk-hi-upB"/>
                                 </constraints>
@@ -8619,7 +8622,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Lr-Sy-qag">
-                                <rect key="frame" x="156.66666666666666" y="249" width="99.999999999999972" height="30"/>
+                                <rect key="frame" x="156.66666666666666" y="185" width="99.999999999999972" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="4jk-a6-moS"/>
                                 </constraints>
@@ -8673,17 +8676,17 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
             <objects>
                 <viewController id="pFi-zU-ekC" customClass="ManagePrintPDFHeader" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Pxh-v8-KRz">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5rz-Mf-NV1">
-                                <rect key="frame" x="10" y="74" width="394" height="20.333333333333329"/>
+                                <rect key="frame" x="10" y="9.9999999999999982" width="394" height="20.333333333333329"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eOx-nU-q1f">
-                                <rect key="frame" x="10" y="115" width="394" height="128"/>
+                                <rect key="frame" x="10" y="51" width="394" height="128"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="VxX-PA-sQb"/>
@@ -8692,7 +8695,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0WR-mP-nBz">
-                                <rect key="frame" x="132" y="284" width="150" height="30"/>
+                                <rect key="frame" x="132" y="220" width="150" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="udj-3C-bQ6"/>
                                 </constraints>
@@ -8730,24 +8733,24 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
             <objects>
                 <viewController id="3Sz-T5-GUT" customClass="MyTransactionList" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="G5N-TG-LXV">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HuZ-Dv-YN1">
-                                <rect key="frame" x="10" y="74" width="394" height="21"/>
+                                <rect key="frame" x="10" y="10" width="394" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yYC-oS-PxU">
-                                <rect key="frame" x="10" y="103" width="394" height="30"/>
+                                <rect key="frame" x="10" y="39" width="394" height="30"/>
                                 <state key="normal" title="Download .CSV"/>
                                 <connections>
                                     <action selector="downloadCsVClick:" destination="3Sz-T5-GUT" eventType="touchUpInside" id="rtt-Tb-o2V"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iaR-ss-1RO">
-                                <rect key="frame" x="0.0" y="133" width="414" height="554"/>
+                                <rect key="frame" x="0.0" y="69" width="414" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -8798,11 +8801,11 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
             <objects>
                 <viewController id="Izc-lh-r2o" customClass="DownloadTransactionListController" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iAm-AR-41v">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JQO-Wx-4Yk" customClass="SkyFloatingLabelTextField" customModule="MobikulMPMagento2" customModuleProvider="target">
-                                <rect key="frame" x="10" y="74" width="394" height="40"/>
+                                <rect key="frame" x="10" y="10" width="394" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="PqU-SZ-afc"/>
                                 </constraints>
@@ -8811,7 +8814,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0YQ-J9-wF3" customClass="SkyFloatingLabelTextField" customModule="MobikulMPMagento2" customModuleProvider="target">
-                                <rect key="frame" x="10" y="124" width="394" height="40"/>
+                                <rect key="frame" x="10" y="60" width="394" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="ABf-g0-mlY"/>
                                 </constraints>
@@ -8823,7 +8826,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fVF-B7-fc3" customClass="SkyFloatingLabelTextField" customModule="MobikulMPMagento2" customModuleProvider="target">
-                                <rect key="frame" x="10" y="174" width="394" height="40"/>
+                                <rect key="frame" x="10" y="110" width="394" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="0kB-hx-M1b"/>
                                 </constraints>
@@ -8835,7 +8838,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a0D-NZ-EZm">
-                                <rect key="frame" x="184" y="264" width="46" height="30"/>
+                                <rect key="frame" x="184" y="200" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="downloadClick:" destination="Izc-lh-r2o" eventType="touchUpInside" id="dqe-JA-5s3"/>
@@ -8883,11 +8886,11 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
             <objects>
                 <viewController id="lJ9-8r-GSR" customClass="MyTransactionDetailsController" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RWN-yl-VKb">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="dJh-fa-Bu7">
-                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -8913,11 +8916,11 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
             <objects>
                 <viewController storyboardIdentifier="SellerDetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="IUt-XU-Cgt" customClass="SellerDetailsViewController" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ErU-QM-hXE">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bWs-Fm-fyt">
-                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -8949,11 +8952,11 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
             <objects>
                 <viewController id="HCA-3G-L0W" customClass="SellerWebViewController" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VmO-Pi-h0j">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IiJ-dH-Jni">
-                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
                         </subviews>
@@ -8979,11 +8982,11 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
             <objects>
                 <viewController id="NNK-JC-BuS" customClass="SellerReviewsController" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vPY-X7-Ggc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UB3-6b-ik1">
-                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -9172,11 +9175,11 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
             <objects>
                 <viewController id="EJ7-kR-jp1" customClass="SellerListController" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wrO-Li-tMF">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R82-tV-6r4">
-                                <rect key="frame" x="10" y="74" width="354" height="30"/>
+                                <rect key="frame" x="10" y="10" width="354" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="CnJ-Ng-GZc"/>
                                 </constraints>
@@ -9185,7 +9188,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VBz-b0-lyH">
-                                <rect key="frame" x="364" y="74" width="40" height="30"/>
+                                <rect key="frame" x="364" y="10" width="40" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="MbS-FE-grc"/>
@@ -9197,7 +9200,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wyk-oM-3lm">
-                                <rect key="frame" x="0.0" y="112" width="414" height="586"/>
+                                <rect key="frame" x="0.0" y="48" width="414" height="586"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -9279,6 +9282,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                         <outlet property="searchTextField" destination="KZS-oZ-n4Z" id="IWx-54-AcC"/>
                         <outlet property="tableView" destination="vSw-bs-PJ6" id="EeG-Wx-aej"/>
                         <segue destination="F6e-Tf-bBw" kind="show" identifier="mapview" id="uDK-GN-K4D"/>
+                        <segue destination="qGx-jQ-3jk" kind="show" identifier="productcategory" id="cfP-un-lQ8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="atq-Am-tCm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -9290,7 +9294,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
             <objects>
                 <viewController id="AQD-HV-lbM" customClass="ColorPickerController" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NJa-8r-OmT">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="gqo-Fb-Pic"/>
@@ -9456,11 +9460,11 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                         <viewControllerLayoutGuide type="bottom" id="Q5D-OB-J00"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="LqY-Vz-cUQ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wKZ-5o-X1L">
-                                <rect key="frame" x="4" y="64" width="406" height="623"/>
+                                <rect key="frame" x="4" y="0.0" width="406" height="623"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6FB-FY-FMT">
                                         <rect key="frame" x="0.0" y="0.0" width="406" height="711"/>
@@ -9584,11 +9588,11 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
             <objects>
                 <viewController id="Pri-Af-dnd" customClass="SellerMakeReviewController" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IOb-w1-Rqx">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qAc-Qd-hJg">
-                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Uj-RU-fls">
                                         <rect key="frame" x="0.0" y="0.0" width="413" height="600"/>
@@ -9678,19 +9682,19 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                                                 </connections>
                                             </view>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="NAME" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZgM-be-wvf" customClass="SkyFloatingLabelTextField" customModule="MobikulMPMagento2" customModuleProvider="target">
-                                                <rect key="frame" x="10" y="304" width="393" height="39.333333333333314"/>
+                                                <rect key="frame" x="10" y="304" width="393" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="NAME" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6gg-ac-S5B" customClass="SkyFloatingLabelTextField" customModule="MobikulMPMagento2" customModuleProvider="target">
-                                                <rect key="frame" x="10" y="353.33333333333331" width="393" height="39"/>
+                                                <rect key="frame" x="10" y="344" width="393" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="NAME" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d8f-8U-UlM" customClass="SkyFloatingLabelTextField" customModule="MobikulMPMagento2" customModuleProvider="target">
-                                                <rect key="frame" x="10" y="404" width="393" height="39.333333333333314"/>
+                                                <rect key="frame" x="10" y="385.66666666666669" width="393" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -9726,7 +9730,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jgi-fn-iaP">
-                                        <rect key="frame" x="183.66666666666666" y="494.33333333333337" width="46" height="30"/>
+                                        <rect key="frame" x="183.66666666666666" y="466.66666666666663" width="46" height="30"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
                                             <action selector="SubmitClick:" destination="Pri-Af-dnd" eventType="touchUpInside" id="t0g-56-0rl"/>
@@ -9773,11 +9777,11 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
             <objects>
                 <viewController id="Vmh-Rf-h4P" customClass="CreateCreditMemoViewController" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Efx-Wp-JLu">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="mpj-sz-Ggp">
-                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -9803,11 +9807,11 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
             <objects>
                 <viewController id="fJ6-uG-8Sd" customClass="SellerOrderDetailsController" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4hQ-EZ-62l">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="Z8w-BF-nLJ">
-                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -9837,11 +9841,11 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
             <objects>
                 <viewController id="296-g6-RA0" customClass="SellerInvoiceDetailsController" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WFA-JE-YRm">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="YlT-YX-lWY">
-                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -9875,11 +9879,11 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
             <objects>
                 <viewController id="p3D-3e-9sM" customClass="ShipmentDetailsController" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fvc-4N-yof">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="mjS-Hq-OBo">
-                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -9913,11 +9917,11 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
             <objects>
                 <viewController id="vao-5X-TsW" customClass="CreditMemoDetailsController" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aV2-x0-NR2">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="IiV-m1-cIJ">
-                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -9950,11 +9954,11 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
             <objects>
                 <viewController id="2vv-LX-zRF" customClass="CreditMemoListViewController" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5MU-iL-aGB">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="5nd-RO-9T8">
-                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -9985,11 +9989,11 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                         <viewControllerLayoutGuide type="bottom" id="8af-Ae-lGk"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="eBO-dU-pGX">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Shop URL" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zsu-xm-qj7" customClass="UIFloatLabelTextField">
-                                <rect key="frame" x="25" y="72" width="364" height="50"/>
+                                <rect key="frame" x="25" y="8" width="364" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="t87-Hw-QRZ"/>
                                 </constraints>
@@ -9998,7 +10002,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Shop Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tvg-Jy-tay" customClass="UIFloatLabelTextField">
-                                <rect key="frame" x="25" y="130" width="364" height="50"/>
+                                <rect key="frame" x="25" y="66" width="364" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="rof-PN-Kkx"/>
                                 </constraints>
@@ -10007,7 +10011,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ctL-wh-XZH">
-                                <rect key="frame" x="25" y="188" width="364" height="50"/>
+                                <rect key="frame" x="25" y="124" width="364" height="50"/>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="igc-Dh-az6"/>
@@ -10053,11 +10057,11 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                         <viewControllerLayoutGuide type="bottom" id="3DN-CK-l2L"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="YB2-K0-N6K">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yoF-hK-Sjg">
-                                <rect key="frame" x="4" y="0.0" width="406" height="736"/>
+                                <rect key="frame" x="4" y="-64" width="406" height="736"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zjR-Ou-Jvx">
                                         <rect key="frame" x="0.0" y="0.0" width="406" height="699"/>
@@ -10154,11 +10158,11 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
             <objects>
                 <viewController id="h5L-qK-4ry" customClass="ChatSellerListController" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cAV-mA-GWh">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8xR-g0-52U">
-                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -10189,11 +10193,11 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                         <viewControllerLayoutGuide type="bottom" id="xMG-MC-9h8"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="D7Y-U6-uO2">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Rd9-mQ-kYL">
-                                <rect key="frame" x="4" y="14" width="406" height="673"/>
+                                <rect key="frame" x="4" y="-50" width="406" height="673"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="7Ho-51-AH4" id="M1O-JV-GaP"/>
@@ -10228,11 +10232,11 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                         <viewControllerLayoutGuide type="bottom" id="Sqb-ds-9Zd"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="4yv-1X-6MD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QWP-ba-e61">
-                                <rect key="frame" x="4" y="10" width="406" height="677"/>
+                                <rect key="frame" x="4" y="-54" width="406" height="677"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
                         </subviews>
@@ -10265,11 +10269,11 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
             <objects>
                 <viewController id="gIl-4F-Hdq" customClass="AddProductController" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="t6j-cL-zKw">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iez-40-h8R">
-                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ra7-GK-8Ef">
                                         <rect key="frame" x="0.0" y="0.0" width="413" height="1808"/>
@@ -10748,7 +10752,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                                 </constraints>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a1E-pV-ptM">
-                                <rect key="frame" x="10" y="627" width="394" height="50"/>
+                                <rect key="frame" x="10" y="563" width="394" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="suY-aQ-iz3"/>
                                 </constraints>
@@ -10828,11 +10832,11 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                         <viewControllerLayoutGuide type="bottom" id="X4q-yd-prm"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="1Is-Rl-WwO">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QFV-JP-9R6">
-                                <rect key="frame" x="0.0" y="64" width="414" height="551"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="551"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -10841,7 +10845,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DyK-Du-3cF">
-                                <rect key="frame" x="0.0" y="617" width="414" height="70"/>
+                                <rect key="frame" x="0.0" y="553" width="414" height="70"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="xPy-X6-ZqH"/>
@@ -10875,15 +10879,15 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
             <objects>
                 <viewController id="qYj-FP-gIU" customClass="CreateAttributesController" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KnW-gv-HAy">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3s9-zO-cYE">
-                                <rect key="frame" x="0.0" y="64" width="414" height="573"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="573"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="34s-kV-IGh">
-                                <rect key="frame" x="0.0" y="642" width="414" height="40"/>
+                                <rect key="frame" x="0.0" y="578" width="414" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="dUg-jn-Ja4"/>
                                 </constraints>
@@ -10923,7 +10927,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                         <viewControllerLayoutGuide type="bottom" id="Ir2-oS-zEU"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="wgc-qC-vQH">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="WXg-xe-tGd"/>
@@ -10942,11 +10946,11 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                         <viewControllerLayoutGuide type="bottom" id="Fyi-tE-fE7"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="6fy-pU-sxs">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O18-th-261">
-                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2kd-Ud-4NC">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="667"/>
@@ -10995,11 +10999,11 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                         <viewControllerLayoutGuide type="bottom" id="jqv-EL-j1k"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="9Sn-wD-UrS">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Nyi-sf-ceD">
-                                <rect key="frame" x="4" y="64" width="406" height="623"/>
+                                <rect key="frame" x="4" y="0.0" width="406" height="623"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="qNL-vC-Als" id="mab-ZD-yZR"/>
@@ -11029,11 +11033,11 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
             <objects>
                 <viewController id="6y1-YW-9WG" customClass="AddRelatedProductController" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IGm-2a-w3y">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZMU-su-7Rd">
-                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -11074,11 +11078,11 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
             <objects>
                 <viewController id="Bqw-OS-3xf" customClass="UpselleViewController" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zXm-qX-ySh">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dco-dB-pL5">
-                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -11119,11 +11123,11 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
             <objects>
                 <viewController id="myX-Tn-RkX" customClass="CrossSellViewController" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="daY-96-fyf">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bBJ-Cb-XYt">
-                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -11294,11 +11298,11 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                         <viewControllerLayoutGuide type="bottom" id="a1e-1U-Vzf"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kgV-df-IKH">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rit-97-T3n">
-                                <rect key="frame" x="4" y="13" width="406" height="674"/>
+                                <rect key="frame" x="4" y="-51" width="406" height="674"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
                         </subviews>
@@ -12203,11 +12207,11 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
             <objects>
                 <viewController id="IGt-ex-Y3j" customClass="Chef_Owner_Choice" customModule="MobikulMPMagento2" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DMg-v0-JWu">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e4M-4x-FYJ">
-                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NOJ-Wg-vhe">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
@@ -12329,11 +12333,11 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
             <objects>
                 <viewController id="H5F-rH-1aA" customClass="Forgotpassword" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WpW-Zt-uGI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jnO-ey-eum">
-                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AjL-3e-7ly">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
@@ -14099,16 +14103,13 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="EOD-9W-6dY">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="1154.3333333333333"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fVq-qC-CJh" userLabel="BannerView">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="180"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="361"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="product-banner" translatesAutoresizingMaskIntoConstraints="NO" id="r5E-V1-Reh">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="180"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="180" id="Ds1-DQ-1hT"/>
-                                                </constraints>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="361"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -14120,10 +14121,10 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TjL-Tc-Mw4" userLabel="ToolbarView">
-                                        <rect key="frame" x="0.0" y="180" width="414" height="60"/>
+                                        <rect key="frame" x="0.0" y="361" width="414" height="60"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NzK-Cr-WDf">
-                                                <rect key="frame" x="252" y="13.666666666666686" width="68" height="34"/>
+                                                <rect key="frame" x="252" y="13" width="68" height="34"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="NzK-Cr-WDf" secondAttribute="height" multiplier="2:1" id="rrh-wz-bV7"/>
                                                 </constraints>
@@ -14136,7 +14137,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="shx-OF-jeW">
-                                                <rect key="frame" x="370" y="13.666666666666686" width="34" height="34"/>
+                                                <rect key="frame" x="370" y="13" width="34" height="34"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="shx-OF-jeW" secondAttribute="height" multiplier="1:1" id="586-Dl-UNp"/>
@@ -14149,75 +14150,82 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                                                     <action selector="changeView:" destination="DQP-nN-OWb" eventType="touchUpInside" id="RmW-KZ-E89"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort by product ratings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FMY-aj-KDl">
-                                                <rect key="frame" x="43.666666666666671" y="20" width="177.33333333333331" height="20.333333333333329"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Sort by product rating" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bqM-bQ-ywu">
+                                                <rect key="frame" x="25" y="20" width="219" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="219" id="vm7-id-Gma"/>
+                                                </constraints>
                                                 <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="sortFieldClick:" destination="DQP-nN-OWb" eventType="editingDidBegin" id="p8u-OD-6lQ"/>
+                                                    <action selector="sortFieldEditEnd:" destination="DQP-nN-OWb" eventType="editingDidEnd" id="dLi-Gx-Rgb"/>
+                                                </connections>
+                                            </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="NzK-Cr-WDf" firstAttribute="centerY" secondItem="TjL-Tc-Mw4" secondAttribute="centerY" id="Bkn-yH-llh"/>
+                                            <constraint firstItem="bqM-bQ-ywu" firstAttribute="centerY" secondItem="TjL-Tc-Mw4" secondAttribute="centerY" id="Cej-Kp-xSq"/>
                                             <constraint firstAttribute="height" constant="60" id="FAU-yX-aZ5"/>
                                             <constraint firstItem="NzK-Cr-WDf" firstAttribute="height" secondItem="shx-OF-jeW" secondAttribute="height" id="K1G-0a-VIT"/>
+                                            <constraint firstItem="bqM-bQ-ywu" firstAttribute="leading" secondItem="TjL-Tc-Mw4" secondAttribute="leading" constant="25" id="KTr-1F-ffz"/>
                                             <constraint firstItem="shx-OF-jeW" firstAttribute="leading" secondItem="NzK-Cr-WDf" secondAttribute="trailing" constant="50" id="e1H-Vq-rNJ"/>
                                             <constraint firstItem="shx-OF-jeW" firstAttribute="centerY" secondItem="TjL-Tc-Mw4" secondAttribute="centerY" id="fuA-uz-Fgf"/>
-                                            <constraint firstItem="FMY-aj-KDl" firstAttribute="centerY" secondItem="TjL-Tc-Mw4" secondAttribute="centerY" id="lRR-UN-eLS"/>
                                             <constraint firstAttribute="trailing" secondItem="shx-OF-jeW" secondAttribute="trailing" constant="10" id="nqA-mV-4us"/>
-                                            <constraint firstItem="NzK-Cr-WDf" firstAttribute="leading" secondItem="FMY-aj-KDl" secondAttribute="trailing" constant="31" id="pZe-0L-D1W"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Dy-R3-uks" userLabel="Category">
-                                        <rect key="frame" x="0.0" y="240" width="414" height="60"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eO4-Ya-vWv">
+                                        <rect key="frame" x="0.0" y="421" width="414" height="415.33333333333326"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yDk-rY-VTc">
-                                                <rect key="frame" x="0.0" y="0.0" width="828" height="60"/>
-                                                <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="category-alchol" translatesAutoresizingMaskIntoConstraints="NO" id="33T-gp-QKe">
-                                                        <rect key="frame" x="0.0" y="0.0" width="67.666666666666671" height="60"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="67" id="64E-kg-I9Q"/>
-                                                            <constraint firstAttribute="height" constant="60" id="pv7-ww-hF9"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="category-meats" translatesAutoresizingMaskIntoConstraints="NO" id="hBH-Zz-G0P">
-                                                        <rect key="frame" x="67.666666666666686" y="0.0" width="67.333333333333314" height="60"/>
-                                                    </imageView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="category-fruits" translatesAutoresizingMaskIntoConstraints="NO" id="7ob-dH-hzx">
-                                                        <rect key="frame" x="135" y="0.0" width="67.666666666666686" height="60"/>
-                                                    </imageView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="category-softdrinks" translatesAutoresizingMaskIntoConstraints="NO" id="zvJ-jE-Ah9">
-                                                        <rect key="frame" x="202.66666666666666" y="0.0" width="67.333333333333343" height="60"/>
-                                                    </imageView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="category-vegetables" translatesAutoresizingMaskIntoConstraints="NO" id="fq7-Fa-Koe">
-                                                        <rect key="frame" x="270" y="0.0" width="67.666666666666686" height="60"/>
-                                                    </imageView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="P3g-b8-44q">
-                                                        <rect key="frame" x="337.66666666666674" y="0.0" width="490.33333333333326" height="60"/>
-                                                    </imageView>
-                                                </subviews>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7DT-jF-WN0">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstItem="hBH-Zz-G0P" firstAttribute="width" secondItem="33T-gp-QKe" secondAttribute="width" id="9AJ-vO-kP1"/>
-                                                    <constraint firstItem="7ob-dH-hzx" firstAttribute="width" secondItem="hBH-Zz-G0P" secondAttribute="width" id="aey-sU-m1p"/>
-                                                    <constraint firstItem="zvJ-jE-Ah9" firstAttribute="width" secondItem="7ob-dH-hzx" secondAttribute="width" id="ew4-80-Hyv"/>
-                                                    <constraint firstItem="fq7-Fa-Koe" firstAttribute="width" secondItem="zvJ-jE-Ah9" secondAttribute="width" id="gNC-Qs-6ln"/>
+                                                    <constraint firstAttribute="height" constant="60" id="ESW-xU-ZEX"/>
                                                 </constraints>
-                                            </stackView>
+                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tdN-yB-ivS">
+                                                    <size key="itemSize" width="89" height="50"/>
+                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                </collectionViewFlowLayout>
+                                                <cells>
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ZCl-jV-XEq">
+                                                        <rect key="frame" x="0.0" y="5" width="89" height="50"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                            <rect key="frame" x="0.0" y="0.0" width="89" height="50"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                        </view>
+                                                        <connections>
+                                                            <outlet property="backgroundView" destination="7DT-jF-WN0" id="8o8-if-VRh"/>
+                                                            <outlet property="selectedBackgroundView" destination="7DT-jF-WN0" id="nOk-HL-bO1"/>
+                                                        </connections>
+                                                    </collectionViewCell>
+                                                </cells>
+                                            </collectionView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="yDk-rY-VTc" firstAttribute="width" secondItem="3Dy-R3-uks" secondAttribute="width" multiplier="2" id="TpD-f7-tyR"/>
-                                            <constraint firstItem="yDk-rY-VTc" firstAttribute="leading" secondItem="3Dy-R3-uks" secondAttribute="leading" id="aYS-cp-dd4"/>
-                                            <constraint firstItem="yDk-rY-VTc" firstAttribute="top" secondItem="3Dy-R3-uks" secondAttribute="top" id="p6F-gC-VPv"/>
-                                            <constraint firstItem="yDk-rY-VTc" firstAttribute="height" secondItem="3Dy-R3-uks" secondAttribute="height" id="qMZ-Ej-Mmm"/>
+                                            <constraint firstAttribute="trailing" secondItem="7DT-jF-WN0" secondAttribute="trailing" id="HFi-m1-gdd"/>
+                                            <constraint firstItem="7DT-jF-WN0" firstAttribute="top" secondItem="eO4-Ya-vWv" secondAttribute="top" id="MB2-bi-HjP"/>
+                                            <constraint firstItem="7DT-jF-WN0" firstAttribute="leading" secondItem="eO4-Ya-vWv" secondAttribute="leading" id="uXQ-IT-wfc"/>
+                                            <constraint firstAttribute="bottom" secondItem="7DT-jF-WN0" secondAttribute="bottom" id="yhs-Sg-nna"/>
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iV0-uz-kco">
-                                        <rect key="frame" x="0.0" y="300" width="414" height="323"/>
+                                        <rect key="frame" x="0.0" y="836.33333333333326" width="414" height="318"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="318" id="tiA-Lo-M51"/>
+                                        </constraints>
                                     </tableView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="fVq-qC-CJh" firstAttribute="height" secondItem="EOD-9W-6dY" secondAttribute="height" multiplier="5/16" id="shq-3a-jDf"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.16078431369999999" green="0.65098039220000004" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -14235,8 +14243,10 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                         <outlet property="BannerView" destination="fVq-qC-CJh" id="eqj-ti-eDX"/>
                         <outlet property="changeViewButton" destination="shx-OF-jeW" id="7Sl-eK-rNo"/>
                         <outlet property="filterButton" destination="NzK-Cr-WDf" id="eyz-tZ-QRS"/>
-                        <outlet property="filterView" destination="3Dy-R3-uks" id="d7u-bn-F5U"/>
+                        <outlet property="filterCoverView" destination="eO4-Ya-vWv" id="LAy-Y8-CJ6"/>
+                        <outlet property="filterView" destination="7DT-jF-WN0" id="bM1-JW-28h"/>
                         <outlet property="productTableView" destination="iV0-uz-kco" id="fE1-2b-ndg"/>
+                        <outlet property="sortField" destination="bqM-bQ-ywu" id="C4v-I0-0iN"/>
                         <segue destination="Dw8-07-Hqp" kind="show" identifier="comparelist" id="16k-gN-gk7"/>
                     </connections>
                 </viewController>
@@ -14261,7 +14271,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
-                        <segue destination="4tW-51-epO" kind="relationship" relationship="rootViewController" id="pnY-Ai-ftR"/>
+                        <segue destination="MQL-Iv-HCB" kind="relationship" relationship="rootViewController" id="IlJ-Ln-8q7"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Brm-WK-dQw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -14273,11 +14283,11 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
             <objects>
                 <viewController id="UeO-Oq-xFF" customClass="CreateChef" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rn8-xc-Bek">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fBd-Bt-M9K">
-                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bcf-g3-RuS">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
@@ -14739,11 +14749,11 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
             <objects>
                 <viewController id="4tW-51-epO" userLabel="Supplier" customClass="Supplier" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0el-tr-LkI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qxt-VT-2t3">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
+                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VNc-9F-Rib">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="180"/>
@@ -14887,6 +14897,33 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
             </objects>
             <point key="canvasLocation" x="-6129" y="682"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="f3Y-R5-yft">
+            <objects>
+                <viewController id="PMI-XJ-Vk4" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PoT-Pp-pjm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8hP-aJ-2sR">
+                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="pMh-wb-fVw" firstAttribute="trailing" secondItem="8hP-aJ-2sR" secondAttribute="trailing" id="1GN-Cu-H5P"/>
+                            <constraint firstItem="pMh-wb-fVw" firstAttribute="bottom" secondItem="8hP-aJ-2sR" secondAttribute="bottom" id="FHi-cj-sxE"/>
+                            <constraint firstItem="8hP-aJ-2sR" firstAttribute="leading" secondItem="pMh-wb-fVw" secondAttribute="leading" id="J1E-aq-nVX"/>
+                            <constraint firstItem="8hP-aJ-2sR" firstAttribute="top" secondItem="pMh-wb-fVw" secondAttribute="top" id="WAW-gn-Zpg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="pMh-wb-fVw"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JaL-t5-3P8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-6130" y="1343"/>
+        </scene>
         <!--Map-->
         <scene sceneID="Wa7-s5-13i">
             <objects>
@@ -14928,11 +14965,6 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
         <image name="add_media" width="60" height="60"/>
         <image name="add_products" width="60" height="60"/>
         <image name="ask_question" width="60" height="60"/>
-        <image name="category-alchol" width="180" height="160"/>
-        <image name="category-fruits" width="180" height="160"/>
-        <image name="category-meats" width="180" height="160"/>
-        <image name="category-softdrinks" width="180" height="160"/>
-        <image name="category-vegetables" width="180" height="160"/>
         <image name="chef_logo" width="285" height="409"/>
         <image name="create_your_own_collection" width="60" height="60"/>
         <image name="customize_profile" width="60" height="60"/>
@@ -14988,12 +15020,13 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
         <segue reference="un3-HS-DRX"/>
         <segue reference="7Qu-d1-AVV"/>
         <segue reference="kp9-vR-xGq"/>
-        <segue reference="16k-gN-gk7"/>
-        <segue reference="1IN-nY-tFS"/>
-        <segue reference="1kv-3A-ZEC"/>
+        <segue reference="gP0-fs-xZN"/>
+        <segue reference="N2m-HW-kYV"/>
+        <segue reference="Ix9-K4-5sQ"/>
         <segue reference="5gt-HY-6Mn"/>
-        <segue reference="1wk-0g-Lia"/>
-        <segue reference="nUl-D2-yel"/>
+        <segue reference="G2D-Kc-y0p"/>
+        <segue reference="IlJ-Ln-8q7"/>
+        <segue reference="cfP-un-lQ8"/>
         <segue reference="R8v-W6-OKT"/>
         <segue reference="Pe6-X1-otd"/>
     </inferredMetricsTieBreakers>

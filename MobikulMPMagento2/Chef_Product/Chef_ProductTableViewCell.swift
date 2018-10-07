@@ -26,7 +26,7 @@ class Chef_ProductTableViewCell: UITableViewCell {
     @IBOutlet weak var productCollectionViewWidth: NSLayoutConstraint!
     @IBOutlet weak var newProductButton: UIButton!
     @IBOutlet weak var newProductLabel: UILabel!
-    @IBOutlet weak var featureProductLabel: UILabel!
+    @IBOutlet weak var ProductLabel: UILabel!
     @IBOutlet weak var featureProductButton: UIButton!
     var showFeature:Bool = true
     var whichApiToProcess:String = ""
@@ -62,7 +62,7 @@ class Chef_ProductTableViewCell: UITableViewCell {
     @IBAction func NewProductClick(_ sender: UIButton) {
         newProductLabel.backgroundColor = UIColor().HexToColor(hexString: BUTTON_COLOR)
         newProductButton.setTitleColor(UIColor().HexToColor(hexString: BUTTON_COLOR), for: .normal)
-        featureProductLabel.backgroundColor = UIColor().HexToColor(hexString: LIGHTGREY)
+        //ProductLabel.backgroundColor = UIColor().HexToColor(hexString: LIGHTGREY)
         featureProductButton.setTitleColor(UIColor().HexToColor(hexString: LIGHTGREY), for: .normal)
         showFeature = true
         prodcutCollectionView.reloadData()
@@ -76,7 +76,7 @@ class Chef_ProductTableViewCell: UITableViewCell {
     @IBAction func FeatureButtonClick(_ sender: UIButton) {
         newProductLabel.backgroundColor = UIColor().HexToColor(hexString: LIGHTGREY)
         newProductButton.setTitleColor(UIColor().HexToColor(hexString: LIGHTGREY), for: .normal)
-        featureProductLabel.backgroundColor = UIColor().HexToColor(hexString: BUTTON_COLOR)
+        ProductLabel.backgroundColor = UIColor().HexToColor(hexString: BUTTON_COLOR)
         featureProductButton.setTitleColor(UIColor().HexToColor(hexString: BUTTON_COLOR), for: .normal)
         showFeature = false;
         self.prodcutCollectionView.reloadData()
@@ -91,7 +91,6 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
   
         if showFeature == true{
-            
             if featuredProductCollectionModel.count > 0{
                 collectionView.backgroundView = nil
                 return featuredProductCollectionModel.count
@@ -139,20 +138,40 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
         
         
         if showFeature == true{
-            //if indexPath.row < featuredProductCollectionModel.count{
+            if indexPath.row < featuredProductCollectionModel.count{
                 if(homeViewController.change == true){
                     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "chef_productimagecell", for: indexPath) as! Chef_ProductImageCell
                     
                     cell.productImage.image = UIImage(named: "product_image")
                     cell.layer.cornerRadius = 8
                     cell.wishListButton.isHidden = true
-                
+               
+                    print(featuredProductCollectionModel[indexPath.row].productID)
+                    print("CATEGORIES FOR THIS ID")
+//                    if self.homeViewModel.productcategory[featuredProductCollectionModel[indexPath.row].productID].contains(self.homeViewController.categoryId) {
+//
+//                    }
+                    print(self.homeViewController.categoryId)
+                    print(self.homeViewModel.productcategory[featuredProductCollectionModel[indexPath.row].productID].object as? [String])
+//                    if (self.homeViewController.categoryId != "") {
+//                        if let haystack = self.homeViewModel.productcategory[featuredProductCollectionModel[indexPath.row].productID].object as? [String] {
+//                            let needle = self.homeViewController.categoryId
+//                            if haystack.contains(needle) {
+//                                print("DEDICATED CATEGORY")
+//                            }
+//                            else {
+//                                print("NOT DEDICATED CATEGORY")
+//                                cell.isHidden = true
+//                                return cell
+//                            }
+//                        }
+//                    }
                     GlobalData.sharedInstance.getImageFromUrl(imageUrl:featuredProductCollectionModel[indexPath.row].image , imageView: cell.productImage)
                     cell.productName.text = featuredProductCollectionModel[indexPath.row].name
                     cell.productPrice.text = featuredProductCollectionModel[indexPath.row].price
                     
                 
-                    self.productCollectionViewHeight.constant = SCREEN_WIDTH / 2 + 120
+                    self.productCollectionViewHeight.constant = SCREEN_WIDTH / 2 + 80
                      self.productCollectionViewWidth.constant = prodcutCollectionView.contentSize.width
                    cell.addButton.tag = indexPath.row
                     cell.addButton.addTarget(self, action: #selector(addButtonClick(sender:)), for: .touchUpInside)
@@ -207,7 +226,7 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
                     cell.layer.borderColor = UIColor().HexToColor(hexString: LIGHTGREY).cgColor
                     cell.layer.borderWidth = 0.5
 
-                    cell.imageView.image = UIImage(named: "ic_placeholder.png")
+                    //cell.imageView.image = UIImage(named: "ic_placeholder.png")
                     cell.name.text = featuredProductCollectionModel[indexPath.row].name
                     cell.price.text =  featuredProductCollectionModel[indexPath.row].price
 
@@ -259,11 +278,11 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
                 /*extracell.viewAllLabel.text = GlobalData.sharedInstance.language(key: "viewmore");
                 extracell.layer.cornerRadius = 8
                 return extracell*/
-            //}
+            }
             
         }
         else{
-            //if indexPath.row < productCollectionModel.count{
+            if indexPath.row < productCollectionModel.count{
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "chef_productimagecell", for: indexPath) as! Chef_ProductImageCell
                 cell.wishListButton.isHidden = true
                 GlobalData.sharedInstance.getImageFromUrl(imageUrl:productCollectionModel[indexPath.row].image , imageView: cell.productImage)
@@ -310,6 +329,7 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
                 cell.layoutIfNeeded()
                 //self.productCollectionViewHeight.constant = self.prodcutCollectionView.contentSize.height
                 return cell
+            }
            // }else{
                 /*extracell.layoutIfNeeded()
                 //self.productCollectionViewHeight.constant = self.prodcutCollectionView.contentSize.height
@@ -318,17 +338,17 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
                 return extracell*/
                // return cell;
             //}
-            
+        
             
         }
-       
+       return UICollectionViewCell()
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         if homeViewController.change == false{
-            return CGSize(width: collectionView.frame.size.width, height: collectionView.frame.size.width/2 )
+            return CGSize(width: collectionView.frame.size.width, height: collectionView.frame.size.width/2 - 80 )
         }else{
-            return CGSize(width: collectionView.frame.size.width/2 - 16 , height: collectionView.frame.size.width/2 + 70 )
+            return CGSize(width: collectionView.frame.size.width/2 - 60 , height: collectionView.frame.size.width/2 + 40 )
             //return CGSize(width: collectionView.frame.size.width/2, height:SCREEN_WIDTH/2.5 + 120)
         }
     }

@@ -13,6 +13,8 @@ struct HomeModal {
     var bannerCollectionModel = [BannerData]()
     var latestProductCollectionModel = [Products]()
     var featuredProductCollectionModel = [Products]()
+    var allProductCollectionModel = [Products]()
+    var recommendedProductCollectionModel = [Products]()
     var featureCategories = [FeatureCategories]()
     var languageData = [Languages]()
     var hotDealsProduct = [Products]()
@@ -21,6 +23,7 @@ struct HomeModal {
     var storeData = [StoreData]()
     var currency :NSArray!
     var cmsData = [CMSdata]()
+    var productcategory :JSON!
     
     var recentViewData = [Productcollection]()
     
@@ -32,9 +35,17 @@ struct HomeModal {
                 return  BannerData(data:JSON(value))
             })
         }
-        
+       
         let arrayData2 = data["newProducts"].arrayObject! as NSArray
         latestProductCollectionModel =  arrayData2.map({(value) -> Products in
+            return  Products(data:JSON(value))
+        })
+        let arrayData7 = data["recommendedProducts"].arrayObject! as NSArray
+        recommendedProductCollectionModel =  arrayData7.map({(value) -> Products in
+            return  Products(data:JSON(value))
+        })
+        let arrayData8 = data["allProducts"].arrayObject! as NSArray
+        allProductCollectionModel =  arrayData8.map({(value) -> Products in
             return  Products(data:JSON(value))
         })
         let arrayData3 = data["featuredProducts"].arrayObject! as NSArray
@@ -66,6 +77,10 @@ struct HomeModal {
         
         if data["allowedCurrencies"].arrayObject != nil{
             currency = data["allowedCurrencies"].arrayObject! as NSArray
+        }
+
+        if data["productcategory"] != nil{
+            productcategory = data["productcategory"];
         }
         
         if var arrayData = data["cmsData"].arrayObject{
@@ -205,6 +220,8 @@ enum HomeViewModelItemType {
     case FeatureProduct
     case RecentViewData
     case hotDeal
+    case AllProduct
+    case RecommendedProduct
 }
 
 protocol HomeViewModelItem {
@@ -290,6 +307,44 @@ class HomeViewModelFeatureItem: HomeViewModelItem {
     
     init(categories: [Products]) {
         self.featuredProductCollectionModel = categories
+    }
+}
+class HomeViewModelRecommendedItem: HomeViewModelItem {
+    var type: HomeViewModelItemType {
+        return .RecommendedProduct
+    }
+    
+    var sectionTitle: String {
+        return ""
+    }
+    
+    var rowCount: Int {
+        return recommendedProductCollectionModel.count
+    }
+    
+    var recommendedProductCollectionModel = [Products]()
+    
+    init(categories: [Products]) {
+        self.recommendedProductCollectionModel = categories
+    }
+}
+class HomeViewModelAllItem: HomeViewModelItem {
+    var type: HomeViewModelItemType {
+        return .AllProduct
+    }
+    
+    var sectionTitle: String {
+        return ""
+    }
+    
+    var rowCount: Int {
+        return allProductCollectionModel.count
+    }
+    
+    var allProductCollectionModel = [Products]()
+    
+    init(categories: [Products]) {
+        self.allProductCollectionModel = categories
     }
 }
 
@@ -474,6 +529,10 @@ extension HomeViewModel : UITableViewDelegate , UITableViewDataSource {
             return cell
             
             return UITableViewCell()
+        case .AllProduct:
+           return UITableViewCell()
+        case .RecommendedProduct:
+            return UITableViewCell()
         }
     }
     
@@ -497,6 +556,10 @@ extension HomeViewModel : UITableViewDelegate , UITableViewDataSource {
             
         case .hotDeal:
             return SCREEN_WIDTH / 2 + 140
+        case .AllProduct:
+            return 120
+        case .RecommendedProduct:
+            return 120
         }
     }
 }
