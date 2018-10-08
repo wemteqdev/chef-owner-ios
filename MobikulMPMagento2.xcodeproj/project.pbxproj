@@ -119,6 +119,8 @@
 		29B8B1D22169C281006B8730 /* SuppliersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B8B1D12169C280006B8730 /* SuppliersViewModel.swift */; };
 		29B8B1E62169ECC6006B8730 /* SupplierProductcategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B8B1DD2169ECC6006B8730 /* SupplierProductcategory.swift */; };
 		29B8B1F4216BE061006B8730 /* RestaurantDashboardModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B8B1F3216BE060006B8730 /* RestaurantDashboardModelView.swift */; };
+		29B8B1FF216BEB56006B8730 /* AddSupplierAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B8B1FD216BEB55006B8730 /* AddSupplierAlertView.swift */; };
+		29B8B200216BEB56006B8730 /* AddSupplierAlertViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B8B1FE216BEB55006B8730 /* AddSupplierAlertViewDelegate.swift */; };
 		570A092A215EF1D400901621 /* Chef_MyCartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570A0928215EF1D100901621 /* Chef_MyCartTableViewCell.swift */; };
 		570A092B215EF1D500901621 /* Chef_MyCartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 570A0929215EF1D200901621 /* Chef_MyCartTableViewCell.xib */; };
 		571F9627216B20B5007126D5 /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571F9626216B20B5007126D5 /* LaunchScreenView.swift */; };
@@ -690,6 +692,8 @@
 		29B8B1D12169C280006B8730 /* SuppliersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuppliersViewModel.swift; sourceTree = "<group>"; };
 		29B8B1DD2169ECC6006B8730 /* SupplierProductcategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SupplierProductcategory.swift; path = "MobikulMPMagento2/Product category/SupplierProductcategory.swift"; sourceTree = SOURCE_ROOT; };
 		29B8B1F3216BE060006B8730 /* RestaurantDashboardModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDashboardModelView.swift; sourceTree = "<group>"; };
+		29B8B1FD216BEB55006B8730 /* AddSupplierAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSupplierAlertView.swift; sourceTree = "<group>"; };
+		29B8B1FE216BEB55006B8730 /* AddSupplierAlertViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSupplierAlertViewDelegate.swift; sourceTree = "<group>"; };
 		570A0928215EF1D100901621 /* Chef_MyCartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chef_MyCartTableViewCell.swift; sourceTree = "<group>"; };
 		570A0929215EF1D200901621 /* Chef_MyCartTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Chef_MyCartTableViewCell.xib; sourceTree = "<group>"; };
 		571F9626216B20B5007126D5 /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
@@ -1320,6 +1324,8 @@
 		29B11AEB21555C6600980BA4 /* Supplier Dashboard */ = {
 			isa = PBXGroup;
 			children = (
+				29B8B1FD216BEB55006B8730 /* AddSupplierAlertView.swift */,
+				29B8B1FE216BEB55006B8730 /* AddSupplierAlertViewDelegate.swift */,
 				29B11B0921555CD700980BA4 /* SuppliersCell.swift */,
 				29B11B0B21555CD700980BA4 /* SuppliersCell.xib */,
 				29B11B0A21555CD700980BA4 /* SuppliersDashboardController.swift */,
@@ -2567,6 +2573,7 @@
 				29B11AF321555CBC00980BA4 /* Owner.swift in Sources */,
 				A3B7D1E5207DFDBD0026A3AF /* SellerOrderFilterController.swift in Sources */,
 				57F83DFB2153DEC900BC9DCB /* Chef_CompareCell.swift in Sources */,
+				29B8B1FF216BEB56006B8730 /* AddSupplierAlertView.swift in Sources */,
 				A3B7D140207DFD880026A3AF /* ChatSellerListController.swift in Sources */,
 				A3B7D337207DFE210026A3AF /* CompareProductAttributeValueCollectionView.swift in Sources */,
 				29B11AFC21555CC900980BA4 /* ResetaurantsCell.swift in Sources */,
@@ -2780,6 +2787,7 @@
 				A3B7D356207DFE4B0026A3AF /* CustomerLogin.swift in Sources */,
 				A311CF792095AFF500605B43 /* sellerOrderHorizontalBtnCell.swift in Sources */,
 				A3B7D1DD207DFDBD0026A3AF /* SellerInvoiceModel.swift in Sources */,
+				29B8B200216BEB56006B8730 /* AddSupplierAlertViewDelegate.swift in Sources */,
 				A3B7D2DD207DFE210026A3AF /* MyCart.swift in Sources */,
 				57AEA6CA2151CC090078A0BA /* Chef_TabBarController.swift in Sources */,
 				5721877521536C9500FACF86 /* Chef_MyCart.swift in Sources */,

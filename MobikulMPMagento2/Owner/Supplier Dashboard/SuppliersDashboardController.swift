@@ -160,15 +160,15 @@ class SuppliersDashboardController: UIViewController, UITableViewDelegate, UITab
     //---add chef------
     
     @IBAction func addChef(_ sender: Any) {
-        /*
-        let customAlert = self.storyboard?.instantiateViewController(withIdentifier: "customAddAlertView") as! CustomAlertView
+        
+        let customAlert = self.storyboard?.instantiateViewController(withIdentifier: "addSupplierAlertView") as! AddSupplierAlertView
         customAlert.providesPresentationContextTransitionStyle = true
         customAlert.definesPresentationContext = true
         customAlert.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         customAlert.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         customAlert.delegate = self
         self.present(customAlert, animated: true, completion: nil)
- */
+ 
     }
     
     func callingHttppApi(){
@@ -211,7 +211,58 @@ class SuppliersDashboardController: UIViewController, UITableViewDelegate, UITab
             print("supplier", responseObject)
         }
     }
-    
+    func callingHttppApiForAddSupplier(){
+        var requstParams = [String:Any]();
+        
+        GlobalData.sharedInstance.showLoader()
+        self.view.isUserInteractionEnabled = false
+        requstParams = [String:Any]();
+        requstParams["websiteId"] = DEFAULT_WEBSITE_ID
+        let customerId = defaults.object(forKey:"customerId");
+        if customerId != nil{
+            requstParams["customerToken"] = customerId
+            requstParams["customerId"] = customerId
+        }
+        requstParams["isChefOrRestaurant"] = 3; //supplier
+        requstParams["addSupplierEmail"] = addSupplierEmail;
+        
+        GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"wemteqchef/owner/addcustomer", currentView: self){success,responseObject in
+            if success == 1{
+                if responseObject?.object(forKey: "storeId") != nil{
+                    let storeId:String = String(format: "%@", responseObject!.object(forKey: "storeId") as! CVarArg)
+                    if storeId != "0"{
+                        defaults .set(storeId, forKey: "storeId")
+                    }
+                }
+                GlobalData.sharedInstance.dismissLoader()
+                self.view.isUserInteractionEnabled = true
+                var dict = JSON(responseObject as! NSDictionary)
+                if dict["success"].boolValue == true{
+                    print("addSupplier dict", dict["addSupplier"]);
+                    let suppliersInfo = AddSupplierInfoModel(data:dict["addSupplier"]);
+                    if suppliersInfo.isAddSuccess == true {
+                        print("supplierInfo:", suppliersInfo.supplierInfo);
+                        self.suppliersInfo.suppliersInfo.append(suppliersInfo.supplierInfo);
+                        self.suppliersTableView.reloadData();
+                    } else {
+                        let alertController = UIAlertController(title: "Error", message: suppliersInfo.errorMessage, preferredStyle: .alert)
+                        let action2 = UIAlertAction(title: "OK", style: .cancel) { (action:UIAlertAction) in
+                            print("You've pressed cancel");
+                        }
+                        alertController.addAction(action2)
+                        self.present(alertController, animated: true, completion: nil)
+                    }
+                }else{
+                    GlobalData.sharedInstance.showErrorSnackBar(msg: dict["message"].stringValue)
+                }
+                
+            }else if success == 2{
+                GlobalData.sharedInstance.dismissLoader()
+                self.callingHttppApiForAddSupplier()
+            }
+            print("addSupplier", responseObject)
+        }
+    }
     //---search bar----
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchActive = true;
@@ -340,17 +391,17 @@ class SuppliersDashboardController: UIViewController, UITableViewDelegate, UITab
     }
             
 }
-/*
-extension SuppliersDashboardController: CustomAlertViewDelegate {
+
+extension SuppliersDashboardController: AddSupplierAlertViewDelegate {
     
     func okButtonTapped(textFieldValue: String) {
         print("TextField has value: \(textFieldValue)")
         self.addSupplierEmail = textFieldValue;
-        //self.callingHttppApi();
+        self.callingHttppApiForAddSupplier();
     }
     
     func cancelButtonTapped() {
         print("cancelButtonTapped")
     }
 }
-*/
+
