@@ -24,6 +24,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.12" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chef-bg" translatesAutoresizingMaskIntoConstraints="NO" id="Tkh-dR-lnD">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                            </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yta-BQ-yGw">
                                 <rect key="frame" x="0.0" y="20" width="414" height="716"/>
                                 <subviews>
@@ -109,10 +112,14 @@
                         </subviews>
                         <color key="backgroundColor" red="0.16078431369999999" green="0.65098039220000004" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Tkh-dR-lnD" firstAttribute="leading" secondItem="foM-9f-xmC" secondAttribute="leading" id="Qyk-az-OSz"/>
                             <constraint firstItem="foM-9f-xmC" firstAttribute="trailing" secondItem="yta-BQ-yGw" secondAttribute="trailing" id="XAT-75-tNV"/>
                             <constraint firstItem="yta-BQ-yGw" firstAttribute="bottom" secondItem="foM-9f-xmC" secondAttribute="bottom" id="d7y-ch-xQT"/>
+                            <constraint firstItem="foM-9f-xmC" firstAttribute="top" secondItem="Tkh-dR-lnD" secondAttribute="top" constant="20" id="kzU-Sd-2iC"/>
                             <constraint firstItem="foM-9f-xmC" firstAttribute="top" secondItem="yta-BQ-yGw" secondAttribute="top" id="reF-cn-a27"/>
+                            <constraint firstItem="foM-9f-xmC" firstAttribute="trailing" secondItem="Tkh-dR-lnD" secondAttribute="trailing" id="w2X-wg-kNT"/>
                             <constraint firstItem="foM-9f-xmC" firstAttribute="leading" secondItem="yta-BQ-yGw" secondAttribute="leading" id="wYK-bw-fMZ"/>
+                            <constraint firstItem="Tkh-dR-lnD" firstAttribute="bottom" secondItem="foM-9f-xmC" secondAttribute="bottom" id="zkA-7V-jAY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="foM-9f-xmC"/>
                     </view>
@@ -127,7 +134,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Cu-D4-Jbx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3954" y="1388"/>
+            <point key="canvasLocation" x="-3955.0724637681164" y="1386.6847826086957"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -814,6 +821,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.11999999731779099" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="chef-bg" translatesAutoresizingMaskIntoConstraints="NO" id="0pX-Bb-DnP">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="726"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1vS-wg-UmM">
                                 <rect key="frame" x="0.0" y="20" width="414" height="716"/>
                                 <subviews>
@@ -1052,7 +1063,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="waF-hb-LkR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2072.463768115942" y="17.119565217391305"/>
+            <point key="canvasLocation" x="2071.0144927536235" y="17.119565217391305"/>
         </scene>
         <!--rootnav-->
         <scene sceneID="DFD-PM-1Sh">
@@ -12220,6 +12231,10 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.11999999731779099" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="chef-bg" translatesAutoresizingMaskIntoConstraints="NO" id="Y6g-Ke-Ave">
+                                <rect key="frame" x="0.0" y="-1" width="414" height="737"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e4M-4x-FYJ">
                                 <rect key="frame" x="0.0" y="20" width="414" height="716"/>
                                 <subviews>
@@ -12336,7 +12351,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hQv-ns-PH8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3231" y="1594"/>
+            <point key="canvasLocation" x="-3231.884057971015" y="1593.7500000000002"/>
         </scene>
         <!--Forgotpassword-->
         <scene sceneID="bHo-35-qaL">
@@ -12346,6 +12361,10 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.11999999731779099" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="chef-bg" translatesAutoresizingMaskIntoConstraints="NO" id="ycz-4Q-ccT">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="726"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jnO-ey-eum">
                                 <rect key="frame" x="0.0" y="20" width="414" height="716"/>
                                 <subviews>
@@ -12472,7 +12491,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pAy-sN-SXo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2073" y="723"/>
+            <point key="canvasLocation" x="2072.463768115942" y="722.28260869565224"/>
         </scene>
         <!--Chef Tab Bar Controller-->
         <scene sceneID="4lK-hi-gGw">
@@ -14296,6 +14315,10 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.11999999731779099" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="chef-bg" translatesAutoresizingMaskIntoConstraints="NO" id="1nD-up-Lf4">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="726"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fBd-Bt-M9K">
                                 <rect key="frame" x="0.0" y="20" width="414" height="716"/>
                                 <subviews>
@@ -14752,7 +14775,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C6F-tg-j9Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3231.1999999999998" y="855.9220389805098"/>
+            <point key="canvasLocation" x="-3231.884057971015" y="855.16304347826099"/>
         </scene>
         <!--Chef Profile View Controller-->
         <scene sceneID="f3Y-R5-yft">
@@ -14983,6 +15006,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
         <image name="add_media" width="60" height="60"/>
         <image name="add_products" width="60" height="60"/>
         <image name="ask_question" width="60" height="60"/>
+        <image name="chef-bg" width="1125" height="2436"/>
         <image name="chef_logo" width="285" height="409"/>
         <image name="create_your_own_collection" width="60" height="60"/>
         <image name="customize_profile" width="60" height="60"/>
@@ -15030,7 +15054,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
     <inferredMetricsTieBreakers>
         <segue reference="BnP-5R-UpJ"/>
         <segue reference="k3f-34-Vh7"/>
-        <segue reference="0Vc-df-Kyg"/>
+        <segue reference="msq-Yc-vqj"/>
         <segue reference="6H7-k0-P6o"/>
         <segue reference="DHe-33-5Ya"/>
         <segue reference="KXi-UJ-red"/>
@@ -15042,7 +15066,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
         <segue reference="N2m-HW-kYV"/>
         <segue reference="Ix9-K4-5sQ"/>
         <segue reference="5gt-HY-6Mn"/>
-        <segue reference="EhG-al-bPQ"/>
+        <segue reference="73e-Tb-T2V"/>
         <segue reference="cfP-un-lQ8"/>
         <segue reference="R8v-W6-OKT"/>
         <segue reference="Pe6-X1-otd"/>
