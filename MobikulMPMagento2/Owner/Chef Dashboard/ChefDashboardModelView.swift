@@ -8,17 +8,6 @@
 
 import Foundation
 
-class RestaurantOnlyInfoModel: NSObject {
-    var restaurantName: String = "";
-    var restaurantId: Int!;
-    var taxClassId: Int!;
-    
-    init(data:JSON) {
-        restaurantName = data["customer_group_code"].stringValue;
-        restaurantId = data["customer_group_id"].intValue;
-        taxClassId = data["tax_class_id"].intValue;
-    }
-}
 class ChefDashboardModelView: NSObject {
     var chefInfos = [ChefInfoModel]();
     

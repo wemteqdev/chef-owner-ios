@@ -88,9 +88,8 @@ class OwnerDashBoardViewModel: NSObject {
     var diagramWeeklyTotal: DiagramTotalData!;
     var diagramMonthlyTotal: DiagramTotalData!;
     var diagramYearlyTotal: DiagramTotalData!;
-    //---for chef/restaurant info------
-    var restaurantInfos = [RestaurantInfoModel]();
     
+    var restaurantInfos = [RestaurantInfoModel]();
     init(data:JSON){
         //----------Get Graph Data(For daily, weekly, monthly, yearly)--------------
         if let arrayData = data["orderYearlyTotal"].arrayObject{
@@ -157,5 +156,6 @@ class OwnerDashBoardViewModel: NSObject {
             })
         }
         print("restaurantCount:" + String(format: "%d", restaurantInfos.count));
+        
     }
 }

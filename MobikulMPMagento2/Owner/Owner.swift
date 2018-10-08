@@ -624,7 +624,7 @@ class Owner: UIViewController{
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        self.callingHttppApi();
         if defaults.object(forKey: "customerName") != nil{
             profile_name.text = defaults.object(forKey: "customerName") as? String
         } else {

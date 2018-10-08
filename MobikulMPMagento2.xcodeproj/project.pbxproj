@@ -118,6 +118,7 @@
 		29B11B122155603700980BA4 /* owner.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29B11B112155603600980BA4 /* owner.storyboard */; };
 		29B8B1D22169C281006B8730 /* SuppliersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B8B1D12169C280006B8730 /* SuppliersViewModel.swift */; };
 		29B8B1E62169ECC6006B8730 /* SupplierProductcategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B8B1DD2169ECC6006B8730 /* SupplierProductcategory.swift */; };
+		29B8B1F4216BE061006B8730 /* RestaurantDashboardModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B8B1F3216BE060006B8730 /* RestaurantDashboardModelView.swift */; };
 		570A092A215EF1D400901621 /* Chef_MyCartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570A0928215EF1D100901621 /* Chef_MyCartTableViewCell.swift */; };
 		570A092B215EF1D500901621 /* Chef_MyCartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 570A0929215EF1D200901621 /* Chef_MyCartTableViewCell.xib */; };
 		571F9627216B20B5007126D5 /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571F9626216B20B5007126D5 /* LaunchScreenView.swift */; };
@@ -688,6 +689,7 @@
 		29B11B112155603600980BA4 /* owner.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = owner.storyboard; sourceTree = "<group>"; };
 		29B8B1D12169C280006B8730 /* SuppliersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuppliersViewModel.swift; sourceTree = "<group>"; };
 		29B8B1DD2169ECC6006B8730 /* SupplierProductcategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SupplierProductcategory.swift; path = "MobikulMPMagento2/Product category/SupplierProductcategory.swift"; sourceTree = SOURCE_ROOT; };
+		29B8B1F3216BE060006B8730 /* RestaurantDashboardModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDashboardModelView.swift; sourceTree = "<group>"; };
 		570A0928215EF1D100901621 /* Chef_MyCartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chef_MyCartTableViewCell.swift; sourceTree = "<group>"; };
 		570A0929215EF1D200901621 /* Chef_MyCartTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Chef_MyCartTableViewCell.xib; sourceTree = "<group>"; };
 		571F9626216B20B5007126D5 /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
@@ -1334,6 +1336,7 @@
 				29B11AF921555CC800980BA4 /* ResetaurantsCell.swift */,
 				29B11AF821555CC800980BA4 /* RestaurantsCell.xib */,
 				29B11AF721555CC800980BA4 /* RestaurantsDashboardController.swift */,
+				29B8B1F3216BE060006B8730 /* RestaurantDashboardModelView.swift */,
 			);
 			path = "Restaurant Dashboard";
 			sourceTree = "<group>";
@@ -2587,6 +2590,7 @@
 				0C05713B20408BDC00EB527B /* IQTextView.swift in Sources */,
 				0C05710920408BDB00EB527B /* ArcView.swift in Sources */,
 				A3B7D306207DFE210026A3AF /* NotificationController.swift in Sources */,
+				29B8B1F4216BE061006B8730 /* RestaurantDashboardModelView.swift in Sources */,
 				A3B7D1DE207DFDBD0026A3AF /* CreditMemoListModel.swift in Sources */,
 				A3B7D357207DFE4B0026A3AF /* AdvanceSearch.swift in Sources */,
 				0C05712920408BDC00EB527B /* IQNSArray+Sort.swift in Sources */,

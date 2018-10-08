@@ -30,6 +30,9 @@ class RestaurantsDashboardController: UIViewController, UITableViewDelegate, UIT
     @IBOutlet weak var addRestaurantButton: UIBarButtonItem!
     @IBOutlet weak var searchBarView: UIView!
     
+    var callingApiSucceed:Bool = false;
+    var restaurantDashboardModelView:RestaurantDashboardModelView!;
+    
     var searchActive : Bool = false
     var filtered:[RestaurantInfoModel] = [];
     var addRestaurantName:String = "";
@@ -54,6 +57,7 @@ class RestaurantsDashboardController: UIViewController, UITableViewDelegate, UIT
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.callingHttppApi();
         restaurantsTableView.dataSource = self
         restaurantsTableView.delegate = self
         restaurantsTableView.reloadData()
@@ -88,6 +92,45 @@ class RestaurantsDashboardController: UIViewController, UITableViewDelegate, UIT
             requstParams["customerToken"] = customerId
             requstParams["customerId"] = customerId
         }
+        requstParams["customerType"] =  1; //owner
+        self.callingApiSucceed = false;
+        GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"wemteqchef/owner/getrestaurantinfos", currentView: self){success,responseObject in
+            if success == 1{
+                if responseObject?.object(forKey: "storeId") != nil{
+                    let storeId:String = String(format: "%@", responseObject!.object(forKey: "storeId") as! CVarArg)
+                    if storeId != "0"{
+                        defaults .set(storeId, forKey: "storeId")
+                    }
+                }
+                GlobalData.sharedInstance.dismissLoader()
+                self.view.isUserInteractionEnabled = true
+                var dict = JSON(responseObject as! NSDictionary)
+                if dict["success"].boolValue == true{
+                    self.restaurantDashboardModelView = RestaurantDashboardModelView(data:dict);
+                    self.callingApiSucceed = true;
+                    self.restaurantsTableView.reloadData();
+                }else{
+                    GlobalData.sharedInstance.showErrorSnackBar(msg: dict["message"].stringValue)
+                }
+            }else if success == 2{
+                GlobalData.sharedInstance.dismissLoader()
+                self.callingHttppApi()
+            }
+        }
+    }
+    
+    func callingHttppApiForAddRestaurant(){
+        var requstParams = [String:Any]();
+        
+        GlobalData.sharedInstance.showLoader()
+        self.view.isUserInteractionEnabled = false
+        requstParams = [String:Any]();
+        requstParams["websiteId"] = DEFAULT_WEBSITE_ID
+        let customerId = defaults.object(forKey:"customerId");
+        if customerId != nil{
+            requstParams["customerToken"] = customerId
+            requstParams["customerId"] = customerId
+        }
         requstParams["isChefOrRestaurant"] = 2; //restaurant
         requstParams["addRestaurantName"] = addRestaurantName;
         
@@ -107,7 +150,7 @@ class RestaurantsDashboardController: UIViewController, UITableViewDelegate, UIT
                     let restaurantInfo = AddRestaurantInfoModel(data:dict["addRestaurant"]);
                     if restaurantInfo.isAddSuccess == true {
                         print("restaurantInfo:", restaurantInfo.restaurantInfo);
-                        Owner.ownerDashboardModelView.restaurantInfos.append(restaurantInfo.restaurantInfo);
+                        self.restaurantDashboardModelView.restaurantInfos.append(restaurantInfo.restaurantInfo);
                         self.restaurantsTableView.reloadData();
                     } else {
                         let alertController = UIAlertController(title: "Error", message: restaurantInfo.errorMessage, preferredStyle: .alert)
@@ -123,7 +166,7 @@ class RestaurantsDashboardController: UIViewController, UITableViewDelegate, UIT
                 
             }else if success == 2{
                 GlobalData.sharedInstance.dismissLoader()
-                self.callingHttppApi()
+                self.callingHttppApiForAddRestaurant()
             }
             print("addRestaurant", responseObject)
         }
@@ -160,9 +203,9 @@ class RestaurantsDashboardController: UIViewController, UITableViewDelegate, UIT
                     if dict["removeRestaurantSuccess"] == true {
                         message = "Restaurant removed successfully"
                         title = "Success";
-                        for index in 0...Owner.ownerDashboardModelView.restaurantInfos.count - 1 {
-                            if (Owner.ownerDashboardModelView.restaurantInfos[index].restaurantId == id){
-                                Owner.ownerDashboardModelView.restaurantInfos.remove(at: index);
+                        for index in 0...self.restaurantDashboardModelView.restaurantInfos.count - 1 {
+                            if (self.restaurantDashboardModelView.restaurantInfos[index].restaurantId == id){
+                                self.restaurantDashboardModelView.restaurantInfos.remove(at: index);
                                 break;
                             }
                         }
@@ -183,7 +226,7 @@ class RestaurantsDashboardController: UIViewController, UITableViewDelegate, UIT
                 
             }else if success == 2{
                 GlobalData.sharedInstance.dismissLoader()
-                self.callingHttppApi()
+                self.callingHttppApiForRemoveRestaurant(id: id)
             }
             print("restaurant remove", responseObject)
         }
@@ -208,7 +251,7 @@ class RestaurantsDashboardController: UIViewController, UITableViewDelegate, UIT
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         print("searchActive:", searchActive);
-        filtered = Owner.ownerDashboardModelView.restaurantInfos.filter({ (restaurantInfo: RestaurantInfoModel) -> Bool in
+        filtered = self.restaurantDashboardModelView.restaurantInfos.filter({ (restaurantInfo: RestaurantInfoModel) -> Bool in
             
             return restaurantInfo.restaurantName.lowercased().contains(searchText.lowercased())
         })
@@ -245,8 +288,8 @@ class RestaurantsDashboardController: UIViewController, UITableViewDelegate, UIT
         if (searchActive) {
             return filtered.count
         }
-        if (Owner.callingApiSucceed){
-            return Owner.ownerDashboardModelView.restaurantInfos.count;
+        if (self.callingApiSucceed){
+            return self.restaurantDashboardModelView.restaurantInfos.count;
         }
         
         return 0;
@@ -272,9 +315,9 @@ class RestaurantsDashboardController: UIViewController, UITableViewDelegate, UIT
         }
         else
         {
-            cell.restaurantName.text = Owner.ownerDashboardModelView.restaurantInfos[indexPath.section].restaurantName as? String;
+            cell.restaurantName.text = self.restaurantDashboardModelView.restaurantInfos[indexPath.section].restaurantName as? String;
             cell.restaurantImage.image = UIImage(named: "ic_signin")!
-            cell.restaurantId = Owner.ownerDashboardModelView.restaurantInfos[indexPath.section].restaurantId;
+            cell.restaurantId = self.restaurantDashboardModelView.restaurantInfos[indexPath.section].restaurantId;
             cell.delegate = self;
         }
         
@@ -286,7 +329,7 @@ class RestaurantsDashboardController: UIViewController, UITableViewDelegate, UIT
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "detailPage") as! DetailPage
         vc.pageType = 2;
-        vc.customerId = Owner.ownerDashboardModelView.restaurantInfos[indexPath.section].restaurantId;
+        vc.customerId = self.restaurantDashboardModelView.restaurantInfos[indexPath.section].restaurantId;
         self.navigationController?.pushViewController(vc, animated: true)
     }
             
@@ -297,7 +340,7 @@ extension RestaurantsDashboardController: AddRestaurantAlertViewDelegate {
     func okButtonTapped(textFieldValue: String) {
         print("TextField has value: \(textFieldValue)")
         self.addRestaurantName = textFieldValue;
-        self.callingHttppApi();
+        self.callingHttppApiForAddRestaurant();
     }
     
     func cancelButtonTapped() {
