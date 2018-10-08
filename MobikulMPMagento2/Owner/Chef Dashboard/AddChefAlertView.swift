@@ -19,6 +19,8 @@ class AddChefAlertView: UIViewController, UIPickerViewDelegate,UIPickerViewDataS
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var restaurantTextField: SkyFloatingLabelTextField!
     
+    var callingApiSucceed:Bool = false;
+    var restaurantDashboardModelView:RestaurantDashboardModelView!;
     var delegate: AddChefAlertViewDelegate?
     var restaurantId:Int = -1;
     let alertViewGrayColor = UIColor(red: 224.0/255.0, green: 224.0/255.0, blue: 224.0/255.0, alpha: 1)
@@ -28,7 +30,45 @@ class AddChefAlertView: UIViewController, UIPickerViewDelegate,UIPickerViewDataS
         chefEmailTextField.becomeFirstResponder()
         okButton.layer.cornerRadius = 20
         //restaurantTextField.placeholder = "Select Restaurant";
-        //self.callingHttppApi()
+        self.callingHttppApi()
+    }
+    
+    func callingHttppApi(){
+        var requstParams = [String:Any]();
+        
+        GlobalData.sharedInstance.showLoader()
+        self.view.isUserInteractionEnabled = false
+        requstParams = [String:Any]();
+        requstParams["websiteId"] = DEFAULT_WEBSITE_ID
+        let customerId = defaults.object(forKey:"customerId");
+        if customerId != nil{
+            requstParams["customerToken"] = customerId
+            requstParams["customerId"] = customerId
+        }
+        requstParams["customerType"] =  1; //owner
+        self.callingApiSucceed = false;
+        GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"wemteqchef/owner/getrestaurantinfos", currentView: self){success,responseObject in
+            if success == 1{
+                if responseObject?.object(forKey: "storeId") != nil{
+                    let storeId:String = String(format: "%@", responseObject!.object(forKey: "storeId") as! CVarArg)
+                    if storeId != "0"{
+                        defaults .set(storeId, forKey: "storeId")
+                    }
+                }
+                GlobalData.sharedInstance.dismissLoader()
+                self.view.isUserInteractionEnabled = true
+                var dict = JSON(responseObject as! NSDictionary)
+                if dict["success"].boolValue == true{
+                    self.restaurantDashboardModelView = RestaurantDashboardModelView(data:dict);
+                    self.callingApiSucceed = true;
+                }else{
+                    GlobalData.sharedInstance.showErrorSnackBar(msg: dict["message"].stringValue)
+                }
+            }else if success == 2{
+                GlobalData.sharedInstance.dismissLoader()
+                self.callingHttppApi()
+            }
+        }
     }
     
     @IBAction func restaurantTextFieldClick(_ sender: Any) {
@@ -44,9 +84,9 @@ class AddChefAlertView: UIViewController, UIPickerViewDelegate,UIPickerViewDataS
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if(pickerView.tag == 2000){
-            if(Owner.callingApiSucceed){
+            if(self.callingApiSucceed){
                 //return ChefsDashboardController.chefDashboardModelView.restaurantInfos.count
-                return Owner.ownerDashboardModelView.restaurantInfos.count
+                return self.restaurantDashboardModelView.restaurantInfos.count
             }
         }
         return 0
@@ -54,8 +94,8 @@ class AddChefAlertView: UIViewController, UIPickerViewDelegate,UIPickerViewDataS
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if(pickerView.tag == 2000){
-            if(Owner.callingApiSucceed){
-                return Owner.ownerDashboardModelView.restaurantInfos[row].restaurantName
+            if(self.callingApiSucceed){
+                return self.restaurantDashboardModelView.restaurantInfos[row].restaurantName
             }
         }
         return "";
@@ -63,9 +103,9 @@ class AddChefAlertView: UIViewController, UIPickerViewDelegate,UIPickerViewDataS
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
         if(pickerView.tag == 2000){
-            if(Owner.callingApiSucceed){
-                restaurantTextField.text = Owner.ownerDashboardModelView.restaurantInfos.count > 0 ? Owner.ownerDashboardModelView.restaurantInfos[row].restaurantName : ""
-                self.restaurantId = Owner.ownerDashboardModelView.restaurantInfos.count > 0 ? Owner.ownerDashboardModelView.restaurantInfos[row].restaurantId : 0
+            if(self.callingApiSucceed){
+                restaurantTextField.text = self.restaurantDashboardModelView.restaurantInfos.count > 0 ? self.restaurantDashboardModelView.restaurantInfos[row].restaurantName : ""
+                self.restaurantId = self.restaurantDashboardModelView.restaurantInfos.count > 0 ? self.restaurantDashboardModelView.restaurantInfos[row].restaurantId : 0
             }
         }
     }

@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class AddRestaurantAlertView: UIViewController, UIPickerViewDelegate,UIPickerViewDataSource,UIImagePickerControllerDelegate {
+class AddRestaurantAlertView: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var chefEmailTextField: UITextField!
@@ -28,45 +28,6 @@ class AddRestaurantAlertView: UIViewController, UIPickerViewDelegate,UIPickerVie
         super.viewDidLoad()
         chefEmailTextField.becomeFirstResponder()
         okButton.layer.cornerRadius = 20
-    }
-    
-    @IBAction func restaurantTextFieldClick(_ sender: Any) {
-        let thePicker = UIPickerView()
-        thePicker.tag = 2000;
-        restaurantTextField.inputView = thePicker
-        thePicker.delegate = self;
-    }
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1;
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if(pickerView.tag == 2000){
-            if(Owner.callingApiSucceed){
-                //return ChefsDashboardController.chefDashboardModelView.restaurantInfos.count
-                return Owner.ownerDashboardModelView.restaurantInfos.count
-            }
-        }
-        return 0
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if(pickerView.tag == 2000){
-            if(Owner.callingApiSucceed){
-                return Owner.ownerDashboardModelView.restaurantInfos[row].restaurantName
-            }
-        }
-        return "";
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
-        if(pickerView.tag == 2000){
-            if(Owner.callingApiSucceed){
-                restaurantTextField.text = Owner.ownerDashboardModelView.restaurantInfos.count > 0 ? Owner.ownerDashboardModelView.restaurantInfos[row].restaurantName : ""
-                self.restaurantId = Owner.ownerDashboardModelView.restaurantInfos.count > 0 ? Owner.ownerDashboardModelView.restaurantInfos[row].restaurantId : 0
-            }
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
