@@ -28,46 +28,7 @@ class AddRestaurantAlertView: UIViewController, UIPickerViewDelegate,UIPickerVie
         super.viewDidLoad()
         chefEmailTextField.becomeFirstResponder()
         okButton.layer.cornerRadius = 20
-        //restaurantTextField.placeholder = "Select Restaurant";
-        //self.callingHttppApi()
     }
-    
-    func callingHttppApi(){
-        var requstParams = [String:Any]();
-        
-        requstParams = [String:Any]();
-        requstParams["websiteId"] = DEFAULT_WEBSITE_ID
-        
-        self.view.isUserInteractionEnabled = false
-        self.callingApiSucceed = false;
-        GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"wemteqchef/owner/getallrestaurant", currentView: self){success,responseObject in
-            if success == 1{
-                if responseObject?.object(forKey: "storeId") != nil{
-                    let storeId:String = String(format: "%@", responseObject!.object(forKey: "storeId") as! CVarArg)
-                    if storeId != "0"{
-                        defaults .set(storeId, forKey: "storeId")
-                    }
-                }
-                GlobalData.sharedInstance.dismissLoader()
-                self.view.isUserInteractionEnabled = true
-                self.callingApiSucceed = true
-                var dict = JSON(responseObject as! NSDictionary)
-                print("jsonData:", responseObject);
-                if dict["success"].boolValue == true{
-                    ChefsDashboardController.chefDashboardModelView = ChefDashboardModelView(data: dict);
-                    
-                }else{
-                    GlobalData.sharedInstance.showErrorSnackBar(msg: dict["message"].stringValue)
-                }
-                
-            }else if success == 2{
-                GlobalData.sharedInstance.dismissLoader()
-                self.callingHttppApi()
-            }
-        }
-        GlobalData.sharedInstance.showLoader()
-    }
-    
     
     @IBAction func restaurantTextFieldClick(_ sender: Any) {
         let thePicker = UIPickerView()

@@ -35,7 +35,7 @@ class ChefsDashboardController: UIViewController, UITableViewDelegate, UITableVi
     var filtered:[ChefInfoModel] = [];
     var addChefEmail:String = "";
     var addChefRestaurantId: Int = -1;
-    static var chefDashboardModelView:ChefDashboardModelView!;
+    var chefDashboardModelView:ChefDashboardModelView!;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,10 +84,16 @@ class ChefsDashboardController: UIViewController, UITableViewDelegate, UITableVi
     func callingHttppApi(){
         var requstParams = [String:Any]();
         
+        GlobalData.sharedInstance.showLoader()
+        self.view.isUserInteractionEnabled = false
         requstParams = [String:Any]();
         requstParams["websiteId"] = DEFAULT_WEBSITE_ID
-        
-        self.view.isUserInteractionEnabled = false
+        let customerId = defaults.object(forKey:"customerId");
+        if customerId != nil{
+            requstParams["customerToken"] = customerId
+            requstParams["customerId"] = customerId
+        }
+        requstParams["customerType"] =  1; //owner
         self.callingApiSucceed = false;
         GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"wemteqchef/owner/getchefinfos", currentView: self){success,responseObject in
             if success == 1{
@@ -99,22 +105,22 @@ class ChefsDashboardController: UIViewController, UITableViewDelegate, UITableVi
                 }
                 GlobalData.sharedInstance.dismissLoader()
                 self.view.isUserInteractionEnabled = true
-                self.callingApiSucceed = true
                 var dict = JSON(responseObject as! NSDictionary)
-                print("jsonData:", responseObject);
                 if dict["success"].boolValue == true{
-                    ChefsDashboardController.chefDashboardModelView = ChefDashboardModelView(data: dict);
+                    print("chefinfos:", responseObject)
+                    self.chefDashboardModelView = ChefDashboardModelView(data:dict);
+                    self.callingApiSucceed = true;
+                    self.chefsTableView.reloadData();
                 }else{
                     GlobalData.sharedInstance.showErrorSnackBar(msg: dict["message"].stringValue)
                 }
-                
             }else if success == 2{
                 GlobalData.sharedInstance.dismissLoader()
                 self.callingHttppApi()
             }
         }
-        GlobalData.sharedInstance.showLoader()
     }
+    
     
     func callingHttppApiForAddChef(){
         var requstParams = [String:Any]();
@@ -147,7 +153,7 @@ class ChefsDashboardController: UIViewController, UITableViewDelegate, UITableVi
                     var chefInfo = AddChefInfoModel(data:dict["addChef"]);
                     if chefInfo.isAddSuccess == true {
                         print("chefInfo:", chefInfo.chefInfo);
-                        ChefsDashboardController.chefDashboardModelView.chefInfos.append(chefInfo.chefInfo);
+                        self.chefDashboardModelView.chefInfos.append(chefInfo.chefInfo);
                         self.chefsTableView.reloadData();
                     } else {
                         let alertController = UIAlertController(title: "Error", message: chefInfo.errorMessage, preferredStyle: .alert)
@@ -200,9 +206,9 @@ class ChefsDashboardController: UIViewController, UITableViewDelegate, UITableVi
                     if dict["removeChefSuccess"] == true {
                         message = "Chef removed successfully"
                         title = "Success";
-                        for index in 0...ChefsDashboardController.chefDashboardModelView.chefInfos.count - 1 {
-                            if (ChefsDashboardController.chefDashboardModelView.chefInfos[index].chefId == id){
-                                ChefsDashboardController.chefDashboardModelView.chefInfos.remove(at: index);
+                        for index in 0...self.chefDashboardModelView.chefInfos.count - 1 {
+                            if (self.chefDashboardModelView.chefInfos[index].chefId == id){
+                                self.chefDashboardModelView.chefInfos.remove(at: index);
                                 break;
                             }
                         }
@@ -248,7 +254,7 @@ class ChefsDashboardController: UIViewController, UITableViewDelegate, UITableVi
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         print("searchActive:", searchActive);
-        filtered = ChefsDashboardController.chefDashboardModelView.chefInfos.filter({ (chefInfo: ChefInfoModel) -> Bool in
+        filtered = self.chefDashboardModelView.chefInfos.filter({ (chefInfo: ChefInfoModel) -> Bool in
             print("chefEmail: ", chefInfo.chefEmail);
             return chefInfo.chefEmail.lowercased().contains(searchText.lowercased())
         })
@@ -286,8 +292,8 @@ class ChefsDashboardController: UIViewController, UITableViewDelegate, UITableVi
         if (searchActive) {
             return filtered.count
         }
-        if (Owner.callingApiSucceed){
-            return ChefsDashboardController.chefDashboardModelView.chefInfos.count;
+        if (self.callingApiSucceed){
+            return self.chefDashboardModelView.chefInfos.count;
         }
         
         return 0;
@@ -299,29 +305,29 @@ class ChefsDashboardController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:ChefsCell = tableView.dequeueReusableCell(withIdentifier: "ChefsCell") as! ChefsCell
-        
-        if (searchActive) {
-            if(filtered.count == 0)
+        if (self.callingApiSucceed){
+            if (searchActive) {
+                if(filtered.count == 0)
+                {
+                    cell.chefName.text = "No Result";
+                }
+                else {
+                    cell.chefName.text = filtered[indexPath.section].chefFirstName + " " +
+                        filtered[indexPath.section].chefLastName as? String;
+                    cell.restaruantName.text = filtered[indexPath.section].restaurantName as? String;
+                    cell.chefImage.image = UIImage(named: "ic_signin")!
+                    cell.chefId = filtered[indexPath.section].chefId;
+                }
+            }
+            else
             {
-                cell.chefName.text = "No Result";
-            }
-            else {
-                cell.chefName.text = filtered[indexPath.section].chefFirstName + " " +
-                    filtered[indexPath.section].chefLastName as? String;
-                cell.restaruantName.text = filtered[indexPath.section].restaurantName as? String;
+                cell.chefName.text = self.chefDashboardModelView.chefInfos[indexPath.section].chefFirstName + " " +
+                    self.chefDashboardModelView.chefInfos[indexPath.section].chefLastName as? String;
+                cell.restaruantName.text = self.chefDashboardModelView.chefInfos[indexPath.section].restaurantName as? String;
                 cell.chefImage.image = UIImage(named: "ic_signin")!
-                cell.chefId = filtered[indexPath.section].chefId;
+                cell.chefId = self.chefDashboardModelView.chefInfos[indexPath.section].chefId;
             }
         }
-        else
-        {
-            cell.chefName.text = ChefsDashboardController.chefDashboardModelView.chefInfos[indexPath.section].chefFirstName + " " +
-                ChefsDashboardController.chefDashboardModelView.chefInfos[indexPath.section].chefLastName as? String;
-            cell.restaruantName.text = ChefsDashboardController.chefDashboardModelView.chefInfos[indexPath.section].restaurantName as? String;
-            cell.chefImage.image = UIImage(named: "ic_signin")!
-            cell.chefId = ChefsDashboardController.chefDashboardModelView.chefInfos[indexPath.section].chefId;
-        }
-        
         //cell.chefImage.image = UIImage(named: "ic_signin")!
         cell.selectionStyle = .none
         cell.delegate = self;
@@ -331,7 +337,7 @@ class ChefsDashboardController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "detailPage") as! DetailPage
         vc.pageType = 1;
-        vc.customerId = ChefsDashboardController.chefDashboardModelView.chefInfos[indexPath.section].chefId;
+        vc.customerId = self.chefDashboardModelView.chefInfos[indexPath.section].chefId;
         self.navigationController?.pushViewController(vc, animated: true)
     }
             
