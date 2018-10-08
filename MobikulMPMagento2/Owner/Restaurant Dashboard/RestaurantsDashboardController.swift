@@ -8,7 +8,22 @@
 
 import Foundation
 
-class RestaurantsDashboardController: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate, UISearchBarDelegate {
+class RestaurantsDashboardController: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate, UISearchBarDelegate , removeFromOwnerHandlerDelegate {
+    
+    func removeButtonClick(id: Int) {
+        print("id:", id);
+        
+        let alertController = UIAlertController(title: "Alert", message: "Are you sure to remove this restaurant?", preferredStyle: .alert)
+        let action1 = UIAlertAction(title: "Yes", style: .default) { (action:UIAlertAction) in
+            self.callingHttppApiForRemoveRestaurant(id: id);
+        }
+        let action2 = UIAlertAction(title: "No", style: .cancel) { (action:UIAlertAction) in
+            print("You've pressed cancel");
+        }
+        alertController.addAction(action2)
+        alertController.addAction(action1)
+        self.present(alertController, animated: true, completion: nil)
+    }
     
     @IBOutlet weak var restaurantsTableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -114,6 +129,65 @@ class RestaurantsDashboardController: UIViewController, UITableViewDelegate, UIT
         }
     }
     
+    func callingHttppApiForRemoveRestaurant(id: Int){
+        var requstParams = [String:Any]();
+        
+        GlobalData.sharedInstance.showLoader()
+        self.view.isUserInteractionEnabled = false
+        requstParams = [String:Any]();
+        requstParams["websiteId"] = DEFAULT_WEBSITE_ID
+        let customerId = defaults.object(forKey:"customerId");
+        if customerId != nil{
+            requstParams["customerToken"] = customerId
+            requstParams["customerId"] = customerId
+        }
+        requstParams["restaurantId"] = id; //restaurant
+        
+        GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"wemteqchef/owner/removerestaurant", currentView: self){success,responseObject in
+            if success == 1{
+                if responseObject?.object(forKey: "storeId") != nil{
+                    let storeId:String = String(format: "%@", responseObject!.object(forKey: "storeId") as! CVarArg)
+                    if storeId != "0"{
+                        defaults .set(storeId, forKey: "storeId")
+                    }
+                }
+                GlobalData.sharedInstance.dismissLoader()
+                self.view.isUserInteractionEnabled = true
+                var dict = JSON(responseObject as! NSDictionary)
+                if dict["success"].boolValue == true{
+                    var message = "";
+                    var title = "";
+                    if dict["removeRestaurantSuccess"] == true {
+                        message = "Restaurant removed successfully"
+                        title = "Success";
+                        for index in 0...Owner.ownerDashboardModelView.restaurantInfos.count - 1 {
+                            if (Owner.ownerDashboardModelView.restaurantInfos[index].restaurantId == id){
+                                Owner.ownerDashboardModelView.restaurantInfos.remove(at: index);
+                                break;
+                            }
+                        }
+                        self.restaurantsTableView.reloadData();
+                    } else {
+                        message = "Restaurant removing is failed"
+                        title = "Error";
+                    }
+                    let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                    let action2 = UIAlertAction(title: "OK", style: .cancel) { (action:UIAlertAction) in
+                        print("You've pressed cancel");
+                    }
+                    alertController.addAction(action2)
+                    self.present(alertController, animated: true, completion: nil)
+                }else{
+                    GlobalData.sharedInstance.showErrorSnackBar(msg: dict["message"].stringValue)
+                }
+                
+            }else if success == 2{
+                GlobalData.sharedInstance.dismissLoader()
+                self.callingHttppApi()
+            }
+            print("restaurant remove", responseObject)
+        }
+    }
     //---search bar----
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchActive = true;
@@ -192,12 +266,16 @@ class RestaurantsDashboardController: UIViewController, UITableViewDelegate, UIT
             else {
                 cell.restaurantName.text = filtered[indexPath.section].restaurantName as? String;
                 cell.restaurantImage.image = UIImage(named: "ic_signin")!
+                cell.delegate = self;
+                cell.restaurantId = filtered[indexPath.section].restaurantId;
             }
         }
         else
         {
             cell.restaurantName.text = Owner.ownerDashboardModelView.restaurantInfos[indexPath.section].restaurantName as? String;
             cell.restaurantImage.image = UIImage(named: "ic_signin")!
+            cell.restaurantId = Owner.ownerDashboardModelView.restaurantInfos[indexPath.section].restaurantId;
+            cell.delegate = self;
         }
         
         //cell.restaurantImage.image = UIImage(named: "ic_signin")!

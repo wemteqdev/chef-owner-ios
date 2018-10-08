@@ -78,7 +78,7 @@ class ChefsDashboardController: UIViewController, UITableViewDelegate, UITableVi
         self.present(customAlert, animated: true, completion: nil)
     }
     
-    func callingHttppApi(){
+    func callingHttppApiForAddChef(){
         var requstParams = [String:Any]();
         
         GlobalData.sharedInstance.showLoader()
@@ -125,7 +125,7 @@ class ChefsDashboardController: UIViewController, UITableViewDelegate, UITableVi
                 
             }else if success == 2{
                 GlobalData.sharedInstance.dismissLoader()
-                self.callingHttppApi()
+                self.callingHttppApiForAddChef()
             }
             print("addChef", responseObject)
         }
@@ -185,9 +185,9 @@ class ChefsDashboardController: UIViewController, UITableViewDelegate, UITableVi
                 
             }else if success == 2{
                 GlobalData.sharedInstance.dismissLoader()
-                self.callingHttppApi()
+                self.callingHttppApiForRemoveChef(id: id)
             }
-            print("addChef", responseObject)
+            print("removing", responseObject)
         }
     }
     //---search bar----
@@ -306,7 +306,7 @@ extension ChefsDashboardController: AddChefAlertViewDelegate {
         print("restaurantIdValue has value: \(restaurantIdValue)")
         self.addChefEmail = textFieldValue;
         self.addChefRestaurantId = restaurantIdValue;
-        self.callingHttppApi();
+        self.callingHttppApiForAddChef();
     }
     
     func cancelButtonTapped() {

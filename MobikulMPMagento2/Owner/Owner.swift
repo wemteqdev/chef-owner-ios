@@ -629,7 +629,11 @@ class Owner: UIViewController{
             profile_name.text = defaults.object(forKey: "customerName") as? String
         } else {
             profile_name.text = "Owner"
-        } 
+        }
+        if defaults.object(forKey: "profilePicture") != nil{
+            let imageUrl = defaults.object(forKey: "profilePicture") as? String
+            GlobalData.sharedInstance.getImageFromUrl(imageUrl: imageUrl!, imageView: profile_image)
+        }
         
         profile_owner.text = "Owner"
         if (Owner.callingApiSucceed) {
