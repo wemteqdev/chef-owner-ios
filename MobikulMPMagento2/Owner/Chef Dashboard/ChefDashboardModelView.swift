@@ -20,13 +20,15 @@ class RestaurantOnlyInfoModel: NSObject {
     }
 }
 class ChefDashboardModelView: NSObject {
-    var restaurantInfos:[RestaurantOnlyInfoModel] = [];
+    var chefInfos = [ChefInfoModel]();
     
     init(data:JSON) {
-        if let restaurantArrayData = data["getAllRestaurants"].arrayObject{
-            restaurantInfos =  restaurantArrayData.map({(value) -> RestaurantOnlyInfoModel in
-                return  RestaurantOnlyInfoModel(data:JSON(value))
+        //-------------Get Chef Info--------------------------
+        if let chefArrayData = data["chefsInfo"].arrayObject{
+            chefInfos =  chefArrayData.map({(value) -> ChefInfoModel in
+                return  ChefInfoModel(data:JSON(value))
             })
         }
+        print("chefCount:" + String(format: "%d", chefInfos.count));
     }
 }

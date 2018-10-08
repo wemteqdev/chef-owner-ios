@@ -120,6 +120,7 @@
 		29B8B1E62169ECC6006B8730 /* SupplierProductcategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B8B1DD2169ECC6006B8730 /* SupplierProductcategory.swift */; };
 		570A092A215EF1D400901621 /* Chef_MyCartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570A0928215EF1D100901621 /* Chef_MyCartTableViewCell.swift */; };
 		570A092B215EF1D500901621 /* Chef_MyCartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 570A0929215EF1D200901621 /* Chef_MyCartTableViewCell.xib */; };
+		571F9627216B20B5007126D5 /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571F9626216B20B5007126D5 /* LaunchScreenView.swift */; };
 		572187722152FA3300FACF86 /* Chef_ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572187712152FA3300FACF86 /* Chef_ProductDetailViewController.swift */; };
 		5721877521536C9500FACF86 /* Chef_MyCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5721877421536C9500FACF86 /* Chef_MyCart.swift */; };
 		5721877721536D1E00FACF86 /* Chef_MyCartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5721877621536D1E00FACF86 /* Chef_MyCartModel.swift */; };
@@ -689,6 +690,7 @@
 		29B8B1DD2169ECC6006B8730 /* SupplierProductcategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SupplierProductcategory.swift; path = "MobikulMPMagento2/Product category/SupplierProductcategory.swift"; sourceTree = SOURCE_ROOT; };
 		570A0928215EF1D100901621 /* Chef_MyCartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chef_MyCartTableViewCell.swift; sourceTree = "<group>"; };
 		570A0929215EF1D200901621 /* Chef_MyCartTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Chef_MyCartTableViewCell.xib; sourceTree = "<group>"; };
+		571F9626216B20B5007126D5 /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
 		572187712152FA3300FACF86 /* Chef_ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chef_ProductDetailViewController.swift; sourceTree = "<group>"; };
 		5721877421536C9500FACF86 /* Chef_MyCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chef_MyCart.swift; sourceTree = "<group>"; };
 		5721877621536D1E00FACF86 /* Chef_MyCartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chef_MyCartModel.swift; sourceTree = "<group>"; };
@@ -1140,6 +1142,7 @@
 				A37B094520B3FF6E001C876D /* README.md */,
 				57AEA6C92151CC080078A0BA /* Chef_TabBarController.swift */,
 				5721877E21537C8900FACF86 /* SSBadgeButton.swift */,
+				571F9626216B20B5007126D5 /* LaunchScreenView.swift */,
 			);
 			path = MobikulMPMagento2;
 			sourceTree = "<group>";
@@ -2659,6 +2662,7 @@
 				0C05712F20408BDC00EB527B /* BaseWindow.swift in Sources */,
 				A3B7D1E6207DFDBD0026A3AF /* SellerOrderViewController.swift in Sources */,
 				0C0570B220408BBD00EB527B /* AppDelegate.swift in Sources */,
+				571F9627216B20B5007126D5 /* LaunchScreenView.swift in Sources */,
 				57401463214DC0460004AC05 /* Chef_ProductViewController.swift in Sources */,
 				A3B7D203207DFDBD0026A3AF /* SellerDashBoardModel.swift in Sources */,
 				A3B7D327207DFE210026A3AF /* ContinueToBillTableViewCell.swift in Sources */,

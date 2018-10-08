@@ -89,7 +89,6 @@ class OwnerDashBoardViewModel: NSObject {
     var diagramMonthlyTotal: DiagramTotalData!;
     var diagramYearlyTotal: DiagramTotalData!;
     //---for chef/restaurant info------
-    var chefInfos = [ChefInfoModel]();
     var restaurantInfos = [RestaurantInfoModel]();
     
     init(data:JSON){
@@ -150,13 +149,7 @@ class OwnerDashBoardViewModel: NSObject {
             percent = orderYearlyTotal[orderYearlyTotal.count-1] * 100;
         }
         diagramYearlyTotal = DiagramTotalData.init(ordersCount: data["yearlyOrdersCount"].intValue, ordersTotal: String(format:"%.1f",orderYearlyTotal[orderYearlyTotal.count-1]), supplierCounts: 0, percentage: percent);
-        //-------------Get Chef Info--------------------------
-        if let chefArrayData = data["chefsInfo"].arrayObject{
-            chefInfos =  chefArrayData.map({(value) -> ChefInfoModel in
-                return  ChefInfoModel(data:JSON(value))
-            })
-        }
-        print("chefCount:" + String(format: "%d", chefInfos.count));
+        
         //-------------Get Restaurant Info------------------------
         if let restaurantArrayData = data["restaurantsInfo"].arrayObject{
             restaurantInfos =  restaurantArrayData.map({(value) -> RestaurantInfoModel in

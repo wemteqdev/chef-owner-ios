@@ -57,22 +57,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MobikulMPMagento2/Create Account/CreateChef.swift"
-            timestampString = "560617943.187101"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
-            landmarkName = "callingHttppApi()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "MobikulMPMagento2/Owner/Chef Dashboard/ChefsDashboardController.swift"
             timestampString = "559633557.506785"
             startingColumnNumber = "9223372036854775807"
@@ -90,7 +74,7 @@
                   moduleName = "MobikulMPMagento2"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Volumes/WORK/chef-ios-app/MobikulMPMagento2/Owner/Chef%20Dashboard/ChefsDashboardController.swift"
-                  timestampString = "560630083.738986"
+                  timestampString = "560673370.150234"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "20"
@@ -105,7 +89,7 @@
                   moduleName = "MobikulMPMagento2"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Volumes/WORK/chef-ios-app/MobikulMPMagento2/Owner/Chef%20Dashboard/ChefsDashboardController.swift"
-                  timestampString = "560630083.740934"
+                  timestampString = "560673370.1523989"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "21"

@@ -33,10 +33,12 @@ class CustomerLogin: UIViewController {
     var errorMessage:String = ""
     var NotAgainCallTouchId :Bool = false
     var isOwner:Bool = false
-    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.navigationBar.applyNavigationGradient(colors:GRADIENTCOLOR)
+  navigationController?.navigationBar.applyNavigationGradient(colors:GRADIENTCOLOR)
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         self.navigationController?.isNavigationBarHidden = true
         
