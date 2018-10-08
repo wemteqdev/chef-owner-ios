@@ -58,16 +58,30 @@
                                     <action selector="viewMapButtonClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="KEh-Xi-tv6"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nNX-LV-pPl">
+                                <rect key="frame" x="456" y="19" width="130" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="X8H-p7-P9n"/>
+                                    <constraint firstAttribute="width" constant="130" id="jAS-fF-edg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="statusButtonClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="oSI-Za-ogb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="IPm-6j-cPC" firstAttribute="leading" secondItem="l50-RE-yj4" secondAttribute="trailing" constant="8" id="BWb-I9-ksO"/>
                             <constraint firstItem="IPm-6j-cPC" firstAttribute="top" secondItem="K3O-a4-zvE" secondAttribute="bottom" id="E3i-90-ubF"/>
+                            <constraint firstAttribute="trailing" secondItem="nNX-LV-pPl" secondAttribute="trailing" constant="10" id="EZr-BR-eCH"/>
                             <constraint firstItem="mGS-IF-GIg" firstAttribute="leading" secondItem="l50-RE-yj4" secondAttribute="trailing" constant="8" id="My2-p0-jti"/>
                             <constraint firstItem="mGS-IF-GIg" firstAttribute="top" secondItem="IPm-6j-cPC" secondAttribute="bottom" constant="5" id="Qzm-p0-cSD"/>
                             <constraint firstItem="l50-RE-yj4" firstAttribute="centerY" secondItem="c6n-go-mGx" secondAttribute="centerY" id="cKt-nG-JEm"/>
                             <constraint firstItem="mGS-IF-GIg" firstAttribute="top" secondItem="K3O-a4-zvE" secondAttribute="bottom" constant="15" id="gaV-kN-U8q"/>
                             <constraint firstAttribute="bottom" secondItem="mGS-IF-GIg" secondAttribute="bottom" constant="4" id="hUc-jP-Dr2"/>
+                            <constraint firstItem="nNX-LV-pPl" firstAttribute="centerY" secondItem="c6n-go-mGx" secondAttribute="centerY" id="lIU-CJ-5Zl"/>
                             <constraint firstAttribute="trailing" secondItem="K3O-a4-zvE" secondAttribute="trailing" constant="40" id="mXX-KR-I92"/>
                             <constraint firstItem="K3O-a4-zvE" firstAttribute="leading" secondItem="l50-RE-yj4" secondAttribute="trailing" constant="8" id="qC8-zO-Bar"/>
                             <constraint firstItem="l50-RE-yj4" firstAttribute="leading" secondItem="c6n-go-mGx" secondAttribute="leading" constant="8" id="uVN-O9-D7Q"/>
@@ -84,6 +98,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="restaruantName" destination="IPm-6j-cPC" id="vZh-RY-7MR"/>
+                <outlet property="statusButton" destination="nNX-LV-pPl" id="0Fc-lK-znf"/>
                 <outlet property="supplierImage" destination="l50-RE-yj4" id="ZGF-U1-3EH"/>
                 <outlet property="supplierName" destination="K3O-a4-zvE" id="OFx-Fk-Zve"/>
                 <outlet property="viewMapButton" destination="mGS-IF-GIg" id="E9N-iI-FPJ"/>

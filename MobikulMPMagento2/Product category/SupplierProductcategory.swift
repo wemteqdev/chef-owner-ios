@@ -9,13 +9,7 @@
 import UIKit
 import SwiftMessages
 
-protocol FilterItemsDelegate: class {
-    func updateArray(dictArray: NSDictionary, code: String)
-    func removeFromArray(postion: Int)
-    func removeAllObjFromArray()
-}
-
-class Productcategory: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UIPickerViewDelegate,FilterItemsDelegate {
+class SupplierProductcategory: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UIPickerViewDelegate,FilterItemsDelegate {
     
     var change:Bool = true
     var categoryName:String!
@@ -662,8 +656,9 @@ class Productcategory: UIViewController,UICollectionViewDelegate,UICollectionVie
             cell.productImage.image = UIImage(named: "ic_placeholder.png")
             cell.productName.text = productCollectionViewModel.getProductCollectionData[indexPath.row].productName
             cell.productPrice.text =  productCollectionViewModel.getProductCollectionData[indexPath.row].price
-            cell.addButton.tag = indexPath.row
-            cell.addButton.addTarget(self, action: #selector(addButtonClick(sender:)), for: .touchUpInside)
+            cell.addButton.isHidden = true;
+            //cell.addButton.tag = indexPath.row
+            //cell.addButton.addTarget(self, action: #selector(addButtonClick(sender:)), for: .touchUpInside)
             GlobalData.sharedInstance.getImageFromUrl(imageUrl:productCollectionViewModel.getProductCollectionData[indexPath.row].productImage , imageView: cell.productImage)
             cell.specialPrice.isHidden = true
             if productCollectionViewModel.getProductCollectionData[indexPath.row].isInWishlist == true{
@@ -672,14 +667,16 @@ class Productcategory: UIViewController,UICollectionViewDelegate,UICollectionVie
             }else{
                 cell.wishListButton.setImage(UIImage(named: "ic_wishlist_empty")!, for: .normal)
             }
+            //cell = productCollectionViewModel.getProductCollectionData[indexPath.row].descriptionData
             
             cell.wishListButton.tag = indexPath.row
             cell.wishListButton.addTarget(self, action: #selector(addToWishList(sender:)), for: .touchUpInside)
             cell.wishListButton.isUserInteractionEnabled = true
+            cell.addToCompareButton.isHidden = true;
             
-            cell.addToCompareButton.tag = indexPath.row
-            cell.addToCompareButton.addTarget(self, action: #selector(addToCompare(sender:)), for: .touchUpInside)
-            cell.addToCompareButton.isUserInteractionEnabled = true
+            //cell.addToCompareButton.tag = indexPath.row
+            //cell.addToCompareButton.addTarget(self, action: #selector(addToCompare(sender:)), for: .touchUpInside)
+            //cell.addToCompareButton.isUserInteractionEnabled = true
             
             
             if productCollectionViewModel.getProductCollectionData[indexPath.row].typeID == "grouped"{
@@ -711,8 +708,9 @@ class Productcategory: UIViewController,UICollectionViewDelegate,UICollectionVie
             cell.name.text = productCollectionViewModel.getProductCollectionData[indexPath.row].productName
             cell.price.text =  productCollectionViewModel.getProductCollectionData[indexPath.row].price
             cell.descriptionData.text = productCollectionViewModel.getProductCollectionData[indexPath.row].descriptionData
-            cell.addButton.tag = indexPath.row
-            cell.addButton.addTarget(self, action: #selector(addButtonClick(sender:)), for: .touchUpInside)
+            cell.addButton.isHidden = true;
+            //cell.addButton.tag = indexPath.row
+            //cell.addButton.addTarget(self, action: #selector(addButtonClick(sender:)), for: .touchUpInside)
             GlobalData.sharedInstance.getImageFromUrl(imageUrl:productCollectionViewModel.getProductCollectionData[indexPath.row].productImage , imageView: cell.imageView)
             cell.wishList_Button.tag = indexPath.row
             cell.compare_Button.tag = indexPath.row
@@ -750,11 +748,13 @@ class Productcategory: UIViewController,UICollectionViewDelegate,UICollectionVie
         }
     }
     @objc func addButtonClick(sender: UIButton){
+        /*
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "chef_productdetail") as! Chef_DashboardViewController
         vc.productImageUrl = productCollectionViewModel.getProductCollectionData[sender.tag].productImage
         vc.productName = productCollectionViewModel.getProductCollectionData[sender.tag].productName
         vc.productId = productCollectionViewModel.getProductCollectionData[sender.tag].id
         self.navigationController?.pushViewController(vc, animated: true)
+        */
     }
     
     @objc func addToWishList(sender: UIButton){

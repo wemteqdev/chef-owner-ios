@@ -378,10 +378,7 @@ class CustomerLogin: UIViewController {
        
         emailId = emailIdField.text!
         password = passwordtextField.text!
-        
-        emailId = "o@owner.com";
-        password = "owner123!"
-    
+            
         var isValid = 0;
         var errorMessage = ""
         
