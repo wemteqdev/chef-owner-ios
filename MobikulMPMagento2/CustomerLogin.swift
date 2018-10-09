@@ -8,7 +8,7 @@
 
 import UIKit
 import LocalAuthentication
-import FacebookLogin
+
 
 class CustomerLogin: UIViewController {
     
@@ -142,11 +142,6 @@ class CustomerLogin: UIViewController {
                 AC.addAction(cancelBtn)
                 self.present(AC, animated: true, completion: {  })
             }
-<<<<<<< HEAD
-             */
-             //self.configureTouchIdBeforeLogin()
-=======
->>>>>>> 1bfe7b4bf4fbe2fe56d8c8572ad2e9cd8ca7152d
         }
     }
     
@@ -361,12 +356,7 @@ class CustomerLogin: UIViewController {
     }
     @IBAction func LoginClick(_ sender: UIButton) {
         view.endEditing(true)
-<<<<<<< HEAD
 
-       
-=======
-        
->>>>>>> 1bfe7b4bf4fbe2fe56d8c8572ad2e9cd8ca7152d
         emailId = emailIdField.text!
         password = passwordtextField.text!
         
