@@ -121,6 +121,11 @@
 		570A092A215EF1D400901621 /* Chef_MyCartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570A0928215EF1D100901621 /* Chef_MyCartTableViewCell.swift */; };
 		570A092B215EF1D500901621 /* Chef_MyCartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 570A0929215EF1D200901621 /* Chef_MyCartTableViewCell.xib */; };
 		571F9627216B20B5007126D5 /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571F9626216B20B5007126D5 /* LaunchScreenView.swift */; };
+		571F963F216B911E007126D5 /* Chef_SuperCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571F963E216B911E007126D5 /* Chef_SuperCart.swift */; };
+		571F965C216B9876007126D5 /* Pods in Resources */ = {isa = PBXBuildFile; fileRef = 571F9653216B9876007126D5 /* Pods */; };
+		571F9660216B9AE4007126D5 /* Chef_SuperCartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571F965F216B9AE4007126D5 /* Chef_SuperCartCell.swift */; };
+		571F966B216B9FE7007126D5 /* AccordionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571F9669216B9FE5007126D5 /* AccordionHeaderView.swift */; };
+		571F966C216B9FE7007126D5 /* AccordionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 571F966A216B9FE6007126D5 /* AccordionHeaderView.xib */; };
 		572187722152FA3300FACF86 /* Chef_ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572187712152FA3300FACF86 /* Chef_ProductDetailViewController.swift */; };
 		5721877521536C9500FACF86 /* Chef_MyCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5721877421536C9500FACF86 /* Chef_MyCart.swift */; };
 		5721877721536D1E00FACF86 /* Chef_MyCartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5721877621536D1E00FACF86 /* Chef_MyCartModel.swift */; };
@@ -691,6 +696,11 @@
 		570A0928215EF1D100901621 /* Chef_MyCartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chef_MyCartTableViewCell.swift; sourceTree = "<group>"; };
 		570A0929215EF1D200901621 /* Chef_MyCartTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Chef_MyCartTableViewCell.xib; sourceTree = "<group>"; };
 		571F9626216B20B5007126D5 /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
+		571F963E216B911E007126D5 /* Chef_SuperCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chef_SuperCart.swift; sourceTree = "<group>"; };
+		571F9653216B9876007126D5 /* Pods */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Pods; sourceTree = "<group>"; };
+		571F965F216B9AE4007126D5 /* Chef_SuperCartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chef_SuperCartCell.swift; sourceTree = "<group>"; };
+		571F9669216B9FE5007126D5 /* AccordionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccordionHeaderView.swift; sourceTree = "<group>"; };
+		571F966A216B9FE6007126D5 /* AccordionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccordionHeaderView.xib; sourceTree = "<group>"; };
 		572187712152FA3300FACF86 /* Chef_ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chef_ProductDetailViewController.swift; sourceTree = "<group>"; };
 		5721877421536C9500FACF86 /* Chef_MyCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chef_MyCart.swift; sourceTree = "<group>"; };
 		5721877621536D1E00FACF86 /* Chef_MyCartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chef_MyCartModel.swift; sourceTree = "<group>"; };
@@ -1358,6 +1368,8 @@
 		5721877321536C6200FACF86 /* Chef_Cart */ = {
 			isa = PBXGroup;
 			children = (
+				571F9669216B9FE5007126D5 /* AccordionHeaderView.swift */,
+				571F966A216B9FE6007126D5 /* AccordionHeaderView.xib */,
 				5721877421536C9500FACF86 /* Chef_MyCart.swift */,
 				5721877621536D1E00FACF86 /* Chef_MyCartModel.swift */,
 				5721877A21536E3A00FACF86 /* Chef_CartTableViewCell.swift */,
@@ -1365,6 +1377,8 @@
 				57D70B45215576E000952248 /* Chef_exMyCart.swift */,
 				570A0928215EF1D100901621 /* Chef_MyCartTableViewCell.swift */,
 				570A0929215EF1D200901621 /* Chef_MyCartTableViewCell.xib */,
+				571F963E216B911E007126D5 /* Chef_SuperCart.swift */,
+				571F965F216B9AE4007126D5 /* Chef_SuperCartCell.swift */,
 			);
 			path = Chef_Cart;
 			sourceTree = "<group>";
@@ -2062,6 +2076,7 @@
 		EFCD860E358E73E15E5E11EA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				571F9653216B9876007126D5 /* Pods */,
 				A1A9D6040A9E066F12CB4ABA /* Pods_MobikulMPMagento2.framework */,
 			);
 			name = Frameworks;
@@ -2326,6 +2341,7 @@
 				A3C189D1213AD0DF009B6702 /* SearchSuggestionCell.xib in Resources */,
 				A3B7D2F9207DFE210026A3AF /* CategoryCell.xib in Resources */,
 				A3B7D1F1207DFDBD0026A3AF /* SellerListViewCell.xib in Resources */,
+				571F965C216B9876007126D5 /* Pods in Resources */,
 				A3B7D21A207DFDBD0026A3AF /* TransactionDetailsTopCell.xib in Resources */,
 				A3B7D2EB207DFE210026A3AF /* AdditionalFeatureTableViewCell.xib in Resources */,
 				0C0570A720408BAC00EB527B /* Localizable.strings in Resources */,
@@ -2348,6 +2364,7 @@
 				A3B7D236207DFDBD0026A3AF /* MyProductListViewCell.xib in Resources */,
 				A3B7D340207DFE210026A3AF /* CategoriesTableViewCell.xib in Resources */,
 				57F625B121517BC3000F1CD5 /* Chef_SellerListViewCell.xib in Resources */,
+				571F966C216B9FE7007126D5 /* AccordionHeaderView.xib in Resources */,
 				57F83DF62153CF6000BC9DCB /* Chef_MyOrderTableViewCellDesign.xib in Resources */,
 				29B11B0621555CD000980BA4 /* ChefsCell.xib in Resources */,
 				0C05716F20408C2C00EB527B /* spalsh-screen.png in Resources */,
@@ -2643,6 +2660,7 @@
 				299D74D421592FEF00248A67 /* OrderViewCell.swift in Sources */,
 				299D74BC215908C900248A67 /* SupplierDashboardModelView.swift in Sources */,
 				A3B7D339207DFE210026A3AF /* CompareProductCollectionView.swift in Sources */,
+				571F963F216B911E007126D5 /* Chef_SuperCart.swift in Sources */,
 				0C05710A20408BDB00EB527B /* ProgressAtRatioView.swift in Sources */,
 				A3B7D206207DFDBD0026A3AF /* SellerOrdersDataCell.swift in Sources */,
 				A3B7D2ED207DFE210026A3AF /* CatalogProduct.swift in Sources */,
@@ -2770,6 +2788,7 @@
 				ECABAE32205807E300D71EDD /* PHFComposeBarView_Button.m in Sources */,
 				0C05710D20408BDB00EB527B /* ColorUtil.swift in Sources */,
 				A3B7D202207DFDBD0026A3AF /* SellerDashBoardController.swift in Sources */,
+				571F9660216B9AE4007126D5 /* Chef_SuperCartCell.swift in Sources */,
 				A3B7D1EB207DFDBD0026A3AF /* TrackingInformationCell.swift in Sources */,
 				A3B7D212207DFDBD0026A3AF /* MyTransactionFilterController.swift in Sources */,
 				0C05712020408BDC00EB527B /* CHILayer.swift in Sources */,
@@ -2780,6 +2799,7 @@
 				57AEA6CA2151CC090078A0BA /* Chef_TabBarController.swift in Sources */,
 				5721877521536C9500FACF86 /* Chef_MyCart.swift in Sources */,
 				5721877C21536E3A00FACF86 /* Chef_CartTableViewCell.swift in Sources */,
+				571F966B216B9FE7007126D5 /* AccordionHeaderView.swift in Sources */,
 				A3C189DC213AD148009B6702 /* TextDetectorController.swift in Sources */,
 				A3B7D2EE207DFE210026A3AF /* CatalogProductImage.swift in Sources */,
 				A3B7D1E7207DFDBD0026A3AF /* AddTrackingInfoCell.swift in Sources */,

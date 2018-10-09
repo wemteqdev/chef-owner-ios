@@ -37,17 +37,9 @@ class CustomerLogin: UIViewController {
         return .lightContent
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-  navigationController?.navigationBar.applyNavigationGradient(colors:GRADIENTCOLOR)
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
-        self.navigationController?.isNavigationBarHidden = true
-        
-    }
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBarController?.tabBar.isHidden = true
+        //self.tabBarController?.tabBar.isHidden = true
         
         defaults.set("1", forKey: "storeId")
         /* pastelView = PastelView(frame: view.bounds)
@@ -153,18 +145,18 @@ class CustomerLogin: UIViewController {
                 self.present(AC, animated: true, completion: {  })
             }
              */
-             self.configureTouchIdBeforeLogin()
+             //self.configureTouchIdBeforeLogin()
         }
     }
     
     @IBAction func signupClick(_ sender: UIButton) {
         self.performSegue(withIdentifier: "createaccount", sender: self)
     }
-    @IBAction func clickOnBack(_ sender: Any) {
-        self.navigationController?.isNavigationBarHidden = false
-        self.navigationController?.popViewController(animated: true)
-        self.tabBarController?.tabBar.isHidden = false
-    }
+//    @IBAction func clickOnBack(_ sender: Any) {
+//        self.navigationController?.isNavigationBarHidden = false
+//        self.navigationController?.popViewController(animated: true)
+//        self.tabBarController?.tabBar.isHidden = false
+//    }
     
     func callingHttppApi()  {
         GlobalData.sharedInstance.showLoader()
@@ -375,6 +367,7 @@ class CustomerLogin: UIViewController {
     }
     @IBAction func LoginClick(_ sender: UIButton) {
         view.endEditing(true)
+
        
         emailId = emailIdField.text!
         password = passwordtextField.text!

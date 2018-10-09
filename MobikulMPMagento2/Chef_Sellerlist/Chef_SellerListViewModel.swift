@@ -15,7 +15,8 @@ struct Chef_SellerListModel{
     var productCount:String!
     var sellerId:String!
     var shopTitle:String!
-    
+    var cartItemCount:Int = 0
+    var cartItemIndex: [Int] = []
     init(data:JSON) {
         self.logo = data["logo"].stringValue
         self.productCount = data["productCount"].stringValue

@@ -3085,6 +3085,61 @@
             </objects>
             <point key="canvasLocation" x="401" y="1517"/>
         </scene>
+        <!--Chef Super Cart-->
+        <scene sceneID="PfX-AC-G6V">
+            <objects>
+                <viewController id="6aS-gO-SmW" customClass="Chef_SuperCart" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IIz-oO-SOp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SaZ-A2-aJS" customClass="FZAccordionTableView">
+                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="82" id="Ro2-Hs-fbc" customClass="Chef_SuperCartCell" customModule="MobikulMPMagento2" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="82"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ro2-Hs-fbc" id="DlI-5i-ZSs">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="81.666666666666671"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fla-58-V1R">
+                                                    <rect key="frame" x="112" y="11" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="fla-58-V1R" firstAttribute="centerX" secondItem="DlI-5i-ZSs" secondAttribute="centerX" id="SRI-q6-Ftm"/>
+                                                <constraint firstItem="fla-58-V1R" firstAttribute="centerY" secondItem="DlI-5i-ZSs" secondAttribute="centerY" id="aeY-WH-T8p"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="titleLabel" destination="fla-58-V1R" id="uPf-Tt-NAI"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="SaZ-A2-aJS" firstAttribute="top" secondItem="Gwi-FL-kL4" secondAttribute="top" id="0cS-bJ-iB0"/>
+                            <constraint firstItem="Gwi-FL-kL4" firstAttribute="trailing" secondItem="SaZ-A2-aJS" secondAttribute="trailing" id="KUt-6k-MJz"/>
+                            <constraint firstItem="Gwi-FL-kL4" firstAttribute="bottom" secondItem="SaZ-A2-aJS" secondAttribute="bottom" id="ppO-Kd-Tog"/>
+                            <constraint firstItem="SaZ-A2-aJS" firstAttribute="leading" secondItem="Gwi-FL-kL4" secondAttribute="leading" id="ubE-xB-oQY"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Gwi-FL-kL4"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="SaZ-A2-aJS" id="RUZ-qg-LfN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z6v-WA-be5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-7533.3333333333339" y="-33.423913043478265"/>
+        </scene>
         <!--Chef My Cart-->
         <scene sceneID="PSk-b4-LBe">
             <objects>
@@ -4420,7 +4475,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pFD-mZ-32d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5430.434782608696" y="1369.5652173913045"/>
+            <point key="canvasLocation" x="-5430" y="1354"/>
         </scene>
         <!--Related Product Controller-->
         <scene sceneID="dMM-8R-6rg">
@@ -9703,19 +9758,19 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                                                 </connections>
                                             </view>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="NAME" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZgM-be-wvf" customClass="SkyFloatingLabelTextField" customModule="MobikulMPMagento2" customModuleProvider="target">
-                                                <rect key="frame" x="10" y="304" width="393" height="30"/>
+                                                <rect key="frame" x="10" y="304" width="393" height="39.333333333333314"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="NAME" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6gg-ac-S5B" customClass="SkyFloatingLabelTextField" customModule="MobikulMPMagento2" customModuleProvider="target">
-                                                <rect key="frame" x="10" y="344" width="393" height="30"/>
+                                                <rect key="frame" x="10" y="353.33333333333331" width="393" height="39"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="NAME" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d8f-8U-UlM" customClass="SkyFloatingLabelTextField" customModule="MobikulMPMagento2" customModuleProvider="target">
-                                                <rect key="frame" x="10" y="385.66666666666669" width="393" height="30"/>
+                                                <rect key="frame" x="10" y="404" width="393" height="39.333333333333314"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -9751,7 +9806,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jgi-fn-iaP">
-                                        <rect key="frame" x="183.66666666666666" y="466.66666666666663" width="46" height="30"/>
+                                        <rect key="frame" x="183.66666666666666" y="494.33333333333337" width="46" height="30"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
                                             <action selector="SubmitClick:" destination="Pri-Af-dnd" eventType="touchUpInside" id="t0g-56-0rl"/>
@@ -15054,7 +15109,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
     <inferredMetricsTieBreakers>
         <segue reference="BnP-5R-UpJ"/>
         <segue reference="k3f-34-Vh7"/>
-        <segue reference="msq-Yc-vqj"/>
+        <segue reference="0Vc-df-Kyg"/>
         <segue reference="6H7-k0-P6o"/>
         <segue reference="DHe-33-5Ya"/>
         <segue reference="KXi-UJ-red"/>
@@ -15062,11 +15117,11 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
         <segue reference="un3-HS-DRX"/>
         <segue reference="7Qu-d1-AVV"/>
         <segue reference="kp9-vR-xGq"/>
-        <segue reference="6qv-Xv-DRt"/>
+        <segue reference="16k-gN-gk7"/>
         <segue reference="N2m-HW-kYV"/>
         <segue reference="Ix9-K4-5sQ"/>
         <segue reference="5gt-HY-6Mn"/>
-        <segue reference="73e-Tb-T2V"/>
+        <segue reference="EhG-al-bPQ"/>
         <segue reference="cfP-un-lQ8"/>
         <segue reference="R8v-W6-OKT"/>
         <segue reference="Pe6-X1-otd"/>

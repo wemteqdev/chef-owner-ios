@@ -18,6 +18,7 @@ class Chef_MyCartModel: NSObject {
     var subtotal:String!
     var options:Array<JSON>
     var message:JSON!
+    var supplierId:String = ""
     
     init(data:JSON) {
         self.id = data["id"].stringValue
@@ -29,6 +30,7 @@ class Chef_MyCartModel: NSObject {
         self.subtotal = data["subTotal"].stringValue
         self.options = data["options"].arrayValue
         self.message = data["messages"]
+        self.supplierId = data["supplierId"].stringValue
     }
 }
 

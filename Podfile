@@ -17,6 +17,7 @@ pod "Firebase/MLVisionTextModel"
 pod 'Fabric', '~> 1.7.9'
 pod 'Crashlytics', '~> 3.10.5'
 pod 'Siren'
+pod 'FZAccordionTableView', '~> 0.2.3'
 
 pod 'FacebookCore'
 pod 'FacebookLogin'
