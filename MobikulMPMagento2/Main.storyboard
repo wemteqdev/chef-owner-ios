@@ -1167,7 +1167,7 @@
             <objects>
                 <viewController id="wnd-T5-CnA" customClass="ShippingAddressViewController" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RV0-6p-Apd">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XyN-cm-o1f">
@@ -4956,7 +4956,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                         <viewControllerLayoutGuide type="bottom" id="tgE-Zh-SLT"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ed5-lC-Sbq">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qp5-JF-Nhe">
@@ -9761,19 +9761,19 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                                                 </connections>
                                             </view>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="NAME" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZgM-be-wvf" customClass="SkyFloatingLabelTextField" customModule="MobikulMPMagento2" customModuleProvider="target">
-                                                <rect key="frame" x="10" y="304" width="393" height="39.333333333333314"/>
+                                                <rect key="frame" x="10" y="304" width="393" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="NAME" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6gg-ac-S5B" customClass="SkyFloatingLabelTextField" customModule="MobikulMPMagento2" customModuleProvider="target">
-                                                <rect key="frame" x="10" y="353.33333333333331" width="393" height="39"/>
+                                                <rect key="frame" x="10" y="344" width="393" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="NAME" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d8f-8U-UlM" customClass="SkyFloatingLabelTextField" customModule="MobikulMPMagento2" customModuleProvider="target">
-                                                <rect key="frame" x="10" y="404" width="393" height="39.333333333333314"/>
+                                                <rect key="frame" x="10" y="385.66666666666669" width="393" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -9809,7 +9809,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jgi-fn-iaP">
-                                        <rect key="frame" x="183.66666666666666" y="494.33333333333337" width="46" height="30"/>
+                                        <rect key="frame" x="183.66666666666666" y="466.66666666666663" width="46" height="30"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
                                             <action selector="SubmitClick:" destination="Pri-Af-dnd" eventType="touchUpInside" id="t0g-56-0rl"/>
@@ -11467,7 +11467,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                         <viewControllerLayoutGuide type="bottom" id="PCY-IF-o4L"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kAA-vl-yug">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1111" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3co-If-88v">
@@ -15119,7 +15119,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
         <image name="tourch-on" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="BnP-5R-UpJ"/>
+        <segue reference="nwi-ah-tQ2"/>
         <segue reference="k3f-34-Vh7"/>
         <segue reference="0Vc-df-Kyg"/>
         <segue reference="6H7-k0-P6o"/>
@@ -15136,6 +15136,6 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
         <segue reference="EhG-al-bPQ"/>
         <segue reference="cfP-un-lQ8"/>
         <segue reference="R8v-W6-OKT"/>
-        <segue reference="Pe6-X1-otd"/>
+        <segue reference="lhT-NK-cCQ"/>
     </inferredMetricsTieBreakers>
 </document>

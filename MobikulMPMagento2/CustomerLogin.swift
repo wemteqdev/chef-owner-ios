@@ -35,17 +35,7 @@ class CustomerLogin: UIViewController {
     var isOwner:Bool = false
     
     
-<<<<<<< HEAD
-=======
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.navigationBar.applyNavigationGradient(colors:GRADIENTCOLOR)
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
-        self.navigationController?.isNavigationBarHidden = true
-        
-    }
-    
-    
->>>>>>> 1bfe7b4bf4fbe2fe56d8c8572ad2e9cd8ca7152d
+
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.tabBarController?.tabBar.isHidden = true
