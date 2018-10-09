@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class AddRestaurantAlertView: UIViewController {
+class AddSupplierAlertView: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var chefEmailTextField: UITextField!
@@ -17,9 +17,8 @@ class AddRestaurantAlertView: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var okButton: UIButton!
     @IBOutlet weak var infoLabel: UILabel!
-    @IBOutlet weak var restaurantTextField: SkyFloatingLabelTextField!
     
-    var delegate: AddRestaurantAlertViewDelegate?
+    var delegate: AddSupplierAlertViewDelegate?
     var callingApiSucceed:Bool = false;
     var restaurantId:Int = -1;
     let alertViewGrayColor = UIColor(red: 224.0/255.0, green: 224.0/255.0, blue: 224.0/255.0, alpha: 1)

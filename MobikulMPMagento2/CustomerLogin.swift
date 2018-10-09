@@ -11,13 +11,13 @@ import LocalAuthentication
 import FacebookLogin
 
 class CustomerLogin: UIViewController {
-
+    
     
     @IBOutlet weak var emailIdField: UIFloatLabelTextField!
     @IBOutlet weak var passwordtextField: UIFloatLabelTextField!
     @IBOutlet weak var forgotPasswordButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
-
+    
     @IBOutlet weak var googlesignButton: UIButton!
     @IBOutlet weak var facebooksignButton: UIButton!
     
@@ -33,35 +33,44 @@ class CustomerLogin: UIViewController {
     var errorMessage:String = ""
     var NotAgainCallTouchId :Bool = false
     var isOwner:Bool = false
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+    
+    
+<<<<<<< HEAD
+=======
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.applyNavigationGradient(colors:GRADIENTCOLOR)
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        self.navigationController?.isNavigationBarHidden = true
+        
     }
     
+    
+>>>>>>> 1bfe7b4bf4fbe2fe56d8c8572ad2e9cd8ca7152d
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.tabBarController?.tabBar.isHidden = true
         
         defaults.set("1", forKey: "storeId")
         /* pastelView = PastelView(frame: view.bounds)
-        
-        // Custom Direction
-        pastelView.startPastelPoint = .bottomLeft
-        pastelView.endPastelPoint = .topRight
-        
-        // Custom Duration
-        pastelView.animationDuration = 3.0
-        
-        // Custom Color
-        pastelView.setColors([UIColor(red: 156/255, green: 39/255, blue: 176/255, alpha: 1.0),
-                              UIColor(red: 255/255, green: 64/255, blue: 129/255, alpha: 1.0),
-                              UIColor(red: 123/255, green: 31/255, blue: 162/255, alpha: 1.0),
-                              UIColor(red: 32/255, green: 76/255, blue: 255/255, alpha: 1.0),
-                              UIColor(red: 32/255, green: 158/255, blue: 255/255, alpha: 1.0),
-                              UIColor(red: 90/255, green: 120/255, blue: 127/255, alpha: 1.0),
-                              UIColor(red: 58/255, green: 255/255, blue: 217/255, alpha: 1.0)])
-        
-        pastelView.startAnimation()
-        view.insertSubview(pastelView, at: 0)*/
+         
+         // Custom Direction
+         pastelView.startPastelPoint = .bottomLeft
+         pastelView.endPastelPoint = .topRight
+         
+         // Custom Duration
+         pastelView.animationDuration = 3.0
+         
+         // Custom Color
+         pastelView.setColors([UIColor(red: 156/255, green: 39/255, blue: 176/255, alpha: 1.0),
+         UIColor(red: 255/255, green: 64/255, blue: 129/255, alpha: 1.0),
+         UIColor(red: 123/255, green: 31/255, blue: 162/255, alpha: 1.0),
+         UIColor(red: 32/255, green: 76/255, blue: 255/255, alpha: 1.0),
+         UIColor(red: 32/255, green: 158/255, blue: 255/255, alpha: 1.0),
+         UIColor(red: 90/255, green: 120/255, blue: 127/255, alpha: 1.0),
+         UIColor(red: 58/255, green: 255/255, blue: 217/255, alpha: 1.0)])
+         
+         pastelView.startAnimation()
+         view.insertSubview(pastelView, at: 0)*/
         
         //emailIdField.floatLabelActiveColor = UIColor.black
         emailIdField.textColor = UIColor.white
@@ -77,9 +86,9 @@ class CustomerLogin: UIViewController {
         loginButton.layer.cornerRadius = 25
         loginButton.layer.masksToBounds = true
         
-  
         
-    //loginButton.setTitle(GlobalData.sharedInstance.language(key: "login"), for: .normal)
+        
+        //loginButton.setTitle(GlobalData.sharedInstance.language(key: "login"), for: .normal)
         
         googlesignButton.setTitleColor(UIColor.white, for: .normal)
         googlesignButton.backgroundColor = UIColor.red
@@ -102,8 +111,8 @@ class CustomerLogin: UIViewController {
         
         
         
-    
-    forgotPasswordButton.setTitleColor(UIColor.white, for: .normal)
+        
+        forgotPasswordButton.setTitleColor(UIColor.white, for: .normal)
         forgotPasswordButton.setTitle(GlobalData.sharedInstance.language(key: "forgotpassword"), for: .normal)
         
         
@@ -130,22 +139,24 @@ class CustomerLogin: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         if(self.moveToSignal != "cart"){
-            /*
             if defaults.object(forKey: "touchIdFlag") as! String == "1"{
                 let  AC = UIAlertController(title: GlobalData.sharedInstance.language(key: "alert"), message: GlobalData.sharedInstance.language(key: "loginbytouchid"), preferredStyle: .alert)
                 let okBtn = UIAlertAction(title: GlobalData.sharedInstance.language(key: "ok"), style:.default, handler: {(_ action: UIAlertAction) -> Void in
                     self.configureTouchIdBeforeLogin()
-         
+                    
                 })
                 let cancelBtn = UIAlertAction(title: GlobalData.sharedInstance.language(key: "cancel"), style:.destructive, handler: {(_ action: UIAlertAction) -> Void in
-         
+                    
                 })
                 AC.addAction(okBtn)
                 AC.addAction(cancelBtn)
                 self.present(AC, animated: true, completion: {  })
             }
+<<<<<<< HEAD
              */
              //self.configureTouchIdBeforeLogin()
+=======
+>>>>>>> 1bfe7b4bf4fbe2fe56d8c8572ad2e9cd8ca7152d
         }
     }
     
@@ -229,7 +240,6 @@ class CustomerLogin: UIViewController {
     func doFurtherProcessingWithResult(data:AnyObject){
         GlobalData.sharedInstance.dismissLoader()
         print(data)
-        
         let responseData = JSON(data as! NSDictionary)
         if responseData["success"].boolValue == true{
             defaults.set(responseData["customerEmail"].stringValue, forKey: "customerEmail")
@@ -260,16 +270,15 @@ class CustomerLogin: UIViewController {
             
             if responseData["isOwner"].intValue == 0{
                 defaults.set("f", forKey: "isOwner")
+                
             }else{
-                self.isOwner = true;
+                self.isOwner = true
                 defaults.set("t", forKey: "isOwner")
             }
             
             if responseData["isSeller"].intValue == 0{
                 defaults.set("f", forKey: "isSeller")
             }else{
-                GlobalData.sharedInstance.showErrorSnackBar(msg: "Sorry. Sellers are not allowed to login.")
-                return
                 defaults.set("t", forKey: "isSeller")
             }
             
@@ -284,7 +293,6 @@ class CustomerLogin: UIViewController {
             
             if defaults.object(forKey: "touchIdFlag") != nil && self.NotAgainCallTouchId == false{
                 if defaults.object(forKey: "touchIdFlag") as! String == "0"{
-                    /*
                     let  AC = UIAlertController(title: GlobalData.sharedInstance.language(key: "alert"), message: GlobalData.sharedInstance.language(key: "wouldyouliketoconnectappwithtouchid"), preferredStyle: .alert)
                     let okBtn = UIAlertAction(title: GlobalData.sharedInstance.language(key: "ok"), style:.default, handler: {(_ action: UIAlertAction) -> Void in
                         self.configureTouchIdafterLogin();
@@ -299,10 +307,8 @@ class CustomerLogin: UIViewController {
                     AC.addAction(cancelBtn)
                     //self.present(AC, animated: true, completion: {  })
                     self.present(AC, animated: true, completion: {  })
-                    */
-                    self.configureTouchIdafterLogin();
+                    
                 }else if defaults.object(forKey: "touchIdFlag") as! String == "1" {
-                    /*
                     let  AC = UIAlertController(title: GlobalData.sharedInstance.language(key: "alert"), message: GlobalData.sharedInstance.language(key: "wouldyouliketoresetthepreviouscredentailsandsavethiscredentialfortouchid"), preferredStyle: .alert)
                     let okBtn = UIAlertAction(title: GlobalData.sharedInstance.language(key: "ok"), style:.default, handler: {(_ action: UIAlertAction) -> Void in
                         self.configureTouchIdafterLogin();
@@ -317,8 +323,6 @@ class CustomerLogin: UIViewController {
                     AC.addAction(cancelBtn)
                     //self.parent!.present(AC, animated: true, completion: {  })
                     self.present(AC, animated: true, completion: {  })
-                     */
-                    self.configureTouchIdafterLogin();
                 }
                 else{
                     self.tabBarController?.tabBar.isHidden = false
@@ -337,41 +341,45 @@ class CustomerLogin: UIViewController {
     
     @IBAction func forgaotPasswordClick(_ sender: Any) {
         /*let AC = UIAlertController(title:GlobalData.sharedInstance.language(key:"enteremail"), message: "", preferredStyle: .alert)
-        AC.addTextField { (textField) in
-            textField.placeholder = GlobalData.sharedInstance.language(key:"enteremail");
-        }
-        let okBtn = UIAlertAction(title: GlobalData.sharedInstance.language(key:"ok"), style: .default, handler: {(_ action: UIAlertAction) -> Void in
-            let textField = AC.textFields![0]
-            if((textField.text?.characters.count)! < 1){
-                GlobalData.sharedInstance.showErrorSnackBar(msg:GlobalData.sharedInstance.language(key:"pleasefillemailid") )
-            }else if  !GlobalData.sharedInstance.checkValidEmail(data: textField.text!){
-                GlobalData.sharedInstance.showErrorSnackBar(msg:GlobalData.sharedInstance.language(key: "pleaseentervalidemail"));
-                
-            }
-                
-            else{
-                self.userEmail = textField.text!;
-                self.whichApiToProcess = "forgotpassword"
-                self.callingHttppApi();
-            }
-        })
-        let noBtn = UIAlertAction(title: GlobalData.sharedInstance.language(key:"cancel"), style:.destructive, handler: {(_ action: UIAlertAction) -> Void in
-        })
-        AC.addAction(okBtn)
-        AC.addAction(noBtn)
-        self.present(AC, animated: true, completion: {  })*/
-         self.performSegue(withIdentifier: "forgotpassword", sender: self)
+         AC.addTextField { (textField) in
+         textField.placeholder = GlobalData.sharedInstance.language(key:"enteremail");
+         }
+         let okBtn = UIAlertAction(title: GlobalData.sharedInstance.language(key:"ok"), style: .default, handler: {(_ action: UIAlertAction) -> Void in
+         let textField = AC.textFields![0]
+         if((textField.text?.characters.count)! < 1){
+         GlobalData.sharedInstance.showErrorSnackBar(msg:GlobalData.sharedInstance.language(key:"pleasefillemailid") )
+         }else if  !GlobalData.sharedInstance.checkValidEmail(data: textField.text!){
+         GlobalData.sharedInstance.showErrorSnackBar(msg:GlobalData.sharedInstance.language(key: "pleaseentervalidemail"));
+         
+         }
+         
+         else{
+         self.userEmail = textField.text!;
+         self.whichApiToProcess = "forgotpassword"
+         self.callingHttppApi();
+         }
+         })
+         let noBtn = UIAlertAction(title: GlobalData.sharedInstance.language(key:"cancel"), style:.destructive, handler: {(_ action: UIAlertAction) -> Void in
+         })
+         AC.addAction(okBtn)
+         AC.addAction(noBtn)
+         self.present(AC, animated: true, completion: {  })*/
+        self.performSegue(withIdentifier: "forgotpassword", sender: self)
     }
-     @IBAction func LoginOwnerClick(_ sender: UIButton) {
+    @IBAction func LoginOwnerClick(_ sender: UIButton) {
         self.performSegue(withIdentifier: "toowner", sender: self)
     }
     @IBAction func LoginClick(_ sender: UIButton) {
         view.endEditing(true)
+<<<<<<< HEAD
 
        
+=======
+        
+>>>>>>> 1bfe7b4bf4fbe2fe56d8c8572ad2e9cd8ca7152d
         emailId = emailIdField.text!
         password = passwordtextField.text!
-            
+        
         var isValid = 0;
         var errorMessage = ""
         
@@ -429,39 +437,39 @@ class CustomerLogin: UIViewController {
     private func loginProcessAfterLogin(policy: LAPolicy) {
         // Start evaluation process with a callback that is executed when the user ends the process successfully or not
         /*context.evaluatePolicy(policy, localizedReason: kMsgShowReason, reply: { (success, error) in
-            DispatchQueue.main.async {
-                
-                guard success else {
-                    guard let error = error else {
-                        self.showUnexpectedErrorMessageAfterLogin()
-                        return
-                    }
-                    
-                    switch(error) {
-                    case LAError.authenticationFailed:
-                        self.errorMessage = GlobalData.sharedInstance.language(key: "therewasaproblemverifyingyouridentity")
-                    case LAError.userCancel:
-                        self.errorMessage = GlobalData.sharedInstance.language(key: "authenticationwascanceledbyuser")
-                        
-                    default:
-                        self.errorMessage = GlobalData.sharedInstance.language(key: "touchidmaynotbeconfigured")
-                        break
-                    }
-                    let  AC = UIAlertController(title: GlobalData.sharedInstance.language(key: "error"), message: self.errorMessage, preferredStyle: .alert)
-                    let okBtn = UIAlertAction(title: GlobalData.sharedInstance.language(key: "ok"), style:.default, handler: {(_ action: UIAlertAction) -> Void in
-                        self.goToDashBoardWithoutTouchId();
-                        
-                    })
-                    AC.addAction(okBtn)
-                    //self.parent!.present(AC, animated: true, completion: {  })
-                    self.present(AC, animated: true, completion: {  })
-                    return
-                }
-                
-                // Good news! Everything went fine 👏
-                self.goToDashBoardWithTouchId()
-            }
-        })*/
+         DispatchQueue.main.async {
+         
+         guard success else {
+         guard let error = error else {
+         self.showUnexpectedErrorMessageAfterLogin()
+         return
+         }
+         
+         switch(error) {
+         case LAError.authenticationFailed:
+         self.errorMessage = GlobalData.sharedInstance.language(key: "therewasaproblemverifyingyouridentity")
+         case LAError.userCancel:
+         self.errorMessage = GlobalData.sharedInstance.language(key: "authenticationwascanceledbyuser")
+         
+         default:
+         self.errorMessage = GlobalData.sharedInstance.language(key: "touchidmaynotbeconfigured")
+         break
+         }
+         let  AC = UIAlertController(title: GlobalData.sharedInstance.language(key: "error"), message: self.errorMessage, preferredStyle: .alert)
+         let okBtn = UIAlertAction(title: GlobalData.sharedInstance.language(key: "ok"), style:.default, handler: {(_ action: UIAlertAction) -> Void in
+         self.goToDashBoardWithoutTouchId();
+         
+         })
+         AC.addAction(okBtn)
+         //self.parent!.present(AC, animated: true, completion: {  })
+         self.present(AC, animated: true, completion: {  })
+         return
+         }
+         
+         // Good news! Everything went fine 👏
+         self.goToDashBoardWithTouchId()
+         }
+         })*/
         self.goToDashBoardWithTouchId()
     }
     
@@ -470,7 +478,7 @@ class CustomerLogin: UIViewController {
         defaults.set("0", forKey: "touchIdFlag");
         defaults.synchronize()
         //self.tabBarController?.tabBar.isHidden = false
-        if self.isOwner == true {
+        if self.isOwner {
             self.performSegue(withIdentifier: "toowner", sender: self)
         }
         else {
@@ -478,15 +486,13 @@ class CustomerLogin: UIViewController {
         }
     }
     
-    
-    
     func goToDashBoardWithTouchId(){
         defaults.set("1", forKey: "touchIdFlag");
         defaults.set(emailId, forKey: "TouchEmailId")
         defaults.set(password, forKey: "TouchPasswordValue")
         defaults.synchronize()
         //self.tabBarController?.tabBar.isHidden = false
-        if self.isOwner == true {
+        if self.isOwner {
             self.performSegue(withIdentifier: "toowner", sender: self)
         }
         else {

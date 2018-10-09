@@ -34,9 +34,25 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="chk-t1-v6N">
+                                <rect key="frame" x="501" y="17.5" width="85" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.62546115449999995" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="85" id="2x5-H1-hh8"/>
+                                    <constraint firstAttribute="height" constant="30" id="8w5-Im-XWL"/>
+                                </constraints>
+                                <state key="normal" title="Remove">
+                                    <color key="titleColor" red="0.84705363069999995" green="0.9810029455" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="removeButtonClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ycl-9x-wfZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="chk-t1-v6N" secondAttribute="trailing" constant="10" id="12l-KW-Zjh"/>
+                            <constraint firstItem="chk-t1-v6N" firstAttribute="centerY" secondItem="c6n-go-mGx" secondAttribute="centerY" id="2uc-N1-SlJ"/>
                             <constraint firstItem="l50-RE-yj4" firstAttribute="centerY" secondItem="c6n-go-mGx" secondAttribute="centerY" id="cKt-nG-JEm"/>
                             <constraint firstItem="K3O-a4-zvE" firstAttribute="leading" secondItem="l50-RE-yj4" secondAttribute="trailing" constant="8" id="qC8-zO-Bar"/>
                             <constraint firstItem="l50-RE-yj4" firstAttribute="leading" secondItem="c6n-go-mGx" secondAttribute="leading" constant="8" id="uVN-O9-D7Q"/>
@@ -52,6 +68,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="removeButton" destination="chk-t1-v6N" id="Rn5-GP-uMW"/>
                 <outlet property="restaurantImage" destination="l50-RE-yj4" id="Sqp-ZC-zY7"/>
                 <outlet property="restaurantName" destination="K3O-a4-zvE" id="rEg-GY-0yM"/>
             </connections>

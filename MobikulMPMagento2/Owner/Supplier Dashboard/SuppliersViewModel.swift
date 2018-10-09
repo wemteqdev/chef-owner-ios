@@ -22,6 +22,18 @@ struct SupplierInfoModel {
     }
 }
 
+class AddSupplierInfoModel: NSObject {
+    var isAddSuccess: Bool = false;
+    var errorMessage: String = "";
+    var supplierInfo: SupplierInfoModel!;
+    
+    init(data:JSON) {
+        isAddSuccess = data["addSupplierSuccess"].boolValue;
+        errorMessage = data["errorMessage"].stringValue;
+        supplierInfo = SupplierInfoModel(data:data["supplierInfo"]);
+    }
+}
+
 class SuppliersViewModel: NSObject {
     var suppliersInfo = [SupplierInfoModel]();
     

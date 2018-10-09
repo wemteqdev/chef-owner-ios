@@ -131,6 +131,7 @@ class Chef_DashboardView: UIViewController{
         let customerId = defaults.object(forKey:"customerId");
         if customerId != nil{
             requstParams["customerToken"] = customerId
+            requstParams["customerId"] = -2;
             requstParams["customerType"] = "2"
         }
         
