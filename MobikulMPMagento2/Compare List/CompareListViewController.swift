@@ -19,7 +19,8 @@ class CompareListViewController: UIViewController,UITableViewDelegate, UITableVi
     var whichApiToProcess:String = ""
     var productName:String = ""
     var imageUrl:String = ""
-    
+    var productstoadd:[String] = []
+    var qtys:[String] = []
     //@IBOutlet weak var promotioncode: UITextField!
     @IBOutlet weak var emptyCompareLabel: UILabel!
     @IBOutlet weak var table_height: NSLayoutConstraint!
@@ -118,7 +119,7 @@ class CompareListViewController: UIViewController,UITableViewDelegate, UITableVi
         }else if whichApiToProcess == "addtocart"{
             requstParams["qty"] = "1"
             requstParams["productId"] = productId
-            GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"mobikulhttp/checkout/addtoCart", currentView: self){success,responseObject in
+            GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"wemteqchef/checkout/massaddtoCart", currentView: self){success,responseObject in
                 if success == 1{
                     if responseObject?.object(forKey: "storeId") != nil{
                         let storeId:String = String(format: "%@", responseObject!.object(forKey: "storeId") as! CVarArg)
@@ -160,7 +161,7 @@ class CompareListViewController: UIViewController,UITableViewDelegate, UITableVi
             let width = String(format:"%f", SCREEN_WIDTH * UIScreen.main.scale)
             requstParams["width"] = width
             
-            GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"mobikulhttp/catalog/comparelist", currentView: self){success,responseObject in
+            GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"wemteqchef/catalog/comparelist", currentView: self){success,responseObject in
                 if success == 1{
                     GlobalData.sharedInstance.dismissLoader()
                     self.compareListViewModel = CompareListViewModel(data:JSON(responseObject as! NSDictionary))
@@ -192,8 +193,8 @@ class CompareListViewController: UIViewController,UITableViewDelegate, UITableVi
                 self.tableView.reloadData()
             }else {
                 self.tableView.isHidden = true
-                self.emptyCompareLabel.isHidden = false
-                self.emptyCompareLabel.text = GlobalData.sharedInstance.language(key: "emptycomparelist")
+//                self.emptyCompareLabel.isHidden = false
+//                self.emptyCompareLabel.text = GlobalData.sharedInstance.language(key: "emptycomparelist")
             }
         }
     }
@@ -223,7 +224,16 @@ class CompareListViewController: UIViewController,UITableViewDelegate, UITableVi
         let cell:Chef_CompareCell = tableView.dequeueReusableCell(withIdentifier: "chef_compare") as! Chef_CompareCell
         cell.price.text = self.compareListViewModel.getProductList[indexPath.row].price
         cell.productname.text = self.compareListViewModel.getProductList[indexPath.row].productName
+        cell.starRating.value = self.compareListViewModel.getProductList[indexPath.row].rating
+        cell.rating.setTitle(String(format:"%f",self.compareListViewModel.getProductList[indexPath.row].rating), for: .normal)
+        cell.supplierName.text = self.compareListViewModel.getProductList[indexPath.row].supplierName
+        cell.reviewCount.text = "\(String(self.compareListViewModel.getProductList[indexPath.row].reviewCount)) reviews"
         
+        cell.checkBtn.addTarget(self, action: #selector(addToCart(sender:)), for: .touchUpInside)
+        
+        //cell.Totalprice.text = self.compareListViewModel.getProductList[indexPath.row].price *
+        cell.price.text = self.compareListViewModel.getProductList[indexPath.row].price
+        cell.pricevat.text = "\(String(self.compareListViewModel.getProductList[indexPath.row].price)) - \(String(self.compareListViewModel.getProductList[indexPath.row].taxClass))"
 //        cell.plusButton.addTarget(self, action: #selector(plusButtonClick(sender:)), for: .touchUpInside)
 //        cell.minusButton.addTarget(self, action: #selector(minusButtonClick(sender:)), for: .touchUpInside)
         
@@ -249,7 +259,7 @@ class CompareListViewController: UIViewController,UITableViewDelegate, UITableVi
         
         //if indexPath.section == 0{
             //return CGFloat(self.compareListViewModel.getProductList.count) * SCREEN_WIDTH/2.5 + 100
-        return 180
+        return 120
 
         /*}else{
             let dd  = compareListViewModel.getAttributesValue[indexPath.section - 1].attributesValueArray
@@ -308,12 +318,31 @@ class CompareListViewController: UIViewController,UITableViewDelegate, UITableVi
             self.callingHttppApi()
         }
     }
-    
+    @IBAction func proceedToCheckOut(_ sender: UIButton)
+    {
+        for i in 0..<self.compareListViewModel.getProductList.count{
+            if self.compareListViewModel.getProductList[i].checked == true {
+                self.productstoadd.append(self.compareListViewModel.getProductList[i].productId)
+                self.qtys.append(self.compareListViewModel.getProductList[i].qty)
+                print("------COMPARED PRODUCTS TO MASS ADD TO CART------")
+                print(self.productstoadd)
+                print(self.qtys)
+                print("------COMPARED PRODUCTS TO MASS ADD TO CART------")
+            }
+        }
+    }
     @objc func addToCart(sender: UIButton){
         let dd:[ComapreListModel] = compareHomeDataArray[0] as! [ComapreListModel]
-        whichApiToProcess = "addtocart"
-        self.productId = dd[sender.tag].productId
-        self.callingHttppApi()
+        if UIImage(named: "ic_unchecked") == sender.image(for: .normal) {
+            sender.setImage(UIImage(named: "ic_checked"), for: .normal)
+        self.compareListViewModel.setCheck(checked:true,pos:sender.tag)
+        }
+        else {
+            sender.setImage(UIImage(named: "ic_unchecked"), for: .normal)
+            self.compareListViewModel.setCheck(checked:false,pos:sender.tag)
+        }
+        
+      
     }
 }
 
@@ -402,6 +431,7 @@ extension CompareListViewController:UICollectionViewDelegateFlowLayout{
             return CGSize(width: SCREEN_WIDTH/2.5 + 10, height:maxLayout)
         }*/
     }
+    
     
     /*func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
         return true

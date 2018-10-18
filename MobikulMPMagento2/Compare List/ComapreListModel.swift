@@ -17,8 +17,12 @@ class ComapreListModel: NSObject {
     var productId:String!
     var hasOption:Int = 0
     var isInWishlist:Bool!
-
-    
+    var supplierName:String!
+    var taxClass:String!
+    var reviewCount:String!
+    var cartId:String!
+    var checked:Bool = false
+    var qty:String = "0"
     init(data:JSON){
         self.productName = data["name"].stringValue
         self.price = data["formatedFinalPrice"].stringValue
@@ -28,6 +32,10 @@ class ComapreListModel: NSObject {
         self.productId = data["entityId"].stringValue
         self.hasOption = data["hasOptions"].intValue
         self.isInWishlist = data["isInWishlist"].boolValue
+        self.reviewCount = data["reviewcount"].stringValue
+        self.taxClass = data["tax_class"].stringValue
+        self.supplierName = data["suppliername"].stringValue
+        
      }
     
 
@@ -91,7 +99,12 @@ class CompareListViewModel:NSObject{
     var getAttributesValue:Array<AttributesValue>{
         return attributesValue
     }
-    
+    func setCheck(checked:Bool,pos:Int){
+        productListModel[pos].checked = checked
+    }
+    func setQty(qty:String,pos:Int){
+        productListModel[pos].qty = qty
+    }
 }
 
 

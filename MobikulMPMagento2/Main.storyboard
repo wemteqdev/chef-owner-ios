@@ -4286,7 +4286,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="77b-s3-Hnx">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="77b-s3-Hnx">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="177" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lVa-kK-66D">
@@ -4314,6 +4314,9 @@
                                 <state key="normal" title="CHECK OUT">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="proceedToCheckOut:" destination="Dw8-07-Hqp" eventType="touchUpInside" id="v4E-jy-LiB"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -9152,31 +9155,19 @@
                                                 </connections>
                                             </view>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="NAME" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZgM-be-wvf" customClass="SkyFloatingLabelTextField" customModule="MobikulMPMagento2" customModuleProvider="target">
-<<<<<<< HEAD
                                                 <rect key="frame" x="10" y="304" width="354" height="30"/>
-=======
-                                                <rect key="frame" x="10" y="304" width="393" height="39.333333333333314"/>
->>>>>>> 10dc582cf76ebc25b397f97a954981b84c3758f3
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="NAME" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6gg-ac-S5B" customClass="SkyFloatingLabelTextField" customModule="MobikulMPMagento2" customModuleProvider="target">
-<<<<<<< HEAD
                                                 <rect key="frame" x="10" y="344" width="354" height="30"/>
-=======
-                                                <rect key="frame" x="10" y="353.33333333333331" width="393" height="39"/>
->>>>>>> 10dc582cf76ebc25b397f97a954981b84c3758f3
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="NAME" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d8f-8U-UlM" customClass="SkyFloatingLabelTextField" customModule="MobikulMPMagento2" customModuleProvider="target">
-<<<<<<< HEAD
                                                 <rect key="frame" x="10" y="385.66666666666669" width="354" height="30"/>
-=======
-                                                <rect key="frame" x="10" y="404" width="393" height="39.333333333333314"/>
->>>>>>> 10dc582cf76ebc25b397f97a954981b84c3758f3
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -9212,11 +9203,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jgi-fn-iaP">
-<<<<<<< HEAD
                                         <rect key="frame" x="164.33333333333334" y="466.66666666666663" width="46" height="30"/>
-=======
-                                        <rect key="frame" x="183.66666666666666" y="494.33333333333337" width="46" height="30"/>
->>>>>>> 10dc582cf76ebc25b397f97a954981b84c3758f3
                                         <state key="normal" title="Button"/>
                                         <connections>
                                             <action selector="SubmitClick:" destination="Pri-Af-dnd" eventType="touchUpInside" id="t0g-56-0rl"/>
@@ -14528,7 +14515,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="BnP-5R-UpJ"/>
         <segue reference="k3f-34-Vh7"/>
-        <segue reference="msq-Yc-vqj"/>
+        <segue reference="0Vc-df-Kyg"/>
         <segue reference="6H7-k0-P6o"/>
         <segue reference="DHe-33-5Ya"/>
         <segue reference="KXi-UJ-red"/>

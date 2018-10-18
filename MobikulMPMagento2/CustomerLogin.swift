@@ -142,10 +142,6 @@ class CustomerLogin: UIViewController {
                 AC.addAction(cancelBtn)
                 self.present(AC, animated: true, completion: {  })
             }
-<<<<<<< HEAD
-
-=======
->>>>>>> 10dc582cf76ebc25b397f97a954981b84c3758f3
         }
     }
     

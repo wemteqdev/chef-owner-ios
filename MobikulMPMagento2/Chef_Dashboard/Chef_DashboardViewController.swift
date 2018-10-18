@@ -464,9 +464,9 @@ class Chef_DashboardViewController: UIViewController, UITableViewDelegate, UITab
                     
                     self.catalogProductViewModel = CatalogProductViewModel(data:JSON(responseObject as! NSDictionary))
                     print(responseObject as! NSDictionary)
-                    requstParams["customerToken"] = defaults.object(forKey:"customerId") as! String
+                    requstParams["customerToken"] = self.defaults.object(forKey:"customerId") as! String
                     requstParams["customerType"] = "1"
-                    requstParams["storeId"] = defaults.object(forKey:"storeId") as! String
+                    requstParams["storeId"] = self.defaults.object(forKey:"storeId") as! String
                     requstParams["currentproductid"] = self.productId
                     requstParams["currentproductname"] = self.productName
                     GlobalData.sharedInstance.showLoader()
