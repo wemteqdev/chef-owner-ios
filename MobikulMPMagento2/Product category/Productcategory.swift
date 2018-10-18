@@ -665,7 +665,7 @@ class Productcategory: UIViewController,UICollectionViewDelegate,UICollectionVie
             cell.addButton.tag = indexPath.row
             cell.addButton.addTarget(self, action: #selector(addButtonClick(sender:)), for: .touchUpInside)
             GlobalData.sharedInstance.getImageFromUrl(imageUrl:productCollectionViewModel.getProductCollectionData[indexPath.row].productImage , imageView: cell.productImage)
-            cell.specialPrice.isHidden = true
+            //cell.specialPrice.isHidden = true
             if productCollectionViewModel.getProductCollectionData[indexPath.row].isInWishlist == true{
                 cell.wishListButton.setImage(UIImage(named: "ic_wishlist_fill")!, for: .normal)
                 
@@ -694,11 +694,11 @@ class Productcategory: UIViewController,UICollectionViewDelegate,UICollectionVie
                         cell.productPrice.text = productCollectionViewModel.getProductCollectionData[indexPath.row].formatedSpecialPrice
                         let attributeString = NSMutableAttributedString(string: productCollectionViewModel.getProductCollectionData[indexPath.row].formatedPrice)
                         attributeString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: 1, range: NSRange(location: 0, length: attributeString.length))
-                        cell.specialPrice.attributedText = attributeString
-                        cell.specialPrice.isHidden = false
+//                        cell.specialPrice.attributedText = attributeString
+//                        cell.specialPrice.isHidden = false
                     }else{
                         cell.productPrice.text =  productCollectionViewModel.getProductCollectionData[indexPath.row].price
-                        cell.specialPrice.isHidden = true
+                       // cell.specialPrice.isHidden = true
                     }
                 }
             }
@@ -710,14 +710,14 @@ class Productcategory: UIViewController,UICollectionViewDelegate,UICollectionVie
             cell.imageView.image = UIImage(named: "ic_placeholder.png")
             cell.name.text = productCollectionViewModel.getProductCollectionData[indexPath.row].productName
             cell.price.text =  productCollectionViewModel.getProductCollectionData[indexPath.row].price
-            cell.descriptionData.text = productCollectionViewModel.getProductCollectionData[indexPath.row].descriptionData
+            //cell.descriptionData.text = productCollectionViewModel.getProductCollectionData[indexPath.row].descriptionData
             cell.addButton.tag = indexPath.row
             cell.addButton.addTarget(self, action: #selector(addButtonClick(sender:)), for: .touchUpInside)
             GlobalData.sharedInstance.getImageFromUrl(imageUrl:productCollectionViewModel.getProductCollectionData[indexPath.row].productImage , imageView: cell.imageView)
             cell.wishList_Button.tag = indexPath.row
             cell.compare_Button.tag = indexPath.row
             
-            cell.specialPrice.isHidden = true
+            //cell.specialPrice.isHidden = true
             
             
             if productCollectionViewModel.getProductCollectionData[indexPath.row].isInWishlist == true{
@@ -739,11 +739,11 @@ class Productcategory: UIViewController,UICollectionViewDelegate,UICollectionVie
                     cell.price.text = productCollectionViewModel.getProductCollectionData[indexPath.row].formatedSpecialPrice
                     let attributeString = NSMutableAttributedString(string: productCollectionViewModel.getProductCollectionData[indexPath.row].formatedPrice)
                     attributeString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: 1, range: NSRange(location: 0, length: attributeString.length))
-                    cell.specialPrice.attributedText = attributeString
-                    cell.specialPrice.isHidden = false
+//                    cell.specialPrice.attributedText = attributeString
+//                    cell.specialPrice.isHidden = false
                 }else{
                     cell.price.text =  productCollectionViewModel.getProductCollectionData[indexPath.row].price
-                    cell.specialPrice.isHidden = true
+                    //cell.specialPrice.isHidden = true
                 }
             }
             return cell

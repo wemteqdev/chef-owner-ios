@@ -19,6 +19,9 @@ class Chef_SuperCart: UIViewController {
     var sellerListViewModel:Chef_SellerListViewModel!
     var cartSellerIndex: [Int] = []
     var curSection:Int!
+    var proceedToCheckout:Bool = true
+    var toUpdateItemQtys = NSMutableArray()
+    var toUpdateItemId = NSMutableArray()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +41,18 @@ class Chef_SuperCart: UIViewController {
     @objc func browseCategory(sender: UIButton){
         //self.tabBarController!.selectedIndex = 1
     }
+    @IBAction func updateCart(_ sender: UIButton){
+        toUpdateItemId = NSMutableArray();
+        toUpdateItemQtys = NSMutableArray();
+        
+        for i in 0..<myCartViewModel.getCartItems.count{
+            toUpdateItemId.add(myCartViewModel.getCartItems[i].id)
+            toUpdateItemQtys.add(myCartViewModel.getCartItems[i].qty)
+        }
+        whichApiToProcess = "updatecart"
+        proceedToCheckout = true
+        callingHttppApi()
+    }
     func callingHttppApi(){
         if whichApiToProcess == "sellerList" {
             GlobalData.sharedInstance.showLoader()
@@ -53,13 +68,14 @@ class Chef_SuperCart: UIViewController {
             GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"mobikulmphttp/marketplace/sellerlist", currentView: self){success,responseObject in
                 if success == 1{
                     self.view.isUserInteractionEnabled = true
-                    
+                    print(responseObject)
                     var dict = JSON(responseObject as! NSDictionary)
                     if dict["success"].boolValue == true{
                         self.sellerListViewModel = Chef_SellerListViewModel(data:dict)
-                        self.tableView.delegate = self
-                        self.tableView.dataSource = self
-                        self.tableView.reloadData()
+                        print("--------seller List--------")
+                        print(self.sellerListViewModel.sellerListModel.count)
+//                        self.tableView.delegate = self
+//                        self.tableView.dataSource = self
                         self.whichApiToProcess = ""
                         self.callingHttppApi()
                         
@@ -76,7 +92,62 @@ class Chef_SuperCart: UIViewController {
                 }
             }
         }
-        else {
+        else if self.whichApiToProcess == "updatecart"{
+            self.view.isUserInteractionEnabled = false
+            var requstParams = [String:Any]();
+            if self.defaults.object(forKey: "storeId") != nil{
+                requstParams["storeId"] = self.defaults.object(forKey: "storeId") as! String
+            }
+            let quoteId = self.defaults.object(forKey:"quoteId")
+            let customerId = self.defaults.object(forKey:"customerId")
+            if(quoteId != nil){
+                requstParams["quoteId"] = quoteId
+            }
+            if customerId != nil{
+                requstParams["customerToken"] = customerId
+            }
+            GlobalData.sharedInstance.showLoader()
+            
+            do {
+                
+                let jsonData1 =  try JSONSerialization.data(withJSONObject: self.toUpdateItemId, options: .prettyPrinted)
+                let jsonString1:String = NSString(data: jsonData1, encoding: String.Encoding.utf8.rawValue)! as String
+                requstParams["itemIds"] = jsonString1
+                let jsonData2 =  try JSONSerialization.data(withJSONObject: self.toUpdateItemQtys, options: .prettyPrinted)
+                let jsonString2:String = NSString(data: jsonData2, encoding: String.Encoding.utf8.rawValue)! as String
+                requstParams["itemQtys"] = jsonString2
+                
+            }
+            catch {
+                print(error.localizedDescription)
+            }
+            
+            GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"mobikulhttp/checkout/updateCart", currentView: self){success,responseObject in
+                if success == 1{
+                    if responseObject?.object(forKey: "storeId") != nil{
+                        let storeId:String = String(format: "%@", responseObject!.object(forKey: "storeId") as! CVarArg)
+                        if storeId != "0"{
+                            self.defaults .set(storeId, forKey: "storeId")
+                        }
+                    }
+                    
+                    print(responseObject!)
+                    let dict = responseObject as! NSDictionary
+                    if dict.object(forKey: "success") as! Bool == true{
+                        GlobalData.sharedInstance.showSuccessSnackBar(msg: GlobalData.sharedInstance.language(key: "cartupdated"))
+                    }
+                    
+                    self.view.isUserInteractionEnabled = true
+                    GlobalData.sharedInstance.dismissLoader()
+                    self.whichApiToProcess = "sellerList"
+                    self.callingHttppApi()
+                }else if success == 2{
+                    GlobalData.sharedInstance.dismissLoader()
+                    self.callingHttppApi()
+                }
+            }
+            
+        } else {
             self.view.isUserInteractionEnabled = false
             var requstParams = [String:Any]();
             if self.defaults.object(forKey: "storeId") != nil{
@@ -119,6 +190,7 @@ class Chef_SuperCart: UIViewController {
     func doFurtherProcessingWithResult(){
         DispatchQueue.main.async {
             self.view.isUserInteractionEnabled = true
+            self.cartSellerIndex = []
             
             if self.myCartViewModel.getCartItems.count > 0 {
                 for i in 0...self.sellerListViewModel.sellerListModel.count - 1 {
@@ -151,6 +223,38 @@ class Chef_SuperCart: UIViewController {
                 self.defaults.set("true", forKey: "isVirtual")
             }else{
                 self.defaults.set("false", forKey: "isVirtual")
+            }
+        }
+    }
+    @IBAction func proceedToCheckOut(_ sender: UIButton){
+        
+        //check for minimum order
+        badge = nil;
+        if myCartViewModel.myCartExtraData.grandUnformatedValue < myCartViewModel.myCartExtraData.minimumAmount {
+            GlobalData.sharedInstance.showWarningSnackBar(msg: "minimumorderamountis".localized + " " + "\(myCartViewModel.myCartExtraData.minimumFormattedAmount!)")
+        }else{
+            let customerId = defaults.object(forKey:"customerId")
+            if customerId != nil{
+                self.performSegue(withIdentifier: "proceedtocheckout", sender: self)
+            }else{
+                let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+//                let Create = UIAlertAction(title: GlobalData.sharedInstance.language(key: "checkoutasguest"), style: .default, handler: checkOutAsGuest)
+//                let guest = UIAlertAction(title: GlobalData.sharedInstance.language(key: "registerandcheckout"), style: .default, handler: registerAndCheckOut)
+//                let Existing = UIAlertAction(title: GlobalData.sharedInstance.language(key: "checkoutasexistingcustomer"), style: .default, handler: existingUser)
+//                let cancel = UIAlertAction(title: GlobalData.sharedInstance.language(key: "cancel"), style: .cancel, handler: cancelDeletePlanet)
+                
+                if self.myCartViewModel.getExtraCartData.isVirtual == 0 && myCartViewModel.myCartExtraData.isAllowedGuestCheckout    {
+                    //alert.addAction(Create)
+                }
+                
+//                alert.addAction(guest)
+//                alert.addAction(Existing)
+//                alert.addAction(cancel)
+                
+                // Support display in iPad
+                alert.popoverPresentationController?.sourceView = self.view
+                alert.popoverPresentationController?.sourceRect = CGRect(x:self.view.bounds.size.width / 2.0, y: self.view.bounds.size.height / 2.0, width : 1.0, height : 1.0)
+                self.present(alert, animated: true, completion: nil)
             }
         }
     }
@@ -197,7 +301,7 @@ extension Chef_SuperCart : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+        return 120
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -217,7 +321,29 @@ extension Chef_SuperCart : UITableViewDelegate, UITableViewDataSource {
         print(Chef_SuperCart.kTableViewCellReuseIdentifier)
         print("row numbers in section")
         print(indexPath.row)
-        cell.titleLabel.text = self.myCartViewModel.myCartModel[self.sellerListViewModel.sellerListModel[curSection].cartItemIndex[indexPath.row]].name
+        let CartIndex = self.sellerListViewModel.sellerListModel[curSection].cartItemIndex[indexPath.row]
+        cell.titleLabel.text = self.myCartViewModel.myCartModel[CartIndex].name
+        cell.priceLabel.text = self.myCartViewModel.myCartModel[CartIndex].price
+        cell.subtotal.text = self.myCartViewModel.myCartModel[CartIndex].subtotal
+        cell.supplierName.text = self.sellerListViewModel.sellerListModel[curSection].shopTitle
+        cell.qtyButton.setTitle(self.myCartViewModel.myCartModel[CartIndex].qty, for: .normal)
+        GlobalData.sharedInstance.getImageFromUrl(imageUrl: myCartViewModel.getCartItems[CartIndex].imageUrl, imageView: cell.productImage)
+        
+        cell.plusButton.tag = CartIndex
+        cell.plusButton.addTarget(self, action: #selector(plusButtonClick(sender:)), for: .touchUpInside)
+        
+        cell.minusButton.tag = CartIndex
+        cell.minusButton.addTarget(self, action: #selector(minusButtonClick(sender:)), for: .touchUpInside)
+        if myCartViewModel.getCartItems[CartIndex].message.count > 0{
+            var dict:JSON = myCartViewModel.getCartItems[CartIndex].message;
+            if dict["type"].stringValue == "error"{
+                cell.errorMsg.isHidden = false;
+                proceedToCheckout = false;
+                cell.errorMsg.text = dict["text"].stringValue
+            }
+        }else{
+            cell.errorMsg.isHidden = true
+        }
         return cell
     }
     
@@ -230,7 +356,21 @@ extension Chef_SuperCart : UITableViewDelegate, UITableViewDataSource {
         GlobalData.sharedInstance.getImageFromUrl(imageUrl: self.sellerListViewModel.sellerListModel[cartSellerIndex[section]].logo, imageView: headerView.supplierImage)
         return headerView
     }
+    @objc func plusButtonClick(sender: UIButton){
+        let qty:String = String(Int(self.myCartViewModel.myCartModel[sender.tag].qty)! + 1)
+        self.myCartViewModel.setQtyDataToCartModel(data: qty,pos: sender.tag)
+        self.tableView.reloadData()
+    }
+    @objc func minusButtonClick(sender: UIButton){
+        if Int(self.myCartViewModel.myCartModel[sender.tag].qty) == 0 {
+            return
+        }
+        let qty:String = String(Int(self.myCartViewModel.myCartModel[sender.tag].qty)! - 1)
+        self.myCartViewModel.setQtyDataToCartModel(data: qty,pos: sender.tag)
+        self.tableView.reloadData()
+    }
 }
+
 
 // MARK: - <FZAccordionTableViewDelegate> -
 
@@ -243,7 +383,6 @@ extension Chef_SuperCart : FZAccordionTableViewDelegate {
     }
     
     func tableView(_ tableView: FZAccordionTableView, didOpenSection section: Int, withHeader header: UITableViewHeaderFooterView?) {
-        
         
     }
     

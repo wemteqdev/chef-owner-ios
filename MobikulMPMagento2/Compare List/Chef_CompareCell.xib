@@ -159,10 +159,17 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="Totalprice" destination="XLq-kS-tLc" id="Hlp-pY-eV4"/>
                 <outlet property="kiloButton" destination="3gE-c1-FlZ" id="SW1-H1-Yde"/>
                 <outlet property="minusButton" destination="3Gl-8z-DlI" id="FBe-Cf-U58"/>
+                <outlet property="moq" destination="sLn-dU-hVU" id="pKu-Ip-oQY"/>
                 <outlet property="moqButton" destination="sLn-dU-hVU" id="RTT-Hr-tRW"/>
                 <outlet property="plusButton" destination="1T0-WI-LC6" id="O99-yS-1Ff"/>
+                <outlet property="price" destination="QZk-6w-m2L" id="s9o-AU-tqf"/>
+                <outlet property="pricevat" destination="ZmK-2a-w7A" id="8FM-Ki-X31"/>
+                <outlet property="productname" destination="4k7-hU-s87" id="Ldd-WQ-d4I"/>
+                <outlet property="reviewCount" destination="ErE-Fx-hXG" id="tq4-VJ-YVX"/>
+                <outlet property="supplierName" destination="HNf-g2-INo" id="i2t-Fo-Ifv"/>
             </connections>
             <point key="canvasLocation" x="227" y="-32.5"/>
         </tableViewCell>

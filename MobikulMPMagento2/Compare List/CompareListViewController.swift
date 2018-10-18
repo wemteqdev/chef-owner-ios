@@ -20,7 +20,7 @@ class CompareListViewController: UIViewController,UITableViewDelegate, UITableVi
     var productName:String = ""
     var imageUrl:String = ""
     
-    @IBOutlet weak var promotioncode: UITextField!
+    //@IBOutlet weak var promotioncode: UITextField!
     @IBOutlet weak var emptyCompareLabel: UILabel!
     @IBOutlet weak var table_height: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
@@ -30,9 +30,7 @@ class CompareListViewController: UIViewController,UITableViewDelegate, UITableVi
         GlobalData.sharedInstance.removePreviousNetworkCall()
         GlobalData.sharedInstance.dismissLoader()
         tableView.register(UINib(nibName: "Chef_CompareCell", bundle: nil), forCellReuseIdentifier: "chef_compare")
-        //callingHttppApi()
-        promotioncode.layer.borderColor = UIColor.gray.cgColor
-        self.doFurtherProcessingWithResult()
+        callingHttppApi()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -159,8 +157,8 @@ class CompareListViewController: UIViewController,UITableViewDelegate, UITableVi
                 }
             }
         }else{
-            //let width = String(format:"%f", SCREEN_WIDTH * UIScreen.main.scale)
-            requstParams["width"] = UIScreen.main.scale
+            let width = String(format:"%f", SCREEN_WIDTH * UIScreen.main.scale)
+            requstParams["width"] = width
             
             GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"mobikulhttp/catalog/comparelist", currentView: self){success,responseObject in
                 if success == 1{
@@ -182,13 +180,13 @@ class CompareListViewController: UIViewController,UITableViewDelegate, UITableVi
             self.tableView.delegate = self
             self.tableView.dataSource = self
             self.tableView.reloadData()
-            /*self.compareHomeDataArray = [self.compareListViewModel.getProductList]
+            self.compareHomeDataArray = [self.compareListViewModel.getProductList]
             print("ssss",self.compareHomeDataArray.count)
             print("pppp",self.compareListViewModel.getProductList.count)
             
             if self.compareListViewModel.getProductList.count > 0 {
                 self.tableView.isHidden = false
-                self.emptyCompareLabel.isHidden = true
+                //self.emptyCompareLabel.isHidden = true
                 self.tableView.delegate = self
                 self.tableView.dataSource = self
                 self.tableView.reloadData()
@@ -196,18 +194,19 @@ class CompareListViewController: UIViewController,UITableViewDelegate, UITableVi
                 self.tableView.isHidden = true
                 self.emptyCompareLabel.isHidden = false
                 self.emptyCompareLabel.text = GlobalData.sharedInstance.language(key: "emptycomparelist")
-            }*/
+            }
         }
     }
+
     
     public func numberOfSections(in tableView: UITableView) -> Int{
-        //return compareHomeDataArray.count// + self.compareListViewModel.getAttributesValue.count
-        return 1
+        return 1// + self.compareListViewModel.getAttributesValue.count
+        //return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        //return compareHomeDataArray.count
-        return 4
+        
+        return self.compareListViewModel.getProductList.count
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -219,9 +218,12 @@ class CompareListViewController: UIViewController,UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let CellIdentifier: String = "cell"
-        //let cell:CompareListTableViewCell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier) as! CompareListTableViewCell
+//        let CellIdentifier: String = "cell"
+//        let cell:CompareListTableViewCell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier) as! CompareListTableViewCell
         let cell:Chef_CompareCell = tableView.dequeueReusableCell(withIdentifier: "chef_compare") as! Chef_CompareCell
+        cell.price.text = self.compareListViewModel.getProductList[indexPath.row].price
+        cell.productname.text = self.compareListViewModel.getProductList[indexPath.row].productName
+        
 //        cell.plusButton.addTarget(self, action: #selector(plusButtonClick(sender:)), for: .touchUpInside)
 //        cell.minusButton.addTarget(self, action: #selector(minusButtonClick(sender:)), for: .touchUpInside)
         
@@ -238,8 +240,8 @@ class CompareListViewController: UIViewController,UITableViewDelegate, UITableVi
             cell.collectionViewOffset = storedOffsets[indexPath.section] ?? 0
         }*/
         
-        self.table_height.constant = self.tableView.contentSize.height
-        cell.selectionStyle = .none
+        //self.table_height.constant = self.tableView.contentSize.height
+        //cell.selectionStyle = .none
         return cell
     }
     
@@ -318,9 +320,10 @@ class CompareListViewController: UIViewController,UITableViewDelegate, UITableVi
 extension CompareListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //if collectionView.tag == 1{
-            //let dd:[ComapreListModel] = compareHomeDataArray[collectionView.tag - 1] as! [ComapreListModel]
-            //return dd.count
-        return 1
+        return 0
+//            let dd:[ComapreListModel] = compareHomeDataArray[collectionView.tag - 1] as! [ComapreListModel]
+//            return dd.count
+        //return 1
        /* }else {
             let dd  = compareListViewModel.getAttributesValue[collectionView.tag - 2].attributesValueArray
             return (dd?.count)!
@@ -329,6 +332,7 @@ extension CompareListViewController: UICollectionViewDelegate, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
+       
        // if collectionView.tag == 1{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "compareproduct", for: indexPath) as! CompareProductCollectionView
             /*let dd:[ComapreListModel] = compareHomeDataArray[collectionView.tag - 1] as! [ComapreListModel]
@@ -378,13 +382,13 @@ extension CompareListViewController: UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        /*let dd:[ComapreListModel] = compareHomeDataArray[0] as! [ComapreListModel]
+        let dd:[ComapreListModel] = compareHomeDataArray[0] as! [ComapreListModel]
         
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "catalogproduct") as! CatalogProduct
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "chef_productdetail") as! Chef_DashboardViewController
         vc.productImageUrl = dd[indexPath.row].imageUrl
         vc.productName = dd[indexPath.row].productName
         vc.productId = dd[indexPath.row].productId
-        self.navigationController?.pushViewController(vc, animated: true)*/
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

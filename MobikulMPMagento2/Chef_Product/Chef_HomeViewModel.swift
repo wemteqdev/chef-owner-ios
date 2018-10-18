@@ -32,7 +32,7 @@ class Chef_HomeViewModel: NSObject {
         
         if !data.bannerCollectionModel.isEmpty {
             let bannerDataCollectionItem = HomeViewModelBannerItem(categories: data.bannerCollectionModel)
-            //items.append(bannerDataCollectionItem)
+            items.append(bannerDataCollectionItem)
         }
         
         if !data.featureCategories.isEmpty {
@@ -105,8 +105,8 @@ class Chef_HomeViewModel: NSObject {
 extension Chef_HomeViewModel : UITableViewDelegate , UITableViewDataSource {
     public func numberOfSections(in tableView: UITableView) -> Int{
         //return 3
-        return items.count ;
-        
+        return items.count - 1 ;
+        print("items \(items.count)")
         
     }
     
@@ -136,7 +136,7 @@ extension Chef_HomeViewModel : UITableViewDelegate , UITableViewDataSource {
         }
 
         cell.prodcutCollectionView.reloadData()
-        cell.prodcutCollectionView.tag = indexPath.section
+        cell.prodcutCollectionView.tag = indexPath.section + 1
         //cell.productCollectionModel = letestProductCollectionModel
        
         cell.delegate = homeViewController
@@ -145,15 +145,15 @@ extension Chef_HomeViewModel : UITableViewDelegate , UITableViewDataSource {
        
         
         
-        let item = items[indexPath.section]
+        let item = items[indexPath.section + 1]
         
         switch item.type {
-        case .Banner:
-            let cell:BannerTableViewCell = tableView.dequeueReusableCell(withIdentifier: BannerTableViewCell.identifier) as! BannerTableViewCell
-            cell.delegate = homeViewController
-            cell.bannerCollectionModel = ((item as? HomeViewModelBannerItem)?.bannerCollectionModel)!
-            cell.selectionStyle = .none
-            return cell;
+        case .Banner: break
+//            let cell:BannerTableViewCell = tableView.dequeueReusableCell(withIdentifier: BannerTableViewCell.identifier) as! BannerTableViewCell
+//            cell.delegate = homeViewController
+//            cell.bannerCollectionModel = ((item as? HomeViewModelBannerItem)?.bannerCollectionModel)!
+//            cell.selectionStyle = .none
+//            return cell;
             
         case .FeatureCategory:
             let cell:TopCategoryTableViewCell = tableView.dequeueReusableCell(withIdentifier: TopCategoryTableViewCell.identifier) as! TopCategoryTableViewCell
@@ -238,7 +238,7 @@ extension Chef_HomeViewModel : UITableViewDelegate , UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
-        let item = items[indexPath.section]
+        let item = items[indexPath.section + 1]
         switch item.type {
         case .Banner:
             return SCREEN_WIDTH / 2

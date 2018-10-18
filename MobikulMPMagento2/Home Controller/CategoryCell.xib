@@ -19,30 +19,42 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_placeholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="S4g-eO-ITi">
-                        <rect key="frame" x="0.0" y="0.0" width="244" height="172"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <rect key="frame" x="0.0" y="0.0" width="244" height="170"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UhL-0h-4Dv">
-                        <rect key="frame" x="0.0" y="173" width="244" height="29"/>
+                        <rect key="frame" x="0.0" y="171" width="244" height="29"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ce3-eg-m4I">
+                        <rect key="frame" x="0.0" y="200" width="244" height="2"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="2" id="sLg-5S-Aqs"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
-            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="UhL-0h-4Dv" firstAttribute="trailing" secondItem="S4g-eO-ITi" secondAttribute="trailing" id="67a-x1-QbK"/>
                 <constraint firstItem="UhL-0h-4Dv" firstAttribute="leading" secondItem="S4g-eO-ITi" secondAttribute="leading" id="EZd-Qr-K3C"/>
+                <constraint firstItem="ce3-eg-m4I" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="If5-4K-tng"/>
                 <constraint firstItem="UhL-0h-4Dv" firstAttribute="top" secondItem="S4g-eO-ITi" secondAttribute="bottom" constant="1" id="Tg1-3m-Pz1"/>
                 <constraint firstItem="S4g-eO-ITi" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Xyp-4b-WMy"/>
-                <constraint firstAttribute="bottom" secondItem="UhL-0h-4Dv" secondAttribute="bottom" id="a7k-ba-IaW"/>
-                <constraint firstAttribute="bottom" secondItem="S4g-eO-ITi" secondAttribute="bottom" constant="30" id="daA-YT-4Qj"/>
+                <constraint firstAttribute="bottom" secondItem="UhL-0h-4Dv" secondAttribute="bottom" constant="2" id="a7k-ba-IaW"/>
+                <constraint firstAttribute="bottom" secondItem="S4g-eO-ITi" secondAttribute="bottom" constant="32" id="daA-YT-4Qj"/>
                 <constraint firstAttribute="trailing" secondItem="S4g-eO-ITi" secondAttribute="trailing" id="fPr-N0-20y"/>
+                <constraint firstAttribute="bottom" secondItem="ce3-eg-m4I" secondAttribute="bottom" id="hUw-tY-4I2"/>
                 <constraint firstItem="S4g-eO-ITi" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="xUr-nO-saH"/>
+                <constraint firstItem="ce3-eg-m4I" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" id="yRb-7e-f8e"/>
             </constraints>
             <size key="customSize" width="244" height="202"/>
             <connections>
+                <outlet property="baselineView" destination="ce3-eg-m4I" id="Qtj-PF-X7t"/>
                 <outlet property="imageView" destination="S4g-eO-ITi" id="uNV-oR-ezE"/>
                 <outlet property="labelName" destination="UhL-0h-4Dv" id="Lhz-0T-civ"/>
             </connections>

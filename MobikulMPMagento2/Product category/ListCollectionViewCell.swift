@@ -27,11 +27,7 @@ var productCollectionViewModel:ProductCollectionViewModel!
     override func awakeFromNib() {
         super.awakeFromNib()
         compare_Button.isHidden = SHOW_COMPARE
-        
         specialPrice.isHidden = true;
-        
-        
-        
     }
     
 

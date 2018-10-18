@@ -39,6 +39,26 @@ class Chef_DashboardView: UIViewController{
     var orderTotal:NSMutableArray = []
     static var ownerDashboardModelView: OwnerDashBoardViewModel!
     static var callingApiSucceed: Bool = false;
+    @IBAction func logOutClick(_ sender: Any) {
+        let AC = UIAlertController(title: GlobalData.sharedInstance.language(key: "warninglogoutmessage"), message: "", preferredStyle: .alert)
+        let ok = UIAlertAction(title: GlobalData.sharedInstance.language(key: "yes"), style: .default, handler: {(_ action: UIAlertAction) -> Void in
+            for key in UserDefaults.standard.dictionaryRepresentation().keys {
+                if(key.description == "storeId"||key.description == "language"||key.description == "AppleLanguages" || key.description == "currency" || key.description == "authKey" || key.description == "TouchEmailId" || key.description == "TouchPasswordValue" || key.description == "touchIdFlag" || key.description == "deviceToken" ){
+                    continue
+                }else{
+                    UserDefaults.standard.removeObject(forKey: key.description)
+                }
+            }
+            UserDefaults.standard.synchronize();
+            self.performSegue(withIdentifier: "tologin", sender: self)
+        })
+        
+        let noBtn = UIAlertAction(title: GlobalData.sharedInstance.language(key: "no"), style: .destructive, handler: {(_ action: UIAlertAction) -> Void in
+        })
+        AC.addAction(ok)
+        AC.addAction(noBtn)
+        self.present(AC, animated: true, completion: {  })
+    }
     
     @IBAction func SegmentValueChanged(_ sender: Any) {
         if showTypeController.selectedSegmentIndex == 0{

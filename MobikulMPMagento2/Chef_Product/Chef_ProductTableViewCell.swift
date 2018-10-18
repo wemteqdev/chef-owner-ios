@@ -42,8 +42,6 @@ class Chef_ProductTableViewCell: UITableViewCell {
         //prodcutCollectionView.register(UINib(nibName: "ViewAllCell", bundle: nil), forCellWithReuseIdentifier: "ViewAllCell")
         prodcutCollectionView.delegate = self
         prodcutCollectionView.dataSource = self
- 
-  
         prodcutCollectionView.reloadData()
     }
 
@@ -145,7 +143,11 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
                     cell.productImage.image = UIImage(named: "product_image")
                     cell.layer.cornerRadius = 8
                     cell.wishListButton.isHidden = true
-               
+                    cell.reviewCnt.text =  "\(String(featuredProductCollectionModel[indexPath.row].reviewCount)) reviews"
+                    cell.starRating.value = CGFloat(featuredProductCollectionModel[indexPath.row].rating)
+                    cell.ratingbtn.setTitle(String(featuredProductCollectionModel[indexPath.row].rating), for: .normal)
+                    cell.price_vat.text = "\(String(featuredProductCollectionModel[indexPath.row].price)) - \(String(featuredProductCollectionModel[indexPath.row].taxClass))"
+                    cell.supplierName.text =  featuredProductCollectionModel[indexPath.row].supplierName
                     print(featuredProductCollectionModel[indexPath.row].productID)
                     print("CATEGORIES FOR THIS ID")
 //                    if self.homeViewModel.productcategory[featuredProductCollectionModel[indexPath.row].productID].contains(self.homeViewController.categoryId) {
@@ -171,7 +173,7 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
                     cell.productPrice.text = featuredProductCollectionModel[indexPath.row].price
                     
                 
-                    self.productCollectionViewHeight.constant = SCREEN_WIDTH / 2 + 80
+                    self.productCollectionViewHeight.constant = cell.frame.height
                      self.productCollectionViewWidth.constant = prodcutCollectionView.contentSize.width
                    cell.addButton.tag = indexPath.row
                     cell.addButton.addTarget(self, action: #selector(addButtonClick(sender:)), for: .touchUpInside)
@@ -222,15 +224,20 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
                 }
                 else{
                     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "chef_listcollectionview", for: indexPath) as! Chef_ListCollectionViewCell
-                    self.productCollectionViewHeight.constant = self.prodcutCollectionView.contentSize.height
+                    
                     cell.layer.borderColor = UIColor().HexToColor(hexString: LIGHTGREY).cgColor
                     cell.layer.borderWidth = 0.5
 
                     //cell.imageView.image = UIImage(named: "ic_placeholder.png")
                     cell.name.text = featuredProductCollectionModel[indexPath.row].name
                     cell.price.text =  featuredProductCollectionModel[indexPath.row].price
-
-                    //cell.descriptionData.text = featuredProductCollectionModel[indexPath.row].descriptionData
+                    
+                    cell.reviewCnt.text =  "\(String(featuredProductCollectionModel[indexPath.row].reviewCount)) reviews"
+                    cell.starRating.value = CGFloat(featuredProductCollectionModel[indexPath.row].rating)
+                    cell.ratingbtn.setTitle(String(featuredProductCollectionModel[indexPath.row].rating), for: .normal)
+                    cell.pricevat.text = "\(String(featuredProductCollectionModel[indexPath.row].price)) - \(String(featuredProductCollectionModel[indexPath.row].taxClass))"
+                    cell.supplierName.text =  featuredProductCollectionModel[indexPath.row].supplierName
+                    //cell.descriptionData.text = featuredPrproduoductCollectionModel[indexPath.row].descriptionData
                    
                     GlobalData.sharedInstance.getImageFromUrl(imageUrl:featuredProductCollectionModel[indexPath.row].image , imageView: cell.imageView)
                     cell.wishList_Button.tag = indexPath.row
@@ -240,7 +247,7 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
                     cell.addButton.tag = indexPath.row
                     cell.addButton.addTarget(self, action: #selector(addButtonClick(sender:)), for: .touchUpInside)
                     cell.specialPrice.isHidden = true
-                    
+                    self.productCollectionViewHeight.constant = self.prodcutCollectionView.contentSize.height
                     
                     if featuredProductCollectionModel[indexPath.row].isInWishList{
                         cell.wishList_Button.setImage(UIImage(named: "ic_wishlist_fill")!, for: .normal)
@@ -288,6 +295,12 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
                 GlobalData.sharedInstance.getImageFromUrl(imageUrl:productCollectionModel[indexPath.row].image , imageView: cell.productImage)
                 cell.productName.text = productCollectionModel[indexPath.row].name
                 cell.productPrice.text = productCollectionModel[indexPath.row].price
+                
+                cell.reviewCnt.text =  "\(String(featuredProductCollectionModel[indexPath.row].reviewCount)) reviews"
+                cell.starRating.value = CGFloat(featuredProductCollectionModel[indexPath.row].rating)
+                cell.ratingbtn.setTitle(String(featuredProductCollectionModel[indexPath.row].rating), for: .normal)
+                cell.price_vat.text = "\(String(featuredProductCollectionModel[indexPath.row].price)) - \(String(featuredProductCollectionModel[indexPath.row].taxClass))"
+                cell.supplierName.text =  featuredProductCollectionModel[indexPath.row].supplierName
                 
                 cell.wishListButton.tag = indexPath.row
                 cell.wishListButton.addTarget(self, action: #selector(addToWishList(sender:)), for: .touchUpInside)
@@ -348,7 +361,7 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
         if homeViewController.change == false{
             return CGSize(width: collectionView.frame.size.width, height: collectionView.frame.size.width/2 - 80 )
         }else{
-            return CGSize(width: collectionView.frame.size.width/2 - 60 , height: collectionView.frame.size.width/2 + 40 )
+            return CGSize(width: collectionView.frame.size.width/3 + 30 , height: collectionView.frame.size.width/2 + 20 )
             //return CGSize(width: collectionView.frame.size.width/2, height:SCREEN_WIDTH/2.5 + 120)
         }
     }

@@ -12,8 +12,8 @@ import UIKit
 var DEFAULT_WEBSITE_ID = "1"
 
 // live M2Mp credential
-var BASE_DOMAIN = "http://chef.wemteq.com"
-//var BASE_DOMAIN = "http://chef.loc:8080"
+//var BASE_DOMAIN = "http://chef.wemteq.com"
+var BASE_DOMAIN = "http://chef.loc"
 var HOST_NAME = BASE_DOMAIN+"/index.php/"
 var API_USER_NAME  = "mobikul"
 var API_KEY = "chef"
