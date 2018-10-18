@@ -2436,6 +2436,7 @@
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FZAccordionTableView/FZAccordionTableView.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
@@ -2459,6 +2460,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FZAccordionTableView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
@@ -3026,7 +3028,7 @@
 				DEVELOPMENT_TEAM = FSGTD7Y4WX;
 				INFOPLIST_FILE = MobikulMPMagento2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.wemteq.chef-supplier";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.wemteq.chef-owner";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3051,7 +3053,7 @@
 				DEVELOPMENT_TEAM = FSGTD7Y4WX;
 				INFOPLIST_FILE = MobikulMPMagento2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.wemteq.chef-supplier";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.wemteq.chef-owner";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3075,7 +3077,7 @@
 				INFOPLIST_FILE = NotificationService/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.wemteq.chef-supplier.NotificationService";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.wemteq.chef-owner";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
@@ -3097,7 +3099,7 @@
 				INFOPLIST_FILE = NotificationService/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.wemteq.chef-supplier.NotificationService";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.wemteq.chef-owner";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;

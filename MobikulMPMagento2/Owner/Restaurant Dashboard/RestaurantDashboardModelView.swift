@@ -11,7 +11,7 @@ import Foundation
 class RestaurantDashboardModelView: NSObject {
     //---for chef/restaurant info------
     var restaurantInfos = [RestaurantInfoModel]();
-    
+     
     init(data:JSON) {        
         //-------------Get Restaurant Info------------------------
         if let restaurantArrayData = data["restaurantsInfo"].arrayObject{
