@@ -42,6 +42,7 @@ class AccountInformationModel: NSObject {
     var street:String!
     var postcode:String!
     var country:String!
+    var restaurantName:String!
     
     init(data: JSON) {
         self.dateFormat = data["dateFormat"].stringValue
@@ -77,6 +78,7 @@ class AccountInformationModel: NSObject {
         self.street = data["street"][0].stringValue
         self.postcode = data["postcode"].stringValue
         self.country = data["country"].stringValue
+        self.restaurantName = data["restaurantName"].stringValue;
     }
 
     

@@ -14,6 +14,7 @@ class ProfileCell: UITableViewCell {
     
     @IBOutlet weak var changeButton: UIButton!
     @IBOutlet weak var nameValue: UILabel!
+    var delegate:EditProfiledelegate!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,4 +30,7 @@ class ProfileCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func changeProfileImage(_ sender: Any) {
+        delegate.saveProfileImage();
+    }
 }

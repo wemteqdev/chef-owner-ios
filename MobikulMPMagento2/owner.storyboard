@@ -75,6 +75,14 @@
             </objects>
             <point key="canvasLocation" x="-524" y="-43"/>
         </scene>
+        <!--Main-->
+        <scene sceneID="Hmd-w4-6AS">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="fSH-XJ-GdO" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h4e-us-xGk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2232" y="1013"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="KCn-cK-ikb">
             <objects>
@@ -238,6 +246,102 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FpY-hD-KeJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2902" y="1496"/>
+        </scene>
+        <!--Edit Profile Controller-->
+        <scene sceneID="T2A-mm-7dI">
+            <objects>
+                <viewController storyboardIdentifier="editprofile" id="YPZ-H1-xaq" userLabel="Edit Profile Controller" customClass="EditProfileViewController" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="EYk-os-pbu"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZIG-ko-Jw0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Tdo-dO-e9p">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cvm-0e-DnY" userLabel="Text field view">
+                                <rect key="frame" x="10" y="40" width="355" height="300"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rET-4H-GUX" customClass="SkyFloatingLabelTextField" customModule="MobikulMPMagento2" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="8" width="355" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="rET-4H-GUX" secondAttribute="trailing" id="C0h-xD-W3b"/>
+                                    <constraint firstAttribute="height" constant="300" id="dNt-qc-aIj"/>
+                                    <constraint firstItem="rET-4H-GUX" firstAttribute="leading" secondItem="cvm-0e-DnY" secondAttribute="leading" id="eMg-nf-swE"/>
+                                    <constraint firstItem="rET-4H-GUX" firstAttribute="top" secondItem="cvm-0e-DnY" secondAttribute="top" constant="8" id="poa-bZ-XLv"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pjW-Uk-st1">
+                                <rect key="frame" x="10" y="597" width="355" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="UGJ-8e-Iy2"/>
+                                </constraints>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveClick:" destination="YPZ-H1-xaq" eventType="touchUpInside" id="5TB-Ph-E7s"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dBp-xr-cbT" firstAttribute="trailing" secondItem="cvm-0e-DnY" secondAttribute="trailing" constant="10" id="8Lc-1B-GCn"/>
+                            <constraint firstItem="pjW-Uk-st1" firstAttribute="bottom" secondItem="dBp-xr-cbT" secondAttribute="bottom" constant="-20" id="B07-oO-17t"/>
+                            <constraint firstItem="cvm-0e-DnY" firstAttribute="top" secondItem="dBp-xr-cbT" secondAttribute="top" constant="20" id="CDu-uP-HNu"/>
+                            <constraint firstItem="dBp-xr-cbT" firstAttribute="trailing" secondItem="pjW-Uk-st1" secondAttribute="trailing" constant="10" id="PkO-4b-POx"/>
+                            <constraint firstItem="dBp-xr-cbT" firstAttribute="leading" secondItem="pjW-Uk-st1" secondAttribute="leading" constant="-10" id="e2J-q0-rGS"/>
+                            <constraint firstItem="cvm-0e-DnY" firstAttribute="leading" secondItem="dBp-xr-cbT" secondAttribute="leading" constant="10" id="fqD-1I-t8h"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dBp-xr-cbT"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="l9q-jQ-GoS">
+                        <barButtonItem key="backBarButtonItem" title="  " id="hMg-2x-FWc"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="dataField" destination="rET-4H-GUX" id="6Hf-Bm-2fO"/>
+                        <outlet property="saveButton" destination="pjW-Uk-st1" id="6o8-th-EFH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JkS-ah-Zk8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1551" y="2869"/>
+        </scene>
+        <!--Profile View Controller-->
+        <scene sceneID="Cc6-gV-TSD">
+            <objects>
+                <viewController storyboardIdentifier="profileview" id="unV-US-2HN" customClass="ProfileViewController" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Uqw-bm-sjp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HCC-Ik-Thm">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="LKC-dC-Ar0" firstAttribute="bottom" secondItem="HCC-Ik-Thm" secondAttribute="bottom" id="56z-J6-a0M"/>
+                            <constraint firstItem="HCC-Ik-Thm" firstAttribute="top" secondItem="LKC-dC-Ar0" secondAttribute="top" id="Vyk-wY-P4Z"/>
+                            <constraint firstItem="LKC-dC-Ar0" firstAttribute="trailing" secondItem="HCC-Ik-Thm" secondAttribute="trailing" id="edt-GR-cEp"/>
+                            <constraint firstItem="HCC-Ik-Thm" firstAttribute="leading" secondItem="LKC-dC-Ar0" secondAttribute="leading" id="puW-qc-ixf"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="LKC-dC-Ar0"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="AeM-VF-qIb"/>
+                    <connections>
+                        <outlet property="profileTableView" destination="HCC-Ik-Thm" id="HGC-Gt-4Y7"/>
+                        <segue destination="YPZ-H1-xaq" kind="presentation" identifier="editprofile" id="W1i-OM-EhI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qtZ-M1-XfH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1551" y="2168"/>
         </scene>
         <!--DetailPage-->
         <scene sceneID="eGw-SB-fvK">
@@ -409,7 +513,7 @@
         <!--Owner-->
         <scene sceneID="zrW-8Z-9Rg">
             <objects>
-                <viewController id="Vfz-iE-0Ba" customClass="Owner" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="owner" id="Vfz-iE-0Ba" customClass="Owner" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sCs-YV-oqI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -544,7 +648,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hN8-vh-RjX"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Owner" id="yPD-rA-qgu"/>
+                    <navigationItem key="navigationItem" title="Owner" id="yPD-rA-qgu">
+                        <barButtonItem key="rightBarButtonItem" title="LogOut" image="ic_logout" id="yPl-A5-y4r">
+                            <connections>
+                                <action selector="logOutClicked:" destination="Vfz-iE-0Ba" id="2eg-04-PUV"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="barChartView" destination="R7M-X8-rrr" id="xgb-eT-CXv"/>
                         <outlet property="diagramTotalView" destination="ecA-A5-kVV" id="NL2-6S-xr7"/>
@@ -556,11 +666,44 @@
                         <outlet property="scrollView" destination="Exb-PZ-TXL" id="g3d-dR-JVQ"/>
                         <outlet property="showTypeController" destination="SeD-zk-TUQ" id="eqf-m1-hlu"/>
                         <outlet property="user_info_view" destination="Rt5-2N-m2q" id="AcR-o0-abA"/>
+                        <segue destination="unV-US-2HN" kind="show" identifier="toprofileview" id="MSl-DO-Csm"/>
+                        <segue destination="fSH-XJ-GdO" kind="show" identifier="tologin" id="y76-LA-lat"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="84K-Wo-Wo9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1551" y="1499"/>
+        </scene>
+        <!--Customer Profile View Controller-->
+        <scene sceneID="20w-gY-hdG">
+            <objects>
+                <viewController storyboardIdentifier="customerprofileview" id="Iij-4W-rgw" customClass="CustomerProfileViewController" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5qO-Qd-n2f">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wgQ-zl-9bB">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="wgQ-zl-9bB" firstAttribute="leading" secondItem="Hsk-Pp-aQc" secondAttribute="leading" id="5He-1C-GOn"/>
+                            <constraint firstItem="wgQ-zl-9bB" firstAttribute="top" secondItem="Hsk-Pp-aQc" secondAttribute="top" id="9Yg-qO-pXX"/>
+                            <constraint firstItem="Hsk-Pp-aQc" firstAttribute="bottom" secondItem="wgQ-zl-9bB" secondAttribute="bottom" id="BQS-Pa-sJg"/>
+                            <constraint firstItem="Hsk-Pp-aQc" firstAttribute="trailing" secondItem="wgQ-zl-9bB" secondAttribute="trailing" id="ywl-90-Z0y"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Hsk-Pp-aQc"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="YXO-p0-2ao"/>
+                    <connections>
+                        <outlet property="profileTableView" destination="wgQ-zl-9bB" id="Ii5-y0-03q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cvj-vl-5K9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-47" y="2194"/>
         </scene>
         <!--Suppliers Dashboard Controller-->
         <scene sceneID="Mfg-t5-ilk">
@@ -627,6 +770,7 @@
                         <outlet property="searchBarView" destination="kdY-kV-Qr1" id="D3a-g5-QMb"/>
                         <outlet property="suppliersTableView" destination="NZq-y4-Z9y" id="DcC-F1-Qgs"/>
                         <segue destination="xw2-EG-9ou" kind="show" identifier="productcategory" id="lIC-Q2-qyY"/>
+                        <segue destination="Iij-4W-rgw" kind="show" identifier="customerprofileview" id="2pQ-SS-yc5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wPv-ln-EB1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1372,6 +1516,7 @@
         <image name="ic_addnewaddress" width="42" height="42"/>
         <image name="ic_filter" width="84" height="84"/>
         <image name="ic_grid" width="84" height="84"/>
+        <image name="ic_logout" width="84" height="84"/>
         <image name="ic_profile" width="46" height="46"/>
         <image name="ic_sort" width="72" height="72"/>
         <image name="restaurants_btn" width="60" height="38"/>

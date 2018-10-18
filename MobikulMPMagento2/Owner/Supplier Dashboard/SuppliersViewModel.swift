@@ -13,12 +13,16 @@ struct SupplierInfoModel {
     var email:String!
     var supplierName:String!
     var status:Int!
+    var address:String!
+    var customerImage:String!
     
     init(data:JSON) {
         supplierId = data["customerInfo"]["entity_id"].intValue;
         email = data["customerInfo"]["email"].stringValue;
         supplierName = data["customerInfo"]["firstname"].stringValue + " " + data["customerInfo"]["lastname"].stringValue;
         status = data["status"].intValue;
+        address = data["address"]["street"].stringValue + "," + data["address"]["city"].stringValue;
+        customerImage = data["profileImage"].stringValue;
     }
 }
 

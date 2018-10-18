@@ -17,12 +17,14 @@ class Chef_ProductImageCell: UICollectionViewCell {
     @IBOutlet weak var wishListButton: UIButton!
     @IBOutlet weak var addToCompareButton: UIButton!
     @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var productDescription: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         specialPrice.isHidden = true
         wishListButton.isHidden = true
         addButton.layer.cornerRadius = addButton.frame.height / 2
         addButton.layer.masksToBounds = true
+        productDescription.isHidden = true
         
         addToCompareButton.layer.cornerRadius = addButton.frame.height / 2
         addToCompareButton.layer.masksToBounds = true

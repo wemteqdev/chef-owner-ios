@@ -128,21 +128,21 @@ class CustomerLogin: UIViewController {
     
     
     override func viewDidAppear(_ animated: Bool) {
-        if(self.moveToSignal != "cart"){
-            if defaults.object(forKey: "touchIdFlag") as! String == "1"{
-                let  AC = UIAlertController(title: GlobalData.sharedInstance.language(key: "alert"), message: GlobalData.sharedInstance.language(key: "loginbytouchid"), preferredStyle: .alert)
-                let okBtn = UIAlertAction(title: GlobalData.sharedInstance.language(key: "ok"), style:.default, handler: {(_ action: UIAlertAction) -> Void in
-                    self.configureTouchIdBeforeLogin()
-                    
-                })
-                let cancelBtn = UIAlertAction(title: GlobalData.sharedInstance.language(key: "cancel"), style:.destructive, handler: {(_ action: UIAlertAction) -> Void in
-                    
-                })
-                AC.addAction(okBtn)
-                AC.addAction(cancelBtn)
-                self.present(AC, animated: true, completion: {  })
-            }
-        }
+//        if(self.moveToSignal != "cart"){
+//            if defaults.object(forKey: "touchIdFlag") as! String == "1"{
+//                let  AC = UIAlertController(title: GlobalData.sharedInstance.language(key: "alert"), message: GlobalData.sharedInstance.language(key: "loginbytouchid"), preferredStyle: .alert)
+//                let okBtn = UIAlertAction(title: GlobalData.sharedInstance.language(key: "ok"), style:.default, handler: {(_ action: UIAlertAction) -> Void in
+//                    self.configureTouchIdBeforeLogin()
+//
+//                })
+//                let cancelBtn = UIAlertAction(title: GlobalData.sharedInstance.language(key: "cancel"), style:.destructive, handler: {(_ action: UIAlertAction) -> Void in
+//
+//                })
+//                AC.addAction(okBtn)
+//                AC.addAction(cancelBtn)
+//                self.present(AC, animated: true, completion: {  })
+//            }
+//        }
     }
     
     @IBAction func signupClick(_ sender: UIButton) {
@@ -285,7 +285,7 @@ class CustomerLogin: UIViewController {
                     let cancelBtn = UIAlertAction(title: GlobalData.sharedInstance.language(key: "cancel"), style: .destructive, handler: {(_ action: UIAlertAction) -> Void in
                         defaults.set("0", forKey: "touchIdFlag");
                         defaults.synchronize()
-                        self.tabBarController?.tabBar.isHidden = false
+                        //self.tabBarController?.tabBar.isHidden = false
                         self.navigationController?.popViewController(animated: true)
                     })
                     AC.addAction(okBtn)
@@ -301,7 +301,7 @@ class CustomerLogin: UIViewController {
                     let cancelBtn = UIAlertAction(title: GlobalData.sharedInstance.language(key: "cancel"), style: .destructive, handler: {(_ action: UIAlertAction) -> Void in
                         defaults.set("1", forKey: "touchIdFlag");
                         defaults.synchronize()
-                        self.tabBarController?.tabBar.isHidden = false
+                        //self.tabBarController?.tabBar.isHidden = false
                         self.navigationController?.popViewController(animated: true)
                     })
                     AC.addAction(okBtn)
@@ -310,11 +310,11 @@ class CustomerLogin: UIViewController {
                     self.present(AC, animated: true, completion: {  })
                 }
                 else{
-                    self.tabBarController?.tabBar.isHidden = false
+                    //self.tabBarController?.tabBar.isHidden = false
                     self.navigationController?.popViewController(animated: true)
                 }
             }else{
-                self.tabBarController?.tabBar.isHidden = false
+                //self.tabBarController?.tabBar.isHidden = false
                 self.navigationController?.popViewController(animated: true)
             }
         }else{
@@ -359,6 +359,8 @@ class CustomerLogin: UIViewController {
 
         emailId = emailIdField.text!
         password = passwordtextField.text!
+        emailId = "o@owner.com"
+        password = "owner123!"
         
         var isValid = 0;
         var errorMessage = ""
@@ -484,8 +486,8 @@ class CustomerLogin: UIViewController {
     func showUnexpectedErrorMessageAfterLogin(){
         let  AC = UIAlertController(title: GlobalData.sharedInstance.language(key: "error"), message: GlobalData.sharedInstance.language(key: "erroroccured"), preferredStyle: .alert)
         let okBtn = UIAlertAction(title: GlobalData.sharedInstance.language(key: "ok"), style:.default, handler: {(_ action: UIAlertAction) -> Void in
-            self.tabBarController?.tabBar.isHidden = false
-            self.navigationController?.popViewController(animated: true)
+            //self.tabBarController?.tabBar.isHidden = false
+            //self.navigationController?.popViewController(animated: true)
             
         })
         AC.addAction(okBtn)
