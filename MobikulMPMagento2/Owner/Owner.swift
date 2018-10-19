@@ -155,7 +155,11 @@ class Owner: UIViewController{
                 }
             }
             UserDefaults.standard.synchronize();
-            self.performSegue(withIdentifier: "tologin", sender: self)
+            //self.performSegue(withIdentifier: "tologin", sender: self)
+            var rootVC : UIViewController?
+            rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "login") as! CustomerLogin
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.window?.rootViewController = rootVC
         })
         
         let noBtn = UIAlertAction(title: GlobalData.sharedInstance.language(key: "no"), style: .destructive, handler: {(_ action: UIAlertAction) -> Void in
