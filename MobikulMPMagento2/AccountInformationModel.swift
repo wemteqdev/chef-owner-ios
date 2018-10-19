@@ -84,7 +84,9 @@ class AccountInformationModel: NSObject {
         self.street = data["street"][0].stringValue
         self.postcode = data["postcode"].stringValue
         self.country = data["country"].stringValue
-        self.restaurantName = data["restaurantName"].arrayObject as! [String];
+        if let arrayData = data["restaurantName"].arrayObject{            
+            self.restaurantName = arrayData as! [String];
+        }
     }
 
     

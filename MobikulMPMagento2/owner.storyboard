@@ -740,7 +740,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yEs-3k-psU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-47" y="2196"/>
+            <point key="canvasLocation" x="-47" y="2263"/>
         </scene>
         <!--Suppliers Dashboard Controller-->
         <scene sceneID="Mfg-t5-ilk">
@@ -969,7 +969,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zhb-x3-gCa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-799" y="2896"/>
+            <point key="canvasLocation" x="1489" y="2973"/>
         </scene>
         <!--Chefs Dashboard Controller-->
         <scene sceneID="3ch-Ca-QbN">
@@ -1277,7 +1277,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lLz-cW-vh5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-799" y="2195"/>
+            <point key="canvasLocation" x="-799" y="2263"/>
         </scene>
         <!--Add Chef Alert View-->
         <scene sceneID="X7b-Gi-Hmg">
