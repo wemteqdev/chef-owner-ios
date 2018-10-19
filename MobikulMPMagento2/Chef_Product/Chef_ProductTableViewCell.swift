@@ -362,7 +362,7 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
         if homeViewController.change == false{
             return CGSize(width: collectionView.frame.size.width, height: collectionView.frame.size.width/2 - 80 )
         }else{
-            return CGSize(width: collectionView.frame.size.width/3 + 30 , height: collectionView.frame.size.width/2 + 20 )
+            return CGSize(width: collectionView.frame.size.width/3 + 30 , height: collectionView.frame.size.width/2 + 40 )
             //return CGSize(width: collectionView.frame.size.width/2, height:SCREEN_WIDTH/2.5 + 120)
         }
     }

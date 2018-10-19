@@ -296,7 +296,7 @@ class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPicker
        
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         self.navigationController?.navigationBar.tintColor = UIColor.white
-        self.navigationItem.title = GlobalData.sharedInstance.language(key: "product")
+       
 
         self.navigationController?.navigationBar.backItem?.title = ""
         
