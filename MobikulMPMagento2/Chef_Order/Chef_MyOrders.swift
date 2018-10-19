@@ -7,8 +7,22 @@
 //
 
 import UIKit
+@objc protocol ChefSellerOrderFilterDataHandle: class {
+    func sellerOrderFilterData(data:Bool,orderid:String,fromDate:String,toDate:String,status:String)
+    
+}
 
-class Chef_MyOrders: UIViewController ,UITableViewDelegate, UITableViewDataSource{
+class Chef_MyOrders: UIViewController ,UITableViewDelegate, UITableViewDataSource,ChefSellerOrderFilterDataHandle{
+    func sellerOrderFilterData(data: Bool, orderid: String, fromDate: String, toDate: String, status: String) {
+        self.incrementId = orderid;
+        self.fromDate  = fromDate
+        self.toDate = toDate
+        self.status = status;
+        pageNumber = 1;
+        loadPageRequestFlag = true;
+        callingHttppApi()
+    }
+    
     
     @IBOutlet weak var myOrderTableView: UITableView!
     
@@ -147,7 +161,7 @@ class Chef_MyOrders: UIViewController ,UITableViewDelegate, UITableViewDataSourc
             requstParams["status"] = status
             requstParams["dateTo"] =  toDate
             requstParams["dateFrom"] = fromDate
-            requstParams["incrementId"] = orderId
+            requstParams["incrementId"] = incrementId
             
             if self.defaults.object(forKey: "currency") != nil{
                 requstParams["currency"] = self.defaults.object(forKey: "currency") as! String
@@ -171,7 +185,9 @@ class Chef_MyOrders: UIViewController ,UITableViewDelegate, UITableViewDataSourc
             }
         }
     }
-    
+    @IBAction func filterClick(_ sender: UIBarButtonItem) {
+        self.performSegue(withIdentifier: "filter", sender: self)
+    }
     func doFurtherProcessingWithResult(){
         DispatchQueue.main.async {
             if self.pageNumber == 1{

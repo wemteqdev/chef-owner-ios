@@ -10,6 +10,9 @@ import UIKit
 
 class Chef_ProductImageCell: UICollectionViewCell {
     
+    @IBOutlet weak var truckImage: UIImageView!
+    @IBOutlet weak var freshImage: UIImageView!
+    @IBOutlet weak var alonePrice: UILabel!
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var productName: UILabel!
     @IBOutlet weak var productPrice: UILabel!

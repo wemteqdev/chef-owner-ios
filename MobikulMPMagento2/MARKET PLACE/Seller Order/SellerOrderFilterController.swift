@@ -19,7 +19,7 @@ class SellerOrderFilterController: UIViewController,UIPickerViewDelegate,UIPicke
 @IBOutlet weak var ApplyButton: UIButton!
 var sellerOrderViewModel:SellerOrderViewModel!
 var status:String = ""
-var delegate: SellerOrderFilterDataHandle!
+var delegate: ChefSellerOrderFilterDataHandle!
     
     
     

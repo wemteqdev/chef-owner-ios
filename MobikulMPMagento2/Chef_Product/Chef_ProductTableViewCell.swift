@@ -21,6 +21,9 @@ class Chef_ProductTableViewCell: UITableViewCell {
     var titles:String = ""
     var delegate:chef_productViewControllerHandlerDelegate!
     var homeViewModel : Chef_HomeViewModel!
+    
+    @IBOutlet weak var headerView: UIView!
+    
     @IBOutlet weak var prodcutCollectionView: UICollectionView!
     @IBOutlet weak var productCollectionViewHeight: NSLayoutConstraint!
     @IBOutlet weak var productCollectionViewWidth: NSLayoutConstraint!
@@ -30,6 +33,7 @@ class Chef_ProductTableViewCell: UITableViewCell {
     @IBOutlet weak var featureProductButton: UIButton!
     var showFeature:Bool = true
     
+    @IBOutlet weak var viewMoreBtn: UIButton!
     var whichApiToProcess:String = ""
     var productID:String = ""
     var homeViewController:Chef_ProductViewController!
@@ -43,10 +47,10 @@ class Chef_ProductTableViewCell: UITableViewCell {
         //prodcutCollectionView.register(UINib(nibName: "ViewAllCell", bundle: nil), forCellWithReuseIdentifier: "ViewAllCell")
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
  
-        layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 1
+        layout.minimumLineSpacing = 5
         prodcutCollectionView!.collectionViewLayout = layout
-        
+        prodcutCollectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
        
         prodcutCollectionView.delegate = self
         prodcutCollectionView.dataSource = self
@@ -150,7 +154,7 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
                     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "chef_productimagecell", for: indexPath) as! Chef_ProductImageCell
                     
                     cell.productImage.image = UIImage(named: "product_image")
-                    
+                    cell.alonePrice.isHidden = true
                     cell.wishListButton.isHidden = true
                     cell.reviewCnt.text =  "\(String(featuredProductCollectionModel[indexPath.row].reviewCount)) reviews"
                     cell.starRating.value = CGFloat(featuredProductCollectionModel[indexPath.row].rating)
@@ -180,7 +184,7 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
                     GlobalData.sharedInstance.getImageFromUrl(imageUrl:featuredProductCollectionModel[indexPath.row].image , imageView: cell.productImage)
                     cell.productName.text = featuredProductCollectionModel[indexPath.row].name
                     cell.productPrice.text = featuredProductCollectionModel[indexPath.row].price
-                    
+                    cell.alonePrice.text = featuredProductCollectionModel[indexPath.row].price
                 
                     self.productCollectionViewHeight.constant = cell.frame.height
                      self.productCollectionViewWidth.constant = prodcutCollectionView.contentSize.width
@@ -215,14 +219,20 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
                         if featuredProductCollectionModel[indexPath.row].isInRange == 1{
                             if featuredProductCollectionModel[indexPath.row].specialPrice < featuredProductCollectionModel[indexPath.row].originalPrice{
                                 cell.productPrice.text = featuredProductCollectionModel[indexPath.row].showSpecialPrice
-                                let attributeString = NSMutableAttributedString(string: ( featuredProductCollectionModel[indexPath.row].formatedPrice ))
-                                attributeString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: 1, range: NSRange(location: 0, length: attributeString.length))
-                                cell.specialPrice.attributedText = attributeString
+                                
+                                let attributedString = NSMutableAttributedString(string:( featuredProductCollectionModel[indexPath.row].formatedPrice ))
+                                attributedString.addAttribute(NSAttributedStringKey.baselineOffset, value: 0, range: NSMakeRange(0, attributedString.length))
+                                attributedString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: NSNumber(value: NSUnderlineStyle.styleThick.rawValue), range: NSMakeRange(0, attributedString.length))
+                                attributedString.addAttribute(NSAttributedStringKey.strikethroughColor, value: UIColor.gray, range: NSMakeRange(0, attributedString.length))
+                                
+                                cell.productPrice.attributedText = attributedString
                                 cell.specialPrice.isHidden = false;
                             }
                             
                         }else{
-                            cell.specialPrice.isHidden = true;
+                            cell.specialPrice.isHidden = true
+                            cell.productPrice.isHidden = true
+                            cell.alonePrice.isHidden = false
                         }
                         
                     }
@@ -282,6 +292,7 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
                         }else{
                             cell.price.text =  featuredProductCollectionModel[indexPath.row].price
                             cell.specialPrice.isHidden = true
+                            cell.price.center = cell.supplierName.center
                         }
                     }
                     return cell
