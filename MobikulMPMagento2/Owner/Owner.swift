@@ -119,6 +119,8 @@ class Owner: UIViewController{
         profile_view.backgroundColor = UIColor(red: 30/255, green: 161/255, blue: 243/255, alpha: 1.0);
         //profile_view.backgroundColor = UIColor(patternImage: UIImage(named: "back_color")!)
         self.profile_view.layer.shadowOpacity = 0;
+        profile_image.layer.cornerRadius = 35;
+        profile_image.layer.masksToBounds = true;
    /*
         ownerProfileTableView.register(UINib(nibName: "OwnerProfileTableViewCell", bundle: nil), forCellReuseIdentifier: "OwnerProfileTableViewCell")
         ownerProfileTableView.rowHeight = UITableViewAutomaticDimension
@@ -132,7 +134,35 @@ class Owner: UIViewController{
             scrollView.isUserInteractionEnabled = true
             swipeGesture.direction = direction
         }
+        var gesture = UITapGestureRecognizer(target: self, action:  #selector (self.profileViewPage (_:)))
+        profile_view.addGestureRecognizer(gesture)
+        
         self.callingHttppApi();
+    }
+    
+    @objc func profileViewPage(_ sender:UITapGestureRecognizer){
+        self.performSegue(withIdentifier: "toprofileview", sender: self)
+    }
+    
+    @IBAction func logOutClicked(_ sender: Any) {
+        let AC = UIAlertController(title: GlobalData.sharedInstance.language(key: "warninglogoutmessage"), message: "", preferredStyle: .alert)
+        let ok = UIAlertAction(title: GlobalData.sharedInstance.language(key: "yes"), style: .default, handler: {(_ action: UIAlertAction) -> Void in
+            for key in UserDefaults.standard.dictionaryRepresentation().keys {
+                if(key.description == "storeId"||key.description == "language"||key.description == "AppleLanguages" || key.description == "currency" || key.description == "authKey" || key.description == "TouchEmailId" || key.description == "TouchPasswordValue" || key.description == "touchIdFlag" || key.description == "deviceToken" ){
+                    continue
+                }else{
+                    UserDefaults.standard.removeObject(forKey: key.description)
+                }
+            }
+            UserDefaults.standard.synchronize();
+            self.performSegue(withIdentifier: "tologin", sender: self)
+        })
+        
+        let noBtn = UIAlertAction(title: GlobalData.sharedInstance.language(key: "no"), style: .destructive, handler: {(_ action: UIAlertAction) -> Void in
+        })
+        AC.addAction(ok)
+        AC.addAction(noBtn)
+        self.present(AC, animated: true, completion: {  })
     }
     
     func callingHttppApi(){
@@ -413,8 +443,8 @@ class Owner: UIViewController{
         let suppliersLabel = UILabel()
         let suppliersStringLabel = UILabel()
         suppliersLabel.textColor = UIColor(red: 165/255, green: 96/255, blue: 245/255, alpha: 1.0);
-        //changeLabel.text = String(format: "%d",diagramData.ordersCount);
-        suppliersLabel.text = String(format: "16");
+        suppliersLabel.text = String(format: "%d",diagramData.supplierCounts);
+        //suppliersLabel.text = String(format: "16");
         suppliersLabel.font = UIFont.boldSystemFont(ofSize: purchaseLabelHeight)
         suppliersLabel.textAlignment = .center
         

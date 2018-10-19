@@ -89,6 +89,10 @@
 		0CA041BC20590811007DBF79 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0CA041BB20590810007DBF79 /* GoogleService-Info.plist */; };
 		0CA041EA20597E15007DBF79 /* ic_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 0CA041E920597E13007DBF79 /* ic_placeholder.png */; };
 		0CFA4FCC20D911CC00B5B49E /* CMSPageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFA4FC320D911CA00B5B49E /* CMSPageData.swift */; };
+		2941278F2178F44D0031CCFB /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294127842178F44C0031CCFB /* EditProfileViewController.swift */; };
+		294127902178F44D0031CCFB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2941278D2178F44C0031CCFB /* ProfileViewController.swift */; };
+		294127912178F44D0031CCFB /* CustomerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2941278E2178F44C0031CCFB /* CustomerProfileViewController.swift */; };
+		2941279B21798D4D0031CCFB /* OwnerProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2941279A21798D4C0031CCFB /* OwnerProductDetailViewController.swift */; };
 		295F8C362163C49E004346CD /* DetailPageModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295F8C352163C49D004346CD /* DetailPageModelView.swift */; };
 		295F8C402163FB71004346CD /* ChefDashboardModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295F8C3F2163FB71004346CD /* ChefDashboardModelView.swift */; };
 		295F8C4821647AC8004346CD /* AddChefAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295F8C4221647AC7004346CD /* AddChefAlertView.swift */; };
@@ -675,6 +679,10 @@
 		0CA041BB20590810007DBF79 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0CA041E920597E13007DBF79 /* ic_placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_placeholder.png; sourceTree = "<group>"; };
 		0CFA4FC320D911CA00B5B49E /* CMSPageData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMSPageData.swift; sourceTree = "<group>"; };
+		294127842178F44C0031CCFB /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		2941278D2178F44C0031CCFB /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		2941278E2178F44C0031CCFB /* CustomerProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerProfileViewController.swift; sourceTree = "<group>"; };
+		2941279A21798D4C0031CCFB /* OwnerProductDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerProductDetailViewController.swift; sourceTree = "<group>"; };
 		295F8C352163C49D004346CD /* DetailPageModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPageModelView.swift; sourceTree = "<group>"; };
 		295F8C3F2163FB71004346CD /* ChefDashboardModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChefDashboardModelView.swift; sourceTree = "<group>"; };
 		295F8C4221647AC7004346CD /* AddChefAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddChefAlertView.swift; sourceTree = "<group>"; };
@@ -1317,6 +1325,10 @@
 		29B11AE921555C5000980BA4 /* Owner */ = {
 			isa = PBXGroup;
 			children = (
+				2941279A21798D4C0031CCFB /* OwnerProductDetailViewController.swift */,
+				2941278E2178F44C0031CCFB /* CustomerProfileViewController.swift */,
+				294127842178F44C0031CCFB /* EditProfileViewController.swift */,
+				2941278D2178F44C0031CCFB /* ProfileViewController.swift */,
 				299D74D321592FEF00248A67 /* OrderViewCell.swift */,
 				299D74D121592E4600248A67 /* OrderViewCell.xib */,
 				29B11AED21555CBC00980BA4 /* BarChartStructure.swift */,
@@ -2536,6 +2548,7 @@
 				0C05710320408BDB00EB527B /* IQUITextFieldView+Additions.swift in Sources */,
 				5740146A214DCEC60004AC05 /* Chef_ProductTableViewCell.swift in Sources */,
 				A362A2A52127FA2000B6B398 /* PastelLabel.swift in Sources */,
+				294127912178F44D0031CCFB /* CustomerProfileViewController.swift in Sources */,
 				A3B7D330207DFE210026A3AF /* PaymentTableViewCell.swift in Sources */,
 				0C05712D20408BDC00EB527B /* CHIPageControllable.swift in Sources */,
 				A3B7D2FB207DFE210026A3AF /* HotdealsTableViewCell.swift in Sources */,
@@ -2621,6 +2634,7 @@
 				A3B7D303207DFE210026A3AF /* ViewAllCell.swift in Sources */,
 				29B11AF321555CBC00980BA4 /* Owner.swift in Sources */,
 				A3B7D1E5207DFDBD0026A3AF /* SellerOrderFilterController.swift in Sources */,
+				2941279B21798D4D0031CCFB /* OwnerProductDetailViewController.swift in Sources */,
 				57F83DFB2153DEC900BC9DCB /* Chef_CompareCell.swift in Sources */,
 				A3B7D140207DFD880026A3AF /* ChatSellerListController.swift in Sources */,
 				A3B7D337207DFE210026A3AF /* CompareProductAttributeValueCollectionView.swift in Sources */,
@@ -2629,6 +2643,7 @@
 				29B11AF221555CBC00980BA4 /* BarChartStructure.swift in Sources */,
 				A3B7D1F8207DFDBD0026A3AF /* ManagePrintPDFHeader.swift in Sources */,
 				0C05711120408BDB00EB527B /* IQToolbar.swift in Sources */,
+				294127902178F44D0031CCFB /* ProfileViewController.swift in Sources */,
 				A3B7D230207DFDBD0026A3AF /* CrossSellProductModel.swift in Sources */,
 				ECABAE34205807E300D71EDD /* PHFComposeBarView_TextView.m in Sources */,
 				A3460757213A633200C2314E /* CustomFooterView.swift in Sources */,
@@ -2680,6 +2695,7 @@
 				A3B7D358207DFE4B0026A3AF /* AccountInformation.swift in Sources */,
 				A3B7D1DA207DFDBD0026A3AF /* SellerEditProfileModel.swift in Sources */,
 				A3B7D2FD207DFE210026A3AF /* ProductImageCell.swift in Sources */,
+				2941278F2178F44D0031CCFB /* EditProfileViewController.swift in Sources */,
 				A3B7D332207DFE210026A3AF /* ShippingAddressViewController.swift in Sources */,
 				A3B7D34C207DFE210026A3AF /* AddressViewCell3.swift in Sources */,
 				A3B7D2E9207DFE210026A3AF /* SearchSuggestionModel.swift in Sources */,

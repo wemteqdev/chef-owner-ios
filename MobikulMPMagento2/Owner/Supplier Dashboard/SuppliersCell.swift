@@ -9,7 +9,7 @@
 import UIKit
 
 @objc protocol supplierViewControllerHandlerDelegate: class {
-    func viewMapClick(id:String)
+    func viewMapClick(id:Int)
     func browseCategory(id: Int, name: String)
     func signupSupplier(id:Int)
 }
@@ -27,7 +27,7 @@ class SuppliersCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        supplierImage.layer.cornerRadius = 20;
+        supplierImage.layer.cornerRadius = 30;
         supplierImage.layer.masksToBounds = true
         supplierImage.layer.backgroundColor = UIColor().HexToColor(hexString: BUTTON_COLOR).cgColor
         viewMapButton.layer.cornerRadius = 10;
@@ -46,7 +46,7 @@ class SuppliersCell: UITableViewCell {
     }
     
     @IBAction func viewMapButtonClicked(_ sender: Any) {
-        delegate.viewMapClick(id: "dd");
+        delegate.viewMapClick(id: supplierId);
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -165,7 +165,7 @@
                 <outlet property="supplierName" destination="e9q-0j-DQ4" id="QIq-Hd-P7o"/>
                 <outlet property="wishListButton" destination="f1p-4m-O3a" id="tyu-gu-Ti4"/>
             </connections>
-            <point key="canvasLocation" x="-1413" y="-463"/>
+            <point key="canvasLocation" x="-955" y="-3"/>
         </collectionViewCell>
     </objects>
     <resources>

@@ -25,9 +25,17 @@ class SuppliersDashboardController: UIViewController, UITableViewDelegate, UITab
     var selectedSupplierId = 0;
     var selectedSupplierName = "";
     
-    func viewMapClick(id:String)
+    func viewMapClick(id:Int)
     {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "mapView") as! MapViewController
+        for supplierInfo in self.suppliersInfo.suppliersInfo {
+            if(supplierInfo.supplierId == id){
+                vc.supplierName = supplierInfo.supplierName;
+                vc.supplierAddress = supplierInfo.address;
+                vc.customerName = supplierInfo.supplierName;
+                vc.customerAddress = supplierInfo.address;
+            }
+        }
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -341,6 +349,9 @@ class SuppliersDashboardController: UIViewController, UITableViewDelegate, UITab
                 else {
                     cell.supplierName.text = filtered[indexPath.section].supplierName as? String;
                     cell.supplierImage.image = UIImage(named: "ic_signin")!
+                    if(filtered[indexPath.section].customerImage != nil) {
+                        GlobalData.sharedInstance.getImageFromUrl(imageUrl: filtered[indexPath.section].customerImage, imageView: cell.supplierImage)
+                    }
                     cell.supplierId = filtered[indexPath.section].supplierId;
                     cell.status = filtered[indexPath.section].status;
                     if (filtered[indexPath.section].status == 1) {
@@ -362,6 +373,9 @@ class SuppliersDashboardController: UIViewController, UITableViewDelegate, UITab
             {
                 cell.supplierName.text = self.suppliersInfo.suppliersInfo[indexPath.section].supplierName as? String;
                 cell.supplierImage.image = UIImage(named: "ic_signin")!
+                if(self.suppliersInfo.suppliersInfo[indexPath.section].customerImage != nil) {
+                    GlobalData.sharedInstance.getImageFromUrl(imageUrl: self.suppliersInfo.suppliersInfo[indexPath.section].customerImage, imageView: cell.supplierImage)
+                }
                 cell.supplierId = self.suppliersInfo.suppliersInfo[indexPath.section].supplierId;
                 cell.status = self.suppliersInfo.suppliersInfo[indexPath.section].status;
                 if (self.suppliersInfo.suppliersInfo[indexPath.section].status == 1) {
@@ -385,8 +399,9 @@ class SuppliersDashboardController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "detailPage") as! DetailPage
-        vc.pageType = 3;
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "customerprofileview") as! CustomerProfileViewController
+        vc.customerId = self.suppliersInfo.suppliersInfo[indexPath.section].supplierId;
+        vc.customerImage = self.suppliersInfo.suppliersInfo[indexPath.section].customerImage;
         self.navigationController?.pushViewController(vc, animated: true)
     }
             

@@ -656,6 +656,11 @@ class SupplierProductcategory: UIViewController,UICollectionViewDelegate,UIColle
             cell.productImage.image = UIImage(named: "ic_placeholder.png")
             cell.productName.text = productCollectionViewModel.getProductCollectionData[indexPath.row].productName
             cell.productPrice.text =  productCollectionViewModel.getProductCollectionData[indexPath.row].price
+            //cell.productDescription.text = productCollectionViewModel.getProductCollectionData[indexPath.row].descriptionData
+            //cell.productDescription.isHidden = false;
+            //if(cell.productDescription.text == ""){
+            //    cell.productDescription.text = "No Descriptions";
+            //}
             cell.addButton.isHidden = true;
             //cell.addButton.tag = indexPath.row
             //cell.addButton.addTarget(self, action: #selector(addButtonClick(sender:)), for: .touchUpInside)
@@ -922,7 +927,7 @@ class SupplierProductcategory: UIViewController,UICollectionViewDelegate,UIColle
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "chef_productdetail") as! Chef_DashboardViewController
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "chef_productdetail") as! OwnerProductDetailViewController
         vc.productImageUrl = productCollectionViewModel.getProductCollectionData[indexPath.row].productImage
         vc.productName = productCollectionViewModel.getProductCollectionData[indexPath.row].productName
         vc.productId = productCollectionViewModel.getProductCollectionData[indexPath.row].id

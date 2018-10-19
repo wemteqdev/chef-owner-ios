@@ -14,7 +14,9 @@ class ProfileCell: UITableViewCell {
     
     @IBOutlet weak var changeButton: UIButton!
     @IBOutlet weak var nameValue: UILabel!
+    var delegate:EditProfiledelegate!
     
+    @IBOutlet weak var arrowImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
 //        profileImage.layer.cornerRadius = 20;
@@ -29,4 +31,7 @@ class ProfileCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func changeProfileImage(_ sender: Any) {
+        delegate.saveProfileImage();
+    }
 }

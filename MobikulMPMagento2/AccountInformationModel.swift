@@ -42,8 +42,15 @@ class AccountInformationModel: NSObject {
     var street:String!
     var postcode:String!
     var country:String!
+    var restaurantName = [String]()
+    var countryData = [CountryData]()
     
     init(data: JSON) {
+        if let arrayData = data["countryData"].arrayObject{
+            countryData = arrayData.map({(value) -> CountryData in
+                return CountryData(data:JSON(value))
+            })
+        }
         self.dateFormat = data["dateFormat"].stringValue
         self.isDobRequired = data["isDOBRequired"].boolValue
         self.isDobVisible = data["isDOBVisible"].boolValue
@@ -77,6 +84,7 @@ class AccountInformationModel: NSObject {
         self.street = data["street"][0].stringValue
         self.postcode = data["postcode"].stringValue
         self.country = data["country"].stringValue
+        self.restaurantName = data["restaurantName"].arrayObject as! [String];
     }
 
     

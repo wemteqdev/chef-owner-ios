@@ -21,7 +21,7 @@ class MyProfileController: UIViewController,UITableViewDelegate, UITableViewData
     var sinInView:NSMutableArray = [""]
     var profileData:NSMutableArray = []
     var showUserProfile:Bool = false
-    var homeViewModel : Chef_HomeViewModel!
+    var homeViewModel : HomeViewModel!
     var imageForCategoryMenu:String = ""
     var imageData:NSData!
     var uploadImage:String = ""
@@ -38,8 +38,8 @@ class MyProfileController: UIViewController,UITableViewDelegate, UITableViewData
         self.myProfileTableView.separatorColor = UIColor.clear
         let paymentViewNavigationController = self.tabBarController?.viewControllers?[1]
         let nav = paymentViewNavigationController as! UINavigationController;
-        let paymentMethodViewController = nav.viewControllers[0] as! Chef_ProductViewController
-        homeViewModel = paymentMethodViewController.homeViewModel;
+        //let paymentMethodViewController = nav.viewControllers[0] as! ProductViewController
+        //homeViewModel = paymentMethodViewController.homeViewModel;
         
         cmsData = []
         if homeViewModel.cmsData.count > 0{

@@ -88,6 +88,10 @@ class OwnerDashBoardViewModel: NSObject {
     var diagramWeeklyTotal: DiagramTotalData!;
     var diagramMonthlyTotal: DiagramTotalData!;
     var diagramYearlyTotal: DiagramTotalData!;
+    var totalCustomerDaily = 0;
+    var totalCustomerWeekly = 0;
+    var totalCustomerMonthly = 0;
+    var totalCustomerYearly = 0;
     
     init(data:JSON){
         //----------Get Graph Data(For daily, weekly, monthly, yearly)--------------
@@ -115,6 +119,10 @@ class OwnerDashBoardViewModel: NSObject {
         if let arrayData = data["orderDailyIndexString"].arrayObject{
             orderDailyIndexString = arrayData as! [String];
         }
+        totalCustomerYearly = data["totalCustomerYearly"].intValue;
+        totalCustomerMonthly = data["totalCustomerMonthly"].intValue;
+        totalCustomerWeekly = data["totalCustomerWeekly"].intValue;
+        totalCustomerDaily = data["totalCustomerDaily"].intValue;
         //--------------Get Diagram Total Data(Total Purchase, order counts)------------------
         var percent:Double = 0.0;
         if(orderDailyTotal[orderDailyTotal.count - 2] != 0){
@@ -122,7 +130,7 @@ class OwnerDashBoardViewModel: NSObject {
         } else {
             percent = orderDailyTotal[orderDailyTotal.count-1] * 100;
         }
-        diagramDailyTotal = DiagramTotalData.init(ordersCount: data["dailyOrdersCount"].intValue, ordersTotal: String(format:"%.1f",orderDailyTotal[orderDailyTotal.count-1]), supplierCounts: 0, percentage: percent);
+        diagramDailyTotal = DiagramTotalData.init(ordersCount: data["dailyOrdersCount"].intValue, ordersTotal: String(format:"%.1f",orderDailyTotal[orderDailyTotal.count-1]), supplierCounts: totalCustomerDaily, percentage: percent);
         
         percent = 0.0;
         if(orderWeeklyTotal[orderWeeklyTotal.count - 2] != 0){
@@ -130,7 +138,7 @@ class OwnerDashBoardViewModel: NSObject {
         } else {
             percent = orderWeeklyTotal[orderWeeklyTotal.count-1] * 100;
         }
-        diagramWeeklyTotal = DiagramTotalData.init(ordersCount: data["weeklyOrdersCount"].intValue, ordersTotal: String(format:"%.1f",orderWeeklyTotal[orderWeeklyTotal.count-1]), supplierCounts: 0, percentage: percent);
+        diagramWeeklyTotal = DiagramTotalData.init(ordersCount: data["weeklyOrdersCount"].intValue, ordersTotal: String(format:"%.1f",orderWeeklyTotal[orderWeeklyTotal.count-1]), supplierCounts: totalCustomerWeekly, percentage: percent);
         
         percent = 0.0;
         if(orderMonthlyTotal[orderMonthlyTotal.count - 2] != 0){
@@ -138,7 +146,7 @@ class OwnerDashBoardViewModel: NSObject {
         } else {
             percent = orderMonthlyTotal[orderMonthlyTotal.count-1] * 100;
         }
-        diagramMonthlyTotal = DiagramTotalData.init(ordersCount: data["monthlyOrdersCount"].intValue, ordersTotal: String(format:"%.1f",orderMonthlyTotal[orderMonthlyTotal.count-1]), supplierCounts: 0, percentage: percent);
+        diagramMonthlyTotal = DiagramTotalData.init(ordersCount: data["monthlyOrdersCount"].intValue, ordersTotal: String(format:"%.1f",orderMonthlyTotal[orderMonthlyTotal.count-1]), supplierCounts: totalCustomerMonthly, percentage: percent);
         
         percent = 0.0;
         if(orderYearlyTotal[orderYearlyTotal.count - 2] != 0){
@@ -146,7 +154,7 @@ class OwnerDashBoardViewModel: NSObject {
         } else {
             percent = orderYearlyTotal[orderYearlyTotal.count-1] * 100;
         }
-        diagramYearlyTotal = DiagramTotalData.init(ordersCount: data["yearlyOrdersCount"].intValue, ordersTotal: String(format:"%.1f",orderYearlyTotal[orderYearlyTotal.count-1]), supplierCounts: 0, percentage: percent);
+        diagramYearlyTotal = DiagramTotalData.init(ordersCount: data["yearlyOrdersCount"].intValue, ordersTotal: String(format:"%.1f",orderYearlyTotal[orderYearlyTotal.count-1]), supplierCounts: totalCustomerYearly, percentage: percent);
         
     }
 }
