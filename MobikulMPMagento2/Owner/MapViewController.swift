@@ -50,8 +50,8 @@ class MapViewController: UIViewController {
                     customerPosition = GMSCameraPosition.camera(withLatitude: location.latitude, longitude: location.longitude, zoom: 16.0)
                     self.showMarker(position: customerPosition.target, mapType: 0)
                 } else {
-                    let AC = UIAlertController(title: "Error", message: error.debugDescription, preferredStyle: .alert)
-                    
+                    //let AC = UIAlertController(title: "Error", message: error.debugDescription, preferredStyle: .alert)
+                    let AC = UIAlertController(title: "Error", message: "Wrong Address", preferredStyle: .alert)
                     let noBtn = UIAlertAction(title:GlobalData.sharedInstance.language(key: "ok"), style: .destructive, handler: {(_ action: UIAlertAction) -> Void in
                     })
                     AC.addAction(noBtn)
@@ -66,10 +66,10 @@ class MapViewController: UIViewController {
                     supplierPosition = GMSCameraPosition.camera(withLatitude: location.latitude, longitude: location.longitude, zoom: 16.0)
                     self.mapView.camera = supplierPosition
                     self.showMarker(position: supplierPosition.target, mapType: 1)
-                    self.circle(position: supplierPosition.target)
+                    //self.circle(position: supplierPosition.target)
                 } else {
-                    let AC = UIAlertController(title: "Error", message: error.debugDescription, preferredStyle: .alert)
-                    
+                    //let AC = UIAlertController(title: "Error", message: error.debugDescription, preferredStyle: .alert)
+                    let AC = UIAlertController(title: "Error", message: "Wrong Address", preferredStyle: .alert)
                     let noBtn = UIAlertAction(title:GlobalData.sharedInstance.language(key: "ok"), style: .destructive, handler: {(_ action: UIAlertAction) -> Void in
                     })
                     AC.addAction(noBtn)

@@ -27,17 +27,17 @@ var REDCOLOR = "FF4848"
 var ORANGECOLOR = "FF9C05"
 var EXTRALIGHTGREY = "ECEFF1"
 var LIGHTGREY = "8E8E93"
-var ACCENT_COLOR = "42E695"
-var BUTTON_COLOR = "3BB2B8"
+var ACCENT_COLOR = "29A6F4"
+var BUTTON_COLOR = "29A6F4"
 var TEXTHEADING_COLOR = "000000"
-var NAVIGATION_TINTCOLOR = "261f28"
+var NAVIGATION_TINTCOLOR = "29A6F4"
 var LINK_COLOR = "000000"
 var SHOW_COMPARE = false
 var GREEN_COLOR = "05C149"
 var STAR_COLOR = "dc831a"
 var GRADIENTCOLOR = [UIColor().HexToColor(hexString: ACCENT_COLOR) , UIColor().HexToColor(hexString: BUTTON_COLOR)]
-var SELLERGRADIENT = [UIColor().HexToColor(hexString: "B4A0F9") , UIColor().HexToColor(hexString: "67C9EF"),UIColor().HexToColor(hexString: "00BCD4")]
-var STARGRADIENT = [UIColor().HexToColor(hexString: "93BC4B") , UIColor().HexToColor(hexString: "9ED836")]
+var SELLERGRADIENT = [UIColor().HexToColor(hexString: "29A6F4") , UIColor().HexToColor(hexString: "29A6F4"),UIColor().HexToColor(hexString: "29A6F4")]
+var STARGRADIENT = [UIColor().HexToColor(hexString: "29A6F4") , UIColor().HexToColor(hexString: "29A6F4")]
 
 
 public var BOLDFONT = "Cairo-Bold"

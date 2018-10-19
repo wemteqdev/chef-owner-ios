@@ -40,6 +40,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         UITabBar.appearance().tintColor =  UIColor().HexToColor(hexString: BUTTON_COLOR)
         
+        UINavigationBar.appearance().tintColor = UIColor.white;
+        UINavigationBar.appearance().setBackgroundImage(UIImage(named: "back_color"), for: UIBarMetrics.default)
+        
         //version update
         //self.setupSiren()
         

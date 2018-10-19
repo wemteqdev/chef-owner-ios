@@ -18,6 +18,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             break
         case 2:
             accountInfoModel.lastName = data;
+            let name = accountInfoModel.firstName + " " + accountInfoModel.lastName;
+            defaults.set(name, forKey: "customerName")
             break
         case 3:
             accountInfoModel.emailId = data;
@@ -80,6 +82,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         profileTableView.dataSource = self
         profileTableView.delegate = self
         
+        self.profileTableView.layer.shadowOpacity = 0;
+        self.profileTableView.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor).isActive = true
+        //queue.maxConcurrentOperationCount = 20;
         //let backItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: "tapToBack")
         //self.navigationItem.leftBarButtonItem = backItem
         
@@ -90,10 +95,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     @objc func tapToBack() {
         print("back clicked")
-        self.whichApiToProcess = "customerEditPost";
-        self.callingHttppApi();
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "owner") as! Owner
-        self.navigationController?.pushViewController(vc, animated: true)
     }
     override func viewWillAppear(_ animated: Bool) {        
         if(uploadImage == "true"){
@@ -412,11 +413,17 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             let viewController:EditProfileViewController = segue.destination as UIViewController as! EditProfileViewController
             viewController.id = self.indexforcell;
             viewController.data = self.supplierProfileDataValue[self.indexforcell] as! String;
+            if(self.indexforcell == 6) {
+                //viewController.dataType = 2;
+            } else if(self.indexforcell == 8) {
+                viewController.dataType = 1;
+            }
+            viewController.countryData = self.accountInfoModel.countryData;
             viewController.placeholdString = self.supplierProfileData[self.indexforcell + 1] as! String;
             viewController.delegate = self;
         }
     }
-    
+    /*
     override func viewWillDisappear(_ animated: Bool) {
         if (navigationController?.viewControllers.contains(self) == false)
         {
@@ -426,4 +433,5 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewWillDisappear(true)
         navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
     }
+     */
 }

@@ -11,7 +11,7 @@ import CoreData
 import MobileCoreServices
 import Alamofire
 
-class Chef_DashboardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class OwnerProductDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -33,7 +33,8 @@ class Chef_DashboardViewController: UIViewController, UITableViewDelegate, UITab
         cell.baseCompareView.backgroundColor = UIColor.white
         cell.baseDetailView.backgroundColor = UIColor.white
         cell.baseReviewView.backgroundColor = UIColor.white
-
+        cell.baseCompareView.isHidden = true
+        cell.compareView.isHidden = true
         switch currentMainView {
         case 0:
             cell.baseDetailView.backgroundColor = UIColor().HexToColor(hexString: BUTTON_COLOR)
@@ -50,7 +51,6 @@ class Chef_DashboardViewController: UIViewController, UITableViewDelegate, UITab
         }
         cell.currentMainView = currentMainView
         cell.catalogProductViewModel = self.catalogProductViewModel
-        cell.compareProductCollectionModel = self.compareProductCollectionModel
         cell.productDetailCollectionView.reloadData()
 
         print(cell.productCollectionViewHeight.constant)
@@ -71,19 +71,18 @@ class Chef_DashboardViewController: UIViewController, UITableViewDelegate, UITab
     }
     var currentMainView: Int = 0
     @IBOutlet weak var supplierName: UILabel!
-    @IBOutlet weak var shareBtn: UIButton!
+  
     @IBOutlet weak var addCartButton: UIButton!
     @IBOutlet weak var productRate: UILabel!
     @IBOutlet weak var quantitytextField: UILabel!
     @IBOutlet weak var productnameLabel: UILabel!
     @IBOutlet weak var productpriceLabel: UILabel!
-    @IBOutlet weak var wishlistBtn: UIButton!
+
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var productRateCount: UILabel!
     @IBOutlet weak var productDetailTableView: UITableView!
     @IBOutlet weak var productStarRating: HCSStarRatingView!
     var catalogProductViewModel:CatalogProductViewModel!
-    var compareProductCollectionModel = [Products]()
     var productId:String = ""
     var productName:String = ""
     var productImageUrl:String = ""
@@ -150,11 +149,14 @@ class Chef_DashboardViewController: UIViewController, UITableViewDelegate, UITab
         self.navigationController?.isNavigationBarHidden = false
      GlobalData.sharedInstance.getImageFromUrl(imageUrl:productImageUrl , imageView: self.productImage)
         
+        addCartButton.isHidden = true
+        
         imageArrayUrl = [productImageUrl]
         productnameLabel.text = productName
         GlobalData.sharedInstance.removePreviousNetworkCall()
         GlobalData.sharedInstance.dismissLoader()
         callingHttppApi(apiName: CatalogProductAPI.catalogProduct)
+        
         // Do any additional setup after loading the view.
     }
    
@@ -233,14 +235,7 @@ class Chef_DashboardViewController: UIViewController, UITableViewDelegate, UITab
                     
                     if errorCode == true{
                         GlobalData.sharedInstance.showSuccessSnackBar(msg:data .object(forKey:"message") as! String )
-                        if badge == nil {
-                            badge = "1"
-                        }
-                        else{
-                            badge = String(Int(badge!)! + 1)
-                        }
-                        print("BADGE")
-                        print(badge)
+                        
 //                        self.tabBarController!.tabBar.items?[3].badgeValue = String(data.object(forKey: "cartCount") as! Int)
                         //self.navigationItem.prompt = String(data.object(forKey: "cartCount") as! Int)+" "+GlobalData.sharedInstance.language(key: "itemsincart")
                         
@@ -355,8 +350,7 @@ class Chef_DashboardViewController: UIViewController, UITableViewDelegate, UITab
                 }
             }
             
-            //requstParams["qty"] = quantitytextField.text
-            requstParams["qty"] = 1
+            requstParams["qty"] = quantitytextField.text
             GlobalData.sharedInstance.showLoader()
             GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"mobikulhttp/catalog/addtoWishlist", currentView: self){success,responseObject in
                 if success == 1{
@@ -370,7 +364,7 @@ class Chef_DashboardViewController: UIViewController, UITableViewDelegate, UITab
                         self.catalogProductViewModel.catalogProductModel.isInWishList = true
                         self.catalogProductViewModel.catalogProductModel.wishlistItemId = String(data.object(forKey:"itemId") as! Int)
                         
-                        self.wishlistBtn.setImage(#imageLiteral(resourceName: "ic_wishlist_fill"), for: .normal)
+                        //self.wishlistBtn.setImage(#imageLiteral(resourceName: "ic_wishlist_fill"), for: .normal)
                         
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshHomeView"), object: nil, userInfo: [:])
                         self.tabBarController?.tabBar.isHidden = true
@@ -410,7 +404,7 @@ class Chef_DashboardViewController: UIViewController, UITableViewDelegate, UITab
                         self.catalogProductViewModel.catalogProductModel.isInWishList = false
                         self.catalogProductViewModel.catalogProductModel.wishlistItemId = "0"
                         
-                        self.wishlistBtn.setImage(#imageLiteral(resourceName: "ic_wishlist_empty"), for: .normal)
+                        //self.wishlistBtn.setImage(#imageLiteral(resourceName: "ic_wishlist_empty"), for: .normal)
                         
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshHomeView"), object: nil, userInfo: [:])
                         self.tabBarController?.tabBar.isHidden = true
@@ -464,36 +458,12 @@ class Chef_DashboardViewController: UIViewController, UITableViewDelegate, UITab
                     
                     self.catalogProductViewModel = CatalogProductViewModel(data:JSON(responseObject as! NSDictionary))
                     print(responseObject as! NSDictionary)
-                    requstParams["customerToken"] = self.defaults.object(forKey:"customerId") as! String
-                    requstParams["customerType"] = "1"
-                    requstParams["storeId"] = self.defaults.object(forKey:"storeId") as! String
-                    requstParams["currentproductid"] = self.productId
-                    requstParams["currentproductname"] = self.productName
-                    GlobalData.sharedInstance.showLoader()
-                    GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"wemteqchef/catalog/detailcompareproducts", currentView: self){success,responseObject in
-                        if success == 1{
-                            print("compare products COMPARE")
-                            print(responseObject as! NSDictionary)
-                            let data = JSON(responseObject as! NSDictionary)
-                            let arrayData8 = data["allProducts"].arrayObject! as NSArray
-                            self.compareProductCollectionModel =  arrayData8.map({(value) -> Products in
-                                return  Products(data:JSON(value))
-                            })
-                            print("COMPARE PRODUCTS")
-                            self.doFurtherProcessingWithResult()
-                            
-                        }else if success == 2{
-                            GlobalData.sharedInstance.dismissLoader()
-                            self.callingHttppApi(apiName: apiName)
-                        }
-                    }
-                    
+                    self.doFurtherProcessingWithResult()
                 }else if success == 2{
                     GlobalData.sharedInstance.dismissLoader()
                     self.callingHttppApi(apiName: apiName)
                 }
             }
-            
         default:
             print()
         }
@@ -601,14 +571,7 @@ class Chef_DashboardViewController: UIViewController, UITableViewDelegate, UITab
                                                 
                                                 if errorCode == true{
                                                     GlobalData.sharedInstance.showSuccessSnackBar(msg:dict["message"].stringValue)
-                                                    if badge == nil {
-                                                        badge = "1"
-                                                    }
-                                                    else{
-                                                        badge = String(Int(badge!)! + 1)
-                                                    }
-                                                    print("BADGE")
-                                                    print(badge)
+                                                    
                                                     //self.tabBarController!.tabBar.items?[3].badgeValue = dict["cartCount"].stringValue
                                                     
                                                     if self.goToBagFlag == true{
@@ -887,54 +850,9 @@ class Chef_DashboardViewController: UIViewController, UITableViewDelegate, UITab
             }
         }
     }
-    func AddToWishList() {
-        let customerId = defaults.object(forKey: "customerId")
-        if(customerId == nil){
-            let AC = UIAlertController(title: GlobalData.sharedInstance.language(key: "warning"), message: GlobalData.sharedInstance.language(key: "loginrequired"), preferredStyle: .alert)
-            let okBtn = UIAlertAction(title: GlobalData.sharedInstance.language(key: "ok"), style: .default, handler: {(_ action: UIAlertAction) -> Void in
-                
-            })
-            
-            AC.addAction(okBtn)
-            self.present(AC, animated: true, completion: { })
-        }else{
-            
-            if self.catalogProductViewModel.catalogProductModel.isInWishList {
-                //remove from wish list
-                
-                callingHttppApi(apiName: CatalogProductAPI.removeFromWishList)
-                
-            }else{
-                //add to wish list
-                
-                // grouped product
-                
-                
-                callingHttppApi(apiName: CatalogProductAPI.addToWishlist)
-            }
-        }
-    }
-    func shareProduct() {
-        let productUrl = catalogProductViewModel.catalogProductModel.shareUrl
-        let activityItems = [productUrl]
-        let activityController = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
-        if UI_USER_INTERFACE_IDIOM() == .phone {
-            self.present(activityController, animated: true, completion: {  })
-        }
-        else {
-            let popup = UIPopoverController(contentViewController: activityController)
-            popup.present(from: CGRect(x: CGFloat(self.view.frame.size.width / 2), y: CGFloat(self.view.frame.size.height / 4), width: CGFloat(0), height: CGFloat(0)), in: self.view, permittedArrowDirections: .any, animated: true)
-        }
-    }
-    @IBAction func wishlistBtnClicked(_ sender: UIButton) {
-        self.AddToWishList()
-    }
     
-    @IBAction func shareBtnClicked(_ sender: UIButton) {
-        self.shareProduct()
-    }
     func doFurtherProcessingWithResult()    {
-        print(compareProductCollectionModel)
+        
         let ratingArr:JSON = JSON(catalogProductViewModel.getRatingsData)
         let ratingCount:Float = Float(catalogProductViewModel.getRatingsData.count)
         var ratingVal:Float = 0
@@ -967,13 +885,13 @@ class Chef_DashboardViewController: UIViewController, UITableViewDelegate, UITab
 //        stockLabelValue.text = catalogProductViewModel.catalogProductModel.stockMessage
 //        //        self.mainViewHeightConstarints.constant = 650 + SCREEN_HEIGHT/2
 //
-        //wishlist icon
-        if self.catalogProductViewModel.catalogProductModel.isInWishList    {
-            wishlistBtn.setImage(#imageLiteral(resourceName: "ic_wishlist_fill"), for: .normal)
-        }else{
-            wishlistBtn.setImage(#imageLiteral(resourceName: "ic_wishlist_empty"), for: .normal)
-        }
-
+//        //wishlist icon
+//        if self.catalogProductViewModel.catalogProductModel.isInWishList    {
+//            wishlistBtn.setImage(#imageLiteral(resourceName: "ic_wishlist_fill"), for: .normal)
+//        }else{
+//            wishlistBtn.setImage(#imageLiteral(resourceName: "ic_wishlist_empty"), for: .normal)
+//        }
+//
         self.groupjson = catalogProductViewModel.catalogProductModel.groupedData
         self.linkJson = catalogProductViewModel.catalogProductModel.links
         self.bundleJson = catalogProductViewModel.catalogProductModel.bundleData

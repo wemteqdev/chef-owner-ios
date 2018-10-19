@@ -28,6 +28,9 @@ class CustomerProfileViewController: UIViewController, UITableViewDelegate, UITa
         profileTableView.dataSource = self
         profileTableView.delegate = self
         
+        self.profileTableView.layer.shadowOpacity = 0;
+        self.profileTableView.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor).isActive = true
+        
         callingHttppApi()
         
         
@@ -68,6 +71,7 @@ class CustomerProfileViewController: UIViewController, UITableViewDelegate, UITa
         else {
             let cell:ProfileCell = tableView.dequeueReusableCell(withIdentifier: "ProfileCell") as! ProfileCell
             cell.name.text = customerProfileData[indexPath.row - 1] as! String
+            
             if didload != false{
                 switch indexPath.row - 1 {
                 case 0:

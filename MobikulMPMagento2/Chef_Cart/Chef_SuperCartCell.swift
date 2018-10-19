@@ -9,6 +9,27 @@
 import UIKit
 
 class Chef_SuperCartCell: UITableViewCell {
-
-     @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var supplierName: UILabel!
+    @IBOutlet var subtotal: UILabel!
+    @IBOutlet var reviewLabel: UILabel!
+    @IBOutlet var moqLabel: UILabel!
+    @IBOutlet var priceLabel: UILabel!
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var qtyButton: UIButton!
+    @IBOutlet var plusButton: UIButton!
+    @IBOutlet var minusButton: UIButton!
+    @IBOutlet var errorMsg: UILabel!
+    @IBOutlet var productImage: UIImageView!
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        errorMsg.isHidden = true;
+        qtyButton.layer.borderColor = UIColor().HexToColor(hexString: "9A9A9A").cgColor
+        qtyButton.layer.borderWidth = 1
+        minusButton.layer.borderColor = UIColor().HexToColor(hexString: "9A9A9A").cgColor
+        minusButton.layer.borderWidth = 1
+        plusButton.layer.borderColor = UIColor().HexToColor(hexString: "9A9A9A").cgColor
+        plusButton.layer.borderWidth = 1
+        
+        
+    }
 }

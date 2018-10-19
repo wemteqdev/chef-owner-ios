@@ -139,6 +139,11 @@ struct Products {
     var formatedMinPrice:String!
     var formatedMaxPrice:String!
     var wishlistItemId:String!
+    var reviewCount:String!
+    var rating:Double!
+    var supplierName:String!
+    var taxClass:String!
+    var minAddToCartQty:String!
     
     init(data:JSON) {
         self.hasOption = data["hasOption"].intValue
@@ -155,8 +160,20 @@ struct Products {
         self.typeID = data["typeId"].stringValue
         self.groupedPrice = data["groupedPrice"].stringValue
         self.formatedMaxPrice = data["formatedMaxPrice"].stringValue
+        self.minAddToCartQty = data["minAddToCartQty"].stringValue
+        
         self.formatedMinPrice = data["formatedMinPrice"].stringValue
         self.wishlistItemId = data["wishlistItemId"].stringValue
+        self.taxClass = data["tax_class"].stringValue
+        if self.taxClass == "" {
+            self.taxClass = "No Tax Class"
+        }
+        self.supplierName = data["suppliername"].stringValue
+        if self.supplierName == "" {
+            self.supplierName = "No Supplier"
+        }
+        self.rating = data["rating"].doubleValue
+        self.reviewCount = data["reviewcount"].stringValue
     }
 }
 

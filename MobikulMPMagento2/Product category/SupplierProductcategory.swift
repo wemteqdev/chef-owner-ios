@@ -656,16 +656,16 @@ class SupplierProductcategory: UIViewController,UICollectionViewDelegate,UIColle
             cell.productImage.image = UIImage(named: "ic_placeholder.png")
             cell.productName.text = productCollectionViewModel.getProductCollectionData[indexPath.row].productName
             cell.productPrice.text =  productCollectionViewModel.getProductCollectionData[indexPath.row].price
-            cell.productDescription.text = productCollectionViewModel.getProductCollectionData[indexPath.row].descriptionData
-            cell.productDescription.isHidden = false;
-            if(cell.productDescription.text == ""){
-                cell.productDescription.text = "No Descriptions";
-            }
+            //cell.productDescription.text = productCollectionViewModel.getProductCollectionData[indexPath.row].descriptionData
+            //cell.productDescription.isHidden = false;
+            //if(cell.productDescription.text == ""){
+            //    cell.productDescription.text = "No Descriptions";
+            //}
             cell.addButton.isHidden = true;
             //cell.addButton.tag = indexPath.row
             //cell.addButton.addTarget(self, action: #selector(addButtonClick(sender:)), for: .touchUpInside)
             GlobalData.sharedInstance.getImageFromUrl(imageUrl:productCollectionViewModel.getProductCollectionData[indexPath.row].productImage , imageView: cell.productImage)
-            cell.specialPrice.isHidden = true
+            //cell.specialPrice.isHidden = true
             if productCollectionViewModel.getProductCollectionData[indexPath.row].isInWishlist == true{
                 cell.wishListButton.setImage(UIImage(named: "ic_wishlist_fill")!, for: .normal)
                 
@@ -696,11 +696,11 @@ class SupplierProductcategory: UIViewController,UICollectionViewDelegate,UIColle
                         cell.productPrice.text = productCollectionViewModel.getProductCollectionData[indexPath.row].formatedSpecialPrice
                         let attributeString = NSMutableAttributedString(string: productCollectionViewModel.getProductCollectionData[indexPath.row].formatedPrice)
                         attributeString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: 1, range: NSRange(location: 0, length: attributeString.length))
-                        cell.specialPrice.attributedText = attributeString
-                        cell.specialPrice.isHidden = false
+//                        cell.specialPrice.attributedText = attributeString
+//                        cell.specialPrice.isHidden = false
                     }else{
                         cell.productPrice.text =  productCollectionViewModel.getProductCollectionData[indexPath.row].price
-                        cell.specialPrice.isHidden = true
+                       // cell.specialPrice.isHidden = true
                     }
                 }
             }
@@ -712,7 +712,7 @@ class SupplierProductcategory: UIViewController,UICollectionViewDelegate,UIColle
             cell.imageView.image = UIImage(named: "ic_placeholder.png")
             cell.name.text = productCollectionViewModel.getProductCollectionData[indexPath.row].productName
             cell.price.text =  productCollectionViewModel.getProductCollectionData[indexPath.row].price
-            cell.descriptionData.text = productCollectionViewModel.getProductCollectionData[indexPath.row].descriptionData
+            //cell.descriptionData.text = productCollectionViewModel.getProductCollectionData[indexPath.row].descriptionData
             cell.addButton.isHidden = true;
             //cell.addButton.tag = indexPath.row
             //cell.addButton.addTarget(self, action: #selector(addButtonClick(sender:)), for: .touchUpInside)
@@ -720,7 +720,7 @@ class SupplierProductcategory: UIViewController,UICollectionViewDelegate,UIColle
             cell.wishList_Button.tag = indexPath.row
             cell.compare_Button.tag = indexPath.row
             
-            cell.specialPrice.isHidden = true
+            //cell.specialPrice.isHidden = true
             
             
             if productCollectionViewModel.getProductCollectionData[indexPath.row].isInWishlist == true{
@@ -742,11 +742,11 @@ class SupplierProductcategory: UIViewController,UICollectionViewDelegate,UIColle
                     cell.price.text = productCollectionViewModel.getProductCollectionData[indexPath.row].formatedSpecialPrice
                     let attributeString = NSMutableAttributedString(string: productCollectionViewModel.getProductCollectionData[indexPath.row].formatedPrice)
                     attributeString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: 1, range: NSRange(location: 0, length: attributeString.length))
-                    cell.specialPrice.attributedText = attributeString
-                    cell.specialPrice.isHidden = false
+//                    cell.specialPrice.attributedText = attributeString
+//                    cell.specialPrice.isHidden = false
                 }else{
                     cell.price.text =  productCollectionViewModel.getProductCollectionData[indexPath.row].price
-                    cell.specialPrice.isHidden = true
+                    //cell.specialPrice.isHidden = true
                 }
             }
             return cell
@@ -927,7 +927,7 @@ class SupplierProductcategory: UIViewController,UICollectionViewDelegate,UIColle
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "chef_productdetail") as! Chef_DashboardViewController
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "chef_productdetail") as! OwnerProductDetailViewController
         vc.productImageUrl = productCollectionViewModel.getProductCollectionData[indexPath.row].productImage
         vc.productName = productCollectionViewModel.getProductCollectionData[indexPath.row].productName
         vc.productId = productCollectionViewModel.getProductCollectionData[indexPath.row].id

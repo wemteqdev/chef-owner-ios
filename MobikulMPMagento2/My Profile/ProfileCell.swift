@@ -16,6 +16,7 @@ class ProfileCell: UITableViewCell {
     @IBOutlet weak var nameValue: UILabel!
     var delegate:EditProfiledelegate!
     
+    @IBOutlet weak var arrowImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
 //        profileImage.layer.cornerRadius = 20;

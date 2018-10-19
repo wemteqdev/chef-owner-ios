@@ -16,6 +16,16 @@ class Chef_CompareCell: UITableViewCell {
     @IBOutlet weak var kiloButton: UIButton!
     @IBOutlet weak var moqButton: UIButton!
     var kilos: Int = 0
+    @IBOutlet weak var checkBtn: UIButton!    
+    @IBOutlet weak var starRating: HCSStarRatingView!
+    @IBOutlet weak var rating: UIButton!
+    @IBOutlet weak var moq: UIButton!
+    @IBOutlet weak var price: UILabel!
+    @IBOutlet weak var Totalprice: UILabel!
+    @IBOutlet weak var supplierName: UILabel!
+    @IBOutlet weak var reviewCount: UILabel!
+    @IBOutlet weak var pricevat: UILabel!
+    @IBOutlet weak var productname: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
 

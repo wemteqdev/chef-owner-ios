@@ -53,8 +53,7 @@ class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPicker
         if categoryMenuData.count > indexPath.row {
             let contentForThisRow  = categoryMenuData[indexPath.row]
             cell.labelName.text = contentForThisRow as? String
-            //cell.backgroundColor = UIColor .black;
-
+            
             for i in 0..<homeViewModel.categoryImage.count{
                 print("IMAGESSSS!!!!!")
                 print(homeViewModel.categoryImage[i].bannerImage)
@@ -63,10 +62,34 @@ class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPicker
                     break;
                 }
             }
+            let curCategory:String = tempCategoryId[indexPath.row] as! String
+
+            if categoryId == curCategory{
+                cell.labelName.textColor = UIColor().HexToColor(hexString: BUTTON_COLOR)
+                cell.baselineView.backgroundColor = UIColor().HexToColor(hexString: BUTTON_COLOR)
+                cell.imageView.image = cell.imageView.image!.withRenderingMode(.alwaysTemplate)
+                cell.imageView.tintColor = UIColor().HexToColor(hexString: BUTTON_COLOR)
+            }
+            else{
+                cell.labelName.textColor = UIColor.black
+                cell.baselineView.backgroundColor = UIColor.white
+                cell.imageView.image = cell.imageView.image!.withRenderingMode(.alwaysOriginal)
+            }
         }
         else {
+            if categoryId == ""{
+                cell.labelName.textColor = UIColor().HexToColor(hexString: BUTTON_COLOR)
+                cell.baselineView.backgroundColor = UIColor().HexToColor(hexString: BUTTON_COLOR)
+                cell.imageView.image = cell.imageView.image!.withRenderingMode(.alwaysTemplate)
+                cell.imageView.tintColor = UIColor().HexToColor(hexString: BUTTON_COLOR)
+            }
+            else{
+                cell.labelName.textColor = UIColor.black
+                cell.baselineView.backgroundColor = UIColor.white
+                cell.imageView.image = cell.imageView.image!.withRenderingMode(.alwaysOriginal)
+              
+            }
             cell.labelName.text = "All Categories"
-            cell.backgroundColor = UIColor .black;
         }
         //cell.imageView.image = UIImage(named: "product_image")
         //cell.labelName.text = "Category"
@@ -105,7 +128,7 @@ class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPicker
         
     }
     
-    func recentProductClick(name: String, image: String, id: String) {
+    func recentProductClick(name: String, image: String, id: String){
         
     }
     
@@ -170,6 +193,9 @@ class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPicker
     }
     var change:Bool = true
     var responseObject : AnyObject!
+    
+    @IBOutlet weak var bannerImage: UIImageView!
+    
     @IBOutlet weak var productTableView: UITableView!
     @IBOutlet weak var changeViewButton: UIButton!
     @IBOutlet weak var sortField: UITextField!
@@ -178,6 +204,7 @@ class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPicker
     @IBOutlet weak var filterView: UICollectionView!
     @IBOutlet weak var filterCoverView: UIView!
     
+    var bannerCollectionModel = [BannerData]()
     var productcategory: NSMutableArray = [];
     var tempCategoryData : NSMutableArray = [];
     var tempCategoryId : NSMutableArray = [];
@@ -185,7 +212,7 @@ class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPicker
     var headingTitleData:NSMutableArray = []
     var categoryDict :NSDictionary = [:]
     var categoryName:String!
-    var categoryId:String!
+    var categoryId:String = ""
     var categoryChildData:NSArray!
     var sortBy:String = ""
     
@@ -205,12 +232,16 @@ class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPicker
         //self.navigationController?.isNavigationBarHidden = true
         super.viewDidAppear(animated)
         BannerView.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor).isActive = true
-        
+        loadNavgiationButtons()
+    }
+    func loadNavgiationButtons() {
         let btnCart = SSBadgeButton()
         btnCart.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
         btnCart.setImage(UIImage(named: "Action 4")?.withRenderingMode(.alwaysTemplate), for: .normal)
         btnCart.badgeEdgeInsets = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 10)
-        btnCart.badge = "3"
+        btnCart.badge = badge
+        print("Load Navigation Button Function Badge Value")
+        print(badge)
         
         btnCart.addTarget(self, action: #selector(cartButtonClick(sender:)), for: .touchUpInside)
         
@@ -221,8 +252,6 @@ class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPicker
         btnCart.tintColor = .white
         btnSearch.tintColor = .white
         self.navigationItem.setRightBarButtonItems([UIBarButtonItem(customView: btnCart), btnSearch], animated: true)
-        
-        
         
         self.navigationController?.navigationBar.tintColor = .white
     }
@@ -270,6 +299,11 @@ class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPicker
 
         self.navigationController?.navigationBar.backItem?.title = ""
         
+        
+        
+        
+        
+        
         self.productTableView?.dataSource = homeViewModel
         self.productTableView?.delegate = homeViewModel
         GlobalVariables.hometableView = productTableView
@@ -278,8 +312,40 @@ class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPicker
         print("View Didload")
         callingHttppApi();
         self.productTableView.reloadDataWithAutoSizingCellWorkAround()
+       
         //ThemeManager.applyTheme(bar:(self.navigationController?.navigationBar)!)
     }
+    var timer = Timer()
+    @objc func onTransition() {
+        if (self.photoCount < self.bannerCollectionModel.count - 1){
+            self.photoCount = self.photoCount  + 1;
+        }else{
+            self.photoCount = 0;
+        }
+        
+        UIView.transition(with: self.bannerImage, duration: 2.0, options: .transitionCrossDissolve, animations: {
+            
+            GlobalData.sharedInstance.getImageFromUrl(imageUrl: self.bannerCollectionModel[self.photoCount].imageUrl, imageView: self.bannerImage)
+            
+        }, completion: nil)
+    }
+    var photoCount:Int = 0
+//    @objc func tapResponse(){
+//        let tmp:Int = curImage
+//        curImage = curImage + 1
+//        curImage = curImage % bannerCollectionModel.count;
+//        var fadeAnim:CABasicAnimation = CABasicAnimation(keyPath: "contents");
+//
+//        fadeAnim.fromValue = bannerCollectionModel[tmp].imageUrl
+//        fadeAnim.toValue   = bannerCollectionModel[curImage].imageUrl
+//        fadeAnim.duration  = 0.8
+//
+//        bannerImage.layer.add(fadeAnim, forKey: "contents");
+//
+//
+//
+//        //GlobalData.sharedInstance.getImageFromUrl(imageUrl: bannerCollectionModel[0].imageUrl, imageView: bannerImage)
+//    }
 
     func callingHttppApi(){
         DispatchQueue.main.async {
@@ -353,6 +419,8 @@ class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPicker
                                
                                 self.categoryMenuData = self.tempCategoryData;
                                 self.filterView.reloadData()
+                                 self.bannerCollectionModel = ((self.homeViewModel.items[0] as? HomeViewModelBannerItem)?.bannerCollectionModel)!
+                                self.timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(self.onTransition), userInfo: nil, repeats: true)
                                 /*UIView.animate(withDuration: 0.5, animations: {
                                  self.launchView?.view.alpha = 0.0
                                  }) { _ in
@@ -517,6 +585,7 @@ class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPicker
             self.performSegue(withIdentifier: "comparelist", sender: self)
         }
         
+        
         var infoConfig = SwiftMessages.defaultConfig
         infoConfig.presentationContext = .window(windowLevel: UIWindowLevelStatusBar)
         infoConfig.presentationStyle = .bottom
@@ -528,7 +597,7 @@ class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPicker
 
     @objc func cartButtonClick(sender: UIButton){
         //let vc = self.storyboard?.instantiateViewController(withIdentifier: "chef_cartexview") as! Chef_exMyCart
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "chef_cartview") as! Chef_MyCart
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "chef_supercartview") as! Chef_SuperCart
         
         self.navigationController?.pushViewController(vc, animated: true)
     }
