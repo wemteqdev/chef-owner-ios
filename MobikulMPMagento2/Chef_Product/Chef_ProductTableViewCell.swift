@@ -41,9 +41,17 @@ class Chef_ProductTableViewCell: UITableViewCell {
         productCollectionViewHeight.constant = 20
         prodcutCollectionView.register(UINib(nibName: "Chef_ProductImageCell", bundle: nil), forCellWithReuseIdentifier: "chef_productimagecell")
         //prodcutCollectionView.register(UINib(nibName: "ViewAllCell", bundle: nil), forCellWithReuseIdentifier: "ViewAllCell")
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+ 
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+        prodcutCollectionView!.collectionViewLayout = layout
+        
+       
         prodcutCollectionView.delegate = self
         prodcutCollectionView.dataSource = self
         prodcutCollectionView.reloadData()
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -362,7 +370,7 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
         if homeViewController.change == false{
             return CGSize(width: collectionView.frame.size.width, height: collectionView.frame.size.width/2 - 80 )
         }else{
-            return CGSize(width: collectionView.frame.size.width/3 + 30 , height: collectionView.frame.size.height )
+            return CGSize(width: collectionView.frame.size.width/3 + 30 , height: collectionView.frame.size.width/2 + 60 )
             //return CGSize(width: collectionView.frame.size.width/2, height:SCREEN_WIDTH/2.5 + 120)
         }
     }

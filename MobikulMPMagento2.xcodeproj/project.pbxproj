@@ -93,6 +93,8 @@
 		294127902178F44D0031CCFB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2941278D2178F44C0031CCFB /* ProfileViewController.swift */; };
 		294127912178F44D0031CCFB /* CustomerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2941278E2178F44C0031CCFB /* CustomerProfileViewController.swift */; };
 		2941279B21798D4D0031CCFB /* OwnerProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2941279A21798D4C0031CCFB /* OwnerProductDetailViewController.swift */; };
+		294127A92179F0CC0031CCFB /* ChefSuppliersDashboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294127A82179F0CC0031CCFB /* ChefSuppliersDashboardController.swift */; };
+		294127AB2179F6150031CCFB /* Chef_SellerListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294127AA2179F6140031CCFB /* Chef_SellerListViewModel.swift */; };
 		295F8C362163C49E004346CD /* DetailPageModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295F8C352163C49D004346CD /* DetailPageModelView.swift */; };
 		295F8C402163FB71004346CD /* ChefDashboardModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295F8C3F2163FB71004346CD /* ChefDashboardModelView.swift */; };
 		295F8C4821647AC8004346CD /* AddChefAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295F8C4221647AC7004346CD /* AddChefAlertView.swift */; };
@@ -169,10 +171,6 @@
 		57F625A321516A32000F1CD5 /* Chef_MyOrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F625A121516A32000F1CD5 /* Chef_MyOrderTableViewCell.swift */; };
 		57F625A421516A32000F1CD5 /* Chef_MyOrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57F625A221516A32000F1CD5 /* Chef_MyOrderTableViewCell.xib */; };
 		57F625A821516A6B000F1CD5 /* Chef_MyOrdersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F625A721516A6B000F1CD5 /* Chef_MyOrdersModel.swift */; };
-		57F625AA21517A5D000F1CD5 /* Chef_SellerListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F625A921517A5D000F1CD5 /* Chef_SellerListController.swift */; };
-		57F625AD21517B15000F1CD5 /* Chef_SellerListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F625AC21517B15000F1CD5 /* Chef_SellerListViewModel.swift */; };
-		57F625B021517BC3000F1CD5 /* Chef_SellerListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F625AE21517BC3000F1CD5 /* Chef_SellerListViewCell.swift */; };
-		57F625B121517BC3000F1CD5 /* Chef_SellerListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57F625AF21517BC3000F1CD5 /* Chef_SellerListViewCell.xib */; };
 		57F83DF52153CF6000BC9DCB /* Chef_MyOrderTableViewCellDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F83DF32153CF6000BC9DCB /* Chef_MyOrderTableViewCellDesign.swift */; };
 		57F83DF62153CF6000BC9DCB /* Chef_MyOrderTableViewCellDesign.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57F83DF42153CF6000BC9DCB /* Chef_MyOrderTableViewCellDesign.xib */; };
 		57F83DF82153D75200BC9DCB /* Chef_DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F83DF72153D75200BC9DCB /* Chef_DashboardViewController.swift */; };
@@ -683,6 +681,8 @@
 		2941278D2178F44C0031CCFB /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		2941278E2178F44C0031CCFB /* CustomerProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerProfileViewController.swift; sourceTree = "<group>"; };
 		2941279A21798D4C0031CCFB /* OwnerProductDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerProductDetailViewController.swift; sourceTree = "<group>"; };
+		294127A82179F0CC0031CCFB /* ChefSuppliersDashboardController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChefSuppliersDashboardController.swift; sourceTree = "<group>"; };
+		294127AA2179F6140031CCFB /* Chef_SellerListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chef_SellerListViewModel.swift; sourceTree = "<group>"; };
 		295F8C352163C49D004346CD /* DetailPageModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPageModelView.swift; sourceTree = "<group>"; };
 		295F8C3F2163FB71004346CD /* ChefDashboardModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChefDashboardModelView.swift; sourceTree = "<group>"; };
 		295F8C4221647AC7004346CD /* AddChefAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddChefAlertView.swift; sourceTree = "<group>"; };
@@ -759,10 +759,6 @@
 		57F625A121516A32000F1CD5 /* Chef_MyOrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chef_MyOrderTableViewCell.swift; sourceTree = "<group>"; };
 		57F625A221516A32000F1CD5 /* Chef_MyOrderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Chef_MyOrderTableViewCell.xib; sourceTree = "<group>"; };
 		57F625A721516A6B000F1CD5 /* Chef_MyOrdersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chef_MyOrdersModel.swift; sourceTree = "<group>"; };
-		57F625A921517A5D000F1CD5 /* Chef_SellerListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chef_SellerListController.swift; sourceTree = "<group>"; };
-		57F625AC21517B15000F1CD5 /* Chef_SellerListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chef_SellerListViewModel.swift; sourceTree = "<group>"; };
-		57F625AE21517BC3000F1CD5 /* Chef_SellerListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chef_SellerListViewCell.swift; sourceTree = "<group>"; };
-		57F625AF21517BC3000F1CD5 /* Chef_SellerListViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Chef_SellerListViewCell.xib; sourceTree = "<group>"; };
 		57F83DF32153CF6000BC9DCB /* Chef_MyOrderTableViewCellDesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chef_MyOrderTableViewCellDesign.swift; sourceTree = "<group>"; };
 		57F83DF42153CF6000BC9DCB /* Chef_MyOrderTableViewCellDesign.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Chef_MyOrderTableViewCellDesign.xib; sourceTree = "<group>"; };
 		57F83DF72153D75200BC9DCB /* Chef_DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chef_DashboardViewController.swift; sourceTree = "<group>"; };
@@ -1479,10 +1475,8 @@
 		57F625AB21517A79000F1CD5 /* Chef_Sellerlist */ = {
 			isa = PBXGroup;
 			children = (
-				57F625A921517A5D000F1CD5 /* Chef_SellerListController.swift */,
-				57F625AC21517B15000F1CD5 /* Chef_SellerListViewModel.swift */,
-				57F625AE21517BC3000F1CD5 /* Chef_SellerListViewCell.swift */,
-				57F625AF21517BC3000F1CD5 /* Chef_SellerListViewCell.xib */,
+				294127AA2179F6140031CCFB /* Chef_SellerListViewModel.swift */,
+				294127A82179F0CC0031CCFB /* ChefSuppliersDashboardController.swift */,
 			);
 			path = Chef_Sellerlist;
 			sourceTree = "<group>";
@@ -2412,7 +2406,6 @@
 				29B11B0E21555CD700980BA4 /* SuppliersCell.xib in Resources */,
 				A3B7D236207DFDBD0026A3AF /* MyProductListViewCell.xib in Resources */,
 				A3B7D340207DFE210026A3AF /* CategoriesTableViewCell.xib in Resources */,
-				57F625B121517BC3000F1CD5 /* Chef_SellerListViewCell.xib in Resources */,
 				571F966C216B9FE7007126D5 /* AccordionHeaderView.xib in Resources */,
 				57F83DF62153CF6000BC9DCB /* Chef_MyOrderTableViewCellDesign.xib in Resources */,
 				29B11B0621555CD000980BA4 /* ChefsCell.xib in Resources */,
@@ -2593,7 +2586,6 @@
 				A3B7D335207DFE210026A3AF /* CompareListTableViewCell.swift in Sources */,
 				57F83DF82153D75200BC9DCB /* Chef_DashboardViewController.swift in Sources */,
 				A3B7D326207DFE210026A3AF /* BillingShippingModel.swift in Sources */,
-				57F625B021517BC3000F1CD5 /* Chef_SellerListViewCell.swift in Sources */,
 				A3B7D2E4207DFE210026A3AF /* ListCollectionViewCell.swift in Sources */,
 				A3B7D1E9207DFDBD0026A3AF /* ShipmentDetailsController.swift in Sources */,
 				0C05710C20408BDB00EB527B /* CHIPageControlPuya.swift in Sources */,
@@ -2606,7 +2598,6 @@
 				A3B7D213207DFDBD0026A3AF /* MyTransactionList.swift in Sources */,
 				5721877F21537C8900FACF86 /* SSBadgeButton.swift in Sources */,
 				A362A2A62127FA2000B6B398 /* PastelPoint.swift in Sources */,
-				57F625AD21517B15000F1CD5 /* Chef_SellerListViewModel.swift in Sources */,
 				A3B7D211207DFDBD0026A3AF /* MyTransactionDetailsModel.swift in Sources */,
 				A3B7D22E207DFDBD0026A3AF /* AddRelatedProductModel.swift in Sources */,
 				A3B7D141207DFD880026A3AF /* ChatSellerListModel.swift in Sources */,
@@ -2759,6 +2750,7 @@
 				0C05713920408BDC00EB527B /* GradientArcWithClearColorView.swift in Sources */,
 				A3B7D21C207DFDBD0026A3AF /* CustomerInfoTableViewCell.swift in Sources */,
 				A3B7D204207DFDBD0026A3AF /* SellerDashBoardReportCell.swift in Sources */,
+				294127A92179F0CC0031CCFB /* ChefSuppliersDashboardController.swift in Sources */,
 				A3B7D2F8207DFE210026A3AF /* CategoryCell.swift in Sources */,
 				A3B7D33E207DFE210026A3AF /* Categories.swift in Sources */,
 				A3B7D152207DFDA00026A3AF /* CreateCreditMemoModel.swift in Sources */,
@@ -2774,6 +2766,7 @@
 				A3B7D232207DFDBD0026A3AF /* MyProductListController.swift in Sources */,
 				0C0570FF20408BDB00EB527B /* IQUIView+Hierarchy.swift in Sources */,
 				57328F15214EE4210081D21D /* Chef_ProductImageCell.swift in Sources */,
+				294127AB2179F6150031CCFB /* Chef_SellerListViewModel.swift in Sources */,
 				A3B7D1F6207DFDBD0026A3AF /* ColorModeToggleButton.swift in Sources */,
 				A3B7D314207DFE210026A3AF /* OrderInfoItemList.swift in Sources */,
 				0C05711520408BDB00EB527B /* SwiftyJSON.swift in Sources */,
@@ -2839,7 +2832,6 @@
 				0C05711020408BDB00EB527B /* IQUIView+IQKeyboardToolbar.swift in Sources */,
 				0C05711420408BDB00EB527B /* CHIPageControlJaloro.swift in Sources */,
 				A3B7D1F5207DFDBD0026A3AF /* ChromaShadeSlider.swift in Sources */,
-				57F625AA21517A5D000F1CD5 /* Chef_SellerListController.swift in Sources */,
 				A3B7D22B207DFDBD0026A3AF /* AddProductViewCell.swift in Sources */,
 				A3B7D23D207DFDBD0026A3AF /* CreditMemoProductItemListCell.swift in Sources */,
 				571F9672216C685A007126D5 /* AddSupplierAlertView.swift in Sources */,
