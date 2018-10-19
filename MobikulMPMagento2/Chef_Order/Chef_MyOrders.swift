@@ -27,6 +27,10 @@ class Chef_MyOrders: UIViewController ,UITableViewDelegate, UITableViewDataSourc
     var emptyView:EmptyNewAddressView!
     let globalObjectMyOrders = GlobalData()
     var refreshControl:UIRefreshControl!
+    var fromDate:String = ""
+    var toDate:String = ""
+    var status:String = ""
+
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -140,10 +144,15 @@ class Chef_MyOrders: UIViewController ,UITableViewDelegate, UITableViewDataSourc
             requstParams["customerToken"] = defaults.object(forKey:"customerId") as! String
             requstParams["websiteId"] = DEFAULT_WEBSITE_ID
             requstParams["pageNumber"] = "\(pageNumber)"
+            requstParams["status"] = status
+            requstParams["dateTo"] =  toDate
+            requstParams["dateFrom"] = fromDate
+            requstParams["incrementId"] = orderId
+            
             if self.defaults.object(forKey: "currency") != nil{
                 requstParams["currency"] = self.defaults.object(forKey: "currency") as! String
             }
-            GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"mobikulhttp/customer/orderList", currentView: self){success,responseObject in
+            GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"wemteqchef/customer/orderList", currentView: self){success,responseObject in
                 if success == 1{
                     
                     
@@ -219,6 +228,7 @@ class Chef_MyOrders: UIViewController ,UITableViewDelegate, UITableViewDataSourc
         cell.orderId.text = self.myOrderCollectionData.getMyOrdersCollectionData[indexPath.row].orderId
         cell.placedonDate.text = self.myOrderCollectionData.getMyOrdersCollectionData[indexPath.row].order_Date
         cell.ordertotal.text = self.myOrderCollectionData.getMyOrdersCollectionData[indexPath.row].order_total
+        cell.supplierName.text = self.myOrderCollectionData.getMyOrdersCollectionData[indexPath.row].supplierName
 //        cell.shipToValue.text = self.myOrderCollectionData.getMyOrdersCollectionData[indexPath.row].ship_To
 //        cell.statusMessage.text = " "+self.myOrderCollectionData.getMyOrdersCollectionData[indexPath.row].status+" "
 //
@@ -281,7 +291,7 @@ class Chef_MyOrders: UIViewController ,UITableViewDelegate, UITableViewDataSourc
                    didSelectRowAt indexPath: IndexPath)
     {
         print("didSelectRow")
-        self.orderId = self.myOrderCollectionData.getMyOrdersCollectionData[indexPath.row].orderId
+        self.incrementId = self.myOrderCollectionData.getMyOrdersCollectionData[indexPath.row].id
         self.performSegue(withIdentifier: "customerorderdetails", sender: self)
     }
     
@@ -313,8 +323,8 @@ class Chef_MyOrders: UIViewController ,UITableViewDelegate, UITableViewDataSourc
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier! == "customerorderdetails") {
-            let viewController:CustomerOrderDetails = segue.destination as UIViewController as! CustomerOrderDetails
-            viewController.incrementId = self.orderId
+            let viewController:SellerOrderDetailsController = segue.destination as UIViewController as! SellerOrderDetailsController
+            viewController.incrementId = self.incrementId
         }
     }
     

@@ -26,7 +26,7 @@ class AddRestaurantAlertView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        chefEmailTextField.becomeFirstResponder()
+        //chefEmailTextField.becomeFirstResponder()
         okButton.layer.cornerRadius = 20
     }
     

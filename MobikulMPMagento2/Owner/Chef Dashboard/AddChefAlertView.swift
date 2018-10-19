@@ -27,7 +27,7 @@ class AddChefAlertView: UIViewController, UIPickerViewDelegate,UIPickerViewDataS
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        chefEmailTextField.becomeFirstResponder()
+        //chefEmailTextField.becomeFirstResponder()
         okButton.layer.cornerRadius = 20
         //restaurantTextField.placeholder = "Select Restaurant";
         self.callingHttppApi()

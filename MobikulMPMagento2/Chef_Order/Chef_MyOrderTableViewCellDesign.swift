@@ -13,7 +13,7 @@ class Chef_MyOrderTableViewCellDesign: UITableViewCell {
     @IBOutlet weak var placedonDate:UILabel!
     @IBOutlet weak var orderId:UILabel!
     @IBOutlet weak var ordertotal:UILabel!
-   
+    @IBOutlet weak var supplierName: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -121,6 +121,7 @@
                 <outlet property="ordertotal" destination="Xbi-Sq-Uqh" id="maH-S9-QOC"/>
                 <outlet property="placedonDate" destination="YvQ-0g-rqH" id="BGi-ar-zwi"/>
                 <outlet property="statusButton" destination="gVq-Uo-1Zy" id="omD-j4-tep"/>
+                <outlet property="supplierName" destination="DQ2-Nr-Tff" id="6aj-hb-SMr"/>
             </connections>
             <point key="canvasLocation" x="-287" y="-137"/>
         </tableViewCell>
