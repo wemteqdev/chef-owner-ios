@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2i4-Xo-38w">
-                        <rect key="frame" x="0.0" y="8" width="615" height="40"/>
+                        <rect key="frame" x="0.0" y="8" width="615" height="30"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G2M-xR-15a">
                                 <rect key="frame" x="10" y="0.0" width="0.0" height="4"/>
@@ -32,32 +32,31 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="60R-au-drK">
-                                <rect key="frame" x="522" y="5" width="73" height="30"/>
+                                <rect key="frame" x="522" y="0.0" width="73" height="30"/>
                                 <state key="normal" title="View More"/>
                                 <connections>
                                     <action selector="viewMoreClick:" destination="Mpg-de-ZpN" eventType="touchUpInside" id="1P4-Ei-eSR"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Featured items" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oji-8k-I7Z">
-                                <rect key="frame" x="20" y="8" width="147.5" height="25.5"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                <rect key="frame" x="20" y="5" width="114.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="G2M-xR-15a" firstAttribute="leading" secondItem="2i4-Xo-38w" secondAttribute="leading" constant="10" id="0B6-xb-Dff"/>
                             <constraint firstItem="G2M-xR-15a" firstAttribute="top" secondItem="2i4-Xo-38w" secondAttribute="top" id="D2V-iT-8uv"/>
                             <constraint firstItem="oji-8k-I7Z" firstAttribute="centerY" secondItem="2i4-Xo-38w" secondAttribute="centerY" id="N1o-0t-zYY"/>
-                            <constraint firstAttribute="height" constant="40" id="NEJ-H3-ior"/>
+                            <constraint firstAttribute="height" constant="30" id="NEJ-H3-ior"/>
                             <constraint firstAttribute="trailing" secondItem="60R-au-drK" secondAttribute="trailing" constant="20" id="bb2-i6-c7u"/>
                             <constraint firstItem="oji-8k-I7Z" firstAttribute="leading" secondItem="2i4-Xo-38w" secondAttribute="leading" constant="20" id="mGB-Lf-ypm"/>
                             <constraint firstItem="60R-au-drK" firstAttribute="centerY" secondItem="2i4-Xo-38w" secondAttribute="centerY" id="zaD-WG-hJU"/>
                         </constraints>
                     </view>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="4sm-8y-aSL">
-                        <rect key="frame" x="0.0" y="58" width="615" height="307.5"/>
+                        <rect key="frame" x="0.0" y="48" width="615" height="317.5"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="height" priority="999" constant="297.5" id="HkS-D2-hZ1"/>

@@ -8,7 +8,7 @@
 
 import UIKit
 @objc protocol chef_productViewControllerHandlerDelegate: class {
-    func productClick(name:String,image:String,id:String)
+    func productClick(name:String,image:String,id:String,supplierName:String)
     func newAndFeartureAddToWishList(productID:String)
     func newAndFeartureAddToCompare(productID:String)
     func viewAllClick(type:String)
@@ -29,6 +29,7 @@ class Chef_ProductTableViewCell: UITableViewCell {
     @IBOutlet weak var ProductLabel: UILabel!
     @IBOutlet weak var featureProductButton: UIButton!
     var showFeature:Bool = true
+    
     var whichApiToProcess:String = ""
     var productID:String = ""
     var homeViewController:Chef_ProductViewController!
@@ -141,7 +142,7 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
                     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "chef_productimagecell", for: indexPath) as! Chef_ProductImageCell
                     
                     cell.productImage.image = UIImage(named: "product_image")
-                    cell.layer.cornerRadius = 8
+                    
                     cell.wishListButton.isHidden = true
                     cell.reviewCnt.text =  "\(String(featuredProductCollectionModel[indexPath.row].reviewCount)) reviews"
                     cell.starRating.value = CGFloat(featuredProductCollectionModel[indexPath.row].rating)
@@ -368,11 +369,11 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if showFeature == true{
-            delegate.productClick(name: featuredProductCollectionModel[indexPath.row].name, image: featuredProductCollectionModel[indexPath.row].image, id: featuredProductCollectionModel[indexPath.row].productID)
+            delegate.productClick(name: featuredProductCollectionModel[indexPath.row].name, image: featuredProductCollectionModel[indexPath.row].image, id: featuredProductCollectionModel[indexPath.row].productID,supplierName: featuredProductCollectionModel[indexPath.row].supplierName)
             
         }else{
             
-                delegate.productClick(name: productCollectionModel[indexPath.row].name, image: productCollectionModel[indexPath.row].image, id: productCollectionModel[indexPath.row].productID)
+                //delegate.productClick(name: productCollectionModel[indexPath.row].name, image: productCollectionModel[indexPath.row].image, id: productCollectionModel[indexPath.row].productID)
             
         }
     }
@@ -426,10 +427,10 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
     }
     @objc func addButtonClick(sender: UIButton){
         if showFeature == true{
-            delegate.productClick(name: featuredProductCollectionModel[sender.tag].name, image: featuredProductCollectionModel[sender.tag].image, id: featuredProductCollectionModel[sender.tag].productID )
+            delegate.productClick(name: featuredProductCollectionModel[sender.tag].name, image: featuredProductCollectionModel[sender.tag].image, id: featuredProductCollectionModel[sender.tag].productID, supplierName: featuredProductCollectionModel[sender.tag].supplierName )
            
         }else{
-            delegate.productClick(name: productCollectionModel[sender.tag].name, image: productCollectionModel[sender.tag].image, id: productCollectionModel[sender.tag].productID )
+            //delegate.productClick(name: productCollectionModel[sender.tag].name, image: productCollectionModel[sender.tag].image, id: productCollectionModel[sender.tag].productID )
             
         }
     }

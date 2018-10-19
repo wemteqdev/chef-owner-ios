@@ -1003,7 +1003,7 @@ class Chef_DashboardViewController: UIViewController, UITableViewDelegate, UITab
 //        /////////////////// Market Place ///////////////////
 //
         if catalogProductViewModel.sellerInformationData.sellerID != "" && catalogProductViewModel.sellerInformationData.sellerID != "0"{
-            supplierName.text = catalogProductViewModel.sellerInformationData.sellerShopTitle;
+            //supplierName.text = catalogProductViewModel.sellerInformationData.sellerShopTitle;
 //            contactUsButton.setTitle("contactus".localized, for: .normal)
 //            contactUsButton.setTitleColor(UIColor().HexToColor(hexString: BUTTON_COLOR), for: .normal)
 //            sellerNameButton.setTitle(catalogProductViewModel.sellerInformationData.sellerShopTitle, for: .normal)

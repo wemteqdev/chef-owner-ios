@@ -2970,7 +2970,7 @@
                     <navigationItem key="navigationItem" id="tqC-9b-hXi"/>
                     <connections>
                         <outlet property="myOrderTableView" destination="pcH-7K-Ct8" id="Eum-Xv-AMx"/>
-                        <segue destination="XmM-cD-fvK" kind="show" identifier="customerorderdetails" id="Ix9-K4-5sQ"/>
+                        <segue destination="fJ6-uG-8Sd" kind="show" identifier="customerorderdetails" id="BtW-Zz-cHH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0dX-bq-eib" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2986,11 +2986,11 @@
                         <viewControllerLayoutGuide type="bottom" id="VKW-dK-tYl"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="pCg-8D-Wha">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="mYb-So-o2l">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -3162,7 +3162,7 @@
                                                             </state>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LBg-el-eEK">
-                                                            <rect key="frame" x="304" y="49.000000000000007" width="30" height="30.333333333333336"/>
+                                                            <rect key="frame" x="306" y="49.000000000000007" width="30" height="30.333333333333336"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="30" id="19U-31-n21"/>
                                                                 <constraint firstAttribute="width" constant="30" id="jat-Zc-ZlA"/>
@@ -3172,7 +3172,7 @@
                                                             </state>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EHS-kp-AVR">
-                                                            <rect key="frame" x="275" y="49.000000000000007" width="30" height="30.333333333333336"/>
+                                                            <rect key="frame" x="277" y="49.000000000000007" width="30" height="30.333333333333336"/>
                                                             <state key="normal" title="-">
                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </state>
@@ -3232,7 +3232,7 @@
                                                         <constraint firstItem="7So-9Y-9GN" firstAttribute="centerY" secondItem="Cdh-Nj-XNL" secondAttribute="centerY" id="nYn-Kw-BUT"/>
                                                         <constraint firstItem="HJT-IN-sZW" firstAttribute="leading" secondItem="Cdh-Nj-XNL" secondAttribute="trailing" constant="5" id="ne0-wH-ryw"/>
                                                         <constraint firstItem="HJT-IN-sZW" firstAttribute="top" secondItem="Cdh-Nj-XNL" secondAttribute="top" multiplier="5" id="oRl-4f-SGp"/>
-                                                        <constraint firstItem="eAM-i2-2bh" firstAttribute="leading" secondItem="LBg-el-eEK" secondAttribute="trailing" constant="1" id="ovU-Zm-P8T"/>
+                                                        <constraint firstItem="eAM-i2-2bh" firstAttribute="leading" secondItem="LBg-el-eEK" secondAttribute="trailing" constant="-1" id="ovU-Zm-P8T"/>
                                                         <constraint firstItem="7So-9Y-9GN" firstAttribute="top" secondItem="Pm1-lI-qEw" secondAttribute="bottom" id="pXp-cz-MrZ"/>
                                                         <constraint firstItem="uAR-Z2-b7E" firstAttribute="leading" secondItem="5Ky-PH-ySV" secondAttribute="leading" id="uE2-LY-9O2"/>
                                                         <constraint firstItem="gfd-tJ-LWf" firstAttribute="width" secondItem="mGb-jm-saH" secondAttribute="width" multiplier="1/3" id="ufN-gG-VDk"/>
@@ -9250,11 +9250,11 @@
             <objects>
                 <viewController id="Vmh-Rf-h4P" customClass="CreateCreditMemoViewController" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Efx-Wp-JLu">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="mpj-sz-Ggp">
-                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -9280,11 +9280,11 @@
             <objects>
                 <viewController id="fJ6-uG-8Sd" customClass="SellerOrderDetailsController" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4hQ-EZ-62l">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="Z8w-BF-nLJ">
-                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -9314,11 +9314,11 @@
             <objects>
                 <viewController id="296-g6-RA0" customClass="SellerInvoiceDetailsController" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WFA-JE-YRm">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="YlT-YX-lWY">
-                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -9352,11 +9352,11 @@
             <objects>
                 <viewController id="p3D-3e-9sM" customClass="ShipmentDetailsController" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fvc-4N-yof">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="mjS-Hq-OBo">
-                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -9390,11 +9390,11 @@
             <objects>
                 <viewController id="vao-5X-TsW" customClass="CreditMemoDetailsController" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aV2-x0-NR2">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="IiV-m1-cIJ">
-                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -9427,11 +9427,11 @@
             <objects>
                 <viewController id="2vv-LX-zRF" customClass="CreditMemoListViewController" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5MU-iL-aGB">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="5nd-RO-9T8">
-                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -9705,11 +9705,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Sqb-ds-9Zd"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="4yv-1X-6MD">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QWP-ba-e61">
-                                <rect key="frame" x="0.0" y="34" width="375" height="695"/>
+                                <rect key="frame" x="0.0" y="-54" width="375" height="695"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
                         </subviews>
@@ -13608,14 +13608,14 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TjL-Tc-Mw4" userLabel="ToolbarView">
-                                        <rect key="frame" x="0.0" y="361" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="361" width="375" height="45"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NzK-Cr-WDf">
-                                                <rect key="frame" x="213" y="12.999999999999986" width="68" height="34"/>
+                                                <rect key="frame" x="213" y="5.3333333333333286" width="68" height="34"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="NzK-Cr-WDf" secondAttribute="height" multiplier="2:1" id="rrh-wz-bV7"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <state key="normal" title="Filter">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
@@ -13624,7 +13624,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="shx-OF-jeW">
-                                                <rect key="frame" x="331" y="12.999999999999986" width="34" height="34"/>
+                                                <rect key="frame" x="331" y="5.3333333333333286" width="34" height="34"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="shx-OF-jeW" secondAttribute="height" multiplier="1:1" id="586-Dl-UNp"/>
@@ -13638,12 +13638,12 @@
                                                 </connections>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Sort by product rating" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bqM-bQ-ywu">
-                                                <rect key="frame" x="25" y="19.999999999999986" width="219" height="21"/>
+                                                <rect key="frame" x="25" y="14.333333333333329" width="219" height="16"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="219" id="vm7-id-Gma"/>
                                                 </constraints>
                                                 <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
                                                     <action selector="sortFieldClick:" destination="DQP-nN-OWb" eventType="editingDidBegin" id="p8u-OD-6lQ"/>
@@ -13655,7 +13655,7 @@
                                         <constraints>
                                             <constraint firstItem="NzK-Cr-WDf" firstAttribute="centerY" secondItem="TjL-Tc-Mw4" secondAttribute="centerY" id="Bkn-yH-llh"/>
                                             <constraint firstItem="bqM-bQ-ywu" firstAttribute="centerY" secondItem="TjL-Tc-Mw4" secondAttribute="centerY" id="Cej-Kp-xSq"/>
-                                            <constraint firstAttribute="height" constant="60" id="FAU-yX-aZ5"/>
+                                            <constraint firstAttribute="height" constant="45" id="FAU-yX-aZ5"/>
                                             <constraint firstItem="NzK-Cr-WDf" firstAttribute="height" secondItem="shx-OF-jeW" secondAttribute="height" id="K1G-0a-VIT"/>
                                             <constraint firstItem="bqM-bQ-ywu" firstAttribute="leading" secondItem="TjL-Tc-Mw4" secondAttribute="leading" constant="25" id="KTr-1F-ffz"/>
                                             <constraint firstItem="shx-OF-jeW" firstAttribute="leading" secondItem="NzK-Cr-WDf" secondAttribute="trailing" constant="50" id="e1H-Vq-rNJ"/>
@@ -13664,7 +13664,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eO4-Ya-vWv">
-                                        <rect key="frame" x="0.0" y="421" width="375" height="1065.3333333333333"/>
+                                        <rect key="frame" x="0.0" y="406" width="375" height="1080.3333333333333"/>
                                         <subviews>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7DT-jF-WN0">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
@@ -14514,18 +14514,18 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="BnP-5R-UpJ"/>
-        <segue reference="k3f-34-Vh7"/>
+        <segue reference="29F-3K-eaY"/>
         <segue reference="0Vc-df-Kyg"/>
         <segue reference="6H7-k0-P6o"/>
         <segue reference="DHe-33-5Ya"/>
         <segue reference="KXi-UJ-red"/>
         <segue reference="K1F-9a-BTF"/>
-        <segue reference="un3-HS-DRX"/>
+        <segue reference="BtW-Zz-cHH"/>
         <segue reference="7Qu-d1-AVV"/>
         <segue reference="fYe-ny-kmo"/>
         <segue reference="16k-gN-gk7"/>
         <segue reference="N2m-HW-kYV"/>
-        <segue reference="Ix9-K4-5sQ"/>
+        <segue reference="1kv-3A-ZEC"/>
         <segue reference="5gt-HY-6Mn"/>
         <segue reference="EhG-al-bPQ"/>
         <segue reference="cfP-un-lQ8"/>

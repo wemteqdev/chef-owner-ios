@@ -103,18 +103,12 @@
                         <state key="normal" title="-">
                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
-                        <connections>
-                            <action selector="minusClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="pxD-hW-iou"/>
-                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1T0-WI-LC6">
                         <rect key="frame" x="532" y="67.5" width="30" height="30"/>
                         <state key="normal" title="+">
                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
-                        <connections>
-                            <action selector="plusClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="GwU-UO-wAA"/>
-                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="arI-lc-tcE">
                         <rect key="frame" x="176.5" y="72.5" width="30" height="10"/>

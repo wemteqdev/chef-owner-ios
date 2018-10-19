@@ -26,6 +26,7 @@ class Chef_CompareCell: UITableViewCell {
     @IBOutlet weak var reviewCount: UILabel!
     @IBOutlet weak var pricevat: UILabel!
     @IBOutlet weak var productname: UILabel!
+    var compareListViewModel:CompareListViewModel!
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -52,19 +53,6 @@ class Chef_CompareCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    @IBAction func plusClick(_ sender: UIButton) {
-        kilos = Int(kiloButton.title(for: .normal)!)! + 1
-        if kilos < 0 {
-            kilos = 0
-        }
-        kiloButton.setTitle(String(kilos), for: .normal)
-    }
-    @IBAction func minusClick(_ sender: UIButton) {
-        kilos = Int(kiloButton.title(for: .normal)!)! - 1
-        if kilos < 0 {
-            kilos = 0
-        }
-        kiloButton.setTitle(String(kilos), for: .normal)
-    }
+    
     
 }

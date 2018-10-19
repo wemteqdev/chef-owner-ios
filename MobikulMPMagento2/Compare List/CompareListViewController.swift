@@ -117,8 +117,8 @@ class CompareListViewController: UIViewController,UITableViewDelegate, UITableVi
                 }
             }
         }else if whichApiToProcess == "addtocart"{
-            requstParams["qty"] = "1"
-            requstParams["productId"] = productId
+            requstParams["qtys"] = qtys
+            requstParams["productIds"] = productstoadd
             GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"wemteqchef/checkout/massaddtoCart", currentView: self){success,responseObject in
                 if success == 1{
                     if responseObject?.object(forKey: "storeId") != nil{
@@ -146,7 +146,8 @@ class CompareListViewController: UIViewController,UITableViewDelegate, UITableVi
                     self.view.isUserInteractionEnabled = true
                     if errorCode == true{
                         GlobalData.sharedInstance.showSuccessSnackBar(msg:data .object(forKey:"message") as! String )
-                        self.tabBarController!.tabBar.items?[3].badgeValue = String(data.object(forKey: "cartCount") as! Int)
+                        badge = String(data.object(forKey: "cartCount") as! Int)
+                        
                     }
                     else{
                         GlobalData.sharedInstance.showErrorSnackBar(msg: data .object(forKey:"message") as! String)
@@ -225,12 +226,18 @@ class CompareListViewController: UIViewController,UITableViewDelegate, UITableVi
         cell.price.text = self.compareListViewModel.getProductList[indexPath.row].price
         cell.productname.text = self.compareListViewModel.getProductList[indexPath.row].productName
         cell.starRating.value = self.compareListViewModel.getProductList[indexPath.row].rating
+        cell.kiloButton.setTitle(self.compareListViewModel.getProductList[indexPath.row].qty,for: .normal)
         cell.rating.setTitle(String(format:"%f",self.compareListViewModel.getProductList[indexPath.row].rating), for: .normal)
         cell.supplierName.text = self.compareListViewModel.getProductList[indexPath.row].supplierName
         cell.reviewCount.text = "\(String(self.compareListViewModel.getProductList[indexPath.row].reviewCount)) reviews"
-        
+        cell.checkBtn.tag = indexPath.row
         cell.checkBtn.addTarget(self, action: #selector(addToCart(sender:)), for: .touchUpInside)
         
+        cell.plusButton.tag = indexPath.row
+        cell.plusButton.addTarget(self, action: #selector(plusClick(sender:)), for: .touchUpInside)
+        
+        cell.minusButton.tag = indexPath.row
+        cell.minusButton.addTarget(self, action: #selector(minusClick(sender:)), for: .touchUpInside)
         //cell.Totalprice.text = self.compareListViewModel.getProductList[indexPath.row].price *
         cell.price.text = self.compareListViewModel.getProductList[indexPath.row].price
         cell.pricevat.text = "\(String(self.compareListViewModel.getProductList[indexPath.row].price)) - \(String(self.compareListViewModel.getProductList[indexPath.row].taxClass))"
@@ -320,16 +327,39 @@ class CompareListViewController: UIViewController,UITableViewDelegate, UITableVi
     }
     @IBAction func proceedToCheckOut(_ sender: UIButton)
     {
+        self.productstoadd = []
+        self.qtys = []
         for i in 0..<self.compareListViewModel.getProductList.count{
+            print("\(self.compareListViewModel.getProductList[i].productId) : \(self.compareListViewModel.getProductList[i].checked)")
             if self.compareListViewModel.getProductList[i].checked == true {
                 self.productstoadd.append(self.compareListViewModel.getProductList[i].productId)
                 self.qtys.append(self.compareListViewModel.getProductList[i].qty)
-                print("------COMPARED PRODUCTS TO MASS ADD TO CART------")
-                print(self.productstoadd)
-                print(self.qtys)
-                print("------COMPARED PRODUCTS TO MASS ADD TO CART------")
             }
         }
+        print("------COMPARED PRODUCTS TO MASS ADD TO CART------")
+        print(self.productstoadd)
+        print(self.qtys)
+        print("------COMPARED PRODUCTS TO MASS ADD TO CART------")
+        
+        whichApiToProcess = "addtocart"
+        callingHttppApi()
+    }
+    @objc func plusClick(sender: UIButton) {
+        var kilos = Int(self.compareListViewModel.getProductList[sender.tag].qty)! + 1
+        if kilos < 0 {
+            kilos = 0
+        }
+        print("plus clicked!!!")
+        self.compareListViewModel.setQty(qty:String(kilos),pos:sender.tag)
+        self.tableView.reloadData()
+    }
+    @objc func minusClick(sender: UIButton) {
+        var kilos = Int(self.compareListViewModel.getProductList[sender.tag].qty)! - 1
+        if kilos < 0 {
+            kilos = 0
+        }
+        self.compareListViewModel.setQty(qty:String(kilos),pos:sender.tag)
+        self.tableView.reloadData()
     }
     @objc func addToCart(sender: UIButton){
         let dd:[ComapreListModel] = compareHomeDataArray[0] as! [ComapreListModel]
@@ -341,8 +371,6 @@ class CompareListViewController: UIViewController,UITableViewDelegate, UITableVi
             sender.setImage(UIImage(named: "ic_unchecked"), for: .normal)
             self.compareListViewModel.setCheck(checked:false,pos:sender.tag)
         }
-        
-      
     }
 }
 

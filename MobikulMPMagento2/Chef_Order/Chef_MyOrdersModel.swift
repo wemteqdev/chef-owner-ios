@@ -16,17 +16,20 @@ class Chef_MyOrdersModel: NSObject {
     var ship_To:String = ""
     var status:String = ""
     var canReorder:Bool!
-    
+    var customerName:String = ""
+    var supplierName: String = ""
     
     
     init(data: JSON) {
-        self.orderId = data["order_id"].stringValue
-        self.id = data["id"].stringValue
-        self.order_total = data["order_total"].stringValue
-        self.ship_To = data["ship_to"].stringValue
+        self.orderId = data["orderId"].stringValue
+        self.id = data["incrementId"].stringValue
+        self.order_total = data["customerDetails"]["purchaseTotal"].stringValue
+        //self.ship_To = data["ship_to"].stringValue
         self.status = data["status"].stringValue
-        self.order_Date = data["date"].stringValue
+        self.supplierName = data["supplierName"].stringValue
+        self.order_Date = data["customerDetails"]["date"].stringValue
         self.canReorder = data["canReorder"].boolValue
+        self.customerName = data["customerDetails"]["name"].stringValue
     }
     
     
