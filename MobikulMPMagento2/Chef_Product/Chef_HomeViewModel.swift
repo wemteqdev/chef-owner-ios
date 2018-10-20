@@ -105,9 +105,13 @@ class Chef_HomeViewModel: NSObject {
 extension Chef_HomeViewModel : UITableViewDelegate , UITableViewDataSource {
     public func numberOfSections(in tableView: UITableView) -> Int{
         //return 3
-        return items.count - 1 ;
-        print("items \(items.count)")
-        
+        if homeViewController.filtered == true {
+            return 1
+        }
+        else{
+            return items.count - 1 ;
+            print("items \(items.count)")
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
@@ -119,19 +123,22 @@ extension Chef_HomeViewModel : UITableViewDelegate , UITableViewDataSource {
         
         let cell:Chef_ProductTableViewCell = tableView.dequeueReusableCell(withIdentifier: Chef_ProductTableViewCell.identifier) as! Chef_ProductTableViewCell
         
-
+        if allProductCollectionModel.count < homeViewController.limitedCount {
+            cell.viewMoreBtn.isHidden = true
+        }
         if homeViewController.change == true {
             cell.prodcutCollectionView.register(UINib(nibName: "Chef_ProductImageCell", bundle: nil), forCellWithReuseIdentifier: "chef_productimagecell")
             if let layout = cell.prodcutCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
                 layout.scrollDirection = .horizontal
             }
-            
+            cell.prodcutCollectionView.reloadData()
         }
         else {
             cell.prodcutCollectionView.register(UINib(nibName: "Chef_ListCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "chef_listcollectionview")
             if let layout = cell.prodcutCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
                 layout.scrollDirection = .vertical
             }
+            cell.prodcutCollectionView.reloadData()
 
         }
 
@@ -142,10 +149,17 @@ extension Chef_HomeViewModel : UITableViewDelegate , UITableViewDataSource {
         cell.delegate = homeViewController
         //cell.featuredProductCollectionModel = featuredProductCollectionModel
        
-       
-        
-        
-        let item = items[indexPath.section + 1]
+        var index:Int!
+        if homeViewController.filtered == true {
+            cell.headerView.isHidden = true;
+            index = 2
+        }
+        else{
+            cell.headerView.isHidden = false;
+            index = indexPath.section + 1
+        }
+
+        let item = items[index]
         
         switch item.type {
         case .Banner: break

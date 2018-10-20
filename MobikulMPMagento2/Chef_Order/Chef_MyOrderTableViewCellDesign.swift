@@ -14,7 +14,9 @@ class Chef_MyOrderTableViewCellDesign: UITableViewCell {
     @IBOutlet weak var orderId:UILabel!
     @IBOutlet weak var ordertotal:UILabel!
     @IBOutlet weak var supplierName: UILabel!
+    @IBOutlet weak var chefName: UILabel!
     
+    @IBOutlet weak var restaurant: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         statusButton.layer.cornerRadius = 13

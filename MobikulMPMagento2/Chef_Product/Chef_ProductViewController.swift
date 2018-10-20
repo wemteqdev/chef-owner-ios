@@ -216,6 +216,7 @@ class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPicker
     var categoryId:String = ""
     var categoryChildData:NSArray!
     var sortBy:String = ""
+    var filtered:Bool = false
     
     var homeViewModel : Chef_HomeViewModel!
     var productName:String = ""
@@ -275,7 +276,7 @@ class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPicker
             let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
             changeViewButton.setImage(tintedImage, for: .normal)
         }
-        
+        self.navigationItem.title = ""
         changeViewButton.tintColor = .black
        
         filterButton.tintColor = .black
@@ -299,12 +300,6 @@ class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPicker
        
 
         self.navigationController?.navigationBar.backItem?.title = ""
-        
-        
-        
-        
-        
-        
         self.productTableView?.dataSource = homeViewModel
         self.productTableView?.delegate = homeViewModel
         GlobalVariables.hometableView = productTableView
@@ -421,7 +416,7 @@ class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPicker
                                 self.categoryMenuData = self.tempCategoryData;
                                 self.filterView.reloadData()
                                  self.bannerCollectionModel = ((self.homeViewModel.items[0] as? HomeViewModelBannerItem)?.bannerCollectionModel)!
-                                self.timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(self.onTransition), userInfo: nil, repeats: true)
+                                self.timer = Timer.scheduledTimer(timeInterval: 4.0, target: self, selector: #selector(self.onTransition), userInfo: nil, repeats: true)
                                 /*UIView.animate(withDuration: 0.5, animations: {
                                  self.launchView?.view.alpha = 0.0
                                  }) { _ in
@@ -479,7 +474,10 @@ class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPicker
             change = false
         }
         print("ChangeView Button Clicked")
+        let topIndex = IndexPath(row: 0, section: 0)
+        self.productTableView.scrollToRow(at: topIndex, at: .top, animated: true)
         self.productTableView.reloadDataWithAutoSizingCellWorkAround()
+        
         if change == false{
             let origImage = UIImage(named: "ic_list")
             let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
@@ -496,7 +494,10 @@ class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPicker
         UIView.animate(withDuration: 0.3, delay: 0, options: .layoutSubviews, animations: {
             self.filterCoverView.isHidden = !self.filterCoverView.isHidden
             self.BannerView.isHidden = !self.BannerView.isHidden
+            self.filtered = !self.filtered;
+            
         })
+        self.productTableView.reloadDataWithAutoSizingCellWorkAround()
     }
     func callingExtraHttpApi(){
         self.view.isUserInteractionEnabled = false
