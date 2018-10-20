@@ -14644,7 +14644,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="g7z-BV-Q6t"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Chef" id="kAM-Og-Zc5"/>
+                    <navigationItem key="navigationItem" title="Chef" id="kAM-Og-Zc5">
+                        <barButtonItem key="rightBarButtonItem" title="LogOut" image="ic_logout" id="d5u-Gh-jzT">
+                            <connections>
+                                <action selector="logOutClicked:" destination="MCe-9Y-aPy" id="SPA-iW-hui"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="barChartView" destination="yJX-Kl-5AJ" id="Brn-F6-twt"/>
                         <outlet property="diagramTotalView" destination="CFo-zn-pnA" id="XtT-gz-vgC"/>
@@ -14691,6 +14697,7 @@
         <image name="ic_filter" width="84" height="84"/>
         <image name="ic_grid" width="84" height="84"/>
         <image name="ic_info" width="48" height="48"/>
+        <image name="ic_logout" width="84" height="84"/>
         <image name="ic_notification-1" width="105" height="105"/>
         <image name="ic_order_review" width="30" height="30"/>
         <image name="ic_payment" width="28" height="28"/>
