@@ -18,12 +18,16 @@ class Chef_MyOrdersModel: NSObject {
     var canReorder:Bool!
     var customerName:String = ""
     var supplierName: String = ""
+    var restaurant: String = ""
     
     
     init(data: JSON) {
         self.orderId = data["orderId"].stringValue
         self.id = data["incrementId"].stringValue
         self.order_total = data["customerDetails"]["purchaseTotal"].stringValue
+        self.customerName = data["customerDetails"]["name"].stringValue
+        self.restaurant = data["customerDetails"]["restaurant"].stringValue
+        
         //self.ship_To = data["ship_to"].stringValue
         self.status = data["status"].stringValue
         self.supplierName = data["supplierName"].stringValue
@@ -38,22 +42,28 @@ class Chef_MyOrdersModel: NSObject {
 
 class Chef_MyOrdersCollectionViewModel {
     var myOrderCollectionModel = [Chef_MyOrdersModel]()
-    var extra:Extra!
+    var orderStatus = [OrderStatus]()
+    var totalCount:Int = 0
+   // var extra:Extra!
     init(data:JSON) {
         for i in 0..<data["orderList"].count{
             let dict = data["orderList"][i];
             myOrderCollectionModel.append(Chef_MyOrdersModel(data: dict))
         }
-        extra = Extra(data: data)
+        if let arrayData = data["orderStatus"].arrayObject{
+            orderStatus =  arrayData.map({(value) -> OrderStatus in
+                return  OrderStatus(data:JSON(value))
+            })
+        }
+        //extra = Extra(data: data)
+        totalCount = data["totalCount"].intValue
     }
     
     var getMyOrdersCollectionData:Array<Chef_MyOrdersModel>{
         return myOrderCollectionModel
     }
     
-    var totalCount:Int{
-        return extra.totalCount
-    }
+    
     
     func setMyOrderCollectionData(data:JSON){
         for i in 0..<data["orderList"].count{

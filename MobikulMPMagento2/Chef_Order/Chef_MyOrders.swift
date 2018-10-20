@@ -62,7 +62,7 @@ class Chef_MyOrders: UIViewController ,UITableViewDelegate, UITableViewDataSourc
         loadPageRequestFlag = true
         whichApiDataToprocess = ""
         callingHttppApi()
-        
+        myOrderTableView.contentInset =  UIEdgeInsetsMake(0, 0, 0, 0)
         
         self.myOrderTableView.separatorColor = UIColor.clear
         
@@ -188,6 +188,15 @@ class Chef_MyOrders: UIViewController ,UITableViewDelegate, UITableViewDataSourc
     @IBAction func filterClick(_ sender: UIBarButtonItem) {
         self.performSegue(withIdentifier: "filter", sender: self)
     }
+    @IBAction func refreshClick(_ sender: UIBarButtonItem) {
+        self.incrementId = ""
+        self.fromDate  = ""
+        self.toDate = ""
+        self.status = ""
+        pageNumber = 1;
+        
+        callingHttppApi()
+    }
     func doFurtherProcessingWithResult(){
         DispatchQueue.main.async {
             if self.pageNumber == 1{
@@ -241,6 +250,8 @@ class Chef_MyOrders: UIViewController ,UITableViewDelegate, UITableViewDataSourc
                 }
 
         cell.statusButton.setTitle(self.myOrderCollectionData.getMyOrdersCollectionData[indexPath.row].status, for: .normal)
+        cell.chefName.text = self.myOrderCollectionData.getMyOrdersCollectionData[indexPath.row].customerName
+        cell.restaurant.text = self.myOrderCollectionData.getMyOrdersCollectionData[indexPath.row].restaurant
         cell.orderId.text = self.myOrderCollectionData.getMyOrdersCollectionData[indexPath.row].orderId
         cell.placedonDate.text = self.myOrderCollectionData.getMyOrdersCollectionData[indexPath.row].order_Date
         cell.ordertotal.text = self.myOrderCollectionData.getMyOrdersCollectionData[indexPath.row].order_total
@@ -341,6 +352,11 @@ class Chef_MyOrders: UIViewController ,UITableViewDelegate, UITableViewDataSourc
         if (segue.identifier! == "customerorderdetails") {
             let viewController:SellerOrderDetailsController = segue.destination as UIViewController as! SellerOrderDetailsController
             viewController.incrementId = self.incrementId
+        }
+        else if (segue.identifier! == "filter") {
+            let viewController:SellerOrderFilterController = segue.destination as UIViewController as! SellerOrderFilterController
+            viewController.sellerOrderViewModel = self.myOrderCollectionData
+            viewController.delegate = self
         }
     }
     

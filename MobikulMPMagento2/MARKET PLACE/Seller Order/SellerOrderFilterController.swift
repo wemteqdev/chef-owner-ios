@@ -17,7 +17,7 @@ class SellerOrderFilterController: UIViewController,UIPickerViewDelegate,UIPicke
 @IBOutlet weak var toDateTextField: SkyFloatingLabelTextField!
 @IBOutlet weak var orderStatusTextField: SkyFloatingLabelTextField!
 @IBOutlet weak var ApplyButton: UIButton!
-var sellerOrderViewModel:SellerOrderViewModel!
+var sellerOrderViewModel:Chef_MyOrdersCollectionViewModel!
 var status:String = ""
 var delegate: ChefSellerOrderFilterDataHandle!
     
@@ -126,6 +126,8 @@ var delegate: ChefSellerOrderFilterDataHandle!
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
             self.orderStatusTextField.text =  self.sellerOrderViewModel.orderStatus[row].label
+        status = self.sellerOrderViewModel.orderStatus[row].status
+        print("NICE ORDER STATUS", self.orderStatusTextField.text)
         
     }
     

@@ -2967,10 +2967,24 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EVr-y5-yKz"/>
                     </view>
-                    <navigationItem key="navigationItem" id="tqC-9b-hXi"/>
+                    <navigationItem key="navigationItem" id="tqC-9b-hXi">
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="refresh" id="i36-8X-rGe">
+                                <connections>
+                                    <action selector="refreshClick:" destination="Aod-rw-8Dm" id="3Hw-Rg-pcs"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="ic_filter" id="Spx-I0-yPB">
+                                <connections>
+                                    <action selector="filterClick:" destination="Aod-rw-8Dm" id="zcJ-7Y-KT5"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <connections>
                         <outlet property="myOrderTableView" destination="pcH-7K-Ct8" id="Eum-Xv-AMx"/>
-                        <segue destination="XmM-cD-fvK" kind="show" identifier="customerorderdetails" id="Ix9-K4-5sQ"/>
+                        <segue destination="T3y-3C-TMZ" kind="presentation" identifier="filter" id="th7-n4-1WZ"/>
+                        <segue destination="fJ6-uG-8Sd" kind="show" identifier="customerorderdetails" id="kBu-yP-rgn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0dX-bq-eib" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2986,11 +3000,11 @@
                         <viewControllerLayoutGuide type="bottom" id="VKW-dK-tYl"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="pCg-8D-Wha">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="mYb-So-o2l">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -9362,11 +9376,11 @@
             <objects>
                 <viewController id="Vmh-Rf-h4P" customClass="CreateCreditMemoViewController" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Efx-Wp-JLu">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="mpj-sz-Ggp">
-                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -9392,11 +9406,11 @@
             <objects>
                 <viewController id="fJ6-uG-8Sd" customClass="SellerOrderDetailsController" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4hQ-EZ-62l">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="Z8w-BF-nLJ">
-                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -9426,11 +9440,11 @@
             <objects>
                 <viewController id="296-g6-RA0" customClass="SellerInvoiceDetailsController" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WFA-JE-YRm">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="YlT-YX-lWY">
-                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -9464,11 +9478,11 @@
             <objects>
                 <viewController id="p3D-3e-9sM" customClass="ShipmentDetailsController" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fvc-4N-yof">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="mjS-Hq-OBo">
-                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -9502,11 +9516,11 @@
             <objects>
                 <viewController id="vao-5X-TsW" customClass="CreditMemoDetailsController" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aV2-x0-NR2">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="IiV-m1-cIJ">
-                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -9539,11 +9553,11 @@
             <objects>
                 <viewController id="2vv-LX-zRF" customClass="CreditMemoListViewController" customModule="MobikulMPMagento2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5MU-iL-aGB">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="5nd-RO-9T8">
-                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -9817,11 +9831,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Sqb-ds-9Zd"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="4yv-1X-6MD">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QWP-ba-e61">
-                                <rect key="frame" x="0.0" y="34" width="375" height="695"/>
+                                <rect key="frame" x="0.0" y="-54" width="375" height="695"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
                         </subviews>
@@ -14711,12 +14725,13 @@
         <segue reference="DHe-33-5Ya"/>
         <segue reference="KXi-UJ-red"/>
         <segue reference="K1F-9a-BTF"/>
-        <segue reference="un3-HS-DRX"/>
+        <segue reference="kBu-yP-rgn"/>
+        <segue reference="th7-n4-1WZ"/>
         <segue reference="7Qu-d1-AVV"/>
         <segue reference="fYe-ny-kmo"/>
         <segue reference="16k-gN-gk7"/>
         <segue reference="1IN-nY-tFS"/>
-        <segue reference="Ix9-K4-5sQ"/>
+        <segue reference="1kv-3A-ZEC"/>
         <segue reference="5gt-HY-6Mn"/>
         <segue reference="EhG-al-bPQ"/>
         <segue reference="TID-0Q-0E5"/>

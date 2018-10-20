@@ -258,8 +258,8 @@ class SellerOrderViewController: UIViewController,UITableViewDelegate, UITableVi
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier! == "filter") {
             let viewController:SellerOrderFilterController = segue.destination as UIViewController as! SellerOrderFilterController
-            viewController.sellerOrderViewModel = self.sellerOrderViewModel
-            viewController.delegate = self
+           // viewController.sellerOrderViewModel = self.sellerOrderViewModel
+            //viewController.delegate = self
         }else if (segue.identifier! == "orderdetails") {
             let viewController:SellerOrderDetailsController = segue.destination as UIViewController as! SellerOrderDetailsController
             viewController.incrementId = self.incrementId
