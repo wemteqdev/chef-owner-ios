@@ -1,5 +1,5 @@
 //
-//  Owner.swift
+//  self.swift
 //  MobikulMPMagento2
 //
 //  Created by andonina on 9/13/18.
@@ -16,8 +16,6 @@ import Foundation
 //
 
 import UIKit
-
-
 
 class Chef_DashboardView: UIViewController{
     @IBOutlet weak var user_info_view: UIView!
@@ -37,28 +35,8 @@ class Chef_DashboardView: UIViewController{
     var mainCollection:JSON!
     var showType = 0;
     var orderTotal:NSMutableArray = []
-    static var ownerDashboardModelView: OwnerDashBoardViewModel!
-    static var callingApiSucceed: Bool = false;
-    @IBAction func logOutClick(_ sender: Any) {
-        let AC = UIAlertController(title: GlobalData.sharedInstance.language(key: "warninglogoutmessage"), message: "", preferredStyle: .alert)
-        let ok = UIAlertAction(title: GlobalData.sharedInstance.language(key: "yes"), style: .default, handler: {(_ action: UIAlertAction) -> Void in
-            for key in UserDefaults.standard.dictionaryRepresentation().keys {
-                if(key.description == "storeId"||key.description == "language"||key.description == "AppleLanguages" || key.description == "currency" || key.description == "authKey" || key.description == "TouchEmailId" || key.description == "TouchPasswordValue" || key.description == "touchIdFlag" || key.description == "deviceToken" ){
-                    continue
-                }else{
-                    UserDefaults.standard.removeObject(forKey: key.description)
-                }
-            }
-            UserDefaults.standard.synchronize();
-            self.performSegue(withIdentifier: "tologin", sender: self)
-        })
-        
-        let noBtn = UIAlertAction(title: GlobalData.sharedInstance.language(key: "no"), style: .destructive, handler: {(_ action: UIAlertAction) -> Void in
-        })
-        AC.addAction(ok)
-        AC.addAction(noBtn)
-        self.present(AC, animated: true, completion: {  })
-    }
+    var ownerDashboardModelView: OwnerDashBoardViewModel!
+    var callingApiSucceed: Bool = false;
     
     @IBAction func SegmentValueChanged(_ sender: Any) {
         if showTypeController.selectedSegmentIndex == 0{
@@ -71,7 +49,7 @@ class Chef_DashboardView: UIViewController{
             showType = 3;
         }
         
-        if (Owner.callingApiSucceed){
+        if (self.callingApiSucceed){
             var chartData: [BarChartData] = self.createChartDataCollection();
             print("chartData", chartData)
             barChartView.removeAllArrangedSubviews();
@@ -83,19 +61,19 @@ class Chef_DashboardView: UIViewController{
             }
             if(self.showType == 0)
             {
-                self.addDiagramTotalElement(diagramData: Owner.ownerDashboardModelView.diagramDailyTotal);
+                self.addDiagramTotalElement(diagramData: self.ownerDashboardModelView.diagramDailyTotal);
             }
             else if(self.showType == 1)
             {
-                self.addDiagramTotalElement(diagramData: Owner.ownerDashboardModelView.diagramWeeklyTotal);
+                self.addDiagramTotalElement(diagramData: self.ownerDashboardModelView.diagramWeeklyTotal);
             }
             else if(self.showType == 2)
             {
-                self.addDiagramTotalElement(diagramData: Owner.ownerDashboardModelView.diagramMonthlyTotal);
+                self.addDiagramTotalElement(diagramData: self.ownerDashboardModelView.diagramMonthlyTotal);
             }
             else if(self.showType == 3)
             {
-                self.addDiagramTotalElement(diagramData: Owner.ownerDashboardModelView.diagramYearlyTotal);
+                self.addDiagramTotalElement(diagramData: self.ownerDashboardModelView.diagramYearlyTotal);
             }
         }
     }
@@ -117,16 +95,15 @@ class Chef_DashboardView: UIViewController{
         profile_view.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor).isActive = true
         self.navigationController?.isNavigationBarHidden = false
         //navigationController?.navigationBar.barTintColor = UIColor(red: 30/255, green: 161/255, blue: 243/255, alpha: 1.0);
-       
-        var gesture = UITapGestureRecognizer(target: self, action:  #selector (self.profileViewPage (_:)))
-        profile_view.addGestureRecognizer(gesture)
         navigationController?.navigationBar.setBackgroundImage(UIImage(named: "back_color"), for: UIBarMetrics.default)
         navigationController?.navigationBar.shadowImage = UIImage();
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
-        self.navigationItem.title = GlobalData.sharedInstance.language(key: "Chef")
+        self.navigationItem.title = "Chef"
         profile_view.backgroundColor = UIColor(red: 30/255, green: 161/255, blue: 243/255, alpha: 1.0);
         //profile_view.backgroundColor = UIColor(patternImage: UIImage(named: "back_color")!)
         self.profile_view.layer.shadowOpacity = 0;
+        profile_image.layer.cornerRadius = 35;
+        profile_image.layer.masksToBounds = true;
         /*
          ownerProfileTableView.register(UINib(nibName: "OwnerProfileTableViewCell", bundle: nil), forCellReuseIdentifier: "OwnerProfileTableViewCell")
          ownerProfileTableView.rowHeight = UITableViewAutomaticDimension
@@ -140,7 +117,39 @@ class Chef_DashboardView: UIViewController{
             scrollView.isUserInteractionEnabled = true
             swipeGesture.direction = direction
         }
+        var gesture = UITapGestureRecognizer(target: self, action:  #selector (self.profileViewPage (_:)))
+        profile_view.addGestureRecognizer(gesture)
+        
         self.callingHttppApi();
+    }
+    
+    @objc func profileViewPage(_ sender:UITapGestureRecognizer){
+        self.performSegue(withIdentifier: "toprofileview", sender: self)
+    }
+    
+    @IBAction func logOutClicked(_ sender: Any) {
+        let AC = UIAlertController(title: GlobalData.sharedInstance.language(key: "warninglogoutmessage"), message: "", preferredStyle: .alert)
+        let ok = UIAlertAction(title: GlobalData.sharedInstance.language(key: "yes"), style: .default, handler: {(_ action: UIAlertAction) -> Void in
+            for key in UserDefaults.standard.dictionaryRepresentation().keys {
+                if(key.description == "storeId"||key.description == "language"||key.description == "AppleLanguages" || key.description == "currency" || key.description == "authKey" || key.description == "TouchEmailId" || key.description == "TouchPasswordValue" || key.description == "touchIdFlag" || key.description == "deviceToken" ){
+                    continue
+                }else{
+                    UserDefaults.standard.removeObject(forKey: key.description)
+                }
+            }
+            UserDefaults.standard.synchronize();
+            //self.performSegue(withIdentifier: "tologin", sender: self)
+            var rootVC : UIViewController?
+            rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "login") as! CustomerLogin
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.window?.rootViewController = rootVC
+        })
+        
+        let noBtn = UIAlertAction(title: GlobalData.sharedInstance.language(key: "no"), style: .destructive, handler: {(_ action: UIAlertAction) -> Void in
+        })
+        AC.addAction(ok)
+        AC.addAction(noBtn)
+        self.present(AC, animated: true, completion: {  })
     }
     
     func callingHttppApi(){
@@ -151,13 +160,12 @@ class Chef_DashboardView: UIViewController{
         let customerId = defaults.object(forKey:"customerId");
         if customerId != nil{
             requstParams["customerToken"] = customerId
-            requstParams["customerId"] = -2;
-            requstParams["customerType"] = "2"
+            requstParams["customerId"] = customerId
         }
         
         self.view.isUserInteractionEnabled = false
-        Owner.callingApiSucceed = false;
-        GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"wemteqchef/order/cheforders", currentView: self){success,responseObject in
+        self.callingApiSucceed = false;
+        GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"wemteqchef/chef/dashboard", currentView: self){success,responseObject in
             if success == 1{
                 if responseObject?.object(forKey: "storeId") != nil{
                     let storeId:String = String(format: "%@", responseObject!.object(forKey: "storeId") as! CVarArg)
@@ -167,11 +175,11 @@ class Chef_DashboardView: UIViewController{
                 }
                 GlobalData.sharedInstance.dismissLoader()
                 self.view.isUserInteractionEnabled = true
-                Owner.callingApiSucceed = true
+                self.callingApiSucceed = true
                 var dict = JSON(responseObject as! NSDictionary)
                 print("jsonData:", responseObject);
                 if dict["success"].boolValue == true{
-                    Owner.ownerDashboardModelView = OwnerDashBoardViewModel(data:dict)
+                    self.ownerDashboardModelView = OwnerDashBoardViewModel(data:dict)
                     var chartData: [BarChartData] = self.createChartDataCollection();
                     print("chartData", chartData)
                     
@@ -185,20 +193,20 @@ class Chef_DashboardView: UIViewController{
                     }
                     if(self.showType == 0)
                     {
-                        self.addDiagramTotalElement(diagramData: Owner.ownerDashboardModelView.diagramDailyTotal);
-                        print("diagram:", Owner.ownerDashboardModelView.diagramDailyTotal)
+                        self.addDiagramTotalElement(diagramData: self.ownerDashboardModelView.diagramDailyTotal);
+                        print("diagram:", self.ownerDashboardModelView.diagramDailyTotal)
                     }
                     else if(self.showType == 1)
                     {
-                        self.addDiagramTotalElement(diagramData: Owner.ownerDashboardModelView.diagramWeeklyTotal);
+                        self.addDiagramTotalElement(diagramData: self.ownerDashboardModelView.diagramWeeklyTotal);
                     }
                     else if(self.showType == 2)
                     {
-                        self.addDiagramTotalElement(diagramData: Owner.ownerDashboardModelView.diagramMonthlyTotal);
+                        self.addDiagramTotalElement(diagramData: self.ownerDashboardModelView.diagramMonthlyTotal);
                     }
                     else if(self.showType == 3)
                     {
-                        self.addDiagramTotalElement(diagramData: Owner.ownerDashboardModelView.diagramYearlyTotal);
+                        self.addDiagramTotalElement(diagramData: self.ownerDashboardModelView.diagramYearlyTotal);
                     }
                 }else{
                     GlobalData.sharedInstance.showErrorSnackBar(msg: dict["message"].stringValue)
@@ -216,22 +224,22 @@ class Chef_DashboardView: UIViewController{
         
         var chatDataArray = [BarChartData]();
         
-        var orderTotal = Owner.ownerDashboardModelView.orderYearlyTotal;
-        var orderString = Owner.ownerDashboardModelView.orderYearlyIndexString;
+        var orderTotal = self.ownerDashboardModelView.orderYearlyTotal;
+        var orderString = self.ownerDashboardModelView.orderYearlyIndexString;
         if (showType == 0)
         {
-            orderTotal = Owner.ownerDashboardModelView.orderDailyTotal;
-            orderString = Owner.ownerDashboardModelView.orderDailyIndexString;
+            orderTotal = self.ownerDashboardModelView.orderDailyTotal;
+            orderString = self.ownerDashboardModelView.orderDailyIndexString;
         }
         else if(showType == 1)
         {
-            orderTotal = Owner.ownerDashboardModelView.orderWeeklyTotal;
-            orderString = Owner.ownerDashboardModelView.orderWeeklyIndexString;
+            orderTotal = self.ownerDashboardModelView.orderWeeklyTotal;
+            orderString = self.ownerDashboardModelView.orderWeeklyIndexString;
         }
         else if(showType == 2)
         {
-            orderTotal = Owner.ownerDashboardModelView.orderMonthlyTotal;
-            orderString = Owner.ownerDashboardModelView.orderMonthlyIndexString;
+            orderTotal = self.ownerDashboardModelView.orderMonthlyTotal;
+            orderString = self.ownerDashboardModelView.orderMonthlyIndexString;
         }
         print("orderTotal:", orderTotal)
         print("orderString:", orderString)
@@ -264,9 +272,7 @@ class Chef_DashboardView: UIViewController{
          */
         return chatDataArray
     }
-    @objc func profileViewPage(_ sender:UITapGestureRecognizer){
-        self.performSegue(withIdentifier: "toprofileview", sender: self)
-    }
+    
     private func heightPixelsDependOfPercentage (percentage: Double) -> CGFloat {
         let maxHeight: CGFloat = 120.0
         return (CGFloat(percentage) * maxHeight) / 100
@@ -424,8 +430,8 @@ class Chef_DashboardView: UIViewController{
         let suppliersLabel = UILabel()
         let suppliersStringLabel = UILabel()
         suppliersLabel.textColor = UIColor(red: 165/255, green: 96/255, blue: 245/255, alpha: 1.0);
-        //changeLabel.text = String(format: "%d",diagramData.ordersCount);
-        suppliersLabel.text = String(format: "16");
+        suppliersLabel.text = String(format: "%d",diagramData.supplierCounts);
+        //suppliersLabel.text = String(format: "16");
         suppliersLabel.font = UIFont.boldSystemFont(ofSize: purchaseLabelHeight)
         suppliersLabel.textAlignment = .center
         
@@ -635,15 +641,19 @@ class Chef_DashboardView: UIViewController{
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        self.callingHttppApi();
         if defaults.object(forKey: "customerName") != nil{
             profile_name.text = defaults.object(forKey: "customerName") as? String
         } else {
             profile_name.text = "Chef"
         }
+        if defaults.object(forKey: "profilePicture") != nil{
+            let imageUrl = defaults.object(forKey: "profilePicture") as? String
+            GlobalData.sharedInstance.getImageFromUrl(imageUrl: imageUrl!, imageView: profile_image)
+        }
         
         profile_owner.text = "Chef"
-        if (Owner.callingApiSucceed) {
+        if (self.callingApiSucceed) {
             var chartData: [BarChartData] = self.createChartDataCollection();
             print("chartData", chartData)
             
@@ -658,19 +668,19 @@ class Chef_DashboardView: UIViewController{
             
             if(self.showType == 0)
             {
-                self.addDiagramTotalElement(diagramData: Owner.ownerDashboardModelView.diagramDailyTotal);
+                self.addDiagramTotalElement(diagramData: self.ownerDashboardModelView.diagramDailyTotal);
             }
             else if(self.showType == 1)
             {
-                self.addDiagramTotalElement(diagramData: Owner.ownerDashboardModelView.diagramWeeklyTotal);
+                self.addDiagramTotalElement(diagramData: self.ownerDashboardModelView.diagramWeeklyTotal);
             }
             else if(self.showType == 2)
             {
-                self.addDiagramTotalElement(diagramData: Owner.ownerDashboardModelView.diagramMonthlyTotal);
+                self.addDiagramTotalElement(diagramData: self.ownerDashboardModelView.diagramMonthlyTotal);
             }
             else if(self.showType == 3)
             {
-                self.addDiagramTotalElement(diagramData: Owner.ownerDashboardModelView.diagramYearlyTotal);
+                self.addDiagramTotalElement(diagramData: self.ownerDashboardModelView.diagramYearlyTotal);
             }
         }
     }
