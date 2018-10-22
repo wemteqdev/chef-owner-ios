@@ -140,6 +140,27 @@ class Chef_DashboardViewController: UIViewController, UITableViewDelegate, UITab
         }
         return ""
     }
+    func loadNavgiationButtons() {
+        let btnCart = SSBadgeButton()
+        btnCart.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
+        btnCart.setImage(UIImage(named: "Action 4")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        btnCart.badgeEdgeInsets = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 10)
+        btnCart.badge = badge
+        print("Load Navigation Button Function Badge Value")
+        print(badge)
+        
+        btnCart.addTarget(self, action: #selector(cartButtonClick(sender:)), for: .touchUpInside)
+        
+        var origImage = UIImage(named: "Action 2")
+        var tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
+        var btnSearch:UIBarButtonItem = UIBarButtonItem(image: tintedImage , style: .plain, target: self, action: #selector(searchButtonClick(sender:)))
+        
+        btnCart.tintColor = .white
+        btnSearch.tintColor = .white
+        self.navigationItem.setRightBarButtonItems([UIBarButtonItem(customView: btnCart), btnSearch], animated: true)
+        
+        self.navigationController?.navigationBar.tintColor = .white
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -148,6 +169,7 @@ class Chef_DashboardViewController: UIViewController, UITableViewDelegate, UITab
         productDetailTableView.dataSource = self
         self.navigationItem.title = productName
         self.navigationController?.isNavigationBarHidden = false
+        loadNavgiationButtons()
      GlobalData.sharedInstance.getImageFromUrl(imageUrl:productImageUrl , imageView: self.productImage)
         
         imageArrayUrl = [productImageUrl]
@@ -155,6 +177,7 @@ class Chef_DashboardViewController: UIViewController, UITableViewDelegate, UITab
         GlobalData.sharedInstance.removePreviousNetworkCall()
         GlobalData.sharedInstance.dismissLoader()
         callingHttppApi(apiName: CatalogProductAPI.catalogProduct)
+        
         // Do any additional setup after loading the view.
     }
    
@@ -1065,5 +1088,17 @@ class Chef_DashboardViewController: UIViewController, UITableViewDelegate, UITab
         self.productDetailTableView.reloadData()
         GlobalData.sharedInstance.dismissLoader()
    }
-       
+    
+    @objc func cartButtonClick(sender: UIButton){
+        //let vc = self.storyboard?.instantiateViewController(withIdentifier: "chef_cartexview") as! Chef_exMyCart
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "chef_supercartview") as! Chef_SuperCart
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    @objc func searchButtonClick(sender: UIButton){
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "chef_searchview") as! SearchSuggestion
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+    }
 }

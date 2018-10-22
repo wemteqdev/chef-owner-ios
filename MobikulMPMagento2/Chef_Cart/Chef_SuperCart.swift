@@ -65,7 +65,7 @@ class Chef_SuperCart: UIViewController {
             let width = String(format:"%f", SCREEN_WIDTH * UIScreen.main.scale)
             requstParams["width"] = width
            print(defaults.object(forKey: "customerId"))
-            GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"mobikulmphttp/marketplace/sellerlist", currentView: self){success,responseObject in
+            GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"wemteqchef/customer/sellerlist", currentView: self){success,responseObject in
                 if success == 1{
                     self.view.isUserInteractionEnabled = true
                     print(responseObject)
@@ -136,6 +136,9 @@ class Chef_SuperCart: UIViewController {
                     if dict.object(forKey: "success") as! Bool == true{
                         GlobalData.sharedInstance.showSuccessSnackBar(msg: GlobalData.sharedInstance.language(key: "cartupdated"))
                     }
+                    else{
+                        GlobalData.sharedInstance.showErrorSnackBar(msg: dict.object(forKey: "message") as! String)
+                    }
                     
                     self.view.isUserInteractionEnabled = true
                     GlobalData.sharedInstance.dismissLoader()
@@ -191,16 +194,19 @@ class Chef_SuperCart: UIViewController {
         DispatchQueue.main.async {
             self.view.isUserInteractionEnabled = true
             self.cartSellerIndex = []
-            
+            print("cart COUNT !!!!!!!!!!!", self.myCartViewModel.getCartItems.count)
             if self.myCartViewModel.getCartItems.count > 0 {
                 for i in 0...self.sellerListViewModel.sellerListModel.count - 1 {
                     for j in 0...self.myCartViewModel.getCartItems.count - 1 {
+                        print("seller id~~~",self.sellerListViewModel.sellerListModel[i].sellerId)
                         if self.sellerListViewModel.sellerListModel[i].sellerId == self.myCartViewModel.myCartModel[j].supplierId  {
+                            print("supplier Id~~~~",self.myCartViewModel.myCartModel[j].supplierId)
                             self.sellerListViewModel.sellerListModel[i].cartItemCount = self.sellerListViewModel.sellerListModel[i].cartItemCount + 1
                             self.sellerListViewModel.sellerListModel[i].cartItemIndex.append(j)
                         }
                     }
                     if self.sellerListViewModel.sellerListModel[i].cartItemCount > 0 {
+                        print("sellerList CartItem Count~~~~",self.sellerListViewModel.sellerListModel[i].cartItemCount)
                         self.cartSellerIndex.append(i)
                     }
                 }
@@ -290,8 +296,8 @@ extension Chef_SuperCart : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("Number of rows in section")
-        print(self.sellerListViewModel.sellerListModel[section].cartItemCount)
-        return self.sellerListViewModel.sellerListModel[section].cartItemCount
+        print(self.sellerListViewModel.sellerListModel[cartSellerIndex[section]].cartItemCount)
+        return self.sellerListViewModel.sellerListModel[cartSellerIndex[section]].cartItemCount
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -328,10 +334,12 @@ extension Chef_SuperCart : UITableViewDelegate, UITableViewDataSource {
         cell.supplierName.text = self.sellerListViewModel.sellerListModel[curSection].shopTitle
         cell.qtyButton.setTitle(self.myCartViewModel.myCartModel[CartIndex].qty, for: .normal)
         GlobalData.sharedInstance.getImageFromUrl(imageUrl: myCartViewModel.getCartItems[CartIndex].imageUrl, imageView: cell.productImage)
-        
+        print(self.myCartViewModel.myCartModel[CartIndex].name)
         cell.plusButton.tag = CartIndex
         cell.plusButton.addTarget(self, action: #selector(plusButtonClick(sender:)), for: .touchUpInside)
-        
+        cell.ratingStarView.value = CGFloat(self.myCartViewModel.myCartModel[CartIndex].rating)
+        cell.reviewLabel.text = "\(String(self.myCartViewModel.myCartModel[CartIndex].reviewCount)) reviews"
+        cell.ratingStar.setTitle("\(String(self.myCartViewModel.myCartModel[CartIndex].rating))", for: .normal)
         cell.minusButton.tag = CartIndex
         cell.minusButton.addTarget(self, action: #selector(minusButtonClick(sender:)), for: .touchUpInside)
         if myCartViewModel.getCartItems[CartIndex].message.count > 0{
@@ -379,7 +387,7 @@ extension Chef_SuperCart : FZAccordionTableViewDelegate {
     func tableView(_ tableView: FZAccordionTableView, willOpenSection section: Int, withHeader header: UITableViewHeaderFooterView?) {
         print("Selected Section Num:")
         print(section)
-        self.curSection = section
+        self.curSection = cartSellerIndex[section]
     }
     
     func tableView(_ tableView: FZAccordionTableView, didOpenSection section: Int, withHeader header: UITableViewHeaderFooterView?) {

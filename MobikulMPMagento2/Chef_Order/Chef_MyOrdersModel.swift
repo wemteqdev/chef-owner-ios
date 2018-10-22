@@ -19,6 +19,7 @@ class Chef_MyOrdersModel: NSObject {
     var customerName:String = ""
     var supplierName: String = ""
     var restaurant: String = ""
+    var supplierId: String = ""
     
     
     init(data: JSON) {
@@ -27,10 +28,11 @@ class Chef_MyOrdersModel: NSObject {
         self.order_total = data["customerDetails"]["purchaseTotal"].stringValue
         self.customerName = data["customerDetails"]["name"].stringValue
         self.restaurant = data["customerDetails"]["restaurant"].stringValue
-        
+        self.supplierId = data["supplierId"].stringValue
         //self.ship_To = data["ship_to"].stringValue
         self.status = data["status"].stringValue
         self.supplierName = data["supplierName"].stringValue
+        self.supplierId = data["supplierId"].stringValue
         self.order_Date = data["customerDetails"]["date"].stringValue
         self.canReorder = data["canReorder"].boolValue
         self.customerName = data["customerDetails"]["name"].stringValue

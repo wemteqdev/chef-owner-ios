@@ -44,6 +44,7 @@ class Chef_MyOrders: UIViewController ,UITableViewDelegate, UITableViewDataSourc
     var fromDate:String = ""
     var toDate:String = ""
     var status:String = ""
+    var supplierId: String = ""
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -319,6 +320,7 @@ class Chef_MyOrders: UIViewController ,UITableViewDelegate, UITableViewDataSourc
     {
         print("didSelectRow")
         self.incrementId = self.myOrderCollectionData.getMyOrdersCollectionData[indexPath.row].id
+        self.supplierId = self.myOrderCollectionData.getMyOrdersCollectionData[indexPath.row].supplierId
         self.performSegue(withIdentifier: "customerorderdetails", sender: self)
     }
     
@@ -352,6 +354,7 @@ class Chef_MyOrders: UIViewController ,UITableViewDelegate, UITableViewDataSourc
         if (segue.identifier! == "customerorderdetails") {
             let viewController:SellerOrderDetailsController = segue.destination as UIViewController as! SellerOrderDetailsController
             viewController.incrementId = self.incrementId
+            viewController.supplierId = self.supplierId
         }
         else if (segue.identifier! == "filter") {
             let viewController:SellerOrderFilterController = segue.destination as UIViewController as! SellerOrderFilterController
