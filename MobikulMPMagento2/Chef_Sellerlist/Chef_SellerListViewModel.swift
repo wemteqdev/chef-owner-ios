@@ -15,6 +15,8 @@ struct Chef_SellerListModel{
     var productCount:String!
     var sellerId:String!
     var shopTitle:String!
+    var discountLevel:Double!
+    var minorderQty:String!
     
     var cartItemCount:Int = 0
     var cartItemIndex: [Int] = []

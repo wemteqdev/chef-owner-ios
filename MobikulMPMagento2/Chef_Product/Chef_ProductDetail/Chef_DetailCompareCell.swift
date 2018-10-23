@@ -10,6 +10,8 @@ import UIKit
 
 class Chef_DetailCompareCell: UICollectionViewCell {
     
+    @IBOutlet weak var discountLayer: UIView!
+    @IBOutlet weak var discountLabel: UIButton!
     @IBOutlet weak var moq: UILabel!
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var addtocart: UIButton!
@@ -22,6 +24,12 @@ class Chef_DetailCompareCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        reviewRatingmark.layer.cornerRadius = reviewRatingmark.frame.height / 2 - 1
+        reviewRatingmark.layer.masksToBounds = true
+        discountLabel.isHidden = true
+        discountLayer.isHidden = true
+        addtocart.layer.cornerRadius = reviewRatingmark.frame.height / 2 - 1
+        addtocart.layer.masksToBounds = true
     }
 
 }

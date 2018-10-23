@@ -159,7 +159,7 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
                     cell.reviewCnt.text =  "\(String(featuredProductCollectionModel[indexPath.row].reviewCount)) reviews"
                     cell.starRating.value = CGFloat(featuredProductCollectionModel[indexPath.row].rating)
                     cell.ratingbtn.setTitle(String(featuredProductCollectionModel[indexPath.row].rating), for: .normal)
-                    cell.price_vat.text = "\(String(featuredProductCollectionModel[indexPath.row].price)) - \(String(featuredProductCollectionModel[indexPath.row].taxClass))"
+                    cell.price_vat.text = "\(String(featuredProductCollectionModel[indexPath.row].price))/\(String(featuredProductCollectionModel[indexPath.row].unit)) - \(String(featuredProductCollectionModel[indexPath.row].taxClass))"
                     cell.supplierName.text =  featuredProductCollectionModel[indexPath.row].supplierName
                     print(featuredProductCollectionModel[indexPath.row].productID)
                     print("CATEGORIES FOR THIS ID")
@@ -216,9 +216,9 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
                         
                     }
                     else{
-                        if featuredProductCollectionModel[indexPath.row].isInRange == 1{
-                            if featuredProductCollectionModel[indexPath.row].specialPrice < featuredProductCollectionModel[indexPath.row].originalPrice{
-                                cell.productPrice.text = featuredProductCollectionModel[indexPath.row].showSpecialPrice
+                        //if featuredProductCollectionModel[indexPath.row].isInRange == 1{
+                            if featuredProductCollectionModel[indexPath.row].tierPrice < featuredProductCollectionModel[indexPath.row].originalPrice{
+                                cell.productPrice.text = "\(featuredProductCollectionModel[indexPath.row].formatedPrice.prefix(1))\(String(featuredProductCollectionModel[indexPath.row].tierPrice))"
                                 
                                 let attributedString = NSMutableAttributedString(string:( featuredProductCollectionModel[indexPath.row].formatedPrice ))
                                 attributedString.addAttribute(NSAttributedStringKey.baselineOffset, value: 0, range: NSMakeRange(0, attributedString.length))
@@ -227,7 +227,7 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
                                 
                                 cell.productPrice.attributedText = attributedString
                                 cell.specialPrice.isHidden = false;
-                            }
+                            //}
                             
                         }else{
                             cell.specialPrice.isHidden = true
@@ -254,7 +254,7 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
                     cell.reviewCnt.text =  "\(String(featuredProductCollectionModel[indexPath.row].reviewCount)) reviews"
                     cell.starRating.value = CGFloat(featuredProductCollectionModel[indexPath.row].rating)
                     cell.ratingbtn.setTitle(String(featuredProductCollectionModel[indexPath.row].rating), for: .normal)
-                    cell.pricevat.text = "\(String(featuredProductCollectionModel[indexPath.row].price)) - \(String(featuredProductCollectionModel[indexPath.row].taxClass))"
+                    cell.pricevat.text = "\(String(featuredProductCollectionModel[indexPath.row].price))/\(String(featuredProductCollectionModel[indexPath.row].unit)) - \(String(featuredProductCollectionModel[indexPath.row].taxClass))"
                     cell.supplierName.text =  featuredProductCollectionModel[indexPath.row].supplierName
                     //cell.descriptionData.text = featuredPrproduoductCollectionModel[indexPath.row].descriptionData
                    
@@ -282,9 +282,9 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
                     cell.compare_Button.addTarget(self, action: #selector(addToCompare(sender:)), for: .touchUpInside)
                     cell.compare_Button.isUserInteractionEnabled = true
                     
-                    if featuredProductCollectionModel[indexPath.row].isInRange == 1{
-                        if featuredProductCollectionModel[indexPath.row].specialPrice < featuredProductCollectionModel[indexPath.row].originalPrice{
-                            cell.price.text = featuredProductCollectionModel[indexPath.row].showSpecialPrice
+                    //if featuredProductCollectionModel[indexPath.row].isInRange == 1{
+                        if featuredProductCollectionModel[indexPath.row].tierPrice < featuredProductCollectionModel[indexPath.row].originalPrice{
+                            cell.price.text = "\(featuredProductCollectionModel[indexPath.row].formatedPrice.prefix(1))\(String(featuredProductCollectionModel[indexPath.row].tierPrice))"
                             let attributeString = NSMutableAttributedString(string: featuredProductCollectionModel[indexPath.row].formatedPrice)
                             attributeString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: 1, range: NSRange(location: 0, length: attributeString.length))
                             cell.specialPrice.attributedText = attributeString
@@ -294,7 +294,7 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
                             cell.specialPrice.isHidden = true
                             cell.price.center = cell.supplierName.center
                         }
-                    }
+                    //}
                     return cell
                 }
 

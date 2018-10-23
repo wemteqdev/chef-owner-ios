@@ -10,6 +10,9 @@ import UIKit
 import FZAccordionTableView
 
 class AccordionHeaderView: FZAccordionTableViewHeaderView {
+    
+    @IBOutlet weak var discountPercent: UILabel!
+    
     static let kDefaultAccordionHeaderViewHeight: CGFloat = 80.0;
     static let kAccordionHeaderViewReuseIdentifier = "AccordionHeaderViewReuseIdentifier";
     @IBOutlet weak var supplierImage: UIImageView!

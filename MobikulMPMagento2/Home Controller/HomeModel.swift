@@ -144,7 +144,12 @@ struct Products {
     var supplierName:String!
     var taxClass:String!
     var minAddToCartQty:String!
-    
+    var isMin:Bool!
+    var discount:Int!
+    var supplierId:String!
+    var unit:String!
+    var userStatus:Bool!
+    var tierPrice:Double!
     init(data:JSON) {
         self.hasOption = data["hasOption"].intValue
         self.name = data["name"].stringValue
@@ -174,6 +179,15 @@ struct Products {
         }
         self.rating = data["rating"].doubleValue
         self.reviewCount = data["reviewcount"].stringValue
+        self.isMin = data["min"].boolValue
+        if self.isMin == nil {
+            self.isMin = true
+        }
+        self.tierPrice = data["tierPrice"].doubleValue
+        self.supplierId = data["supplierId"].stringValue
+        self.discount = data["discount"].intValue
+        self.unit = data["unitString"].stringValue
+        self.userStatus = data["userStatus"].boolValue
     }
 }
 

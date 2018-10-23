@@ -11,7 +11,15 @@ import CoreData
 import MobileCoreServices
 import Alamofire
 
-class Chef_DashboardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class Chef_DashboardViewController: UIViewController, Chef_DetailReviewHandlerDelegate, UITableViewDelegate, UITableViewDataSource {
+    func reviewSubmit(title: String, contentText: String, rating: String) {
+        print("REVIEW FROM DETAIL REVIEW COLLECTION CELL !",title,contentText,rating)
+        self.reviewTitle = title
+        self.reviewContent = contentText
+        self.reviewRating = rating
+        callingHttppApi(apiName: CatalogProductAPI.addreview)
+    }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -21,6 +29,7 @@ class Chef_DashboardViewController: UIViewController, UITableViewDelegate, UITab
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:MainTableViewCell = tableView.dequeueReusableCell(withIdentifier: "detail_maintableviewcell") as! MainTableViewCell
+        cell.parentController = self
         var gesture = UITapGestureRecognizer(target: self, action:  #selector (self.detailViewClk (_:)))
         cell.detailView.addGestureRecognizer(gesture)
         
@@ -42,6 +51,7 @@ class Chef_DashboardViewController: UIViewController, UITableViewDelegate, UITab
         case 1:
             cell.baseReviewView.backgroundColor = UIColor().HexToColor(hexString: BUTTON_COLOR)
             cell.productDetailCollectionView.register(UINib(nibName: "Chef_ReviewCell", bundle: nil), forCellWithReuseIdentifier: "chef_reviewcell")
+            cell.delegate = self
             break
         default:
             cell.baseCompareView.backgroundColor = UIColor().HexToColor(hexString: BUTTON_COLOR)
@@ -52,7 +62,7 @@ class Chef_DashboardViewController: UIViewController, UITableViewDelegate, UITab
         cell.catalogProductViewModel = self.catalogProductViewModel
         cell.compareProductCollectionModel = self.compareProductCollectionModel
         cell.productDetailCollectionView.reloadData()
-
+        cell.productCollectionViewHeight.constant = 100
         print(cell.productCollectionViewHeight.constant)
         print("TABLEVIEWCELL ~~~~~~~~~~~~~~")
         return cell
@@ -82,6 +92,7 @@ class Chef_DashboardViewController: UIViewController, UITableViewDelegate, UITab
     @IBOutlet weak var productRateCount: UILabel!
     @IBOutlet weak var productDetailTableView: UITableView!
     @IBOutlet weak var productStarRating: HCSStarRatingView!
+    var supplierNameText:String!
     var catalogProductViewModel:CatalogProductViewModel!
     var compareProductCollectionModel = [Products]()
     var productId:String = ""
@@ -129,6 +140,9 @@ class Chef_DashboardViewController: UIViewController, UITableViewDelegate, UITab
     var headers: HTTPHeaders = [:]
     var configurableDataImages = [String:Any]()
     var configurableDataIndex : AnyObject!
+    var reviewTitle:String!
+    var reviewContent:String!
+    var reviewRating:String!
     
     func jsonSerializationData(jsonObj : Any) -> String   {
         do {
@@ -256,6 +270,9 @@ class Chef_DashboardViewController: UIViewController, UITableViewDelegate, UITab
                     
                     if errorCode == true{
                         GlobalData.sharedInstance.showSuccessSnackBar(msg:data .object(forKey:"message") as! String )
+                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "chef_supercartview") as! Chef_SuperCart
+                        
+                        self.navigationController?.pushViewController(vc, animated: true)
                         if badge == nil {
                             badge = "1"
                         }
@@ -396,7 +413,7 @@ class Chef_DashboardViewController: UIViewController, UITableViewDelegate, UITab
                         self.wishlistBtn.setImage(#imageLiteral(resourceName: "ic_wishlist_fill"), for: .normal)
                         
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshHomeView"), object: nil, userInfo: [:])
-                        self.tabBarController?.tabBar.isHidden = true
+                        //self.tabBarController?.tabBar.isHidden = true
                     }else{
                         GlobalData.sharedInstance.showErrorSnackBar(msg: GlobalData.sharedInstance.language(key:"notmovedtowishlist".localized))
                     }
@@ -436,9 +453,41 @@ class Chef_DashboardViewController: UIViewController, UITableViewDelegate, UITab
                         self.wishlistBtn.setImage(#imageLiteral(resourceName: "ic_wishlist_empty"), for: .normal)
                         
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshHomeView"), object: nil, userInfo: [:])
-                        self.tabBarController?.tabBar.isHidden = true
+                        //self.tabBarController?.tabBar.isHidden = true
                     }else{
                         GlobalData.sharedInstance.showErrorSnackBar(msg:GlobalData.sharedInstance.language(key: "errorwishlist"))
+                    }
+                }else if success == 2{
+                    self.callingHttppApi(apiName: apiName)
+                    GlobalData.sharedInstance.dismissLoader()
+                }
+            }
+        case .addreview:
+            GlobalData.sharedInstance.showLoader()
+            self.view.isUserInteractionEnabled = false
+            var requstParams = [String:Any]()
+            requstParams["customerToken"] = defaults.object(forKey:"customerId") as! String
+            requstParams["productId"] = self.productId
+            requstParams["reviewContent"] = self.reviewContent
+            requstParams["reviewTitle"] = self.reviewTitle
+            requstParams["reviewRating"] = self.reviewRating
+            requstParams["storeId"] = defaults.object(forKey:"storeId") as! String
+            
+            GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"wemteqchef/catalog/addreview", currentView: self){success,responseObject in
+                if success == 1{
+                    self.view.isUserInteractionEnabled = true
+                    GlobalData.sharedInstance.dismissLoader()
+                    print(responseObject!)
+                    self.view.isUserInteractionEnabled = true
+                    
+                    let data = responseObject as! NSDictionary
+                    let errorCode: Bool = data .object(forKey:"success") as! Bool
+                    
+                    if errorCode == true{
+                        GlobalData.sharedInstance.showSuccessSnackBar(msg:"Your Review Successfully Added")
+                        
+                    }else{
+                        GlobalData.sharedInstance.showErrorSnackBar(msg: "Error occured while uploading review")
                     }
                 }else if success == 2{
                     self.callingHttppApi(apiName: apiName)
@@ -967,6 +1016,7 @@ class Chef_DashboardViewController: UIViewController, UITableViewDelegate, UITab
             ratingVal = ratingVal + val
             print("cccvv",ratingVal)
         }
+        supplierName.text = supplierNameText
         productStarRating.value = CGFloat((ratingVal/ratingCount) as Float)
 //        productRating.value = CGFloat((ratingVal/ratingCount) as Float)
         productRate.text = catalogProductViewModel.catalogProductModel.rating!

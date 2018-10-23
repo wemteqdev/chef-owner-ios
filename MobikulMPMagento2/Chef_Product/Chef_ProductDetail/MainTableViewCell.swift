@@ -7,6 +7,9 @@
 //
 
 import UIKit
+@objc protocol Chef_DetailReviewHandlerDelegate: class {
+    func reviewSubmit(title:String,contentText:String,rating:String)
+}
 
 class MainTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var detailView: UIView!
@@ -17,13 +20,19 @@ class MainTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
     @IBOutlet weak var baseCompareView: UIView!
     @IBOutlet weak var productDetailCollectionView: UICollectionView!
     @IBOutlet weak var productCollectionViewHeight: NSLayoutConstraint!
+    var parentController: Chef_DashboardViewController!
     var currentMainView: Int = 0
     var catalogProductViewModel:CatalogProductViewModel!
     var compareProductCollectionModel = [Products]()
+    var delegate:Chef_DetailReviewHandlerDelegate!
+    var titleText:String = ""
+    var contentText:String = ""
+    var rating:String = ""
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         productDetailCollectionView.register(UINib(nibName: "Chef_DetailCell", bundle: nil), forCellWithReuseIdentifier: "chef_detailcell")
+        productDetailCollectionView.register(UINib(nibName: "Chef_ReviewSubmitCell", bundle: nil), forCellWithReuseIdentifier: "chef_reviewsubmitcell")
         productDetailCollectionView.delegate = self
         productDetailCollectionView.dataSource = self
         productDetailCollectionView.reloadData()
@@ -42,10 +51,10 @@ class MainTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
             }
             else if currentMainView == 1 {
                 if catalogProductViewModel.catalogProductModel.reviewList.count > 0{
-                    return catalogProductViewModel.catalogProductModel.reviewList.count
+                    return catalogProductViewModel.catalogProductModel.reviewList.count + 1
                 }
                 else{
-                    return 0
+                    return 1
                 }
             }
             else {
@@ -68,7 +77,11 @@ class MainTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
             return CGSize(width: collectionView.frame.width, height: collectionView.frame.height )
         }
         else {
-             return CGSize(width: collectionView.frame.width, height: 120 )
+            if indexPath.row ==  catalogProductViewModel.catalogProductModel.reviewList.count
+            {
+                return CGSize(width: collectionView.frame.width, height: 180 )
+            }
+            return CGSize(width: collectionView.frame.width, height: 90 )
         }
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -87,6 +100,21 @@ class MainTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
             return cell
 
         case 1:
+            if indexPath.row ==  catalogProductViewModel.catalogProductModel.reviewList.count
+            {
+                print("SUBMIT REVIEW CELL")
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "chef_reviewsubmitcell", for: indexPath) as! Chef_ReviewSubmitCell
+                
+                cell.submitButton.tag = indexPath.row
+                cell.titleLabel.addTarget(self, action: #selector(titleDidChange(_:)), for: .editingChanged)
+                
+                cell.textView.addTarget(self, action: #selector(contentDidChange(_:)), for: .editingChanged)
+                
+                cell.starRating.addTarget(self, action: #selector(starRatingDidChange(_:)), for: .valueChanged)
+                
+                cell.submitButton.addTarget(self, action: #selector(reviewSubmit(sender:)), for: .touchUpInside)
+                return cell
+            }
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "chef_reviewcell", for: indexPath) as! Chef_ReviewCell
             cell.reviewTitle.text = catalogProductViewModel.getReviewListData[indexPath.row].title
 
@@ -123,6 +151,7 @@ class MainTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
 
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "chef_dcomparecell", for: indexPath) as! Chef_DetailCompareCell
+            
             cell.price.text = compareProductCollectionModel[indexPath.row].price
             cell.pricevat.text = "\(String(compareProductCollectionModel[indexPath.row].price)) - \(String(compareProductCollectionModel[indexPath.row].taxClass))"
             cell.reviewStar.value = CGFloat(compareProductCollectionModel[indexPath.row].rating)
@@ -130,11 +159,172 @@ class MainTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
             cell.reviewCount.text = "\(String(compareProductCollectionModel[indexPath.row].reviewCount)) reviews"
             cell.supplierName.text = compareProductCollectionModel[indexPath.row].supplierName
             cell.moq.text = compareProductCollectionModel[indexPath.row].minAddToCartQty
+            if compareProductCollectionModel[indexPath.row].isMin == true{
+                cell.discountLayer.isHidden = false
+                cell.discountLabel.isHidden = false
+                cell.discountLabel.setTitle("Save \(String(compareProductCollectionModel[indexPath.row].discount))%", for: .normal)
+                cell.addtocart.tag = indexPath.row
+                
+                if compareProductCollectionModel[indexPath.row].userStatus == true{
+                    cell.addtocart.setTitle("WAITING APPROVE", for: .normal)
+                }
+                else{
+                    
+                    cell.addtocart.addTarget(self, action: #selector(signupSupplier(sender:)), for: .touchUpInside)
+                    cell.addtocart.setTitle("SIGN UP SUPPLIER", for: .normal)
+                }
+            }
+            else {
+                cell.addtocart.tag = indexPath.row
+                cell.addtocart.addTarget(self, action: #selector(addtoCart(sender:)), for: .touchUpInside)
+            }
             return cell
 
         }
     }
+    @objc func signupSupplier(sender: UIButton){
+        print("SIGN UP SUPPLIER")
+        GlobalData.sharedInstance.showLoader()
+        var requstParams = [String:Any]()
+        requstParams["storeId"] = defaults.object(forKey:"storeId") as! String
+        let customerId = defaults.object(forKey: "customerId")
+        let quoteId = defaults.object(forKey: "quoteId")
+        requstParams["supplierId"] = compareProductCollectionModel[sender.tag].supplierId
+        if customerId != nil{
+            requstParams["customerToken"] = customerId
+        }
+        if quoteId != nil{
+            requstParams["quoteId"] = quoteId
+        }
+        if defaults.object(forKey: "currency") != nil{
+            requstParams["currency"] = defaults.object(forKey: "currency") as! String
+        }
+
+        
+        GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"wemteqchef/catalog/signupsupplier", currentView: parentController){success,responseObject in
+            if success == 1{
+                self.parentController.view.isUserInteractionEnabled = true
+                //self.addToCartIndicator.stopAnimating()
+                GlobalData.sharedInstance.dismissLoader()
+                let data = responseObject as! NSDictionary
+                let errorCode: Bool = data .object(forKey:"success") as! Bool
+                
+                if data.object(forKey: "quoteId") != nil{
+                    let quoteId:String = String(format: "%@", data.object(forKey: "quoteId") as! CVarArg)
+                    if quoteId != "0"{
+                        self.parentController.defaults.set(quoteId, forKey: "quoteId")
+                    }
+                }
+                
+                if errorCode == true{
+                    GlobalData.sharedInstance.showSuccessSnackBar(msg:data .object(forKey:"message") as! String )
+                   
+                }
+                else{
+                    GlobalData.sharedInstance.showErrorSnackBar(msg: data.object(forKey: "message") as! String)
+                }
+                
+                print(data)
+                
+            }else if success == 2{
+                GlobalData.sharedInstance.dismissLoader()
+                self.signupSupplier(sender: sender)
+            }
+        }
+    }
+    @objc func addtoCart(sender: UIButton){
+        GlobalData.sharedInstance.showLoader()
+        var requstParams = [String:Any]()
+        requstParams["storeId"] = defaults.object(forKey:"storeId") as! String
+        let customerId = defaults.object(forKey: "customerId")
+        let quoteId = defaults.object(forKey: "quoteId")
+        requstParams["productId"] = compareProductCollectionModel[sender.tag].productID
+        if customerId != nil{
+            requstParams["customerToken"] = customerId
+        }
+        if quoteId != nil{
+            requstParams["quoteId"] = quoteId
+        }
+        if defaults.object(forKey: "currency") != nil{
+            requstParams["currency"] = defaults.object(forKey: "currency") as! String
+        }
+        requstParams["qty"] = 1
+        
+        GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"mobikulhttp/checkout/addtoCart", currentView: parentController){success,responseObject in
+            if success == 1{
+                self.parentController.view.isUserInteractionEnabled = true
+                //self.addToCartIndicator.stopAnimating()
+                GlobalData.sharedInstance.dismissLoader()
+                let data = responseObject as! NSDictionary
+                let errorCode: Bool = data .object(forKey:"success") as! Bool
+                
+                if data.object(forKey: "quoteId") != nil{
+                    let quoteId:String = String(format: "%@", data.object(forKey: "quoteId") as! CVarArg)
+                    if quoteId != "0"{
+                        self.parentController.defaults.set(quoteId, forKey: "quoteId")
+                    }
+                }
+                
+                if errorCode == true{
+                    GlobalData.sharedInstance.showSuccessSnackBar(msg:data .object(forKey:"message") as! String )
+                    
+                   
+                    if badge == nil {
+                        badge = "1"
+                    }
+                    else{
+                        badge = String(Int(badge!)! + 1)
+                    }
+                    print("BADGE")
+                    print(badge)
+                }
+                else{
+                    GlobalData.sharedInstance.showErrorSnackBar(msg: data.object(forKey: "message") as! String)
+                }
+                
+                
+                
+                print(data)
+                
+            }else if success == 2{
+                GlobalData.sharedInstance.dismissLoader()
+                self.addtoCart(sender: sender)
+            }
+        }
+    }
     
+    @objc func reviewSubmit(sender: UIButton){
+        var errorMsg = "Please Fill or Set"
+        var isValid = true
+        if(rating == ""){
+            errorMsg = "\(errorMsg) Rating"
+            isValid = false
+        }
+        if(contentText == ""){
+            errorMsg = "\(errorMsg) Review Detail"
+            isValid = false
+        }
+        if(titleText == ""){
+            errorMsg = "\(errorMsg) Review Title"
+            isValid = false
+        }
+        if !isValid{
+            GlobalData.sharedInstance.showErrorSnackBar(msg: errorMsg)
+        }
+        else{
+            delegate.reviewSubmit(title:titleText,contentText:contentText,rating:rating)
+        }
+    }
+    @objc func titleDidChange(_ textField: UITextField) {
+        titleText = textField.text!
+    }
+    @objc func contentDidChange(_ textField: UITextField) {
+        contentText = textField.text!
+    }
+    @objc func starRatingDidChange(_ starRating: HCSStarRatingView)
+    {
+        rating = starRating.value.description
+    }
 }
 extension String {
     

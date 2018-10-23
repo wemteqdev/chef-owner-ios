@@ -8,8 +8,10 @@
 
 import UIKit
 import SwiftMessages
+import ImageSlideshow
 var badge:String? = nil
-class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource,chef_productViewControllerHandlerDelegate,bannerViewControllerHandlerDelegate,CategoryViewControllerHandlerDelegate,hotDealProductViewControllerHandlerDelegate,UISearchBarDelegate,RecentProductViewControllerHandlerDelegate, UITabBarControllerDelegate {
+class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource,chef_productViewControllerHandlerDelegate,bannerViewControllerHandlerDelegate,CategoryViewControllerHandlerDelegate,hotDealProductViewControllerHandlerDelegate,UISearchBarDelegate,RecentProductViewControllerHandlerDelegate, UITabBarControllerDelegate{
+
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -150,7 +152,7 @@ class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPicker
         vc.productName = name
         vc.productImageUrl = image
         vc.productId = id
-       // vc.supplierName.text = supplierName
+        vc.supplierNameText = supplierName
 
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -195,13 +197,14 @@ class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPicker
     var change:Bool = true
     var responseObject : AnyObject!
     
-    @IBOutlet weak var bannerImage: UIImageView!
+  
     
+   
     @IBOutlet weak var productTableView: UITableView!
     @IBOutlet weak var changeViewButton: UIButton!
     @IBOutlet weak var sortField: UITextField!
     @IBOutlet weak var filterButton: UIButton!
-    @IBOutlet weak var BannerView: UIView!
+    @IBOutlet weak var BannerView: UITableView!
     @IBOutlet weak var filterView: UICollectionView!
     @IBOutlet weak var filterCoverView: UIView!
     
@@ -226,7 +229,7 @@ class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPicker
     var categoryType:String = ""
     var whichApiToProcess:String = ""
     var limitedCount:Int = 5
-
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -238,6 +241,7 @@ class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPicker
     }
     func loadNavgiationButtons() {
         let btnCart = SSBadgeButton()
+        
         btnCart.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
         btnCart.setImage(UIImage(named: "Action 4")?.withRenderingMode(.alwaysTemplate), for: .normal)
         btnCart.badgeEdgeInsets = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 10)
@@ -257,8 +261,11 @@ class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPicker
         
         self.navigationController?.navigationBar.tintColor = .white
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+       
         
         filterView.register(UINib(nibName: "CategoryCell", bundle: nil), forCellWithReuseIdentifier: "categorycell")
         filterCoverView.isHidden = true
@@ -290,6 +297,16 @@ class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPicker
         var navigationBarAppearace = UINavigationBar.appearance()
         
         navigationBarAppearace.tintColor = UIColor.white
+        
+        BannerView?.register(BannerTableViewCell.nib, forCellReuseIdentifier: BannerTableViewCell.identifier)
+        BannerView?.register(TopCategoryTableViewCell.nib, forCellReuseIdentifier: TopCategoryTableViewCell.identifier)
+        BannerView?.register(Chef_ProductTableViewCell.nib, forCellReuseIdentifier: Chef_ProductTableViewCell.identifier)
+        BannerView?.register(HotdealsTableViewCell.nib, forCellReuseIdentifier: HotdealsTableViewCell.identifier)
+        BannerView?.register(RecentViewTableViewCell.nib, forCellReuseIdentifier: RecentViewTableViewCell.identifier)
+        BannerView.tag = 1000
+        productTableView.tag = 2000
+        self.BannerView.dataSource = homeViewModel
+        self.BannerView.delegate = homeViewModel
    
         filterView.delegate = self
         filterView.dataSource = self
@@ -305,27 +322,15 @@ class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPicker
         GlobalVariables.hometableView = productTableView
         self.homeViewModel.homeViewController = self;
         self.productTableView.separatorColor = UIColor.clear
+        self.BannerView.separatorColor = UIColor.clear
         print("View Didload")
         callingHttppApi();
         self.productTableView.reloadDataWithAutoSizingCellWorkAround()
-       
+        self.BannerView.reloadDataWithAutoSizingCellWorkAround()
         //ThemeManager.applyTheme(bar:(self.navigationController?.navigationBar)!)
     }
-    var timer = Timer()
-    @objc func onTransition() {
-        if (self.photoCount < self.bannerCollectionModel.count - 1){
-            self.photoCount = self.photoCount  + 1;
-        }else{
-            self.photoCount = 0;
-        }
-        
-        UIView.transition(with: self.bannerImage, duration: 2.0, options: .transitionCrossDissolve, animations: {
-            
-            GlobalData.sharedInstance.getImageFromUrl(imageUrl: self.bannerCollectionModel[self.photoCount].imageUrl, imageView: self.bannerImage)
-            
-        }, completion: nil)
-    }
-    var photoCount:Int = 0
+    
+   
 //    @objc func tapResponse(){
 //        let tmp:Int = curImage
 //        curImage = curImage + 1
@@ -416,7 +421,8 @@ class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPicker
                                 self.categoryMenuData = self.tempCategoryData;
                                 self.filterView.reloadData()
                                  self.bannerCollectionModel = ((self.homeViewModel.items[0] as? HomeViewModelBannerItem)?.bannerCollectionModel)!
-                                self.timer = Timer.scheduledTimer(timeInterval: 4.0, target: self, selector: #selector(self.onTransition), userInfo: nil, repeats: true)
+                                print("bannerCollectionModel",self.bannerCollectionModel)
+                                self.BannerView.reloadData()
                                 /*UIView.animate(withDuration: 0.5, animations: {
                                  self.launchView?.view.alpha = 0.0
                                  }) { _ in

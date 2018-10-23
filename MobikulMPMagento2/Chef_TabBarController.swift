@@ -13,7 +13,7 @@ class Chef_TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         delegate = self as! UITabBarControllerDelegate
-        //self.selectedIndex = 1
+        self.selectedIndex = 1
     }
 
     override func didReceiveMemoryWarning() {

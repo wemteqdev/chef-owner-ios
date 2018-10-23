@@ -523,4 +523,5 @@ enum CatalogProductAPI : String {
     case addToCompare
     case catalogProduct
     case removeFromWishList
+    case addreview
 }

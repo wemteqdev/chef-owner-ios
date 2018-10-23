@@ -153,6 +153,8 @@
 		575AEC0F214993FF007983E7 /* Chef_Owner_Choice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575AEC0E214993FF007983E7 /* Chef_Owner_Choice.swift */; };
 		57AEA6CA2151CC090078A0BA /* Chef_TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AEA6C92151CC080078A0BA /* Chef_TabBarController.swift */; };
 		57B2E0932169D9F70029AC63 /* Chef_ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B2E0922169D9F70029AC63 /* Chef_ProfileViewController.swift */; };
+		57C3DA20217D829A00C243E5 /* Chef_ReviewSubmitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C3DA1E217D829A00C243E5 /* Chef_ReviewSubmitCell.swift */; };
+		57C3DA21217D829A00C243E5 /* Chef_ReviewSubmitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57C3DA1F217D829A00C243E5 /* Chef_ReviewSubmitCell.xib */; };
 		57C6FFF5216404B800E5EABB /* Chef_CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C6FFF3216404B800E5EABB /* Chef_CategoryCollectionViewCell.swift */; };
 		57C6FFF6216404B800E5EABB /* Chef_CategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57C6FFF4216404B800E5EABB /* Chef_CategoryCollectionViewCell.xib */; };
 		57C8312B214A9B5B00CE5911 /* Forgotpassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C8312A214A9B5B00CE5911 /* Forgotpassword.swift */; };
@@ -741,6 +743,8 @@
 		575AEC0E214993FF007983E7 /* Chef_Owner_Choice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chef_Owner_Choice.swift; sourceTree = "<group>"; };
 		57AEA6C92151CC080078A0BA /* Chef_TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chef_TabBarController.swift; sourceTree = "<group>"; };
 		57B2E0922169D9F70029AC63 /* Chef_ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chef_ProfileViewController.swift; sourceTree = "<group>"; };
+		57C3DA1E217D829A00C243E5 /* Chef_ReviewSubmitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chef_ReviewSubmitCell.swift; sourceTree = "<group>"; };
+		57C3DA1F217D829A00C243E5 /* Chef_ReviewSubmitCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Chef_ReviewSubmitCell.xib; sourceTree = "<group>"; };
 		57C6FFF3216404B800E5EABB /* Chef_CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chef_CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		57C6FFF4216404B800E5EABB /* Chef_CategoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Chef_CategoryCollectionViewCell.xib; sourceTree = "<group>"; };
 		57C8312A214A9B5B00CE5911 /* Forgotpassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forgotpassword.swift; sourceTree = "<group>"; };
@@ -1170,10 +1174,10 @@
 				A3A20CC721119079008E178F /* ThemeManager.swift */,
 				575AEC0221487E57007983E7 /* SignInOrNew.swift */,
 				575AEC0E214993FF007983E7 /* Chef_Owner_Choice.swift */,
-				57C8312A214A9B5B00CE5911 /* Forgotpassword.swift */,
 				0C0570AE20408BBD00EB527B /* LaunchScreen.storyboard */,
 				0C05709820408A8800EB527B /* Assets.xcassets */,
 				0C05709D20408A8800EB527B /* Info.plist */,
+				57C8312A214A9B5B00CE5911 /* Forgotpassword.swift */,
 				0C0570AB20408BBC00EB527B /* MobikulMPMagento2-Bridging-Header.h */,
 				A37B094520B3FF6E001C876D /* README.md */,
 				57AEA6C92151CC080078A0BA /* Chef_TabBarController.swift */,
@@ -1402,6 +1406,8 @@
 				57E575A121737355008A7B65 /* Chef_ReviewCell.xib */,
 				57E575A421737395008A7B65 /* Chef_DetailCompareCell.swift */,
 				57E575A521737395008A7B65 /* Chef_DetailCompareCell.xib */,
+				57C3DA1E217D829A00C243E5 /* Chef_ReviewSubmitCell.swift */,
+				57C3DA1F217D829A00C243E5 /* Chef_ReviewSubmitCell.xib */,
 			);
 			path = Chef_ProductDetail;
 			sourceTree = "<group>";
@@ -2370,6 +2376,7 @@
 				A362A2AC2127FAA900B6B398 /* Cairo-Bold.ttf in Resources */,
 				A3B7D304207DFE210026A3AF /* ViewAllCell.xib in Resources */,
 				A3B7D309207DFE210026A3AF /* NotificationTableViewCell.xib in Resources */,
+				57C3DA21217D829A00C243E5 /* Chef_ReviewSubmitCell.xib in Resources */,
 				57328F16214EE4210081D21D /* Chef_ProductImageCell.xib in Resources */,
 				A362A2AE2127FAA900B6B398 /* Cairo-Regular.ttf in Resources */,
 				0C05710220408BDB00EB527B /* ic_password_checkmark@2x.png in Resources */,
@@ -2449,6 +2456,7 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/ImageSlideshow/ImageSlideshow.framework",
 				"${BUILT_PRODUCTS_DIR}/OfflineBar/OfflineBar.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/Reachability/Reachability.framework",
@@ -2473,6 +2481,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleAPIClientForREST.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageSlideshow.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OfflineBar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
@@ -2713,6 +2722,7 @@
 				0C05710A20408BDB00EB527B /* ProgressAtRatioView.swift in Sources */,
 				A3B7D206207DFDBD0026A3AF /* SellerOrdersDataCell.swift in Sources */,
 				A3B7D2ED207DFE210026A3AF /* CatalogProduct.swift in Sources */,
+				57C3DA20217D829A00C243E5 /* Chef_ReviewSubmitCell.swift in Sources */,
 				0C05711220408BDB00EB527B /* IQUIScrollView+Additions.swift in Sources */,
 				A3B7D248207DFDBD0026A3AF /* SellerProfileTopViewCell.swift in Sources */,
 				A3B7D2FA207DFE210026A3AF /* HomeModel.swift in Sources */,

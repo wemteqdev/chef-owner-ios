@@ -243,49 +243,49 @@ class SellerOrderDetailsController: UIViewController,UITableViewDelegate, UITabl
             var returnCellCount = 0
             cellIndexes.removeAll()
             
-            if self.sellerOrderDetailsViewModelData.creditMemoButton == 1{
-                cellIndexes["creditMemo"] = returnCellCount
-                returnCellCount += 1
-            }
-            
-            if self.sellerOrderDetailsViewModelData.sendEmailButton == 1{
-                cellIndexes["sendMail"] = returnCellCount
-                returnCellCount += 1
-            }
-            
-            if self.sellerOrderDetailsViewModelData.invoiceButton == 1{
-                cellIndexes["invoice"] = returnCellCount
-                returnCellCount += 1
-            }
-            
-            if self.sellerOrderDetailsViewModelData.shipmentButton == 1{
-                cellIndexes["shipment"] = returnCellCount
-                returnCellCount += 1
-            }
-            
-            if self.sellerOrderDetailsViewModelData.cancelButton == 1{
-                cellIndexes["cancel"] = returnCellCount
-                returnCellCount += 1
-            }
-            
-            var f = 0
-            
-            if self.sellerOrderDetailsViewModelData.invoiceId != "0"{
-                f = 1
-            }
-            
-            if self.sellerOrderDetailsViewModelData.shipmentId != "0"{
-                f = 1
-            }
-            
-            if self.sellerOrderDetailsViewModelData.creditMemoTab != 0{
-                f = 1
-            }
-            
-            if f == 1{
-                cellIndexes["bottom"] = returnCellCount
-                returnCellCount += 1
-            }
+//            if self.sellerOrderDetailsViewModelData.creditMemoButton == 1{
+//                cellIndexes["creditMemo"] = returnCellCount
+//                returnCellCount += 1
+//            }
+//
+//            if self.sellerOrderDetailsViewModelData.sendEmailButton == 1{
+//                cellIndexes["sendMail"] = returnCellCount
+//                returnCellCount += 1
+//            }
+//
+//            if self.sellerOrderDetailsViewModelData.invoiceButton == 1{
+//                cellIndexes["invoice"] = returnCellCount
+//                returnCellCount += 1
+//            }
+//
+//            if self.sellerOrderDetailsViewModelData.shipmentButton == 1{
+//                cellIndexes["shipment"] = returnCellCount
+//                returnCellCount += 1
+//            }
+//
+//            if self.sellerOrderDetailsViewModelData.cancelButton == 1{
+//                cellIndexes["cancel"] = returnCellCount
+//                returnCellCount += 1
+//            }
+//
+//            var f = 0
+//
+//            if self.sellerOrderDetailsViewModelData.invoiceId != "0"{
+//                f = 1
+//            }
+//
+//            if self.sellerOrderDetailsViewModelData.shipmentId != "0"{
+//                f = 1
+//            }
+//
+//            if self.sellerOrderDetailsViewModelData.creditMemoTab != 0{
+//                f = 1
+//            }
+//
+//            if f == 1{
+//                cellIndexes["bottom"] = returnCellCount
+//                returnCellCount += 1
+//            }
             
             return returnCellCount
         }else {

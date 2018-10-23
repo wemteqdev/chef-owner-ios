@@ -22,7 +22,8 @@ class Chef_SuperCart: UIViewController {
     var proceedToCheckout:Bool = true
     var toUpdateItemQtys = NSMutableArray()
     var toUpdateItemId = NSMutableArray()
-    
+    var selectedSupplierId = "";
+    var selectedSupplierName = "";
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.allowMultipleSectionsOpen = true
@@ -38,8 +39,19 @@ class Chef_SuperCart: UIViewController {
         whichApiToProcess = "sellerList"
         callingHttppApi()
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier! == "sellerprofile") {
+//            let viewController:SellerDetailsViewController = segue.destination as UIViewController as! SellerDetailsViewController
+            //viewController.profileUrl = sellerId;
+        }else if (segue.identifier! == "productcategory") {
+            let viewController:Productcategory = segue.destination as UIViewController as! Productcategory
+            viewController.categoryName = String(selectedSupplierName);
+            viewController.categoryType = "marketplace";
+            viewController.sellerId = String(selectedSupplierId);
+        }
+    }
     @objc func browseCategory(sender: UIButton){
-        //self.tabBarController!.selectedIndex = 1
+        self.tabBarController!.selectedIndex = 1
     }
     @IBAction func updateCart(_ sender: UIButton){
         toUpdateItemId = NSMutableArray();
@@ -83,7 +95,7 @@ class Chef_SuperCart: UIViewController {
                         GlobalData.sharedInstance.showErrorSnackBar(msg: dict["message"].stringValue)
                     }
                     
-                    GlobalData.sharedInstance.dismissLoader()
+                    //GlobalData.sharedInstance.dismissLoader()
                     print("dsd", responseObject)
                     
                 }else if success == 2{
@@ -122,7 +134,7 @@ class Chef_SuperCart: UIViewController {
                 print(error.localizedDescription)
             }
             
-            GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"mobikulhttp/checkout/updateCart", currentView: self){success,responseObject in
+            GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"wemteqchef/checkout/updateCart", currentView: self){success,responseObject in
                 if success == 1{
                     if responseObject?.object(forKey: "storeId") != nil{
                         let storeId:String = String(format: "%@", responseObject!.object(forKey: "storeId") as! CVarArg)
@@ -194,19 +206,42 @@ class Chef_SuperCart: UIViewController {
         DispatchQueue.main.async {
             self.view.isUserInteractionEnabled = true
             self.cartSellerIndex = []
+            var minorderQty:Int = 0
+            var tierSum:Double = 0.0
+            var originalSum:Double = 0.0
             print("cart COUNT !!!!!!!!!!!", self.myCartViewModel.getCartItems.count)
             if self.myCartViewModel.getCartItems.count > 0 {
                 for i in 0...self.sellerListViewModel.sellerListModel.count - 1 {
+                    minorderQty = 0
+                    tierSum = 0.0
+                    originalSum = 0.0
                     for j in 0...self.myCartViewModel.getCartItems.count - 1 {
                         print("seller id~~~",self.sellerListViewModel.sellerListModel[i].sellerId)
+                        
                         if self.sellerListViewModel.sellerListModel[i].sellerId == self.myCartViewModel.myCartModel[j].supplierId  {
                             print("supplier Id~~~~",self.myCartViewModel.myCartModel[j].supplierId)
                             self.sellerListViewModel.sellerListModel[i].cartItemCount = self.sellerListViewModel.sellerListModel[i].cartItemCount + 1
                             self.sellerListViewModel.sellerListModel[i].cartItemIndex.append(j)
+                            if minorderQty < self.myCartViewModel.myCartModel[j].moq {
+                                minorderQty = self.myCartViewModel.myCartModel[j].moq
+                            }
+                            if self.myCartViewModel.myCartModel[j].tier_price != 0 {
+                            tierSum = tierSum + self.myCartViewModel.myCartModel[j].tier_price
+                            originalSum = originalSum + self.myCartViewModel.myCartModel[j].priceint
+                            }
                         }
                     }
                     if self.sellerListViewModel.sellerListModel[i].cartItemCount > 0 {
                         print("sellerList CartItem Count~~~~",self.sellerListViewModel.sellerListModel[i].cartItemCount)
+                        if tierSum > 0 { self.sellerListViewModel.sellerListModel[i].discountLevel = tierSum/originalSum
+                        
+                        }
+                        else
+                        {
+                            self.sellerListViewModel.sellerListModel[i].discountLevel = 0
+                        }
+                       print("DISCOUNT LEVEL", self.sellerListViewModel.sellerListModel[i].discountLevel)
+                        self.sellerListViewModel.sellerListModel[i].minorderQty = String(minorderQty)
                         self.cartSellerIndex.append(i)
                     }
                 }
@@ -329,8 +364,23 @@ extension Chef_SuperCart : UITableViewDelegate, UITableViewDataSource {
         print(indexPath.row)
         let CartIndex = self.sellerListViewModel.sellerListModel[curSection].cartItemIndex[indexPath.row]
         cell.titleLabel.text = self.myCartViewModel.myCartModel[CartIndex].name
-        cell.priceLabel.text = self.myCartViewModel.myCartModel[CartIndex].price
-        cell.subtotal.text = self.myCartViewModel.myCartModel[CartIndex].subtotal
+        if self.myCartViewModel.myCartModel[CartIndex].tierSubtotal != ""{
+            
+            let attributedString = NSMutableAttributedString(string:( self.myCartViewModel.myCartModel[CartIndex].subtotal ))
+            attributedString.addAttribute(NSAttributedStringKey.baselineOffset, value: 0, range: NSMakeRange(0, attributedString.length))
+            attributedString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: NSNumber(value: NSUnderlineStyle.styleThick.rawValue), range: NSMakeRange(0, attributedString.length))
+            attributedString.addAttribute(NSAttributedStringKey.strikethroughColor, value: UIColor.gray, range: NSMakeRange(0, attributedString.length))
+            
+            cell.pricewithsub.attributedText = attributedString
+            //cell.pricewithsub.text = self.myCartViewModel.myCartModel[CartIndex].subtotal
+            cell.subtotal.text = "\(self.myCartViewModel.myCartModel[CartIndex].subtotal.prefix(1))\(self.myCartViewModel.myCartModel[CartIndex].tierSubtotal)"
+        }
+        else {
+            cell.pricewithsub.isHidden = true
+            cell.subtotal.text = self.myCartViewModel.myCartModel[CartIndex].subtotal
+        }
+        cell.priceLabel.text = "\(String(self.myCartViewModel.myCartModel[CartIndex].price))/\(String(self.myCartViewModel.myCartModel[CartIndex].unitString)) - \(String(self.myCartViewModel.myCartModel[CartIndex].taxClass))"
+        
         cell.supplierName.text = self.sellerListViewModel.sellerListModel[curSection].shopTitle
         cell.qtyButton.setTitle(self.myCartViewModel.myCartModel[CartIndex].qty, for: .normal)
         GlobalData.sharedInstance.getImageFromUrl(imageUrl: myCartViewModel.getCartItems[CartIndex].imageUrl, imageView: cell.productImage)
@@ -359,10 +409,20 @@ extension Chef_SuperCart : UITableViewDelegate, UITableViewDataSource {
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: AccordionHeaderView.kAccordionHeaderViewReuseIdentifier)! as! AccordionHeaderView
             print("Section")
             print(section)
+        headerView.viewAllButton.tag = cartSellerIndex[section]
         headerView.supplierName.setTitle(self.sellerListViewModel.sellerListModel[cartSellerIndex[section]].shopTitle, for: .normal)
-
+        headerView.viewAllButton.addTarget(self, action: #selector(browseCatalogBtnClk(sender:)), for: .touchUpInside)
+        headerView.discountProgressView.progress = Float(self.sellerListViewModel.sellerListModel[cartSellerIndex[section]].discountLevel)
+        headerView.discountPercent.text = "\(String(self.sellerListViewModel.sellerListModel[cartSellerIndex[section]].discountLevel * 100)) %"
+        headerView.moqLabel.isHidden = true
         GlobalData.sharedInstance.getImageFromUrl(imageUrl: self.sellerListViewModel.sellerListModel[cartSellerIndex[section]].logo, imageView: headerView.supplierImage)
         return headerView
+    }
+    @objc func browseCatalogBtnClk(sender: UIButton){
+        self.selectedSupplierName = String(self.sellerListViewModel.sellerListModel[sender.tag].shopTitle);
+        self.selectedSupplierId = self.sellerListViewModel.sellerListModel[sender.tag].sellerId;
+        self.performSegue( withIdentifier: "productcategory", sender: self)
+        
     }
     @objc func plusButtonClick(sender: UIButton){
         let qty:String = String(Int(self.myCartViewModel.myCartModel[sender.tag].qty)! + 1)
@@ -388,6 +448,7 @@ extension Chef_SuperCart : FZAccordionTableViewDelegate {
         print("Selected Section Num:")
         print(section)
         self.curSection = cartSellerIndex[section]
+        
     }
     
     func tableView(_ tableView: FZAccordionTableView, didOpenSection section: Int, withHeader header: UITableViewHeaderFooterView?) {

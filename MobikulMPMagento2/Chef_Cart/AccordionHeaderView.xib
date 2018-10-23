@@ -68,6 +68,7 @@
                                 </label>
                                 <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Yxw-XE-Uu6">
                                     <rect key="frame" x="86" y="66" width="100" height="2"/>
+                                    <color key="tintColor" red="1" green="0.61443256469999996" blue="0.066092109339999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="100" id="Zcn-ZN-Y9R"/>
                                     </constraints>
@@ -79,6 +80,12 @@
                                     </constraints>
                                     <state key="normal" image="ic_down"/>
                                 </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdk-bh-vG9">
+                                    <rect key="frame" x="205" y="59.333333333333336" width="33" height="15.666666666666664"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
@@ -87,11 +94,13 @@
                                 <constraint firstItem="Yxw-XE-Uu6" firstAttribute="leading" secondItem="xzm-lh-u8r" secondAttribute="leading" id="8BF-yX-lzq"/>
                                 <constraint firstItem="TLA-zs-Whz" firstAttribute="leading" secondItem="SQ6-lK-qh2" secondAttribute="trailing" constant="5" id="BAz-ko-2DW"/>
                                 <constraint firstItem="SQ6-lK-qh2" firstAttribute="centerY" secondItem="u9f-fn-Iqg" secondAttribute="centerY" id="FFa-36-vV2"/>
+                                <constraint firstItem="bdk-bh-vG9" firstAttribute="leading" secondItem="Yxw-XE-Uu6" secondAttribute="trailing" constant="19" id="I6m-zx-fh8"/>
                                 <constraint firstItem="UDn-uS-NE2" firstAttribute="top" secondItem="u9f-fn-Iqg" secondAttribute="top" constant="12" id="Iyx-kO-txI"/>
                                 <constraint firstItem="WtG-bS-bH3" firstAttribute="top" secondItem="u9f-fn-Iqg" secondAttribute="top" id="K11-1z-WJe"/>
                                 <constraint firstItem="WtG-bS-bH3" firstAttribute="centerY" secondItem="UDn-uS-NE2" secondAttribute="centerY" constant="-20" id="M2U-cb-2xi"/>
                                 <constraint firstItem="Yxw-XE-Uu6" firstAttribute="centerY" secondItem="UDn-uS-NE2" secondAttribute="centerY" constant="20" id="Ukw-5A-Gbh"/>
                                 <constraint firstItem="TLA-zs-Whz" firstAttribute="centerY" secondItem="SQ6-lK-qh2" secondAttribute="centerY" id="XVY-OS-QyF"/>
+                                <constraint firstItem="bdk-bh-vG9" firstAttribute="centerY" secondItem="Yxw-XE-Uu6" secondAttribute="centerY" id="fW9-I1-9iZ"/>
                                 <constraint firstItem="SQ6-lK-qh2" firstAttribute="width" secondItem="u9f-fn-Iqg" secondAttribute="width" multiplier="1/4" id="gpS-HU-cji"/>
                                 <constraint firstAttribute="trailing" secondItem="SQ6-lK-qh2" secondAttribute="trailing" constant="40" id="gz8-10-Kgo"/>
                                 <constraint firstItem="xzm-lh-u8r" firstAttribute="centerY" secondItem="UDn-uS-NE2" secondAttribute="centerY" id="pMc-0N-S1q"/>
@@ -124,6 +133,7 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="discountPercent" destination="bdk-bh-vG9" id="m4Q-aq-KcU"/>
                 <outlet property="discountProgressView" destination="Yxw-XE-Uu6" id="6li-J2-7hD"/>
                 <outlet property="downButton" destination="TLA-zs-Whz" id="PJv-h8-Wfs"/>
                 <outlet property="moqLabel" destination="xzm-lh-u8r" id="Rak-t1-kd7"/>

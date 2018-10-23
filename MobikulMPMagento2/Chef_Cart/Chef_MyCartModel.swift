@@ -21,7 +21,14 @@ class Chef_MyCartModel: NSObject {
     var supplierId:String = ""
     var rating:Double!
     var reviewCount:String = ""
-    
+    var unit:String = ""
+    var unitMeasurement:Int = 1
+    var tier_price:Double!
+    var moq:Int!
+    var priceint:Double!
+    var tierSubtotal:String = ""
+    var unitString:String!
+    var taxClass:String!
     init(data:JSON) {
         self.id = data["id"].stringValue
         self.imageUrl = data["image"].stringValue
@@ -35,6 +42,20 @@ class Chef_MyCartModel: NSObject {
         self.supplierId = data["supplierId"].stringValue
         self.rating = data["rating"].doubleValue
         self.reviewCount = data["reviewcount"].stringValue
+        self.unit = data["unit"].stringValue
+        self.unitMeasurement = data["unitMeasurement"].intValue
+        self.taxClass = data["tax_class"].stringValue
+        if self.taxClass == "" {
+            self.taxClass = "No Tax Class"
+        }
+        self.tier_price = data["tier_price"].doubleValue
+        if(self.tier_price == nil){
+            self.tier_price = 0
+        }
+        self.moq = data["minorderQty"].intValue
+        self.priceint = data["priceint"].doubleValue
+        self.tierSubtotal = data["tier_subtotal"].stringValue
+        self.unitString = data["unitString"].stringValue
     }
 }
 
