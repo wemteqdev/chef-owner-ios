@@ -92,6 +92,7 @@ class OwnerDashBoardViewModel: NSObject {
     var totalCustomerWeekly = 0;
     var totalCustomerMonthly = 0;
     var totalCustomerYearly = 0;
+    var currencySymbol:String = ""
     
     init(data:JSON){
         //----------Get Graph Data(For daily, weekly, monthly, yearly)--------------
@@ -156,5 +157,6 @@ class OwnerDashBoardViewModel: NSObject {
         }
         diagramYearlyTotal = DiagramTotalData.init(ordersCount: data["yearlyOrdersCount"].intValue, ordersTotal: String(format:"%.1f",orderYearlyTotal[orderYearlyTotal.count-1]), supplierCounts: totalCustomerYearly, percentage: percent);
         
+        currencySymbol = data["currencySymbol"].stringValue        
     }
 }

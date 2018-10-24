@@ -8,16 +8,18 @@
 
 import UIKit
 import Alamofire
+import SearchTextField
 
 class AddSupplierAlertView: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var chefEmailTextField: UITextField!
+    @IBOutlet weak var chefEmailTextField: SearchTextField!
     @IBOutlet weak var alertView: UIView!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var okButton: UIButton!
     @IBOutlet weak var infoLabel: UILabel!
     
+    var supplierEmails = [String]();
     var delegate: AddSupplierAlertViewDelegate?
     var callingApiSucceed:Bool = false;
     var restaurantId:Int = -1;
@@ -25,8 +27,10 @@ class AddSupplierAlertView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        chefEmailTextField.becomeFirstResponder()
+        //chefEmailTextField.becomeFirstResponder()
         okButton.layer.cornerRadius = 20
+        chefEmailTextField.filterStrings(supplierEmails)
+        chefEmailTextField.startSuggestingInmediately = true
     }
     
     override func viewWillAppear(_ animated: Bool) {

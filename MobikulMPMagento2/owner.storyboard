@@ -755,12 +755,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kdY-kV-Qr1">
-                                <rect key="frame" x="0.0" y="64" width="375" height="40"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="50"/>
                                 <subviews>
-                                    <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search Suppliers with Email" translatesAutoresizingMaskIntoConstraints="NO" id="2py-KX-tmb">
-                                        <rect key="frame" x="10" y="5" width="355" height="30"/>
+                                    <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search Suppliers with Email" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2py-KX-tmb">
+                                        <rect key="frame" x="10" y="5" width="355" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="xnv-ey-vFP"/>
+                                            <constraint firstAttribute="height" constant="40" id="xnv-ey-vFP"/>
                                         </constraints>
                                         <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <textInputTraits key="textInputTraits" textContentType="username"/>
@@ -772,11 +772,11 @@
                                     <constraint firstItem="2py-KX-tmb" firstAttribute="leading" secondItem="kdY-kV-Qr1" secondAttribute="leading" constant="10" id="4KJ-Po-I9R"/>
                                     <constraint firstAttribute="trailing" secondItem="2py-KX-tmb" secondAttribute="trailing" constant="10" id="BLZ-75-kgb"/>
                                     <constraint firstItem="2py-KX-tmb" firstAttribute="centerY" secondItem="kdY-kV-Qr1" secondAttribute="centerY" id="GTs-xV-2S2"/>
-                                    <constraint firstAttribute="height" constant="40" id="tBE-mX-Hl2"/>
+                                    <constraint firstAttribute="height" constant="50" id="tBE-mX-Hl2"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NZq-y4-Z9y">
-                                <rect key="frame" x="0.0" y="104" width="375" height="514"/>
+                                <rect key="frame" x="0.0" y="114" width="375" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
@@ -984,12 +984,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xOI-WJ-6kk">
-                                <rect key="frame" x="0.0" y="64" width="375" height="40"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="50"/>
                                 <subviews>
-                                    <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search Chefs with Email" translatesAutoresizingMaskIntoConstraints="NO" id="hor-lf-Rln">
-                                        <rect key="frame" x="10" y="5" width="355" height="30"/>
+                                    <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search Chefs with Email" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hor-lf-Rln">
+                                        <rect key="frame" x="10" y="5" width="355" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="dWy-Td-gUk"/>
+                                            <constraint firstAttribute="height" constant="40" id="dWy-Td-gUk"/>
                                         </constraints>
                                         <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <textInputTraits key="textInputTraits" textContentType="username"/>
@@ -1000,12 +1000,12 @@
                                 <constraints>
                                     <constraint firstItem="hor-lf-Rln" firstAttribute="centerY" secondItem="xOI-WJ-6kk" secondAttribute="centerY" id="8Sk-YA-E9c"/>
                                     <constraint firstItem="hor-lf-Rln" firstAttribute="leading" secondItem="xOI-WJ-6kk" secondAttribute="leading" constant="10" id="Giy-ZG-2cs"/>
-                                    <constraint firstAttribute="height" constant="40" id="HBD-vZ-Tbn"/>
+                                    <constraint firstAttribute="height" constant="50" id="HBD-vZ-Tbn"/>
                                     <constraint firstAttribute="trailing" secondItem="hor-lf-Rln" secondAttribute="trailing" constant="10" id="vW3-Sv-oBi"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yJG-oo-y0f">
-                                <rect key="frame" x="0.0" y="104" width="375" height="514"/>
+                                <rect key="frame" x="0.0" y="114" width="375" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
@@ -1054,12 +1054,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GNp-tI-Efv">
-                                <rect key="frame" x="0.0" y="64" width="375" height="40"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="50"/>
                                 <subviews>
-                                    <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search Restaurant" translatesAutoresizingMaskIntoConstraints="NO" id="ttE-5S-ngK">
-                                        <rect key="frame" x="10" y="5" width="355" height="30"/>
+                                    <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search Restaurant" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ttE-5S-ngK">
+                                        <rect key="frame" x="10" y="5" width="355" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="UDE-C4-KvF"/>
+                                            <constraint firstAttribute="height" constant="40" id="UDE-C4-KvF"/>
                                         </constraints>
                                         <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <textInputTraits key="textInputTraits" textContentType="username"/>
@@ -1071,11 +1071,11 @@
                                     <constraint firstItem="ttE-5S-ngK" firstAttribute="leading" secondItem="GNp-tI-Efv" secondAttribute="leading" constant="10" id="MVD-SI-IlH"/>
                                     <constraint firstAttribute="trailing" secondItem="ttE-5S-ngK" secondAttribute="trailing" constant="10" id="Si1-7m-dzU"/>
                                     <constraint firstItem="ttE-5S-ngK" firstAttribute="centerY" secondItem="GNp-tI-Efv" secondAttribute="centerY" id="TMT-Un-Yvt"/>
-                                    <constraint firstAttribute="height" constant="40" id="jo8-u4-Wti"/>
+                                    <constraint firstAttribute="height" constant="50" id="jo8-u4-Wti"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Eus-t7-LBs">
-                                <rect key="frame" x="0.0" y="104" width="375" height="514"/>
+                                <rect key="frame" x="0.0" y="114" width="375" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
@@ -1291,7 +1291,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hH3-YL-dNx" userLabel="Alert View">
-                                        <rect key="frame" x="12" y="337" width="352" height="300"/>
+                                        <rect key="frame" x="12" y="317" width="352" height="300"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MJF-CA-N0a" userLabel="Title View">
                                                 <rect key="frame" x="10" y="10" width="332" height="40"/>
@@ -1353,7 +1353,7 @@
                                                     <action selector="onTapOkButton:" destination="x5x-6Z-yF6" eventType="touchUpInside" id="G18-cc-Qmo"/>
                                                 </connections>
                                             </button>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Xt-bf-Gai" userLabel="chef email">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Xt-bf-Gai" userLabel="chef email" customClass="SearchTextField" customModule="SearchTextField">
                                                 <rect key="frame" x="10" y="139" width="332" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="eSx-GY-6Dz"/>
@@ -1403,7 +1403,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="hH3-YL-dNx" firstAttribute="bottom" secondItem="CM1-t3-PUE" secondAttribute="bottom" constant="-30" id="PDw-M2-WSe"/>
+                                    <constraint firstItem="hH3-YL-dNx" firstAttribute="bottom" secondItem="CM1-t3-PUE" secondAttribute="bottom" constant="-50" id="PDw-M2-WSe"/>
                                     <constraint firstItem="hH3-YL-dNx" firstAttribute="leading" secondItem="m5B-hU-Nlb" secondAttribute="leadingMargin" constant="4" id="WkT-eU-29s"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="hH3-YL-dNx" secondAttribute="trailing" constant="3" id="nBK-Ih-lz5"/>
                                 </constraints>
@@ -1445,7 +1445,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kVP-IP-YdU" userLabel="Alert View">
-                                        <rect key="frame" x="12" y="337" width="352" height="300"/>
+                                        <rect key="frame" x="12" y="317" width="352" height="300"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6KI-nC-zsr" userLabel="Title View">
                                                 <rect key="frame" x="10" y="10" width="332" height="40"/>
@@ -1507,7 +1507,7 @@
                                                     <action selector="onTapOkButton:" destination="JCC-RI-htD" eventType="touchUpInside" id="6Io-dK-svn"/>
                                                 </connections>
                                             </button>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1MB-8G-ndX" userLabel="chef email">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1MB-8G-ndX" userLabel="chef email" customClass="SearchTextField" customModule="SearchTextField">
                                                 <rect key="frame" x="10" y="139" width="332" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="LiS-WN-HEF"/>
@@ -1539,7 +1539,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="kVP-IP-YdU" firstAttribute="bottom" secondItem="Y3b-tL-k4n" secondAttribute="bottom" constant="-30" id="TzN-Mo-YCv"/>
+                                    <constraint firstItem="kVP-IP-YdU" firstAttribute="bottom" secondItem="Y3b-tL-k4n" secondAttribute="bottom" constant="-50" id="TzN-Mo-YCv"/>
                                     <constraint firstItem="kVP-IP-YdU" firstAttribute="leading" secondItem="jw9-em-HQO" secondAttribute="leadingMargin" constant="4" id="sYH-TM-eag"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="kVP-IP-YdU" secondAttribute="trailing" constant="3" id="tNP-WS-Cxb"/>
                                 </constraints>
@@ -1580,7 +1580,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UcG-s8-7Wf" userLabel="Alert View">
-                                        <rect key="frame" x="12" y="337" width="352" height="300"/>
+                                        <rect key="frame" x="12" y="317" width="352" height="300"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0mk-5i-nn2" userLabel="Title View">
                                                 <rect key="frame" x="10" y="10" width="332" height="40"/>
@@ -1642,7 +1642,7 @@
                                                     <action selector="onTapOkButton:" destination="pXu-EV-eaH" eventType="touchUpInside" id="Se7-8e-Xb4"/>
                                                 </connections>
                                             </button>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GUp-5U-0at" userLabel="chef email">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GUp-5U-0at" userLabel="chef email" customClass="SearchTextField" customModule="SearchTextField">
                                                 <rect key="frame" x="10" y="139" width="332" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="QEj-8L-hnU"/>
@@ -1675,7 +1675,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailingMargin" secondItem="UcG-s8-7Wf" secondAttribute="trailing" constant="3" id="5uN-Um-8nk"/>
-                                    <constraint firstItem="UcG-s8-7Wf" firstAttribute="bottom" secondItem="ArU-ls-2t7" secondAttribute="bottom" constant="-30" id="DrR-bA-Acf"/>
+                                    <constraint firstItem="UcG-s8-7Wf" firstAttribute="bottom" secondItem="ArU-ls-2t7" secondAttribute="bottom" constant="-50" id="DrR-bA-Acf"/>
                                     <constraint firstItem="UcG-s8-7Wf" firstAttribute="leading" secondItem="sED-sc-rSO" secondAttribute="leadingMargin" constant="4" id="V7o-7i-Dnu"/>
                                 </constraints>
                                 <viewLayoutGuide key="safeArea" id="ArU-ls-2t7"/>

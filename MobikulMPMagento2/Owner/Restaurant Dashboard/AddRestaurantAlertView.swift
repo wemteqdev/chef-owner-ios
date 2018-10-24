@@ -8,11 +8,12 @@
 
 import UIKit
 import Alamofire
+import SearchTextField
 
 class AddRestaurantAlertView: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var chefEmailTextField: UITextField!
+    @IBOutlet weak var chefEmailTextField: SearchTextField!
     @IBOutlet weak var alertView: UIView!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var okButton: UIButton!
@@ -24,10 +25,14 @@ class AddRestaurantAlertView: UIViewController {
     var restaurantId:Int = -1;
     let alertViewGrayColor = UIColor(red: 224.0/255.0, green: 224.0/255.0, blue: 224.0/255.0, alpha: 1)
     
+    var restaurantNames = [String]();
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //chefEmailTextField.becomeFirstResponder()
         okButton.layer.cornerRadius = 20
+        chefEmailTextField.filterStrings(restaurantNames)
+        chefEmailTextField.startSuggestingInmediately = true
     }
     
     override func viewWillAppear(_ animated: Bool) {

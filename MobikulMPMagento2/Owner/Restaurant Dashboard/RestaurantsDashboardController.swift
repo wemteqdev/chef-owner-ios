@@ -76,6 +76,7 @@ class RestaurantsDashboardController: UIViewController, UITableViewDelegate, UIT
         customAlert.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         customAlert.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         customAlert.delegate = self
+        customAlert.restaurantNames = self.restaurantDashboardModelView.restaurantNames
         self.present(customAlert, animated: true, completion: nil)
  
     }
@@ -242,6 +243,7 @@ class RestaurantsDashboardController: UIViewController, UITableViewDelegate, UIT
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchActive = false;
+        self.searchBar.endEditing(true)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

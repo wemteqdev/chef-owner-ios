@@ -340,7 +340,7 @@ class Chef_DashboardView: UIViewController{
         verticalStackView.spacing = 8.0
         
         purchaseLabel.textColor = UIColor(red: 255/255, green: 138/255, blue: 0/255, alpha: 1.0);
-        purchaseLabel.text = "$ " + diagramData.ordersTotal;
+        purchaseLabel.text = self.ownerDashboardModelView.currencySymbol + diagramData.ordersTotal;
         purchaseLabel.font = UIFont.boldSystemFont(ofSize: purchaseLabelHeight)
         purchaseLabel.textAlignment = .center
         
@@ -429,7 +429,7 @@ class Chef_DashboardView: UIViewController{
         
         let suppliersLabel = UILabel()
         let suppliersStringLabel = UILabel()
-        suppliersLabel.textColor = UIColor(red: 165/255, green: 96/255, blue: 245/255, alpha: 1.0);
+        suppliersLabel.textColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1.0);
         suppliersLabel.text = String(format: "%d",diagramData.supplierCounts);
         //suppliersLabel.text = String(format: "16");
         suppliersLabel.font = UIFont.boldSystemFont(ofSize: purchaseLabelHeight)
