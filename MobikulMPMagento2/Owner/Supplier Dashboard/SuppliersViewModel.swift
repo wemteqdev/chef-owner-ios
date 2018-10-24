@@ -40,6 +40,7 @@ class AddSupplierInfoModel: NSObject {
 
 class SuppliersViewModel: NSObject {
     var suppliersInfo = [SupplierInfoModel]();
+    var suppliersEmail = [String]();
     
     init(data:JSON){
         //----------Get Graph Data(For daily, weekly, monthly, yearly)--------------
@@ -47,6 +48,11 @@ class SuppliersViewModel: NSObject {
             suppliersInfo =  arrayData.map({(value) -> SupplierInfoModel in
                 return  SupplierInfoModel(data:JSON(value))
             })
+        }
+        
+        if let emailsArray = data["customersEmail"].arrayObject{
+            suppliersEmail = emailsArray as! [String]
+            print("suppliersEmail:", emailsArray as! [String]);
         }
     }
 }

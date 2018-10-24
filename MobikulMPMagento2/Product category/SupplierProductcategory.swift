@@ -736,10 +736,12 @@ class SupplierProductcategory: UIViewController,UICollectionViewDelegate,UIColle
             //cell.descriptionData.text = productCollectionViewModel.getProductCollectionData[indexPath.row].descriptionData
             
             cell.addButton.tag = indexPath.row
+            cell.addButton.isHidden = true
             cell.addButton.addTarget(self, action: #selector(addButtonClick(sender:)), for: .touchUpInside)
             GlobalData.sharedInstance.getImageFromUrl(imageUrl:productCollectionViewModel.getProductCollectionData[indexPath.row].productImage , imageView: cell.imageView)
             cell.wishList_Button.tag = indexPath.row
             cell.compare_Button.tag = indexPath.row
+            cell.compare_Button.isHidden = true
             
             //cell.specialPrice.isHidden = true
             

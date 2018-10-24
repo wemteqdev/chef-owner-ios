@@ -10,7 +10,7 @@ import Foundation
 
 class ChefDashboardModelView: NSObject {
     var chefInfos = [ChefInfoModel]();
-    
+    var chefEmails = [String]();
     init(data:JSON) {
         //-------------Get Chef Info--------------------------
         if let chefArrayData = data["chefsInfo"].arrayObject{
@@ -19,5 +19,9 @@ class ChefDashboardModelView: NSObject {
             })
         }
         print("chefCount:" + String(format: "%d", chefInfos.count));
+        if let emailsArrayData = data["chefsEmail"].arrayObject{
+            chefEmails = emailsArrayData as! [String];
+            print("chefEmails:", emailsArrayData as! [String]);
+        }
     }
 }
