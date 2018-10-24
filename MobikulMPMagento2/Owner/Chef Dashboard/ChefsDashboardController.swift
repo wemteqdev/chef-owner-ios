@@ -78,6 +78,7 @@ class ChefsDashboardController: UIViewController, UITableViewDelegate, UITableVi
         customAlert.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         customAlert.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         customAlert.delegate = self
+        customAlert.customerEmails = self.chefDashboardModelView.chefEmails
         self.present(customAlert, animated: true, completion: nil)
     }
     
@@ -245,6 +246,7 @@ class ChefsDashboardController: UIViewController, UITableViewDelegate, UITableVi
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchActive = false;
+        self.searchBar.endEditing(true)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

@@ -175,6 +175,7 @@ class SuppliersDashboardController: UIViewController, UITableViewDelegate, UITab
         customAlert.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         customAlert.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         customAlert.delegate = self
+        customAlert.supplierEmails = self.suppliersInfo.suppliersEmail
         self.present(customAlert, animated: true, completion: nil)
  
     }
@@ -282,6 +283,7 @@ class SuppliersDashboardController: UIViewController, UITableViewDelegate, UITab
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchActive = false;
+        self.searchBar.endEditing(true)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

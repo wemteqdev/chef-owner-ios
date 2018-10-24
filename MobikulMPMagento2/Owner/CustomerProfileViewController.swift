@@ -12,7 +12,7 @@ class CustomerProfileViewController: UIViewController, UITableViewDelegate, UITa
 
     
     @IBOutlet weak var profileTableView: UITableView!
-    var customerProfileData:NSMutableArray = ["First Name", "Second Name", "Email", "Phone Number", "Address", "City", "State", "Post Code", "Country"]
+    var customerProfileData:NSMutableArray = ["First Name", "Second Name", "CompanyName", "Email", "Phone Number", "Address", "City", "State", "Post Code", "Country"]
     var accountInfoModel:AccountInformationModel!
     var customerId:Int = 0;
     var customerImage:String = "";
@@ -88,21 +88,24 @@ class CustomerProfileViewController: UIViewController, UITableViewDelegate, UITa
                     cell.nameValue.text = accountInfoModel.lastName
                     break
                 case 2:
-                    cell.nameValue.text = accountInfoModel.emailId
+                    cell.nameValue.text = accountInfoModel.companyName
                     break
                 case 3:
-                    cell.nameValue.text = accountInfoModel.mobileNumber
+                    cell.nameValue.text = accountInfoModel.emailId
                     break
                 case 4:
-                    cell.nameValue.text = accountInfoModel.street
+                    cell.nameValue.text = accountInfoModel.mobileNumber
                     break
                 case 5:
-                    cell.nameValue.text = accountInfoModel.city
+                    cell.nameValue.text = accountInfoModel.street
                     break
                 case 6:
-                    cell.nameValue.text = accountInfoModel.state
+                    cell.nameValue.text = accountInfoModel.city
                     break
                 case 7:
+                    cell.nameValue.text = accountInfoModel.state
+                    break
+                case 8:
                     cell.nameValue.text = accountInfoModel.postcode
                     break
                     

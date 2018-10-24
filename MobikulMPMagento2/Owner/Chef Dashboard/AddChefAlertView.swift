@@ -8,17 +8,19 @@
 
 import UIKit
 import Alamofire
+import SearchTextField
 
 class AddChefAlertView: UIViewController, UIPickerViewDelegate,UIPickerViewDataSource,UIImagePickerControllerDelegate {
     
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var chefEmailTextField: UITextField!
+    @IBOutlet weak var chefEmailTextField: SearchTextField!
     @IBOutlet weak var alertView: UIView!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var okButton: UIButton!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var restaurantTextField: SkyFloatingLabelTextField!
     
+    var customerEmails = [String]();
     var callingApiSucceed:Bool = false;
     var restaurantDashboardModelView:RestaurantDashboardModelView!;
     var delegate: AddChefAlertViewDelegate?
@@ -29,7 +31,9 @@ class AddChefAlertView: UIViewController, UIPickerViewDelegate,UIPickerViewDataS
         super.viewDidLoad()
         //chefEmailTextField.becomeFirstResponder()
         okButton.layer.cornerRadius = 20
-        //restaurantTextField.placeholder = "Select Restaurant";
+        chefEmailTextField.filterStrings(customerEmails)
+        chefEmailTextField.startSuggestingInmediately = true
+        
         self.callingHttppApi()
     }
     
