@@ -150,6 +150,7 @@ struct Products {
     var unit:String!
     var userStatus:Bool!
     var tierPrice:Double!
+    var nonEditable:Bool!
     init(data:JSON) {
         self.hasOption = data["hasOption"].intValue
         self.name = data["name"].stringValue
@@ -188,6 +189,7 @@ struct Products {
         self.discount = data["discount"].intValue
         self.unit = data["unitString"].stringValue
         self.userStatus = data["userStatus"].boolValue
+        self.nonEditable = data["nonEditable"].boolValue
     }
 }
 

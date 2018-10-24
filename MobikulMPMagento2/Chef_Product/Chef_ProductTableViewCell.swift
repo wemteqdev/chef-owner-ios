@@ -238,7 +238,10 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
                     }
                     cell.layoutIfNeeded()
                     //self.productCollectionViewHeight.constant = self.prodcutCollectionView.contentSize.height
-                
+                    if featuredProductCollectionModel[indexPath.row].nonEditable == true {
+                        cell.addButton.isHidden = true
+                        cell.compare_Button.isHidden = true
+                    }
                     return cell;
                 }
                 else{
@@ -294,6 +297,10 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
                             cell.specialPrice.isHidden = true
                             
                         }
+                    if featuredProductCollectionModel[indexPath.row].nonEditable == true {
+                        cell.addButton.isHidden = true
+                        cell.compare_Button.isHidden = true
+                    }
                     //}
                     return cell
                 }
