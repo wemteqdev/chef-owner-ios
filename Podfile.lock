@@ -166,6 +166,7 @@ PODS:
   - Realm/Headers (3.7.6)
   - RealmSwift (3.7.6):
     - Realm (= 3.7.6)
+  - SearchTextField (1.2.0)
   - Siren (3.4.3)
 
 DEPENDENCIES:
@@ -187,6 +188,7 @@ DEPENDENCIES:
   - ImageSlideshow (~> 1.6)
   - OfflineBar
   - RealmSwift
+  - SearchTextField (= 1.2.0)
   - Siren
 
 SPEC REPOS:
@@ -229,6 +231,7 @@ SPEC REPOS:
     - Reachability
     - Realm
     - RealmSwift
+    - SearchTextField
     - Siren
 
 SPEC CHECKSUMS:
@@ -270,8 +273,9 @@ SPEC CHECKSUMS:
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   Realm: 9eaecad54712d6246d08ba34c10f354e4715d7d3
   RealmSwift: 1fe08b4ebaeeaacf17f9ba0343f7b25c9fc31fa6
+  SearchTextField: a5bb7e4c33affadb115afdbe8100d84ef10a8024
   Siren: e3cf1a93fa0fa73c03452107e95e5c10768d1d08
 
-PODFILE CHECKSUM: 0effdf868a3e472a99e7e8670ec4ca8a75ca6d13
+PODFILE CHECKSUM: 69daeafc6bcc36bbaa4d18a90185183b293b6406
 
 COCOAPODS: 1.5.3
