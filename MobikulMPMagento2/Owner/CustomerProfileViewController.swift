@@ -56,9 +56,16 @@ class CustomerProfileViewController: UIViewController, UITableViewDelegate, UITa
         if indexPath.row == 0 {
             let cell:ProfileTableViewCell = tableView.dequeueReusableCell(withIdentifier: "ProfileTableViewCell") as! ProfileTableViewCell
             if didload != false{
-                cell.profileName.text = self.accountInfoModel.firstName + " " + self.accountInfoModel.lastName;
+                //cell.profileName.text = self.accountInfoModel.firstName + " " + self.accountInfoModel.lastName;
+                if(self.accountInfoModel.companyName != ""){
+                    cell.profileName.text = self.accountInfoModel.companyName
+                } else {
+                    cell.profileName.text = "No company name"
+                }
+                
                 cell.profileEmail.text = self.accountInfoModel.emailId
                 cell.editView.isHidden = true;
+                cell.profileEmail.isHidden = true;
                 
                 if(customerImage != ""){
                     GlobalData.sharedInstance.getImageFromUrl(imageUrl: self.customerImage, imageView: cell.profileImage)

@@ -44,6 +44,7 @@ class AccountInformationModel: NSObject {
     var country:String!
     var restaurantName = [String]()
     var countryData = [CountryData]()
+    var companyName:String = ""
     
     init(data: JSON) {
         if let arrayData = data["countryData"].arrayObject{
@@ -87,6 +88,7 @@ class AccountInformationModel: NSObject {
         if let arrayData = data["restaurantName"].arrayObject{            
             self.restaurantName = arrayData as! [String];
         }
+        self.companyName = data["companyName"].stringValue
     }
 
     

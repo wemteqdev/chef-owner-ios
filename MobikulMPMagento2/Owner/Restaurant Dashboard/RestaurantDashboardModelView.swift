@@ -11,6 +11,7 @@ import Foundation
 class RestaurantDashboardModelView: NSObject {
     //---for chef/restaurant info------
     var restaurantInfos = [RestaurantInfoModel]();
+    var restaurantNames = [String]();
      
     init(data:JSON) {        
         //-------------Get Restaurant Info------------------------
@@ -20,5 +21,10 @@ class RestaurantDashboardModelView: NSObject {
             })
         }
         print("restaurantCount:" + String(format: "%d", restaurantInfos.count));
+        
+        if let namesArray = data["restaurantsName"].arrayObject{
+            restaurantNames = namesArray as! [String]
+        }
+        print("restaurantNames:", restaurantNames);
     }
 }

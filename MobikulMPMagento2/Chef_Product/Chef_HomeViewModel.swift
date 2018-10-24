@@ -127,7 +127,9 @@ extension Chef_HomeViewModel : UITableViewDelegate , UITableViewDataSource {
             
             let cell:BannerTableViewCell = tableView.dequeueReusableCell(withIdentifier: BannerTableViewCell.identifier) as! BannerTableViewCell
             cell.delegate = homeViewController
-            cell.bannerCollectionModel = ((items[indexPath.row] as? HomeViewModelBannerItem)?.bannerCollectionModel)!
+            if items[indexPath.row].type == .Banner {
+                cell.bannerCollectionModel = ((items[indexPath.row] as? HomeViewModelBannerItem)?.bannerCollectionModel)!
+            }
             cell.selectionStyle = .none
             return cell;
             

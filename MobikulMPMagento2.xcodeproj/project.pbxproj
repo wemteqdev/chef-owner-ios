@@ -1378,12 +1378,12 @@
 		29B11AEC21555C7400980BA4 /* Restaurant Dashboard */ = {
 			isa = PBXGroup;
 			children = (
-				571F966D216C6836007126D5 /* RestaurantDashboardModelView.swift */,
 				295F8C5121648CC3004346CD /* AddRestaurantAlertView.swift */,
 				295F8C5221648CC4004346CD /* AddRestaurantAlertViewDelegate.swift */,
 				29B11AF921555CC800980BA4 /* ResetaurantsCell.swift */,
 				29B11AF821555CC800980BA4 /* RestaurantsCell.xib */,
 				29B11AF721555CC800980BA4 /* RestaurantsDashboardController.swift */,
+				571F966D216C6836007126D5 /* RestaurantDashboardModelView.swift */,
 			);
 			path = "Restaurant Dashboard";
 			sourceTree = "<group>";
