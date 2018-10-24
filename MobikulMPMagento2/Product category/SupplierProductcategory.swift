@@ -11,7 +11,7 @@ import SwiftMessages
 
 class SupplierProductcategory: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UIPickerViewDelegate,FilterItemsDelegate {
     
-    var change:Bool = true
+    var change:Bool = false
     var categoryName:String!
     var categoryId:String!
     var categoryType:String!
@@ -65,8 +65,8 @@ class SupplierProductcategory: UIViewController,UICollectionViewDelegate,UIColle
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         self.navigationItem.title = categoryName
         whichApiToProcess = ""
-        let nib = UINib(nibName: "Chef_ProductImageCell", bundle:nil)
-        self.productCollectionView.register(nib, forCellWithReuseIdentifier: "chef_productimagecell")
+        let nib = UINib(nibName: "Chef_ListCollectionViewCell", bundle:nil)
+        self.productCollectionView.register(nib, forCellWithReuseIdentifier: "chef_listcollectionview")
         
         let refreshControl = UIRefreshControl()
         let attributes = [NSAttributedStringKey.foregroundColor: UIColor.black]

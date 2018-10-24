@@ -29,8 +29,8 @@ class CreateChef: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource{
     var currentCountryRow:Int = 0
     var countryId:String = ""
     var regionId:String = ""
-    
-    
+    var regionType:Int = 0;
+
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var baselineView: UIView!
     @IBOutlet weak var firstnameTextField: UITextField!
@@ -55,7 +55,7 @@ class CreateChef: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource{
         submitButton.layer.masksToBounds = true
         submitButton.layer.borderWidth = 1
         submitButton.layer.borderColor = UIColor.white.cgColor
-        submitButton.setTitle(GlobalData.sharedInstance.language(key: "submit"), for: .normal)
+        submitButton.setTitle("Register", for: .normal)
         
         submitButton.setTitleColor(UIColor().HexToColor(hexString: "4265A0"), for: .normal)
         baselineView.layer.cornerRadius = 2.5
@@ -107,7 +107,11 @@ class CreateChef: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource{
                 requstParams["companyName"] = self.phonenumTextField.text
                 requstParams["address"] = self.addrTextField.text
                 requstParams["city"] = self.cityTextField.text
-                requstParams["state"] = self.regionId
+                if(self.regionType == 1){
+                    requstParams["state"] = self.regionId
+                } else {
+                    requstParams["state"] = self.stateTextField.text
+                }
                 requstParams["postcode"] = self.postcodeTextField.text
                 requstParams["country"] = self.countryId
                 
@@ -124,6 +128,8 @@ class CreateChef: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource{
                             self.defaults.set(dict["customerEmail"].stringValue, forKey: "customerEmail")
                             self.defaults.set(dict["customerToken"].stringValue, forKey: "customerId")
                             self.defaults.set(dict["customerName"].stringValue, forKey: "customerName")
+                            self.defaults.set(requstParams["companyName"], forKey: "companyName")
+                            
                             if(self.defaults.object(forKey: "quoteId") != nil){
                                 self.defaults.set(nil, forKey: "quoteId")
                                 self.defaults.synchronize();
@@ -286,6 +292,7 @@ class CreateChef: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource{
             thePicker.tag = 2000;
             stateTextField.inputView = thePicker
             thePicker.delegate = self
+            regionType = 1;
         }
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
