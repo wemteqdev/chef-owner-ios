@@ -65,7 +65,9 @@ class SupplierProductcategory: UIViewController,UICollectionViewDelegate,UIColle
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         self.navigationItem.title = categoryName
         whichApiToProcess = ""
-        let nib = UINib(nibName: "Chef_ListCollectionViewCell", bundle:nil)
+        var nib = UINib(nibName: "Chef_ProductImageCell", bundle:nil)
+        self.productCollectionView.register(nib, forCellWithReuseIdentifier: "chef_productimagecell")
+        nib = UINib(nibName: "Chef_ListCollectionViewCell", bundle:nil)
         self.productCollectionView.register(nib, forCellWithReuseIdentifier: "chef_listcollectionview")
         
         let refreshControl = UIRefreshControl()
@@ -537,7 +539,7 @@ class SupplierProductcategory: UIViewController,UICollectionViewDelegate,UIColle
                 self.view.isUserInteractionEnabled = false
                 GlobalData.sharedInstance.showLoader()
             }
-            GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"mobikulmphttp/marketplace/SellerCollection", currentView: self){success,responseObject in
+            GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"wemteqchef/catalog/SellerCollection", currentView: self){success,responseObject in
                 if success == 1{
                     print(responseObject)
                     self.view.isUserInteractionEnabled = true
@@ -712,10 +714,29 @@ class SupplierProductcategory: UIViewController,UICollectionViewDelegate,UIColle
             cell.imageView.image = UIImage(named: "ic_placeholder.png")
             cell.name.text = productCollectionViewModel.getProductCollectionData[indexPath.row].productName
             cell.price.text =  productCollectionViewModel.getProductCollectionData[indexPath.row].price
+            
+            cell.reviewCnt.text =  "\(String(productCollectionViewModel.getProductCollectionData[indexPath.row].reviewCount)) reviews"
+            cell.starRating.value = CGFloat(productCollectionViewModel.getProductCollectionData[indexPath.row].rating)
+            cell.ratingbtn.setTitle(String(format:"%.1f",productCollectionViewModel.getProductCollectionData[indexPath.row].rating), for: .normal)
+            cell.pricevat.text = "\(String(productCollectionViewModel.getProductCollectionData[indexPath.row].price))/\(String(productCollectionViewModel.getProductCollectionData[indexPath.row].unit)) - \(String(productCollectionViewModel.getProductCollectionData[indexPath.row].taxClass))"
+            cell.supplierName.text =  productCollectionViewModel.getProductCollectionData[indexPath.row].supplierName
+            if productCollectionViewModel.getProductCollectionData[indexPath.row].tierPrice > 0{
+                cell.specialPrice.text = "\(productCollectionViewModel.getProductCollectionData[indexPath.row].price.prefix(1))\(String(productCollectionViewModel.getProductCollectionData[indexPath.row].tierPrice))"
+                let attributedString = NSMutableAttributedString(string:( productCollectionViewModel.getProductCollectionData[indexPath.row].price ))
+                attributedString.addAttribute(NSAttributedStringKey.baselineOffset, value: 0, range: NSMakeRange(0, attributedString.length))
+                attributedString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: NSNumber(value: NSUnderlineStyle.styleThick.rawValue), range: NSMakeRange(0, attributedString.length))
+                attributedString.addAttribute(NSAttributedStringKey.strikethroughColor, value: UIColor.gray, range: NSMakeRange(0, attributedString.length))
+                
+                cell.price.attributedText = attributedString
+            }
+            else{
+                cell.specialPrice.isHidden = true
+                cell.price.text =  productCollectionViewModel.getProductCollectionData[indexPath.row].price
+            }
             //cell.descriptionData.text = productCollectionViewModel.getProductCollectionData[indexPath.row].descriptionData
-            cell.addButton.isHidden = true;
-            //cell.addButton.tag = indexPath.row
-            //cell.addButton.addTarget(self, action: #selector(addButtonClick(sender:)), for: .touchUpInside)
+            
+            cell.addButton.tag = indexPath.row
+            cell.addButton.addTarget(self, action: #selector(addButtonClick(sender:)), for: .touchUpInside)
             GlobalData.sharedInstance.getImageFromUrl(imageUrl:productCollectionViewModel.getProductCollectionData[indexPath.row].productImage , imageView: cell.imageView)
             cell.wishList_Button.tag = indexPath.row
             cell.compare_Button.tag = indexPath.row
@@ -723,32 +744,32 @@ class SupplierProductcategory: UIViewController,UICollectionViewDelegate,UIColle
             //cell.specialPrice.isHidden = true
             
             
-            if productCollectionViewModel.getProductCollectionData[indexPath.row].isInWishlist == true{
-                cell.wishList_Button.setImage(UIImage(named: "ic_wishlist_fill")!, for: .normal)
-            }else{
-                cell.wishList_Button.setImage(UIImage(named: "ic_wishlist_empty")!, for: .normal)
-            }
-            
-            cell.wishList_Button.tag = indexPath.row
-            cell.wishList_Button.addTarget(self, action: #selector(addToWishList(sender:)), for: .touchUpInside)
-            cell.wishList_Button.isUserInteractionEnabled = true
+            //            if productCollectionViewModel.getProductCollectionData[indexPath.row].isInWishlist == true{
+            //                cell.wishList_Button.setImage(UIImage(named: "ic_wishlist_fill")!, for: .normal)
+            //            }else{
+            //                cell.wishList_Button.setImage(UIImage(named: "ic_wishlist_empty")!, for: .normal)
+            //            }
+            //
+            //            cell.wishList_Button.tag = indexPath.row
+            //            cell.wishList_Button.addTarget(self, action: #selector(addToWishList(sender:)), for: .touchUpInside)
+            //            cell.wishList_Button.isUserInteractionEnabled = true
             
             cell.compare_Button.tag = indexPath.row
             cell.compare_Button.addTarget(self, action: #selector(addToCompare(sender:)), for: .touchUpInside)
             cell.compare_Button.isUserInteractionEnabled = true
             
-            if productCollectionViewModel.getProductCollectionData[indexPath.row].isInRange == true{
-                if productCollectionViewModel.getProductCollectionData[indexPath.row].specialPrice < productCollectionViewModel.getProductCollectionData[indexPath.row].normalprice{
-                    cell.price.text = productCollectionViewModel.getProductCollectionData[indexPath.row].formatedSpecialPrice
-                    let attributeString = NSMutableAttributedString(string: productCollectionViewModel.getProductCollectionData[indexPath.row].formatedPrice)
-                    attributeString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: 1, range: NSRange(location: 0, length: attributeString.length))
-//                    cell.specialPrice.attributedText = attributeString
-//                    cell.specialPrice.isHidden = false
-                }else{
-                    cell.price.text =  productCollectionViewModel.getProductCollectionData[indexPath.row].price
-                    //cell.specialPrice.isHidden = true
-                }
-            }
+            // if productCollectionViewModel.getProductCollectionData[indexPath.row].isInRange == true{
+            //            if productCollectionViewModel.getProductCollectionData[indexPath.row].tierPrice < productCollectionViewModel.getProductCollectionData[indexPath.row].normalprice && productCollectionViewModel.getProductCollectionData[indexPath.row].tierPrice != 0{
+            //                    cell.specialPrice.text = productCollectionViewModel.getProductCollectionData[indexPath.row].tierPrice
+            //                    let attributeString = NSMutableAttributedString(string: productCollectionViewModel.getProductCollectionData[indexPath.row].formatedPrice)
+            //                    attributeString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: 1, range: NSRange(location: 0, length: attributeString.length))
+            //                    cell.price.attributedText = attributeString
+            //                    //cell.specialPrice.isHidden = false
+            //                }else{
+            //                    cell.price.text =  productCollectionViewModel.getProductCollectionData[indexPath.row].price
+            //                    cell.specialPrice.isHidden = true
+            //                }
+            //}
             return cell
         }
     }
@@ -916,7 +937,7 @@ class SupplierProductcategory: UIViewController,UICollectionViewDelegate,UIColle
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         if change == false{
-            return CGSize(width: collectionView.frame.size.width, height:SCREEN_WIDTH/2 + 50 )
+            return CGSize(width: collectionView.frame.size.width, height:SCREEN_WIDTH/2 - 50)
         }else{
             return CGSize(width: collectionView.frame.size.width/2, height:SCREEN_WIDTH/2.5 + 120)
         }

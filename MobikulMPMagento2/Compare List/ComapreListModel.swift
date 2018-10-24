@@ -23,6 +23,8 @@ class ComapreListModel: NSObject {
     var cartId:String!
     var checked:Bool = false
     var qty:String = "0"
+    var unit:String!
+    var tierPrice:Double!
     init(data:JSON){
         self.productName = data["name"].stringValue
         self.price = data["formatedFinalPrice"].stringValue
@@ -35,7 +37,11 @@ class ComapreListModel: NSObject {
         self.reviewCount = data["reviewcount"].stringValue
         self.taxClass = data["tax_class"].stringValue
         self.supplierName = data["suppliername"].stringValue
-        
+        self.tierPrice = data["tierPrice"].doubleValue
+        if self.tierPrice == nil {
+            self.tierPrice = 0
+        }
+        self.unit = data["unitString"].stringValue
      }
     
 

@@ -17,7 +17,7 @@ protocol FilterItemsDelegate: class {
 
 class Productcategory: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UIPickerViewDelegate,FilterItemsDelegate {
     
-    var change:Bool = true
+    var change:Bool = false
     var categoryName:String!
     var categoryId:String!
     var categoryType:String!
@@ -71,9 +71,11 @@ class Productcategory: UIViewController,UICollectionViewDelegate,UICollectionVie
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         self.navigationItem.title = categoryName
         whichApiToProcess = ""
-        let nib = UINib(nibName: "Chef_ProductImageCell", bundle:nil)
+        var nib = UINib(nibName: "Chef_ProductImageCell", bundle:nil)
         self.productCollectionView.register(nib, forCellWithReuseIdentifier: "chef_productimagecell")
-        
+        nib = UINib(nibName: "Chef_ListCollectionViewCell", bundle:nil)
+        self.productCollectionView.register(nib, forCellWithReuseIdentifier: "chef_listcollectionview")
+     
         let refreshControl = UIRefreshControl()
         let attributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
         let attributedTitle = NSAttributedString(string: GlobalData.sharedInstance.language(key: "pulltorefresh"), attributes: attributes)
@@ -543,7 +545,7 @@ class Productcategory: UIViewController,UICollectionViewDelegate,UICollectionVie
                 self.view.isUserInteractionEnabled = false
                 GlobalData.sharedInstance.showLoader()
             }
-            GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"mobikulmphttp/marketplace/SellerCollection", currentView: self){success,responseObject in
+            GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"wemteqchef/catalog/SellerCollection", currentView: self){success,responseObject in
                 if success == 1{
                     print(responseObject)
                     self.view.isUserInteractionEnabled = true
@@ -691,7 +693,7 @@ class Productcategory: UIViewController,UICollectionViewDelegate,UICollectionVie
             }else{
                 if productCollectionViewModel.getProductCollectionData[indexPath.row].isInRange == true{
                     if productCollectionViewModel.getProductCollectionData[indexPath.row].specialPrice < productCollectionViewModel.getProductCollectionData[indexPath.row].normalprice{
-                        cell.productPrice.text = productCollectionViewModel.getProductCollectionData[indexPath.row].formatedSpecialPrice
+                        cell.productPrice.text = String(productCollectionViewModel.getProductCollectionData[indexPath.row].formatedSpecialPrice)
                         let attributeString = NSMutableAttributedString(string: productCollectionViewModel.getProductCollectionData[indexPath.row].formatedPrice)
                         attributeString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: 1, range: NSRange(location: 0, length: attributeString.length))
 //                        cell.specialPrice.attributedText = attributeString
@@ -710,7 +712,27 @@ class Productcategory: UIViewController,UICollectionViewDelegate,UICollectionVie
             cell.imageView.image = UIImage(named: "ic_placeholder.png")
             cell.name.text = productCollectionViewModel.getProductCollectionData[indexPath.row].productName
             cell.price.text =  productCollectionViewModel.getProductCollectionData[indexPath.row].price
+            
+            cell.reviewCnt.text =  "\(String(productCollectionViewModel.getProductCollectionData[indexPath.row].reviewCount)) reviews"
+            cell.starRating.value = CGFloat(productCollectionViewModel.getProductCollectionData[indexPath.row].rating)
+            cell.ratingbtn.setTitle(String(format:"%.1f",productCollectionViewModel.getProductCollectionData[indexPath.row].rating), for: .normal)
+            cell.pricevat.text = "\(String(productCollectionViewModel.getProductCollectionData[indexPath.row].price))/\(String(productCollectionViewModel.getProductCollectionData[indexPath.row].unit)) - \(String(productCollectionViewModel.getProductCollectionData[indexPath.row].taxClass))"
+            cell.supplierName.text =  productCollectionViewModel.getProductCollectionData[indexPath.row].supplierName
+            if productCollectionViewModel.getProductCollectionData[indexPath.row].tierPrice > 0{
+                cell.specialPrice.text = "\(productCollectionViewModel.getProductCollectionData[indexPath.row].price.prefix(1))\(String(productCollectionViewModel.getProductCollectionData[indexPath.row].tierPrice))"
+                let attributedString = NSMutableAttributedString(string:( productCollectionViewModel.getProductCollectionData[indexPath.row].price ))
+                attributedString.addAttribute(NSAttributedStringKey.baselineOffset, value: 0, range: NSMakeRange(0, attributedString.length))
+                attributedString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: NSNumber(value: NSUnderlineStyle.styleThick.rawValue), range: NSMakeRange(0, attributedString.length))
+                attributedString.addAttribute(NSAttributedStringKey.strikethroughColor, value: UIColor.gray, range: NSMakeRange(0, attributedString.length))
+                
+                cell.price.attributedText = attributedString
+            }
+            else{
+                cell.specialPrice.isHidden = true
+                cell.price.text =  productCollectionViewModel.getProductCollectionData[indexPath.row].price
+            }
             //cell.descriptionData.text = productCollectionViewModel.getProductCollectionData[indexPath.row].descriptionData
+            
             cell.addButton.tag = indexPath.row
             cell.addButton.addTarget(self, action: #selector(addButtonClick(sender:)), for: .touchUpInside)
             GlobalData.sharedInstance.getImageFromUrl(imageUrl:productCollectionViewModel.getProductCollectionData[indexPath.row].productImage , imageView: cell.imageView)
@@ -720,32 +742,32 @@ class Productcategory: UIViewController,UICollectionViewDelegate,UICollectionVie
             //cell.specialPrice.isHidden = true
             
             
-            if productCollectionViewModel.getProductCollectionData[indexPath.row].isInWishlist == true{
-                cell.wishList_Button.setImage(UIImage(named: "ic_wishlist_fill")!, for: .normal)
-            }else{
-                cell.wishList_Button.setImage(UIImage(named: "ic_wishlist_empty")!, for: .normal)
-            }
-            
-            cell.wishList_Button.tag = indexPath.row
-            cell.wishList_Button.addTarget(self, action: #selector(addToWishList(sender:)), for: .touchUpInside)
-            cell.wishList_Button.isUserInteractionEnabled = true
+//            if productCollectionViewModel.getProductCollectionData[indexPath.row].isInWishlist == true{
+//                cell.wishList_Button.setImage(UIImage(named: "ic_wishlist_fill")!, for: .normal)
+//            }else{
+//                cell.wishList_Button.setImage(UIImage(named: "ic_wishlist_empty")!, for: .normal)
+//            }
+//
+//            cell.wishList_Button.tag = indexPath.row
+//            cell.wishList_Button.addTarget(self, action: #selector(addToWishList(sender:)), for: .touchUpInside)
+//            cell.wishList_Button.isUserInteractionEnabled = true
             
             cell.compare_Button.tag = indexPath.row
             cell.compare_Button.addTarget(self, action: #selector(addToCompare(sender:)), for: .touchUpInside)
             cell.compare_Button.isUserInteractionEnabled = true
             
-            if productCollectionViewModel.getProductCollectionData[indexPath.row].isInRange == true{
-                if productCollectionViewModel.getProductCollectionData[indexPath.row].specialPrice < productCollectionViewModel.getProductCollectionData[indexPath.row].normalprice{
-                    cell.price.text = productCollectionViewModel.getProductCollectionData[indexPath.row].formatedSpecialPrice
-                    let attributeString = NSMutableAttributedString(string: productCollectionViewModel.getProductCollectionData[indexPath.row].formatedPrice)
-                    attributeString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: 1, range: NSRange(location: 0, length: attributeString.length))
-//                    cell.specialPrice.attributedText = attributeString
-//                    cell.specialPrice.isHidden = false
-                }else{
-                    cell.price.text =  productCollectionViewModel.getProductCollectionData[indexPath.row].price
-                    //cell.specialPrice.isHidden = true
-                }
-            }
+           // if productCollectionViewModel.getProductCollectionData[indexPath.row].isInRange == true{
+//            if productCollectionViewModel.getProductCollectionData[indexPath.row].tierPrice < productCollectionViewModel.getProductCollectionData[indexPath.row].normalprice && productCollectionViewModel.getProductCollectionData[indexPath.row].tierPrice != 0{
+//                    cell.specialPrice.text = productCollectionViewModel.getProductCollectionData[indexPath.row].tierPrice
+//                    let attributeString = NSMutableAttributedString(string: productCollectionViewModel.getProductCollectionData[indexPath.row].formatedPrice)
+//                    attributeString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: 1, range: NSRange(location: 0, length: attributeString.length))
+//                    cell.price.attributedText = attributeString
+//                    //cell.specialPrice.isHidden = false
+//                }else{
+//                    cell.price.text =  productCollectionViewModel.getProductCollectionData[indexPath.row].price
+//                    cell.specialPrice.isHidden = true
+//                }
+            //}
             return cell
         }
     }
@@ -911,7 +933,7 @@ class Productcategory: UIViewController,UICollectionViewDelegate,UICollectionVie
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         if change == false{
-            return CGSize(width: collectionView.frame.size.width, height:SCREEN_WIDTH/2 + 50 )
+            return CGSize(width: collectionView.frame.size.width, height:SCREEN_WIDTH/2 - 50)
         }else{
             return CGSize(width: collectionView.frame.size.width/2, height:SCREEN_WIDTH/2.5 + 120)
         }

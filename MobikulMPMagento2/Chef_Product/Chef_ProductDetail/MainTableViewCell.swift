@@ -9,6 +9,7 @@
 import UIKit
 @objc protocol Chef_DetailReviewHandlerDelegate: class {
     func reviewSubmit(title:String,contentText:String,rating:String)
+    func reloadPage()
 }
 
 class MainTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {

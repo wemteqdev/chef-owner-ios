@@ -9305,19 +9305,19 @@
                                                 </connections>
                                             </view>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="NAME" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZgM-be-wvf" customClass="SkyFloatingLabelTextField" customModule="MobikulMPMagento2" customModuleProvider="target">
-                                                <rect key="frame" x="10" y="304" width="354" height="39"/>
+                                                <rect key="frame" x="10" y="304" width="354" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="NAME" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6gg-ac-S5B" customClass="SkyFloatingLabelTextField" customModule="MobikulMPMagento2" customModuleProvider="target">
-                                                <rect key="frame" x="10" y="353" width="354" height="39.5"/>
+                                                <rect key="frame" x="10" y="344" width="354" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="NAME" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d8f-8U-UlM" customClass="SkyFloatingLabelTextField" customModule="MobikulMPMagento2" customModuleProvider="target">
-                                                <rect key="frame" x="10" y="404" width="354" height="39"/>
+                                                <rect key="frame" x="10" y="385.5" width="354" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -9353,7 +9353,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jgi-fn-iaP">
-                                        <rect key="frame" x="164.5" y="494" width="46" height="30"/>
+                                        <rect key="frame" x="164.5" y="466.5" width="46" height="30"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
                                             <action selector="SubmitClick:" destination="Pri-Af-dnd" eventType="touchUpInside" id="t0g-56-0rl"/>
@@ -13740,7 +13740,7 @@
                                 <rect key="frame" x="10" y="40" width="355" height="300"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F77-RD-1me" customClass="SkyFloatingLabelTextField" customModule="MobikulMPMagento2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="8" width="355" height="43"/>
+                                        <rect key="frame" x="0.0" y="8" width="355" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>

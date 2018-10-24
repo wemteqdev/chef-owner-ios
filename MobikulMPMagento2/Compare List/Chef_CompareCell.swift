@@ -29,7 +29,7 @@ class Chef_CompareCell: UITableViewCell {
     var compareListViewModel:CompareListViewModel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        Totalprice.isHidden = true
+        //Totalprice.isHidden = true
 
         plusButton.layer.borderWidth = 1
         plusButton.layer.borderColor = UIColor.lightGray.cgColor

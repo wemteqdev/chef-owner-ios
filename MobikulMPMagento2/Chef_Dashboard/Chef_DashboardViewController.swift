@@ -19,6 +19,9 @@ class Chef_DashboardViewController: UIViewController, Chef_DetailReviewHandlerDe
         self.reviewRating = rating
         callingHttppApi(apiName: CatalogProductAPI.addreview)
     }
+    func reloadPage() {
+        callingHttppApi(apiName: CatalogProductAPI.catalogProduct)
+    }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

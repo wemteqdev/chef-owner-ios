@@ -28,7 +28,11 @@ class ProductCollectionModel: NSObject {
     var formatedMinPrice:String!
     var formatedMaxPrice:String!
     var wishlistItemId:String!
-
+    var unit:String!
+    var tierPrice:Double!
+    var supplierName:String!
+    var taxClass:String!
+    var reviewCount:Int!
     init(data: JSON) {
         self.productImage = data["thumbNail"].stringValue
         self.descriptionData = data["shortDescription"].stringValue.html2String
@@ -49,7 +53,14 @@ class ProductCollectionModel: NSObject {
         self.formatedMinPrice = data["formatedMinPrice"].stringValue
         self.typeID = data["typeId"].stringValue
         self.wishlistItemId = data["wishlistItemId"].stringValue
-
+        self.unit = data["unitString"].stringValue
+        self.tierPrice = data["tierPrice"].doubleValue
+        if self.tierPrice == nil {
+            self.tierPrice = 0
+        }
+        self.reviewCount = data["reviewcount"].intValue
+        self.taxClass = data["tax_class"].stringValue
+        self.supplierName = data["suppliername"].stringValue
     }
 
 }

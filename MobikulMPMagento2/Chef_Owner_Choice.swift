@@ -47,9 +47,11 @@ class Chef_Owner_Choice: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     @IBAction func chefClick(_ sender: UIButton) {
+        defaults.set("f", forKey: "Ownerup")
         self.performSegue(withIdentifier: "chef", sender: self)
     }
     @IBAction func ownerClick(_ sender: UIButton){
+        defaults.set("t", forKey: "Ownerup")
         self.performSegue(withIdentifier: "chef", sender: self)
     }
 

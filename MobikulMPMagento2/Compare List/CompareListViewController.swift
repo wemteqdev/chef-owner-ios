@@ -223,7 +223,15 @@ class CompareListViewController: UIViewController,UITableViewDelegate, UITableVi
 //        let CellIdentifier: String = "cell"
 //        let cell:CompareListTableViewCell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier) as! CompareListTableViewCell
         let cell:Chef_CompareCell = tableView.dequeueReusableCell(withIdentifier: "chef_compare") as! Chef_CompareCell
-        cell.price.text = self.compareListViewModel.getProductList[indexPath.row].price
+        if self.compareListViewModel.getProductList[indexPath.row].tierPrice > 0 {
+            cell.price.text = "\(self.compareListViewModel.getProductList[indexPath.row].price.prefix(1))\(String(self.compareListViewModel.getProductList[indexPath.row].tierPrice))"
+            cell.Totalprice.text = "Total \(self.compareListViewModel.getProductList[indexPath.row].tierPrice * (self.compareListViewModel.getProductList[indexPath.row].qty as NSString).doubleValue)"
+        }
+        else{
+            cell.price.text = self.compareListViewModel.getProductList[indexPath.row].price
+            cell.Totalprice.text = "Total \((self.compareListViewModel.getProductList[indexPath.row].specialPrice as NSString).doubleValue * (self.compareListViewModel.getProductList[indexPath.row].qty as NSString).doubleValue)"
+        }
+        
         cell.productname.text = self.compareListViewModel.getProductList[indexPath.row].productName
         cell.starRating.value = self.compareListViewModel.getProductList[indexPath.row].rating
         cell.kiloButton.setTitle(self.compareListViewModel.getProductList[indexPath.row].qty,for: .normal)
@@ -239,8 +247,8 @@ class CompareListViewController: UIViewController,UITableViewDelegate, UITableVi
         cell.minusButton.tag = indexPath.row
         cell.minusButton.addTarget(self, action: #selector(minusClick(sender:)), for: .touchUpInside)
         //cell.Totalprice.text = self.compareListViewModel.getProductList[indexPath.row].price *
-        cell.price.text = self.compareListViewModel.getProductList[indexPath.row].price
-        cell.pricevat.text = "\(String(self.compareListViewModel.getProductList[indexPath.row].price)) - \(String(self.compareListViewModel.getProductList[indexPath.row].taxClass))"
+        cell.moqButton.setTitle("MOQ \(self.compareListViewModel.getProductList[indexPath.row].price)", for: .normal)
+        cell.pricevat.text = "\(String(self.compareListViewModel.getProductList[indexPath.row].price))/\(String(self.compareListViewModel.getProductList[indexPath.row].unit)) - \(String(self.compareListViewModel.getProductList[indexPath.row].taxClass))"
 //        cell.plusButton.addTarget(self, action: #selector(plusButtonClick(sender:)), for: .touchUpInside)
 //        cell.minusButton.addTarget(self, action: #selector(minusButtonClick(sender:)), for: .touchUpInside)
         
