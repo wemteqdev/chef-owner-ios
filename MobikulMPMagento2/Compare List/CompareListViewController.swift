@@ -247,8 +247,9 @@ class CompareListViewController: UIViewController,UITableViewDelegate, UITableVi
         cell.minusButton.tag = indexPath.row
         cell.minusButton.addTarget(self, action: #selector(minusClick(sender:)), for: .touchUpInside)
         //cell.Totalprice.text = self.compareListViewModel.getProductList[indexPath.row].price *
-        cell.moqButton.setTitle("MOQ \(self.compareListViewModel.getProductList[indexPath.row].price)", for: .normal)
+        cell.moqButton.setTitle("MOQ \(String(self.compareListViewModel.getProductList[indexPath.row].price))", for: .normal)
         cell.pricevat.text = "\(String(self.compareListViewModel.getProductList[indexPath.row].price))/\(String(self.compareListViewModel.getProductList[indexPath.row].unit)) - \(String(self.compareListViewModel.getProductList[indexPath.row].taxClass))"
+        GlobalData.sharedInstance.getImageFromUrl(imageUrl: compareListViewModel.getProductList[indexPath.row].imageUrl, imageView: cell.imageView)
 //        cell.plusButton.addTarget(self, action: #selector(plusButtonClick(sender:)), for: .touchUpInside)
 //        cell.minusButton.addTarget(self, action: #selector(minusButtonClick(sender:)), for: .touchUpInside)
         

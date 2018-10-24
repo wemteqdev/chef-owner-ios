@@ -37,6 +37,7 @@ class Chef_SuperCart: UIViewController {
         emptyView.labelMessage.text = GlobalData.sharedInstance.language(key: "emptycartmessage")
         emptyView.addressButton.addTarget(self, action: #selector(browseCategory(sender:)), for: .touchUpInside)
         whichApiToProcess = "sellerList"
+        self.tableView.separatorColor = UIColor.clear
         callingHttppApi()
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -342,7 +343,7 @@ extension Chef_SuperCart : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
+        return SCREEN_WIDTH/3
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
