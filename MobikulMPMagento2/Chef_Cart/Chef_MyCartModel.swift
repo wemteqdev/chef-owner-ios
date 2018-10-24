@@ -19,7 +19,8 @@ class Chef_MyCartModel: NSObject {
     var options:Array<JSON>
     var message:JSON!
     var supplierId:String = ""
-    var supplierName:String = ""
+    var rating:Double!
+    var reviewCount:String = ""
     
     init(data:JSON) {
         self.id = data["id"].stringValue
@@ -32,7 +33,8 @@ class Chef_MyCartModel: NSObject {
         self.options = data["options"].arrayValue
         self.message = data["messages"]
         self.supplierId = data["supplierId"].stringValue
-        self.supplierName = data["supplierName"].stringValue
+        self.rating = data["rating"].doubleValue
+        self.reviewCount = data["reviewcount"].stringValue
     }
 }
 

@@ -11,7 +11,7 @@ import UIKit
 class SellerOrderDetailsController: UIViewController,UITableViewDelegate, UITableViewDataSource {
     
     var incrementId:String = ""
-    
+    var supplierId:String = ""
     @IBOutlet weak var sellerTableView: UITableView!
     var sellerOrderDetailsViewModelData:SellerOrderDetailsViewModelData!
     var carrierTextField = UITextField()
@@ -57,7 +57,7 @@ class SellerOrderDetailsController: UIViewController,UITableViewDelegate, UITabl
         self.view.isUserInteractionEnabled = false
         var requstParams = [String:Any]();
         requstParams["incrementId"] = incrementId
-        
+        requstParams["supplierId"] = supplierId
         let storeId = defaults.object(forKey: "storeId")
         if(storeId != nil){
             requstParams["storeId"] = storeId
@@ -177,7 +177,7 @@ class SellerOrderDetailsController: UIViewController,UITableViewDelegate, UITabl
             }
         }
         else{
-            GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"mobikulmphttp/marketplace/vieworder", currentView: self){success,responseObject in
+            GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"wemteqchef/customer/vieworder", currentView: self){success,responseObject in
                 if success == 1{
                     if responseObject?.object(forKey: "storeId") != nil{
                         let storeId:String = String(format: "%@", responseObject!.object(forKey: "storeId") as! CVarArg)
