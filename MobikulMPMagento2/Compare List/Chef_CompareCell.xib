@@ -21,7 +21,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="582" height="164.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="product_image" translatesAutoresizingMaskIntoConstraints="NO" id="Ep6-Kw-FfS">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ep6-Kw-FfS">
                         <rect key="frame" x="50" y="24" width="116.5" height="116.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="Ep6-Kw-FfS" secondAttribute="height" multiplier="1:1" id="XR5-Ri-qgt"/>
@@ -204,6 +204,5 @@
     </objects>
     <resources>
         <image name="ic_unchecked" width="94" height="88"/>
-        <image name="product_image" width="876" height="582"/>
     </resources>
 </document>
