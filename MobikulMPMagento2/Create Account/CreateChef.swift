@@ -160,9 +160,12 @@ class CreateChef: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource{
                             
                             self.defaults.synchronize()
                             GlobalData.sharedInstance.showSuccessSnackBar(msg: dict["message"].stringValue)
-                            
-                            self.performSegue(withIdentifier: "dashboard", sender: self)
-                            
+                            if (self.defaults.object(forKey:"Ownerup") as! String) == "t" {
+                                requstParams["customerType"] = "4"
+                            }
+                            else {
+                                self.performSegue(withIdentifier: "ownerdashboard", sender: self)
+                            }
                         }
                         else{
                             GlobalData.sharedInstance.showErrorSnackBar(msg: dict["message"].stringValue)

@@ -14467,6 +14467,7 @@
                         <outlet property="stateTextField" destination="YsM-XF-cPb" id="8vJ-Gp-EAz"/>
                         <outlet property="submitButton" destination="0SU-k0-HeI" id="nxE-yJ-f5z"/>
                         <segue destination="ySd-1f-FUO" kind="show" identifier="dashboard" id="29F-3K-eaY"/>
+                        <segue destination="bwA-rC-vIJ" kind="show" identifier="ownerdashboard" id="9Ml-QC-GQ9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C6F-tg-j9Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -14810,9 +14811,9 @@
         <image name="tourch-on" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5Fx-g2-J54"/>
+        <segue reference="gZV-OV-8Th"/>
         <segue reference="BnP-5R-UpJ"/>
-        <segue reference="k3f-34-Vh7"/>
+        <segue reference="29F-3K-eaY"/>
         <segue reference="0Vc-df-Kyg"/>
         <segue reference="6H7-k0-P6o"/>
         <segue reference="DHe-33-5Ya"/>
@@ -14826,6 +14827,7 @@
         <segue reference="1IN-nY-tFS"/>
         <segue reference="1kv-3A-ZEC"/>
         <segue reference="5gt-HY-6Mn"/>
+        <segue reference="9Ml-QC-GQ9"/>
         <segue reference="EhG-al-bPQ"/>
         <segue reference="TID-0Q-0E5"/>
         <segue reference="8rv-DD-j17"/>

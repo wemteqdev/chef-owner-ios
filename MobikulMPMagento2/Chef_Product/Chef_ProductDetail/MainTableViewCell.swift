@@ -160,7 +160,7 @@ class MainTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
             cell.reviewCount.text = "\(String(compareProductCollectionModel[indexPath.row].reviewCount)) reviews"
             cell.supplierName.text = compareProductCollectionModel[indexPath.row].supplierName
             //cell.moq.text = compareProductCollectionModel[indexPath.row].minAddToCartQty
-            cell.moq.text = compareProductCollectionModel[indexPath.row].price
+            cell.moq.text = "MOQ \(String(compareProductCollectionModel[indexPath.row].price))"
             if compareProductCollectionModel[indexPath.row].isMin == true{
                 cell.discountLayer.isHidden = false
                 cell.discountLabel.isHidden = false
@@ -220,7 +220,7 @@ class MainTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
                 
                 if errorCode == true{
                     GlobalData.sharedInstance.showSuccessSnackBar(msg:data .object(forKey:"message") as! String )
-                   
+                   self.delegate.reloadPage()
                 }
                 else{
                     GlobalData.sharedInstance.showErrorSnackBar(msg: data.object(forKey: "message") as! String)
@@ -315,6 +315,7 @@ class MainTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
         }
         else{
             delegate.reviewSubmit(title:titleText,contentText:contentText,rating:rating)
+            delegate.reloadPage()
         }
     }
     @objc func titleDidChange(_ textField: UITextField) {
