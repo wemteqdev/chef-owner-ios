@@ -292,7 +292,7 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
                         }else{
                             cell.price.text =  featuredProductCollectionModel[indexPath.row].price
                             cell.specialPrice.isHidden = true
-                            cell.price.center = cell.supplierName.center
+                            
                         }
                     //}
                     return cell
