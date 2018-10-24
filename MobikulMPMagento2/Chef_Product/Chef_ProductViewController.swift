@@ -420,8 +420,8 @@ class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPicker
                                
                                 self.categoryMenuData = self.tempCategoryData;
                                 self.filterView.reloadData()
-                                 self.bannerCollectionModel = ((self.homeViewModel.items[0] as? HomeViewModelBannerItem)?.bannerCollectionModel)!
-                                print("bannerCollectionModel",self.bannerCollectionModel)
+                                 //self.bannerCollectionModel = ((self.homeViewModel.items[0] as? HomeViewModelBannerItem)?.bannerCollectionModel)!
+                                //print("bannerCollectionModel",self.bannerCollectionModel)
                                 self.BannerView.reloadData()
                                 /*UIView.animate(withDuration: 0.5, animations: {
                                  self.launchView?.view.alpha = 0.0

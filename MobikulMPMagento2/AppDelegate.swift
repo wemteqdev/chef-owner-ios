@@ -107,7 +107,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         UINavigationBar.appearance().barStyle = .blackOpaque
         
         GMSServices.provideAPIKey("AIzaSyCyCc5s5KSnkWvyT18xEgvHh8qtpxOxPFw")
-        GIDSignIn.sharedInstance().clientID = "170033438460-ugjoslegsii4hm23rh9l10cmqtm65sm6.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance().clientID = "170033438460-bchv0nt9h9n3g0dv2a88j2u84sb2641m.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().delegate = self as! GIDSignInDelegate
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         return true

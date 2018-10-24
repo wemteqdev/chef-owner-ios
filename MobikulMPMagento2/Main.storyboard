@@ -60,14 +60,14 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chef_logo" translatesAutoresizingMaskIntoConstraints="NO" id="xwO-Fs-kfA">
-                                                <rect key="frame" x="138" y="152" width="100" height="144"/>
+                                                <rect key="frame" x="113" y="116" width="150" height="216"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="100" id="JPi-hv-52Z"/>
+                                                    <constraint firstAttribute="width" constant="150" id="JPi-hv-52Z"/>
                                                     <constraint firstAttribute="width" secondItem="xwO-Fs-kfA" secondAttribute="height" multiplier="285:409" id="wIu-BX-UrM"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WELCOME TO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCL-l6-R8l">
-                                                <rect key="frame" x="132" y="131" width="111" height="21"/>
+                                                <rect key="frame" x="132" y="95" width="111" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -9305,19 +9305,19 @@
                                                 </connections>
                                             </view>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="NAME" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZgM-be-wvf" customClass="SkyFloatingLabelTextField" customModule="MobikulMPMagento2" customModuleProvider="target">
-                                                <rect key="frame" x="10" y="304" width="354" height="30"/>
+                                                <rect key="frame" x="10" y="304" width="354" height="39"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="NAME" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6gg-ac-S5B" customClass="SkyFloatingLabelTextField" customModule="MobikulMPMagento2" customModuleProvider="target">
-                                                <rect key="frame" x="10" y="344" width="354" height="30"/>
+                                                <rect key="frame" x="10" y="353" width="354" height="39.5"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="NAME" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d8f-8U-UlM" customClass="SkyFloatingLabelTextField" customModule="MobikulMPMagento2" customModuleProvider="target">
-                                                <rect key="frame" x="10" y="385.5" width="354" height="30"/>
+                                                <rect key="frame" x="10" y="404" width="354" height="39"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -9353,7 +9353,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jgi-fn-iaP">
-                                        <rect key="frame" x="164.5" y="466.5" width="46" height="30"/>
+                                        <rect key="frame" x="164.5" y="494" width="46" height="30"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
                                             <action selector="SubmitClick:" destination="Pri-Af-dnd" eventType="touchUpInside" id="t0g-56-0rl"/>
@@ -11869,14 +11869,14 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chef_logo" translatesAutoresizingMaskIntoConstraints="NO" id="LN5-yr-0n1">
-                                                <rect key="frame" x="138" y="151.5" width="100" height="144"/>
+                                                <rect key="frame" x="113" y="115.5" width="150" height="216"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="LN5-yr-0n1" secondAttribute="height" multiplier="285:409" id="HxW-Ix-sjf"/>
-                                                    <constraint firstAttribute="width" constant="100" id="Yeb-ou-7xT"/>
+                                                    <constraint firstAttribute="width" constant="150" id="Yeb-ou-7xT"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ARE YOU?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQ3-hr-bJu">
-                                                <rect key="frame" x="148" y="130.5" width="79" height="21"/>
+                                                <rect key="frame" x="148" y="94.5" width="79" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -13740,7 +13740,7 @@
                                 <rect key="frame" x="10" y="40" width="355" height="300"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F77-RD-1me" customClass="SkyFloatingLabelTextField" customModule="MobikulMPMagento2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="8" width="355" height="30"/>
+                                        <rect key="frame" x="0.0" y="8" width="355" height="43"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -14764,7 +14764,7 @@
         <image name="add_products" width="60" height="60"/>
         <image name="ask_question" width="60" height="60"/>
         <image name="chef-bg" width="1125" height="2436"/>
-        <image name="chef_logo" width="285" height="409"/>
+        <image name="chef_logo" width="410" height="600"/>
         <image name="create_your_own_collection" width="60" height="60"/>
         <image name="customize_profile" width="60" height="60"/>
         <image name="dashboard_btn" width="52" height="38"/>
@@ -14813,7 +14813,7 @@
         <segue reference="5Fx-g2-J54"/>
         <segue reference="BnP-5R-UpJ"/>
         <segue reference="k3f-34-Vh7"/>
-        <segue reference="DD6-nh-zS2"/>
+        <segue reference="0Vc-df-Kyg"/>
         <segue reference="6H7-k0-P6o"/>
         <segue reference="DHe-33-5Ya"/>
         <segue reference="KXi-UJ-red"/>
@@ -14829,6 +14829,6 @@
         <segue reference="EhG-al-bPQ"/>
         <segue reference="TID-0Q-0E5"/>
         <segue reference="8rv-DD-j17"/>
-        <segue reference="Pe6-X1-otd"/>
+        <segue reference="lhT-NK-cCQ"/>
     </inferredMetricsTieBreakers>
 </document>

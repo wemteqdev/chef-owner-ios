@@ -31,10 +31,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chef_logo" translatesAutoresizingMaskIntoConstraints="NO" id="run-Jw-ovG">
-                                        <rect key="frame" x="137.5" y="161.5" width="100" height="144"/>
+                                        <rect key="frame" x="112.5" y="125.5" width="150" height="216"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="run-Jw-ovG" secondAttribute="height" multiplier="285:409" id="6hR-9F-yu5"/>
-                                            <constraint firstAttribute="width" constant="100" id="fh3-FN-NVE"/>
+                                            <constraint firstAttribute="width" constant="150" id="fh3-FN-NVE"/>
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hKr-pU-uhN" userLabel="baseline">
@@ -80,6 +80,6 @@
     </scenes>
     <resources>
         <image name="chef-bg" width="1125" height="2436"/>
-        <image name="chef_logo" width="285" height="409"/>
+        <image name="chef_logo" width="410" height="600"/>
     </resources>
 </document>
