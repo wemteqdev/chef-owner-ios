@@ -14325,7 +14325,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="335" height="25"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" textContentType="password"/>
+                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                                                 <color key="value" red="0.92498810279187815" green="0.92498810279187815" blue="0.92498810279187815" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -14348,7 +14348,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="335" height="25"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" textContentType="password"/>
+                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                                                 <color key="value" red="0.91878172588832485" green="0.91878172588832485" blue="0.91878172588832485" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -14813,7 +14813,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="gZV-OV-8Th"/>
         <segue reference="BnP-5R-UpJ"/>
-        <segue reference="k3f-34-Vh7"/>
+        <segue reference="29F-3K-eaY"/>
         <segue reference="0Vc-df-Kyg"/>
         <segue reference="6H7-k0-P6o"/>
         <segue reference="DHe-33-5Ya"/>
@@ -14827,7 +14827,7 @@
         <segue reference="1IN-nY-tFS"/>
         <segue reference="1kv-3A-ZEC"/>
         <segue reference="5gt-HY-6Mn"/>
-        <segue reference="qLT-Cy-ujC"/>
+        <segue reference="9Ml-QC-GQ9"/>
         <segue reference="EhG-al-bPQ"/>
         <segue reference="TID-0Q-0E5"/>
         <segue reference="8rv-DD-j17"/>

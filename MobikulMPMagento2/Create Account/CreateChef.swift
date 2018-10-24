@@ -114,6 +114,7 @@ class CreateChef: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource{
                 }
                 requstParams["postcode"] = self.postcodeTextField.text
                 requstParams["country"] = self.countryId
+                requstParams["customerType"] = "2"
                 if (self.defaults.object(forKey:"Ownerup") as! String) == "t" {
                     requstParams["customerType"] = "4"
                 }
@@ -162,9 +163,10 @@ class CreateChef: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource{
                             GlobalData.sharedInstance.showSuccessSnackBar(msg: dict["message"].stringValue)
                             if (self.defaults.object(forKey:"Ownerup") as! String) == "t" {
                                 requstParams["customerType"] = "4"
+                                self.performSegue(withIdentifier: "ownerdashboard", sender: self)
                             }
                             else {
-                                self.performSegue(withIdentifier: "ownerdashboard", sender: self)
+                                self.performSegue(withIdentifier: "dashboard", sender: self)
                             }
                         }
                         else{
