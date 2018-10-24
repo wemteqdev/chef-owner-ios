@@ -227,7 +227,7 @@ class CompareListViewController: UIViewController,UITableViewDelegate, UITableVi
         cell.productname.text = self.compareListViewModel.getProductList[indexPath.row].productName
         cell.starRating.value = self.compareListViewModel.getProductList[indexPath.row].rating
         cell.kiloButton.setTitle(self.compareListViewModel.getProductList[indexPath.row].qty,for: .normal)
-        cell.rating.setTitle(String(format:"%f",self.compareListViewModel.getProductList[indexPath.row].rating), for: .normal)
+        cell.rating.setTitle(String(format:"%.1f",self.compareListViewModel.getProductList[indexPath.row].rating), for: .normal)
         cell.supplierName.text = self.compareListViewModel.getProductList[indexPath.row].supplierName
         cell.reviewCount.text = "\(String(self.compareListViewModel.getProductList[indexPath.row].reviewCount)) reviews"
         cell.checkBtn.tag = indexPath.row

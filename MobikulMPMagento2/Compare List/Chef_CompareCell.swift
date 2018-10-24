@@ -42,7 +42,10 @@ class Chef_CompareCell: UITableViewCell {
         kiloButton.layer.borderColor = UIColor.lightGray.cgColor
         kiloButton.setTitle(String(kilos), for: .normal)
         
-        moqButton.layer.cornerRadius = moqButton.frame.height / 2
+        rating.layer.cornerRadius = moqButton.frame.height / 2 - 1
+        rating.layer.masksToBounds = true
+        
+        moqButton.layer.cornerRadius = moqButton.frame.height / 2 - 1
         moqButton.layer.masksToBounds = true
         moqButton.layer.borderWidth = 1
         moqButton.layer.borderColor = UIColor().HexToColor(hexString: "FF9D11").cgColor
