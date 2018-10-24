@@ -27,7 +27,7 @@ class ComapreListModel: NSObject {
         self.productName = data["name"].stringValue
         self.price = data["formatedFinalPrice"].stringValue
         self.specialPrice = data["finalPrice"].stringValue
-        self.rating = CGFloat(data["rating"].floatValue)
+        self.rating = CGFloat(data["rating"].doubleValue)
         self.imageUrl = data["thumbNail"].stringValue
         self.productId = data["entityId"].stringValue
         self.hasOption = data["hasOptions"].intValue

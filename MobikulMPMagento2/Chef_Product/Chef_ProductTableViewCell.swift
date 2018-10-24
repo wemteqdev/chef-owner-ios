@@ -217,8 +217,8 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
                     }
                     else{
                         //if featuredProductCollectionModel[indexPath.row].isInRange == 1{
-                            if featuredProductCollectionModel[indexPath.row].tierPrice < featuredProductCollectionModel[indexPath.row].originalPrice{
-                                cell.productPrice.text = "\(featuredProductCollectionModel[indexPath.row].formatedPrice.prefix(1))\(String(featuredProductCollectionModel[indexPath.row].tierPrice))"
+                            if featuredProductCollectionModel[indexPath.row].tierPrice < featuredProductCollectionModel[indexPath.row].originalPrice && featuredProductCollectionModel[indexPath.row].tierPrice != 0{
+                                cell.specialPrice.text = "\(featuredProductCollectionModel[indexPath.row].formatedPrice.prefix(1))\(String(featuredProductCollectionModel[indexPath.row].tierPrice))"
                                 
                                 let attributedString = NSMutableAttributedString(string:( featuredProductCollectionModel[indexPath.row].formatedPrice ))
                                 attributedString.addAttribute(NSAttributedStringKey.baselineOffset, value: 0, range: NSMakeRange(0, attributedString.length))
@@ -283,11 +283,11 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
                     cell.compare_Button.isUserInteractionEnabled = true
                     
                     //if featuredProductCollectionModel[indexPath.row].isInRange == 1{
-                        if featuredProductCollectionModel[indexPath.row].tierPrice < featuredProductCollectionModel[indexPath.row].originalPrice{
-                            cell.price.text = "\(featuredProductCollectionModel[indexPath.row].formatedPrice.prefix(1))\(String(featuredProductCollectionModel[indexPath.row].tierPrice))"
+                        if featuredProductCollectionModel[indexPath.row].tierPrice < featuredProductCollectionModel[indexPath.row].originalPrice && featuredProductCollectionModel[indexPath.row].tierPrice != 0{
+                            cell.specialPrice.text = "\(featuredProductCollectionModel[indexPath.row].formatedPrice.prefix(1))\(String(featuredProductCollectionModel[indexPath.row].tierPrice))"
                             let attributeString = NSMutableAttributedString(string: featuredProductCollectionModel[indexPath.row].formatedPrice)
                             attributeString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: 1, range: NSRange(location: 0, length: attributeString.length))
-                            cell.specialPrice.attributedText = attributeString
+                            cell.price.attributedText = attributeString
                             cell.specialPrice.isHidden = false
                         }else{
                             cell.price.text =  featuredProductCollectionModel[indexPath.row].price

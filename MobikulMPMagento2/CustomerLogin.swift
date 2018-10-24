@@ -8,10 +8,12 @@
 
 import UIKit
 import LocalAuthentication
+import FacebookLogin
+import FacebookCore
+import GoogleSignIn
 
-
-class CustomerLogin: UIViewController {
-    
+class CustomerLogin: UIViewController, GIDSignInUIDelegate {
+    var isOwner:Bool = false
     
     @IBOutlet weak var emailIdField: UIFloatLabelTextField!
     @IBOutlet weak var passwordtextField: UIFloatLabelTextField!
@@ -32,15 +34,92 @@ class CustomerLogin: UIViewController {
     let kMsgShowReason = "🌛 Try to dismiss this screen 🌜"
     var errorMessage:String = ""
     var NotAgainCallTouchId :Bool = false
-    var isOwner:Bool = false
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
-
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.applyNavigationGradient(colors:GRADIENTCOLOR)
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        self.navigationController?.isNavigationBarHidden = true
+        
+    }
+    /*
+     func sign(inWillDispatch signIn: GIDSignIn!, error: Error!) {
+     //myActivityIndicator.stopAnimating()
+     print("signin dispatch")
+     }
+     @IBAction func didTapSignOut(_ sender: AnyObject) {
+     GIDSignIn.sharedInstance().signOut()
+     }
+     
+     // Present a view that prompts the user to sign in with Google
+     func sign(_ signIn: GIDSignIn!,
+     present viewController: UIViewController!) {
+     print("signin")
+     self.present(viewController, animated: true, completion: nil)
+     }
+     
+     // Dismiss the "Sign in with Google" view
+     func sign(_ signIn: GIDSignIn!,
+     dismiss viewController: UIViewController!) {
+     print("signin dismiss")
+     self.dismiss(animated: true, completion: nil)
+     }
+     */
+    /*
+     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
+     withError error: Error!) {
+     if let error = error {
+     print("\(error.localizedDescription)")
+     } else {
+     // Perform any operations on signed in user here.
+     let userId = user.userID                  // For client-side use only!
+     let idToken = user.authentication.idToken // Safe to send to the server
+     let fullName = user.profile.name
+     let givenName = user.profile.givenName
+     let familyName = user.profile.familyName
+     let email = user.profile.email
+     // ...
+     print("google email;", email);
+     }
+     }
+     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!,
+     withError error: Error!) {
+     // Perform any operations when the user disconnects from app here.
+     // ...
+     }
+     */
+    //    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+    //        if let authentication = user.authentication {
+    //            let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
+    //
+    //            Auth.auth()?.signIn(with: credential, completion: { (user, error) -> Void in
+    //                if error != nil {
+    //                    print("Problem at signing in with google with error : \(error)")
+    //                } else if error == nil {
+    //                    print("user successfully signed in through GOOGLE! uid:\(FIRAuth.auth()!.currentUser!.uid)")
+    //                    print("signed in")
+    //                    performSegue(withIdentifier: "goToFeed", sender: self)
+    //                }
+    //            })
+    //        }
+    //    }
+    
+    public func googleSignIn(email: String){
+        emailId = email
+        self.fbLoginSuccess = true
+        callingHttppApi()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.tabBarController?.tabBar.isHidden = true
+        self.tabBarController?.tabBar.isHidden = true
         
         defaults.set("1", forKey: "storeId")
+        //        GIDSignIn.sharedInstance().uiDelegate = self
+        var appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.customerLogin = self
         /* pastelView = PastelView(frame: view.bounds)
          
          // Custom Direction
@@ -80,20 +159,20 @@ class CustomerLogin: UIViewController {
         
         //loginButton.setTitle(GlobalData.sharedInstance.language(key: "login"), for: .normal)
         
-        googlesignButton.setTitleColor(UIColor.white, for: .normal)
-        googlesignButton.backgroundColor = UIColor.red
-        
-        googlesignButton.layer.cornerRadius = 25
-        googlesignButton.layer.masksToBounds = true
-        
-        googlesignButton.setTitle("SIGN IN WITH GOOGLE", for: .normal)
-        facebooksignButton.setTitleColor(UIColor.white, for: .normal)
-        facebooksignButton.backgroundColor = UIColor().HexToColor(hexString: "4265A0")
-        
-        facebooksignButton.layer.cornerRadius = 25
-        facebooksignButton.layer.masksToBounds = true
-        
-        facebooksignButton.setTitle("SIGN IN WITH FACEBOOK", for: .normal)
+//        googlesignButton.setTitleColor(UIColor.white, for: .normal)
+//        googlesignButton.backgroundColor = UIColor.red
+//
+//        googlesignButton.layer.cornerRadius = 25
+//        googlesignButton.layer.masksToBounds = true
+//
+//        googlesignButton.setTitle("SIGN IN WITH GOOGLE", for: .normal)
+//        facebooksignButton.setTitleColor(UIColor.white, for: .normal)
+//        facebooksignButton.backgroundColor = UIColor().HexToColor(hexString: "4265A0")
+//
+//        facebooksignButton.layer.cornerRadius = 25
+//        facebooksignButton.layer.masksToBounds = true
+//
+//        facebooksignButton.setTitle("SIGN IN WITH FACEBOOK", for: .normal)
         
         
         
@@ -125,34 +204,84 @@ class CustomerLogin: UIViewController {
         
         
     }
-    
+    var fbLoginSuccess = false
     
     override func viewDidAppear(_ animated: Bool) {
-//        if(self.moveToSignal != "cart"){
-//            if defaults.object(forKey: "touchIdFlag") as! String == "1"{
-//                let  AC = UIAlertController(title: GlobalData.sharedInstance.language(key: "alert"), message: GlobalData.sharedInstance.language(key: "loginbytouchid"), preferredStyle: .alert)
-//                let okBtn = UIAlertAction(title: GlobalData.sharedInstance.language(key: "ok"), style:.default, handler: {(_ action: UIAlertAction) -> Void in
-//                    self.configureTouchIdBeforeLogin()
-//
-//                })
-//                let cancelBtn = UIAlertAction(title: GlobalData.sharedInstance.language(key: "cancel"), style:.destructive, handler: {(_ action: UIAlertAction) -> Void in
-//
-//                })
-//                AC.addAction(okBtn)
-//                AC.addAction(cancelBtn)
-//                self.present(AC, animated: true, completion: {  })
-//            }
-//        }
+        
+        
+        if(self.moveToSignal != "cart"){
+            /*
+             if defaults.object(forKey: "touchIdFlag") as! String == "1"{
+             let  AC = UIAlertController(title: GlobalData.sharedInstance.language(key: "alert"), message: GlobalData.sharedInstance.language(key: "loginbytouchid"), preferredStyle: .alert)
+             let okBtn = UIAlertAction(title: GlobalData.sharedInstance.language(key: "ok"), style:.default, handler: {(_ action: UIAlertAction) -> Void in
+             self.configureTouchIdBeforeLogin()
+             
+             })
+             let cancelBtn = UIAlertAction(title: GlobalData.sharedInstance.language(key: "cancel"), style:.destructive, handler: {(_ action: UIAlertAction) -> Void in
+             
+             })
+             AC.addAction(okBtn)
+             AC.addAction(cancelBtn)
+             self.present(AC, animated: true, completion: {  })
+             }
+             */
+            self.configureTouchIdBeforeLogin()
+        }
     }
     
     @IBAction func signupClick(_ sender: UIButton) {
         self.performSegue(withIdentifier: "createaccount", sender: self)
     }
-//    @IBAction func clickOnBack(_ sender: Any) {
-//        self.navigationController?.isNavigationBarHidden = false
-//        self.navigationController?.popViewController(animated: true)
-//        self.tabBarController?.tabBar.isHidden = false
-//    }
+    @IBAction func facebook_login(_ sender: UIButton) {
+        let loginManager = LoginManager()
+        loginManager.logIn(readPermissions: [ReadPermission.publicProfile, ReadPermission.email,ReadPermission.userFriends], viewController : self) { loginResult in
+            switch loginResult {
+            case .failed(let error):
+                print(error)
+            case .cancelled:
+                print("User cancelled login")
+            case .success(let grantedPermissions, let declinedPermissions, let accessToken):
+                print("Logged in")
+                
+                self.getUserProfile()
+                
+                
+            }
+        }
+    }
+    
+    func getUserProfile () {
+        let connection = GraphRequestConnection()
+        connection.add(GraphRequest(graphPath: "/me", parameters: ["fields": "id, name, email"], accessToken: AccessToken.current, httpMethod: GraphRequestHTTPMethod(rawValue: "GET")!, apiVersion: "2.8")) { httpResponse, result in
+            print("result == ", result)
+            switch result {
+            case .success(let response):
+                print("Graph Request Succeeded: \(response)")
+                print("Custom Graph Request Succeeded: \(response)")
+                print("My facebook id is \(response.dictionaryValue?["id"])")
+                print("My name is \(response.dictionaryValue?["name"])")
+                self.emailId = response.dictionaryValue!["email"] as! String
+                print("FORMMAIL \(self.emailId)")
+                self.fbLoginSuccess = true
+                self.callingHttppApi()
+            case .failed(let error):
+                print("Graph Request Failed: \(error)")
+            }
+        }
+        
+        connection.start()
+    }
+    @IBAction func google_login(_ sender: UIButton) {
+        GIDSignIn.sharedInstance().uiDelegate=self
+        GIDSignIn.sharedInstance().signIn()
+    }
+    
+    
+    @IBAction func clickOnBack(_ sender: Any) {
+        self.navigationController?.isNavigationBarHidden = false
+        self.navigationController?.popViewController(animated: true)
+        self.tabBarController?.tabBar.isHidden = false
+    }
     
     func callingHttppApi()  {
         GlobalData.sharedInstance.showLoader()
@@ -203,6 +332,7 @@ class CustomerLogin: UIViewController {
             requstParams["websiteId"] = DEFAULT_WEBSITE_ID
             let width = String(format:"%f", SCREEN_WIDTH * UIScreen.main.scale)
             requstParams["width"] = width
+            requstParams["facebooklogged"] = fbLoginSuccess
             GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"wemteqchef/customer/logIn", currentView: self){success,responseObject in
                 if success == 1{
                     if responseObject?.object(forKey: "storeId") != nil{
@@ -230,6 +360,8 @@ class CustomerLogin: UIViewController {
             defaults.set(responseData["customerEmail"].stringValue, forKey: "customerEmail")
             defaults.set(responseData["customerToken"].stringValue, forKey: "customerId")
             defaults.set(responseData["customerName"].stringValue, forKey: "customerName")
+            let address = responseData["address"]["street"].stringValue + "," + responseData["address"]["city"].stringValue;
+            defaults.set(address, forKey: "address")
             
             if(defaults.object(forKey: "quoteId") != nil){
                 defaults.set(nil, forKey: "quoteId")
@@ -253,17 +385,23 @@ class CustomerLogin: UIViewController {
                 }
             }
             
-            if responseData["isOwner"].intValue == 0{
-                defaults.set("f", forKey: "isOwner")
-                
+            if responseData["isAdmin"].intValue == 0{
+                defaults.set("f", forKey: "isAdmin")
             }else{
-                self.isOwner = true
-                defaults.set("t", forKey: "isOwner")
+                defaults.set("t", forKey: "isAdmin")
+            }
+            if responseData["isOwner"].intValue == 0{
+                isOwner = false
+            }else{
+                isOwner = true
             }
             
             if responseData["isSeller"].intValue == 0{
-                defaults.set("f", forKey: "isSeller")
+                
+                    defaults.set("f", forKey: "isSeller")
             }else{
+                GlobalData.sharedInstance.showErrorSnackBar(msg: "Your ID is Seller. Only Customers or Owners are allowed to sign in.")
+                return
                 defaults.set("t", forKey: "isSeller")
             }
             
@@ -285,7 +423,7 @@ class CustomerLogin: UIViewController {
                     let cancelBtn = UIAlertAction(title: GlobalData.sharedInstance.language(key: "cancel"), style: .destructive, handler: {(_ action: UIAlertAction) -> Void in
                         defaults.set("0", forKey: "touchIdFlag");
                         defaults.synchronize()
-                        //self.tabBarController?.tabBar.isHidden = false
+                        self.tabBarController?.tabBar.isHidden = false
                         self.navigationController?.popViewController(animated: true)
                     })
                     AC.addAction(okBtn)
@@ -301,7 +439,7 @@ class CustomerLogin: UIViewController {
                     let cancelBtn = UIAlertAction(title: GlobalData.sharedInstance.language(key: "cancel"), style: .destructive, handler: {(_ action: UIAlertAction) -> Void in
                         defaults.set("1", forKey: "touchIdFlag");
                         defaults.synchronize()
-                        //self.tabBarController?.tabBar.isHidden = false
+                        self.tabBarController?.tabBar.isHidden = false
                         self.navigationController?.popViewController(animated: true)
                     })
                     AC.addAction(okBtn)
@@ -310,11 +448,11 @@ class CustomerLogin: UIViewController {
                     self.present(AC, animated: true, completion: {  })
                 }
                 else{
-                    //self.tabBarController?.tabBar.isHidden = false
+                    self.tabBarController?.tabBar.isHidden = false
                     self.navigationController?.popViewController(animated: true)
                 }
             }else{
-                //self.tabBarController?.tabBar.isHidden = false
+                self.tabBarController?.tabBar.isHidden = false
                 self.navigationController?.popViewController(animated: true)
             }
         }else{
@@ -356,10 +494,10 @@ class CustomerLogin: UIViewController {
     }
     @IBAction func LoginClick(_ sender: UIButton) {
         view.endEditing(true)
-
+        fbLoginSuccess = false
         emailId = emailIdField.text!
         password = passwordtextField.text!
-
+        
         
         var isValid = 0;
         var errorMessage = ""
@@ -459,12 +597,13 @@ class CustomerLogin: UIViewController {
         defaults.set("0", forKey: "touchIdFlag");
         defaults.synchronize()
         //self.tabBarController?.tabBar.isHidden = false
-        if self.isOwner {
+        if self.isOwner == true{
             self.performSegue(withIdentifier: "toowner", sender: self)
         }
-        else {
+            else{
             self.performSegue(withIdentifier: "tohome", sender: self)
         }
+        
     }
     
     func goToDashBoardWithTouchId(){
@@ -473,10 +612,10 @@ class CustomerLogin: UIViewController {
         defaults.set(password, forKey: "TouchPasswordValue")
         defaults.synchronize()
         //self.tabBarController?.tabBar.isHidden = false
-        if self.isOwner {
+        if self.isOwner == true{
             self.performSegue(withIdentifier: "toowner", sender: self)
         }
-        else {
+        else{
             self.performSegue(withIdentifier: "tohome", sender: self)
         }
     }
@@ -485,8 +624,8 @@ class CustomerLogin: UIViewController {
     func showUnexpectedErrorMessageAfterLogin(){
         let  AC = UIAlertController(title: GlobalData.sharedInstance.language(key: "error"), message: GlobalData.sharedInstance.language(key: "erroroccured"), preferredStyle: .alert)
         let okBtn = UIAlertAction(title: GlobalData.sharedInstance.language(key: "ok"), style:.default, handler: {(_ action: UIAlertAction) -> Void in
-            //self.tabBarController?.tabBar.isHidden = false
-            //self.navigationController?.popViewController(animated: true)
+            self.tabBarController?.tabBar.isHidden = false
+            self.navigationController?.popViewController(animated: true)
             
         })
         AC.addAction(okBtn)

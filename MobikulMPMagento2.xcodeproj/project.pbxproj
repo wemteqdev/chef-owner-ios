@@ -155,6 +155,7 @@
 		57B2E0932169D9F70029AC63 /* Chef_ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B2E0922169D9F70029AC63 /* Chef_ProfileViewController.swift */; };
 		57C3DA20217D829A00C243E5 /* Chef_ReviewSubmitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C3DA1E217D829A00C243E5 /* Chef_ReviewSubmitCell.swift */; };
 		57C3DA21217D829A00C243E5 /* Chef_ReviewSubmitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57C3DA1F217D829A00C243E5 /* Chef_ReviewSubmitCell.xib */; };
+		57C3DA4121800FC500C243E5 /* TermsCondtionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C3DA3821800FC200C243E5 /* TermsCondtionsView.swift */; };
 		57C6FFF5216404B800E5EABB /* Chef_CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C6FFF3216404B800E5EABB /* Chef_CategoryCollectionViewCell.swift */; };
 		57C6FFF6216404B800E5EABB /* Chef_CategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57C6FFF4216404B800E5EABB /* Chef_CategoryCollectionViewCell.xib */; };
 		57C8312B214A9B5B00CE5911 /* Forgotpassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C8312A214A9B5B00CE5911 /* Forgotpassword.swift */; };
@@ -745,6 +746,7 @@
 		57B2E0922169D9F70029AC63 /* Chef_ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chef_ProfileViewController.swift; sourceTree = "<group>"; };
 		57C3DA1E217D829A00C243E5 /* Chef_ReviewSubmitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chef_ReviewSubmitCell.swift; sourceTree = "<group>"; };
 		57C3DA1F217D829A00C243E5 /* Chef_ReviewSubmitCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Chef_ReviewSubmitCell.xib; sourceTree = "<group>"; };
+		57C3DA3821800FC200C243E5 /* TermsCondtionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsCondtionsView.swift; sourceTree = "<group>"; };
 		57C6FFF3216404B800E5EABB /* Chef_CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chef_CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		57C6FFF4216404B800E5EABB /* Chef_CategoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Chef_CategoryCollectionViewCell.xib; sourceTree = "<group>"; };
 		57C8312A214A9B5B00CE5911 /* Forgotpassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forgotpassword.swift; sourceTree = "<group>"; };
@@ -1123,6 +1125,7 @@
 		0C05709020408A8800EB527B /* MobikulMPMagento2 */ = {
 			isa = PBXGroup;
 			children = (
+				57C3DA3821800FC200C243E5 /* TermsCondtionsView.swift */,
 				57B2E0892169D8C80029AC63 /* Chef_Profile */,
 				299D74B82159082E00248A67 /* Supplier Dashboard */,
 				29B11AE921555C5000980BA4 /* Owner */,
@@ -2452,6 +2455,7 @@
 				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
@@ -2477,6 +2481,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleAPIClientForREST.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
@@ -2523,11 +2528,13 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-MobikulMPMagento2/Pods-MobikulMPMagento2-resources.sh",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/GoogleMobileVision/GoogleMVTextDetectorResources.bundle",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMVTextDetectorResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2632,6 +2639,7 @@
 				A3B7D32E207DFE210026A3AF /* PaymentMethodController.swift in Sources */,
 				A3B7D2D9207DFE210026A3AF /* CartTableViewCell.swift in Sources */,
 				A3B7D303207DFE210026A3AF /* ViewAllCell.swift in Sources */,
+				57C3DA4121800FC500C243E5 /* TermsCondtionsView.swift in Sources */,
 				29B11AF321555CBC00980BA4 /* Owner.swift in Sources */,
 				A3B7D1E5207DFDBD0026A3AF /* SellerOrderFilterController.swift in Sources */,
 				2941279B21798D4D0031CCFB /* OwnerProductDetailViewController.swift in Sources */,

@@ -16,11 +16,16 @@ import UserNotifications
 import Firebase
 import Siren
 import GoogleMaps
+import FacebookCore
+import FacebookLogin
+import FacebookShare
+import GoogleSignIn
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
     var window: UIWindow?
+    var customerLogin:CustomerLogin!
     
     override init() {
         super.init()
@@ -34,7 +39,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+        UIApplication.shared.statusBarStyle = .lightContent
+        if #available(iOS 11.0, *) {
+            UIImageView.appearance().accessibilityIgnoresInvertColors = true
+        }
         if #available(iOS 11.0, *) {
             UIImageView.appearance().accessibilityIgnoresInvertColors = true
         }
@@ -99,6 +107,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barStyle = .blackOpaque
         
         GMSServices.provideAPIKey("AIzaSyCyCc5s5KSnkWvyT18xEgvHh8qtpxOxPFw")
+        GIDSignIn.sharedInstance().clientID = "170033438460-ugjoslegsii4hm23rh9l10cmqtm65sm6.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance().delegate = self as! GIDSignInDelegate
+        SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         return true
     }
     
@@ -121,7 +132,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         siren.alertType = .option
     }
-    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
+              withError error: Error!) {
+        if let error = error {
+            print("\(error.localizedDescription)")
+        } else {
+            // Perform any operations on signed in user here.
+            let userId = user.userID                  // For client-side use only!
+            let idToken = user.authentication.idToken // Safe to send to the server
+            let fullName = user.profile.name
+            let givenName = user.profile.givenName
+            let familyName = user.profile.familyName
+            let email = user.profile.email
+            // ...
+            print("email;", email);
+            self.customerLogin.googleSignIn(email: email!);
+        }
+    }
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!,
+              withError error: Error!) {
+        // Perform any operations when the user disconnects from app here.
+        // ...
+    }
     //MARK:- Push Notification
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         var tokenq = ""

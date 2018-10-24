@@ -380,6 +380,7 @@ extension Chef_SuperCart : UITableViewDelegate, UITableViewDataSource {
             cell.subtotal.text = self.myCartViewModel.myCartModel[CartIndex].subtotal
         }
         cell.priceLabel.text = "\(String(self.myCartViewModel.myCartModel[CartIndex].price))/\(String(self.myCartViewModel.myCartModel[CartIndex].unitString)) - \(String(self.myCartViewModel.myCartModel[CartIndex].taxClass))"
+        cell.moqbtn.setTitle("MOQ \(String(self.myCartViewModel.myCartModel[CartIndex].price))", for: .normal)
         
         cell.supplierName.text = self.sellerListViewModel.sellerListModel[curSection].shopTitle
         cell.qtyButton.setTitle(self.myCartViewModel.myCartModel[CartIndex].qty, for: .normal)

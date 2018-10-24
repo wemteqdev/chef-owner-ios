@@ -246,6 +246,9 @@ extension Chef_HomeViewModel : UITableViewDelegate , UITableViewDataSource {
             print("all")
              cell.featuredProductCollectionModel = ((item as? HomeViewModelAllItem)?.allProductCollectionModel)!
             cell.ProductLabel.text = "All Products"
+            if homeViewController.filtered == true {
+                cell.ProductLabel.text = "Products in Category"
+            }
             break
              //return UITableViewCell()
         case .RecommendedProduct:

@@ -1102,6 +1102,7 @@ class CatalogProduct: UIViewController {
                 }
             }
         }
+        
         self.addToCartFrameY = self.addToCartView.frame.origin.y
         
         /////////////////// Market Place ///////////////////

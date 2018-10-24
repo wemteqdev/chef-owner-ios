@@ -20,6 +20,7 @@ pod 'Siren'
 pod 'FZAccordionTableView', '~> 0.2.3'
 pod 'ImageSlideshow', '~> 1.6'
 
+pod 'GoogleSignIn', '4.1.2'
 pod 'FacebookCore'
 pod 'FacebookLogin'
 pod 'FacebookShare'

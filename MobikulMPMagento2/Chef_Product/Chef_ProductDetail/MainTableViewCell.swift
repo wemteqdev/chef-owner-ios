@@ -158,7 +158,8 @@ class MainTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
             cell.reviewRatingmark.text = String(compareProductCollectionModel[indexPath.row].rating)
             cell.reviewCount.text = "\(String(compareProductCollectionModel[indexPath.row].reviewCount)) reviews"
             cell.supplierName.text = compareProductCollectionModel[indexPath.row].supplierName
-            cell.moq.text = compareProductCollectionModel[indexPath.row].minAddToCartQty
+            //cell.moq.text = compareProductCollectionModel[indexPath.row].minAddToCartQty
+            cell.moq.text = compareProductCollectionModel[indexPath.row].price
             if compareProductCollectionModel[indexPath.row].isMin == true{
                 cell.discountLayer.isHidden = false
                 cell.discountLabel.isHidden = false
