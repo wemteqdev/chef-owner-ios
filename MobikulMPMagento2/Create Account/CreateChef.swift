@@ -114,7 +114,9 @@ class CreateChef: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource{
                 }
                 requstParams["postcode"] = self.postcodeTextField.text
                 requstParams["country"] = self.countryId
-                
+                if (self.defaults.object(forKey:"Ownerup") as! String) == "t" {
+                    requstParams["customerType"] = "4"
+                }
                 requstParams["isSocial"] = "0"
                 requstParams["pictureURL"] = ""
                 requstParams["password"] = self.passwordTextField.text
