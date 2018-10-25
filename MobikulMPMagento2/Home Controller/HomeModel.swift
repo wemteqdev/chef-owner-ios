@@ -190,6 +190,10 @@ struct Products {
         self.unit = data["unitString"].stringValue
         self.userStatus = data["userStatus"].boolValue
         self.nonEditable = data["nonEditable"].boolValue
+        if self.nonEditable == nil
+        {
+            self.nonEditable = false
+        }
     }
 }
 
