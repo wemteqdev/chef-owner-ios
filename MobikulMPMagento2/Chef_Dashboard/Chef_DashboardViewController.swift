@@ -163,6 +163,7 @@ class Chef_DashboardViewController: UIViewController, Chef_DetailReviewHandlerDe
         return ""
     }
     func loadNavgiationButtons() {
+        /*
         let btnCart = SSBadgeButton()
         btnCart.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
         btnCart.setImage(UIImage(named: "Action 4")?.withRenderingMode(.alwaysTemplate), for: .normal)
@@ -182,6 +183,7 @@ class Chef_DashboardViewController: UIViewController, Chef_DetailReviewHandlerDe
         self.navigationItem.setRightBarButtonItems([UIBarButtonItem(customView: btnCart), btnSearch], animated: true)
         
         self.navigationController?.navigationBar.tintColor = .white
+         */
     }
     override func viewDidLoad() {
         super.viewDidLoad()
