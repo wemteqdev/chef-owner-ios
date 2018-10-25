@@ -114,8 +114,9 @@ extension Chef_HomeViewModel : UITableViewDelegate , UITableViewDataSource {
             return 1
         }
         else{
-            return items.count - 1
             print("items \(items.count)")
+            return items.count - 1
+            
         }
     }
     
@@ -167,7 +168,11 @@ extension Chef_HomeViewModel : UITableViewDelegate , UITableViewDataSource {
         var index:Int!
         if homeViewController.filtered == true {
             cell.ProductLabel.text = "Products in Category";
-            index = 2
+            for i in 0..<items.count {
+                if items[i].type == .AllProduct {
+                    index = i
+                }
+            }
         }
         else{
             cell.headerView.isHidden = false;
