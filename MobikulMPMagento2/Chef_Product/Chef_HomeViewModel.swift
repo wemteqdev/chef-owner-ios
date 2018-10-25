@@ -35,10 +35,12 @@ class Chef_HomeViewModel: NSObject {
             items.append(bannerDataCollectionItem)
         }
         
+        
         if !data.featureCategories.isEmpty {
             let featureCategoryCollectionItem = HomeViewModelFeatureCategoriesItem(categories: data.featureCategories)
             //items.append(featureCategoryCollectionItem)
         }
+
         
         if !data.featuredProductCollectionModel.isEmpty {
             let featureCollectionItem = HomeViewModelFeatureItem(categories: data.featuredProductCollectionModel)
@@ -105,7 +107,7 @@ class Chef_HomeViewModel: NSObject {
 extension Chef_HomeViewModel : UITableViewDelegate , UITableViewDataSource {
     public func numberOfSections(in tableView: UITableView) -> Int{
         //return 3
-        if items.count == 0 {
+        if items.count == 0 || items.count == 1{
             return 0
         }
         else if homeViewController.filtered == true || tableView.tag == 1000 {
