@@ -33,6 +33,9 @@ class AddChefAlertView: UIViewController, UIPickerViewDelegate,UIPickerViewDataS
         okButton.layer.cornerRadius = 20
         chefEmailTextField.filterStrings(customerEmails)
         chefEmailTextField.startSuggestingInmediately = true
+        chefEmailTextField.theme.bgColor = UIColor (red: 0.9, green: 0.9, blue: 0.9, alpha: 0.7)
+        chefEmailTextField.theme.font = UIFont.systemFont(ofSize: 15)
+        chefEmailTextField.highlightAttributes = [NSAttributedStringKey.font:UIFont.boldSystemFont(ofSize: 15)]
         
         self.callingHttppApi()
     }
