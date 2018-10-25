@@ -12,6 +12,8 @@ import MobileCoreServices
 import Alamofire
 
 class Chef_DashboardViewController: UIViewController, Chef_DetailReviewHandlerDelegate, UITableViewDelegate, UITableViewDataSource {
+    
+    var isOwnerDetailPage:Bool = false;
     func reviewSubmit(title: String, contentText: String, rating: String) {
         print("REVIEW FROM DETAIL REVIEW COLLECTION CELL !",title,contentText,rating)
         self.reviewTitle = title
@@ -41,7 +43,9 @@ class Chef_DashboardViewController: UIViewController, Chef_DetailReviewHandlerDe
         
         gesture = UITapGestureRecognizer(target: self, action:  #selector (self.compareViewClk (_:)))
         cell.compareView.addGestureRecognizer(gesture)
-        
+        if(self.isOwnerDetailPage){
+            cell.compareView.isHidden = true
+        }
         cell.baseCompareView.backgroundColor = UIColor.white
         cell.baseDetailView.backgroundColor = UIColor.white
         cell.baseReviewView.backgroundColor = UIColor.white
@@ -195,6 +199,9 @@ class Chef_DashboardViewController: UIViewController, Chef_DetailReviewHandlerDe
         GlobalData.sharedInstance.dismissLoader()
         callingHttppApi(apiName: CatalogProductAPI.catalogProduct)
         
+        if(isOwnerDetailPage){
+            addCartButton.isHidden = true
+        }
         // Do any additional setup after loading the view.
     }
    

@@ -950,10 +950,11 @@ class SupplierProductcategory: UIViewController,UICollectionViewDelegate,UIColle
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "chef_productdetail") as! OwnerProductDetailViewController
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "chef_productdetail") as! Chef_DashboardViewController
         vc.productImageUrl = productCollectionViewModel.getProductCollectionData[indexPath.row].productImage
         vc.productName = productCollectionViewModel.getProductCollectionData[indexPath.row].productName
         vc.productId = productCollectionViewModel.getProductCollectionData[indexPath.row].id
+        vc.isOwnerDetailPage = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

@@ -40,18 +40,18 @@
                         <state key="normal" image="ic_wishlist_empty"/>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="23l-TF-h8l">
-                        <rect key="frame" x="9.5" y="254" width="140" height="41"/>
+                        <rect key="frame" x="19.5" y="242.5" width="120" height="29.5"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                         <state key="normal" title="COMPARE">
                             <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Xa-JC-FUU">
-                        <rect key="frame" x="9.5" y="202.5" width="140" height="41.5"/>
+                        <rect key="frame" x="19.5" y="202.5" width="120" height="30"/>
                         <color key="backgroundColor" red="0.34553931659999998" green="0.59092947809999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="140" id="LJ7-t2-3B7"/>
-                            <constraint firstAttribute="height" constant="41" id="tvH-d2-AvZ"/>
+                            <constraint firstAttribute="width" constant="120" id="LJ7-t2-3B7"/>
+                            <constraint firstAttribute="height" constant="30" id="tvH-d2-AvZ"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                         <state key="normal" title="ADD">
@@ -191,6 +191,11 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="i4Z-9a-rsA"/>
             <size key="customSize" width="159" height="300"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="r4R-RQ-ySa"/>
+                </mask>
+            </variation>
             <connections>
                 <outlet property="addButton" destination="7Xa-JC-FUU" id="uLQ-Qc-2mF"/>
                 <outlet property="addToCompareButton" destination="23l-TF-h8l" id="YMR-oD-iai"/>
