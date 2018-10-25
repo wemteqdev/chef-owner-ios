@@ -99,7 +99,7 @@ class Chef_DashboardView: UIViewController{
         navigationController?.navigationBar.shadowImage = UIImage();
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         self.navigationItem.title = "Chef"
-        profile_view.backgroundColor = UIColor(red: 30/255, green: 161/255, blue: 243/255, alpha: 1.0);
+        profile_view.backgroundColor = UIColor().HexToColor(hexString: BUTTON_COLOR);
         //profile_view.backgroundColor = UIColor(patternImage: UIImage(named: "back_color")!)
         self.profile_view.layer.shadowOpacity = 0;
         profile_image.layer.cornerRadius = 35;
