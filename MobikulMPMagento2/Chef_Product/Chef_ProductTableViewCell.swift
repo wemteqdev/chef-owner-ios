@@ -240,7 +240,7 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
                     //self.productCollectionViewHeight.constant = self.prodcutCollectionView.contentSize.height
                     if featuredProductCollectionModel[indexPath.row].nonEditable == true {
                         cell.addButton.isHidden = true
-                        cell.compare_Button.isHidden = true
+                        cell.addToCompareButton.isHidden = true
                     }
                     return cell;
                 }
