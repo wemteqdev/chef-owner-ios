@@ -14,6 +14,7 @@ import Alamofire
 class Chef_DashboardViewController: UIViewController, Chef_DetailReviewHandlerDelegate, UITableViewDelegate, UITableViewDataSource {
     
     var isOwnerDetailPage:Bool = false;
+    var addShow:Bool = false
     func reviewSubmit(title: String, contentText: String, rating: String) {
         print("REVIEW FROM DETAIL REVIEW COLLECTION CELL !",title,contentText,rating)
         self.reviewTitle = title
@@ -198,7 +199,9 @@ class Chef_DashboardViewController: UIViewController, Chef_DetailReviewHandlerDe
         GlobalData.sharedInstance.removePreviousNetworkCall()
         GlobalData.sharedInstance.dismissLoader()
         callingHttppApi(apiName: CatalogProductAPI.catalogProduct)
-        
+        if addShow {
+            addCartButton.isHidden = true
+        }
         if(isOwnerDetailPage){
             addCartButton.isHidden = true
         }

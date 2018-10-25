@@ -146,13 +146,14 @@ class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPicker
         
     }
     
-    func productClick(name: String, image: String, id: String, supplierName: String) {
+    func productClick(name: String, image: String, id: String, supplierName: String, addShow: Bool) {
         //let vc = self.storyboard?.instantiateViewController(withIdentifier: "catalogproduct") as! CatalogProduct
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "chef_productdetail") as! Chef_DashboardViewController
         vc.productName = name
         vc.productImageUrl = image
         vc.productId = id
         vc.supplierNameText = supplierName
+        vc.addShow = addShow
 
         self.navigationController?.pushViewController(vc, animated: true)
     }
