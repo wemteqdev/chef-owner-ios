@@ -147,6 +147,9 @@ class CompareListViewController: UIViewController,UITableViewDelegate, UITableVi
                     if errorCode == true{
                         GlobalData.sharedInstance.showSuccessSnackBar(msg:data .object(forKey:"message") as! String )
                         badge = String(data.object(forKey: "cartCount") as! Int)
+                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "chef_supercartview") as! Chef_SuperCart
+                        
+                        self.navigationController?.pushViewController(vc, animated: true)
                         
                     }
                     else{

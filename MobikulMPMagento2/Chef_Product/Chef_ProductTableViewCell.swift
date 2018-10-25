@@ -239,8 +239,13 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
                     cell.layoutIfNeeded()
                     //self.productCollectionViewHeight.constant = self.prodcutCollectionView.contentSize.height
                     if featuredProductCollectionModel[indexPath.row].nonEditable == true {
-                        cell.addButton.isHidden = true
-                        cell.addToCompareButton.isHidden = true
+                        cell.addButton.isUserInteractionEnabled = false
+                        cell.addToCompareButton.isUserInteractionEnabled = false
+                        
+                        cell.addButton.setTitleColor(UIColor.gray, for: .normal)
+                        cell.addButton.backgroundColor = UIColor.lightGray
+                        cell.addToCompareButton.setTitleColor(UIColor.gray, for: .normal)
+                        cell.addToCompareButton.backgroundColor = UIColor.lightGray                        
                     }
                     return cell;
                 }
@@ -454,6 +459,7 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
     @objc func addButtonClick(sender: UIButton){
         if showFeature == true{
             delegate.productClick(name: featuredProductCollectionModel[sender.tag].name, image: featuredProductCollectionModel[sender.tag].image, id: featuredProductCollectionModel[sender.tag].productID, supplierName: featuredProductCollectionModel[sender.tag].supplierName,addShow: featuredProductCollectionModel[sender.tag].nonEditable )
+            
            
         }else{
             //delegate.productClick(name: productCollectionModel[sender.tag].name, image: productCollectionModel[sender.tag].image, id: productCollectionModel[sender.tag].productID )

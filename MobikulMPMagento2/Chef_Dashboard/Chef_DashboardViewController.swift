@@ -695,6 +695,9 @@ class Chef_DashboardViewController: UIViewController, Chef_DetailReviewHandlerDe
                                                     print("BADGE")
                                                     print(badge)
                                                     //self.tabBarController!.tabBar.items?[3].badgeValue = dict["cartCount"].stringValue
+                                                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "chef_supercartview") as! Chef_SuperCart
+                                                    
+                                                    self.navigationController?.pushViewController(vc, animated: true)
                                                     
                                                     if self.goToBagFlag == true{
                                                         self.tabBarController!.selectedIndex = 3
