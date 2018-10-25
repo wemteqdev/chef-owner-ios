@@ -453,7 +453,7 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
     }
     @objc func addButtonClick(sender: UIButton){
         if showFeature == true{
-            delegate.productClick(name: featuredProductCollectionModel[sender.tag].name, image: featuredProductCollectionModel[sender.tag].image, id: featuredProductCollectionModel[sender.tag].productID, supplierName: featuredProductCollectionModel[sender.tag].supplierName,add )
+            delegate.productClick(name: featuredProductCollectionModel[sender.tag].name, image: featuredProductCollectionModel[sender.tag].image, id: featuredProductCollectionModel[sender.tag].productID, supplierName: featuredProductCollectionModel[sender.tag].supplierName,addShow: featuredProductCollectionModel[sender.tag].nonEditable )
            
         }else{
             //delegate.productClick(name: productCollectionModel[sender.tag].name, image: productCollectionModel[sender.tag].image, id: productCollectionModel[sender.tag].productID )

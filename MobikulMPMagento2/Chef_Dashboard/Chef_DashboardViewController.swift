@@ -192,7 +192,7 @@ class Chef_DashboardViewController: UIViewController, Chef_DetailReviewHandlerDe
         self.navigationItem.title = productName
         self.navigationController?.isNavigationBarHidden = false
         loadNavgiationButtons()
-     GlobalData.sharedInstance.getImageFromUrl(imageUrl:productImageUrl , imageView: self.productImage)
+        GlobalData.sharedInstance.getImageFromUrl(imageUrl:productImageUrl , imageView: self.productImage)
         
         imageArrayUrl = [productImageUrl]
         productnameLabel.text = productName
