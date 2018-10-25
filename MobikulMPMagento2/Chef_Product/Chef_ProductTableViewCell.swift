@@ -245,7 +245,7 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
                         cell.addButton.setTitleColor(UIColor.gray, for: .normal)
                         cell.addButton.backgroundColor = UIColor.lightGray
                         cell.addToCompareButton.setTitleColor(UIColor.gray, for: .normal)
-                        cell.addToCompareButton.backgroundColor = UIColor.lightGray                        
+                        cell.addToCompareButton.backgroundColor = UIColor.lightGray
                     }
                     return cell;
                 }
@@ -303,8 +303,13 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
                             
                         }
                     if featuredProductCollectionModel[indexPath.row].nonEditable == true {
-                        cell.addButton.isHidden = true
-                        cell.compare_Button.isHidden = true
+                        cell.addButton.isUserInteractionEnabled = false
+                        cell.compare_Button.isUserInteractionEnabled = false
+                        
+                        cell.addButton.setTitleColor(UIColor.gray, for: .normal)
+                        cell.addButton.backgroundColor = UIColor.lightGray
+                        cell.compare_Button.setTitleColor(UIColor.gray, for: .normal)
+                        cell.compare_Button.backgroundColor = UIColor.lightGray
                     }
                     //}
                     return cell
@@ -391,9 +396,9 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         if homeViewController.change == false{
-            return CGSize(width: collectionView.frame.size.width, height: collectionView.frame.size.width/2 - 80 )
+            return CGSize(width: collectionView.frame.size.width, height: 414/2 - 80 )
         }else{
-            return CGSize(width: collectionView.frame.size.width/3 + 30 , height: collectionView.frame.size.width/2 + 60 )
+            return CGSize(width: 414/3 + 30 , height: 414/2 + 65 )
             //return CGSize(width: collectionView.frame.size.width/2, height:SCREEN_WIDTH/2.5 + 120)
         }
     }

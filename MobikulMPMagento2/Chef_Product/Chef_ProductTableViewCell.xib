@@ -60,7 +60,7 @@
                         <rect key="frame" x="0.0" y="48" width="615" height="413.5"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" priority="999" constant="297.5" id="HkS-D2-hZ1"/>
+                            <constraint firstAttribute="height" priority="999" id="HkS-D2-hZ1"/>
                             <constraint firstAttribute="width" constant="615" id="TN2-uI-Y3A"/>
                         </constraints>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="doK-tv-EKH">

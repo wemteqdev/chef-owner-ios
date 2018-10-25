@@ -368,6 +368,7 @@ class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPicker
             }
             requstParams["websiteId"] = "1"
             let width = String(format:"%f", SCREEN_WIDTH * UIScreen.main.scale)
+            print("screen Width", SCREEN_WIDTH)
             requstParams["width"] = width
             requstParams["pageSize"] = String(self.limitedCount)
             requstParams["category"] = self.categoryId
