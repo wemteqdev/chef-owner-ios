@@ -627,7 +627,7 @@ class Productcategory: UIViewController,UICollectionViewDelegate,UICollectionVie
         productCollectionView.dataSource = self
         productCollectionView.reloadData()
         totalCount = productCollectionViewModel.totalCount
-        self.navigationItem.prompt = "\(productCollectionViewModel.totalCount)"+" "+GlobalData.sharedInstance.language(key: "items")
+        //self.navigationItem.prompt = "\(productCollectionViewModel.totalCount)"+" "+GlobalData.sharedInstance.language(key: "items")
         loadPageRequestFlag = true
         
         if totalCount == 0  {

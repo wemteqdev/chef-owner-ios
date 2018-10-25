@@ -977,6 +977,7 @@
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" red="0.094117647058823528" green="0.55294117647058827" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="yx0-7p-hdD" firstAttribute="top" secondItem="SQ2-Mw-NcH" secondAttribute="top" id="07N-YP-58c"/>
                                             <constraint firstItem="JLv-0s-UcK" firstAttribute="leading" secondItem="N20-uy-tXA" secondAttribute="leading" id="0E8-Mz-hdf"/>
@@ -3496,7 +3497,7 @@
                                         <textInputTraits key="textInputTraits" textContentType="username"/>
                                     </searchBar>
                                 </subviews>
-                                <color key="backgroundColor" red="0.1176470588" green="0.63137254899999995" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.11372549019607843" green="0.59215686274509804" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="0.1334823668" green="0.66863793130000004" blue="0.95925086739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="Iym-ih-bg1" firstAttribute="centerY" secondItem="URL-Gv-v0y" secondAttribute="centerY" id="1K6-eq-2eh"/>
@@ -3967,8 +3968,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zv4-8Q-spt">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zv4-8Q-spt">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="product_image" translatesAutoresizingMaskIntoConstraints="NO" id="hKk-Ng-kBh" customClass="product_image">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="216"/>
@@ -4034,8 +4035,8 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lKh-ma-8Rg">
                                         <rect key="frame" x="340" y="229.5" width="15" height="15"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="15" id="FbB-OD-SM8"/>
-                                            <constraint firstAttribute="width" constant="15" id="NIt-2E-Nzs"/>
+                                            <constraint firstAttribute="height" constant="20" id="FbB-OD-SM8"/>
+                                            <constraint firstAttribute="width" constant="20" id="NIt-2E-Nzs"/>
                                         </constraints>
                                         <state key="normal" title="Button" image="share-480"/>
                                         <connections>
@@ -4059,11 +4060,11 @@
                                     <constraint firstItem="iU8-av-5CC" firstAttribute="leading" secondItem="zAi-ty-SQK" secondAttribute="leading" id="HDA-b9-zQu"/>
                                     <constraint firstItem="lKh-ma-8Rg" firstAttribute="trailing" secondItem="nvu-7C-5ql" secondAttribute="trailing" id="KXd-Px-njA"/>
                                     <constraint firstItem="zAi-ty-SQK" firstAttribute="leading" secondItem="WUN-dp-jvD" secondAttribute="leading" id="Khu-rL-3NN"/>
-                                    <constraint firstItem="hKk-Ng-kBh" firstAttribute="top" secondItem="zv4-8Q-spt" secondAttribute="top" id="Lu0-7O-KJh"/>
+                                    <constraint firstItem="hKk-Ng-kBh" firstAttribute="top" secondItem="zv4-8Q-spt" secondAttribute="top" constant="20" id="Lu0-7O-KJh"/>
                                     <constraint firstItem="lKh-ma-8Rg" firstAttribute="leading" secondItem="vpB-as-NNh" secondAttribute="trailing" constant="15" id="QlD-nN-QeI"/>
                                     <constraint firstItem="lKh-ma-8Rg" firstAttribute="centerY" secondItem="WUN-dp-jvD" secondAttribute="centerY" id="VJ0-6t-KEy"/>
                                     <constraint firstItem="hKk-Ng-kBh" firstAttribute="leading" secondItem="zv4-8Q-spt" secondAttribute="leading" id="c7R-en-vBd"/>
-                                    <constraint firstAttribute="trailing" secondItem="nvu-7C-5ql" secondAttribute="trailing" constant="20" id="cuo-Js-SQX"/>
+                                    <constraint firstAttribute="trailing" secondItem="nvu-7C-5ql" secondAttribute="trailing" constant="30" id="cuo-Js-SQX"/>
                                     <constraint firstItem="iU8-av-5CC" firstAttribute="top" secondItem="zAi-ty-SQK" secondAttribute="bottom" constant="10" id="i8s-rl-98m"/>
                                     <constraint firstItem="zAi-ty-SQK" firstAttribute="top" secondItem="WUN-dp-jvD" secondAttribute="top" id="iRS-M9-OOD"/>
                                     <constraint firstAttribute="trailing" secondItem="hKk-Ng-kBh" secondAttribute="trailing" id="ng8-aT-Bn3"/>
@@ -4116,6 +4117,7 @@
                         <outlet property="productStarRating" destination="sMS-W8-Md7" id="yqP-z8-PXf"/>
                         <outlet property="productnameLabel" destination="WUN-dp-jvD" id="f42-di-LE1"/>
                         <outlet property="productpriceLabel" destination="nvu-7C-5ql" id="NhS-1d-SHw"/>
+                        <outlet property="scrollView" destination="zv4-8Q-spt" id="Xfw-ed-uRA"/>
                         <outlet property="shareBtn" destination="lKh-ma-8Rg" id="PP8-Sa-IVZ"/>
                         <outlet property="supplierName" destination="zAi-ty-SQK" id="kLg-w4-2mV"/>
                         <outlet property="wishlistBtn" destination="vpB-as-NNh" id="31j-SL-Ai7"/>
@@ -4123,7 +4125,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pFD-mZ-32d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5431.1999999999998" y="1419.4581280788177"/>
+            <point key="canvasLocation" x="-5431.1999999999998" y="1419.04047976012"/>
         </scene>
         <!--Related Product Controller-->
         <scene sceneID="dMM-8R-6rg">
@@ -4440,16 +4442,22 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="177" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lVa-kK-66D">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="504"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="667" id="lzu-EI-AxG"/>
+                                            <constraint firstAttribute="height" id="lzu-EI-AxG"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="lzu-EI-AxG"/>
+                                            </mask>
+                                        </variation>
                                     </tableView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="lVa-kK-66D" firstAttribute="top" secondItem="77b-s3-Hnx" secondAttribute="top" id="17a-OF-26g"/>
                                     <constraint firstAttribute="trailing" secondItem="lVa-kK-66D" secondAttribute="trailing" id="N2s-NI-7q1"/>
+                                    <constraint firstItem="lVa-kK-66D" firstAttribute="height" secondItem="77b-s3-Hnx" secondAttribute="height" constant="-50" id="cq0-ND-JCX"/>
                                     <constraint firstAttribute="bottom" secondItem="lVa-kK-66D" secondAttribute="bottom" id="iAb-4L-du7"/>
                                     <constraint firstItem="lVa-kK-66D" firstAttribute="leading" secondItem="77b-s3-Hnx" secondAttribute="leading" id="mgt-h0-05c"/>
                                 </constraints>
@@ -4473,14 +4481,21 @@
                         <constraints>
                             <constraint firstItem="77b-s3-Hnx" firstAttribute="leading" secondItem="dcW-ox-EIN" secondAttribute="leading" id="BwY-qp-oOk"/>
                             <constraint firstAttribute="bottom" secondItem="77b-s3-Hnx" secondAttribute="bottom" id="J6t-fI-c7v"/>
+                            <constraint firstItem="77b-s3-Hnx" firstAttribute="top" secondItem="dcW-ox-EIN" secondAttribute="top" id="Jb5-kv-rV3"/>
                             <constraint firstItem="63K-Re-ERt" firstAttribute="leading" secondItem="dcW-ox-EIN" secondAttribute="leading" id="L7k-gj-bGM"/>
                             <constraint firstItem="lVa-kK-66D" firstAttribute="width" secondItem="ix5-HX-Tr1" secondAttribute="width" id="N9M-bs-66P"/>
                             <constraint firstItem="dcW-ox-EIN" firstAttribute="bottom" secondItem="63K-Re-ERt" secondAttribute="bottom" id="TXB-VR-nsB"/>
                             <constraint firstItem="lVa-kK-66D" firstAttribute="top" secondItem="dcW-ox-EIN" secondAttribute="top" id="UwW-vm-WGi"/>
+                            <constraint firstItem="dcW-ox-EIN" firstAttribute="bottom" secondItem="77b-s3-Hnx" secondAttribute="bottom" id="Xx8-lL-LWF"/>
                             <constraint firstItem="63K-Re-ERt" firstAttribute="width" secondItem="ix5-HX-Tr1" secondAttribute="width" id="f6N-Mc-dnL"/>
                             <constraint firstItem="77b-s3-Hnx" firstAttribute="trailing" secondItem="dcW-ox-EIN" secondAttribute="trailing" id="uda-g0-O6l"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dcW-ox-EIN"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="J6t-fI-c7v"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="lVa-kK-66D" id="Iie-S2-8rO"/>
@@ -13994,7 +14009,6 @@
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.34509803919999998" green="0.59215686270000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="barTintColor" red="0.16078431369999999" green="0.65098039220000004" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wBI-4o-yRP">
                         <autoresizingMask key="autoresizingMask"/>
@@ -14539,7 +14553,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="tintColor" red="0.1334823668" green="0.66863793130000004" blue="0.95925086739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="Qc2-6r-zIQ" firstAttribute="top" secondItem="dZC-mz-kMI" secondAttribute="bottom" id="FQw-dU-Kwu"/>
                                             <constraint firstItem="Qc2-6r-zIQ" firstAttribute="centerX" secondItem="eAY-lk-u5D" secondAttribute="centerX" id="NBs-LL-7XC"/>
@@ -14813,7 +14827,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="gZV-OV-8Th"/>
         <segue reference="BnP-5R-UpJ"/>
-        <segue reference="29F-3K-eaY"/>
+        <segue reference="k3f-34-Vh7"/>
         <segue reference="0Vc-df-Kyg"/>
         <segue reference="6H7-k0-P6o"/>
         <segue reference="DHe-33-5Ya"/>
@@ -14823,11 +14837,11 @@
         <segue reference="th7-n4-1WZ"/>
         <segue reference="7Qu-d1-AVV"/>
         <segue reference="fYe-ny-kmo"/>
-        <segue reference="16k-gN-gk7"/>
+        <segue reference="6qv-Xv-DRt"/>
         <segue reference="1IN-nY-tFS"/>
         <segue reference="1kv-3A-ZEC"/>
         <segue reference="5gt-HY-6Mn"/>
-        <segue reference="9Ml-QC-GQ9"/>
+        <segue reference="qLT-Cy-ujC"/>
         <segue reference="EhG-al-bPQ"/>
         <segue reference="TID-0Q-0E5"/>
         <segue reference="8rv-DD-j17"/>

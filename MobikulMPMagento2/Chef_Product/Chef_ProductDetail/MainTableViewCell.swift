@@ -77,12 +77,15 @@ class MainTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
         if currentMainView == 0 {
             return CGSize(width: collectionView.frame.width, height: collectionView.frame.height )
         }
-        else {
+        else if currentMainView == 1 {
             if indexPath.row ==  catalogProductViewModel.catalogProductModel.reviewList.count
             {
                 return CGSize(width: collectionView.frame.width, height: 180 )
             }
             return CGSize(width: collectionView.frame.width, height: 90 )
+        }
+        else {
+            return CGSize(width: collectionView.frame.width, height: 80 )
         }
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

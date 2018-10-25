@@ -11,6 +11,9 @@ import UIKit
 
 
 class Chef_CompareCell: UITableViewCell {
+
+    @IBOutlet weak var  productImage:UIImageView!
+    
     @IBOutlet weak var plusButton: UIButton!
     @IBOutlet weak var minusButton: UIButton!
     @IBOutlet weak var kiloButton: UIButton!
@@ -27,6 +30,9 @@ class Chef_CompareCell: UITableViewCell {
     @IBOutlet weak var pricevat: UILabel!
     @IBOutlet weak var productname: UILabel!
     var compareListViewModel:CompareListViewModel!
+    
+
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         //Totalprice.isHidden = true
@@ -51,6 +57,7 @@ class Chef_CompareCell: UITableViewCell {
         moqButton.layer.borderColor = UIColor().HexToColor(hexString: "FF9D11").cgColor
 
     }
+
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

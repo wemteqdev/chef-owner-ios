@@ -44,8 +44,11 @@ class Chef_DashboardViewController: UIViewController, Chef_DetailReviewHandlerDe
         
         gesture = UITapGestureRecognizer(target: self, action:  #selector (self.compareViewClk (_:)))
         cell.compareView.addGestureRecognizer(gesture)
-        if(self.isOwnerDetailPage){
+        if(self.isOwnerDetailPage || compareProductCollectionModel.count == 0){
             cell.compareView.isHidden = true
+        }
+        else {
+            cell.compareView.isHidden = false
         }
         cell.baseCompareView.backgroundColor = UIColor.white
         cell.baseDetailView.backgroundColor = UIColor.white
@@ -88,6 +91,7 @@ class Chef_DashboardViewController: UIViewController, Chef_DetailReviewHandlerDe
         productDetailTableView.reloadData()
     }
     var currentMainView: Int = 0
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var supplierName: UILabel!
     @IBOutlet weak var shareBtn: UIButton!
     @IBOutlet weak var addCartButton: UIButton!
@@ -195,6 +199,8 @@ class Chef_DashboardViewController: UIViewController, Chef_DetailReviewHandlerDe
         self.navigationController?.isNavigationBarHidden = false
         loadNavgiationButtons()
         GlobalData.sharedInstance.getImageFromUrl(imageUrl:productImageUrl , imageView: self.productImage)
+        
+        //self.scrollView.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor).isActive = true
         
         imageArrayUrl = [productImageUrl]
         productnameLabel.text = productName
