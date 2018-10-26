@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00C621D516E4939FED08D945 /* Pods_MobikulMPMagento2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1A9D6040A9E066F12CB4ABA /* Pods_MobikulMPMagento2.framework */; };
 		0C05709920408A8800EB527B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C05709820408A8800EB527B /* Assets.xcassets */; };
 		0C0570A720408BAC00EB527B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0C0570A920408BAC00EB527B /* Localizable.strings */; };
 		0C0570B220408BBD00EB527B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0570AC20408BBC00EB527B /* AppDelegate.swift */; };
@@ -89,6 +88,8 @@
 		0CA041BC20590811007DBF79 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0CA041BB20590810007DBF79 /* GoogleService-Info.plist */; };
 		0CA041EA20597E15007DBF79 /* ic_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 0CA041E920597E13007DBF79 /* ic_placeholder.png */; };
 		0CFA4FCC20D911CC00B5B49E /* CMSPageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFA4FC320D911CA00B5B49E /* CMSPageData.swift */; };
+		29253680218206E200683BBB /* EmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2925367E218206E200683BBB /* EmptyCell.swift */; };
+		29253681218206E200683BBB /* EmptyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2925367F218206E200683BBB /* EmptyCell.xib */; };
 		2941278F2178F44D0031CCFB /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294127842178F44C0031CCFB /* EditProfileViewController.swift */; };
 		294127902178F44D0031CCFB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2941278D2178F44C0031CCFB /* ProfileViewController.swift */; };
 		294127912178F44D0031CCFB /* CustomerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2941278E2178F44C0031CCFB /* CustomerProfileViewController.swift */; };
@@ -128,7 +129,6 @@
 		570A092B215EF1D500901621 /* Chef_MyCartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 570A0929215EF1D200901621 /* Chef_MyCartTableViewCell.xib */; };
 		571F9627216B20B5007126D5 /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571F9626216B20B5007126D5 /* LaunchScreenView.swift */; };
 		571F963F216B911E007126D5 /* Chef_SuperCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571F963E216B911E007126D5 /* Chef_SuperCart.swift */; };
-		571F965C216B9876007126D5 /* Pods in Resources */ = {isa = PBXBuildFile; fileRef = 571F9653216B9876007126D5 /* Pods */; };
 		571F9660216B9AE4007126D5 /* Chef_SuperCartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571F965F216B9AE4007126D5 /* Chef_SuperCartCell.swift */; };
 		571F966B216B9FE7007126D5 /* AccordionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571F9669216B9FE5007126D5 /* AccordionHeaderView.swift */; };
 		571F966C216B9FE7007126D5 /* AccordionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 571F966A216B9FE6007126D5 /* AccordionHeaderView.xib */; };
@@ -179,6 +179,7 @@
 		57F83DF82153D75200BC9DCB /* Chef_DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F83DF72153D75200BC9DCB /* Chef_DashboardViewController.swift */; };
 		57F83DFB2153DEC900BC9DCB /* Chef_CompareCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F83DF92153DEC900BC9DCB /* Chef_CompareCell.swift */; };
 		57F83DFC2153DEC900BC9DCB /* Chef_CompareCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57F83DFA2153DEC900BC9DCB /* Chef_CompareCell.xib */; };
+		8BD6147850DEBF559641AD84 /* Pods_MobikulMPMagento2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47E46E7C6839A4DB8CDDB871 /* Pods_MobikulMPMagento2.framework */; };
 		A30ACC1120B7EB4200CCB618 /* RecentViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30ACC0720B7EB3C00CCB618 /* RecentViewTableViewCell.swift */; };
 		A30ACC1220B7EB4200CCB618 /* RecentViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A30ACC1020B7EB4100CCB618 /* RecentViewTableViewCell.xib */; };
 		A30ACC1620B7EB5000CCB618 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30ACC1420B7EB5000CCB618 /* DBManager.swift */; };
@@ -680,6 +681,8 @@
 		0CA041BB20590810007DBF79 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0CA041E920597E13007DBF79 /* ic_placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_placeholder.png; sourceTree = "<group>"; };
 		0CFA4FC320D911CA00B5B49E /* CMSPageData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMSPageData.swift; sourceTree = "<group>"; };
+		2925367E218206E200683BBB /* EmptyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCell.swift; sourceTree = "<group>"; };
+		2925367F218206E200683BBB /* EmptyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyCell.xib; sourceTree = "<group>"; };
 		294127842178F44C0031CCFB /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		2941278D2178F44C0031CCFB /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		2941278E2178F44C0031CCFB /* CustomerProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerProfileViewController.swift; sourceTree = "<group>"; };
@@ -715,11 +718,12 @@
 		29B11B112155603600980BA4 /* owner.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = owner.storyboard; sourceTree = "<group>"; };
 		29B8B1D12169C280006B8730 /* SuppliersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuppliersViewModel.swift; sourceTree = "<group>"; };
 		29B8B1DD2169ECC6006B8730 /* SupplierProductcategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SupplierProductcategory.swift; path = "MobikulMPMagento2/Product category/SupplierProductcategory.swift"; sourceTree = SOURCE_ROOT; };
+		473653DB888614C0902A7BFD /* Pods-MobikulMPMagento2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobikulMPMagento2.release.xcconfig"; path = "Pods/Target Support Files/Pods-MobikulMPMagento2/Pods-MobikulMPMagento2.release.xcconfig"; sourceTree = "<group>"; };
+		47E46E7C6839A4DB8CDDB871 /* Pods_MobikulMPMagento2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MobikulMPMagento2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		570A0928215EF1D100901621 /* Chef_MyCartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chef_MyCartTableViewCell.swift; sourceTree = "<group>"; };
 		570A0929215EF1D200901621 /* Chef_MyCartTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Chef_MyCartTableViewCell.xib; sourceTree = "<group>"; };
 		571F9626216B20B5007126D5 /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
 		571F963E216B911E007126D5 /* Chef_SuperCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chef_SuperCart.swift; sourceTree = "<group>"; };
-		571F9653216B9876007126D5 /* Pods */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Pods; sourceTree = "<group>"; };
 		571F965F216B9AE4007126D5 /* Chef_SuperCartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chef_SuperCartCell.swift; sourceTree = "<group>"; };
 		571F9669216B9FE5007126D5 /* AccordionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccordionHeaderView.swift; sourceTree = "<group>"; };
 		571F966A216B9FE6007126D5 /* AccordionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccordionHeaderView.xib; sourceTree = "<group>"; };
@@ -770,7 +774,6 @@
 		57F83DF72153D75200BC9DCB /* Chef_DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chef_DashboardViewController.swift; sourceTree = "<group>"; };
 		57F83DF92153DEC900BC9DCB /* Chef_CompareCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chef_CompareCell.swift; sourceTree = "<group>"; };
 		57F83DFA2153DEC900BC9DCB /* Chef_CompareCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Chef_CompareCell.xib; sourceTree = "<group>"; };
-		A1A9D6040A9E066F12CB4ABA /* Pods_MobikulMPMagento2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MobikulMPMagento2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A30ACC0720B7EB3C00CCB618 /* RecentViewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentViewTableViewCell.swift; sourceTree = "<group>"; };
 		A30ACC1020B7EB4100CCB618 /* RecentViewTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecentViewTableViewCell.xib; sourceTree = "<group>"; };
 		A30ACC1420B7EB5000CCB618 /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
@@ -1061,6 +1064,7 @@
 		A3C189D6213AD147009B6702 /* LabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LabelCell.xib; sourceTree = "<group>"; };
 		A3C189D7213AD147009B6702 /* TextDetectorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextDetectorController.swift; sourceTree = "<group>"; };
 		A3C189D8213AD147009B6702 /* UIImage+TFLite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+TFLite.swift"; sourceTree = "<group>"; };
+		DE02AEF0C301449F0A01C29E /* Pods-MobikulMPMagento2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobikulMPMagento2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MobikulMPMagento2/Pods-MobikulMPMagento2.debug.xcconfig"; sourceTree = "<group>"; };
 		ECABAE2A205807DB00D71EDD /* PHFComposeBarView_Button.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHFComposeBarView_Button.m; sourceTree = "<group>"; };
 		ECABAE2B205807DC00D71EDD /* PHFDelegateChain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHFDelegateChain.m; sourceTree = "<group>"; };
 		ECABAE2C205807DC00D71EDD /* PHFComposeBarView_TextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHFComposeBarView_TextView.m; sourceTree = "<group>"; };
@@ -1073,8 +1077,6 @@
 		ECABAE3720580AA200D71EDD /* bubbleMine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubbleMine@2x.png"; sourceTree = "<group>"; };
 		ECABAE3820580AA400D71EDD /* bubbleSomeone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubbleSomeone@2x.png"; sourceTree = "<group>"; };
 		ECABAE3920580AA600D71EDD /* bubbleMine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubbleMine.png; sourceTree = "<group>"; };
-		F52F28CE020A99410C92B576 /* Pods-MobikulMPMagento2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobikulMPMagento2.release.xcconfig"; path = "Pods/Target Support Files/Pods-MobikulMPMagento2/Pods-MobikulMPMagento2.release.xcconfig"; sourceTree = "<group>"; };
-		F73CD5FF394C9B3B312D277A /* Pods-MobikulMPMagento2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobikulMPMagento2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MobikulMPMagento2/Pods-MobikulMPMagento2.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1084,7 +1086,7 @@
 			files = (
 				0C05726C20408FD600EB527B /* SwiftMessages.framework in Frameworks */,
 				0C05727120408FDA00EB527B /* Alamofire.framework in Frameworks */,
-				00C621D516E4939FED08D945 /* Pods_MobikulMPMagento2.framework in Frameworks */,
+				8BD6147850DEBF559641AD84 /* Pods_MobikulMPMagento2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1108,8 +1110,8 @@
 				0C05709020408A8800EB527B /* MobikulMPMagento2 */,
 				A362A28D2127F8C500B6B398 /* NotificationService */,
 				0C05708F20408A8800EB527B /* Products */,
-				4347D0410E7BFCA0541888BF /* Pods */,
-				EFCD860E358E73E15E5E11EA /* Frameworks */,
+				8596A325CBE0F8E83122BFD7 /* Pods */,
+				EEFE5886DCCCACFEB8FDA35D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1388,15 +1390,6 @@
 			path = "Restaurant Dashboard";
 			sourceTree = "<group>";
 		};
-		4347D0410E7BFCA0541888BF /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				F73CD5FF394C9B3B312D277A /* Pods-MobikulMPMagento2.debug.xcconfig */,
-				F52F28CE020A99410C92B576 /* Pods-MobikulMPMagento2.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		572187662152F37000FACF86 /* Chef_ProductDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -1456,6 +1449,8 @@
 				57328F20214F27730081D21D /* Chef_ListCollectionViewCell.xib */,
 				57C6FFF3216404B800E5EABB /* Chef_CategoryCollectionViewCell.swift */,
 				57C6FFF4216404B800E5EABB /* Chef_CategoryCollectionViewCell.xib */,
+				2925367E218206E200683BBB /* EmptyCell.swift */,
+				2925367F218206E200683BBB /* EmptyCell.xib */,
 			);
 			path = Chef_Product;
 			sourceTree = "<group>";
@@ -1488,6 +1483,15 @@
 				294127A82179F0CC0031CCFB /* ChefSuppliersDashboardController.swift */,
 			);
 			path = Chef_Sellerlist;
+			sourceTree = "<group>";
+		};
+		8596A325CBE0F8E83122BFD7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DE02AEF0C301449F0A01C29E /* Pods-MobikulMPMagento2.debug.xcconfig */,
+				473653DB888614C0902A7BFD /* Pods-MobikulMPMagento2.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		A30ACC1320B7EB5000CCB618 /* Realm DB */ = {
@@ -2121,11 +2125,10 @@
 			path = "Strech TexField";
 			sourceTree = "<group>";
 		};
-		EFCD860E358E73E15E5E11EA /* Frameworks */ = {
+		EEFE5886DCCCACFEB8FDA35D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				571F9653216B9876007126D5 /* Pods */,
-				A1A9D6040A9E066F12CB4ABA /* Pods_MobikulMPMagento2.framework */,
+				47E46E7C6839A4DB8CDDB871 /* Pods_MobikulMPMagento2.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2137,14 +2140,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0C0570A020408A8800EB527B /* Build configuration list for PBXNativeTarget "MobikulMPMagento2" */;
 			buildPhases = (
-				709558A441D5D5A27A802AF8 /* [CP] Check Pods Manifest.lock */,
+				6FCC6B7B4EA7D426A244805F /* [CP] Check Pods Manifest.lock */,
 				0C05708A20408A8800EB527B /* Sources */,
 				0C05708B20408A8800EB527B /* Frameworks */,
 				0C05708C20408A8800EB527B /* Resources */,
 				0C05727020408FD600EB527B /* Embed Frameworks */,
 				A3DB34E020A9981500232F04 /* Embed App Extensions */,
-				4ED63DA6120F4CE460B5E4E8 /* [CP] Embed Pods Frameworks */,
-				9281166032035EC33BC33919 /* [CP] Copy Pods Resources */,
+				9AF53FA91B9D6214D94115CB /* [CP] Embed Pods Frameworks */,
+				BF4229CAA9B9863C111805C3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2330,6 +2333,7 @@
 				A3B7D20B207DFDBD0026A3AF /* SellerTopDataCell.xib in Resources */,
 				A37B094E20B3FF6F001C876D /* README.md in Resources */,
 				A3B7D23B207DFDBD0026A3AF /* CreditMemoDetailsItemCell.xib in Resources */,
+				29253681218206E200683BBB /* EmptyCell.xib in Resources */,
 				57E5759321736B4E008A7B65 /* MainTableViewCell.xib in Resources */,
 				A3B7D317207DFE210026A3AF /* OrderSummaryCell.xib in Resources */,
 				0C05710B20408BDB00EB527B /* ic_eye_closed@2x.png in Resources */,
@@ -2394,7 +2398,6 @@
 				A3C189D1213AD0DF009B6702 /* SearchSuggestionCell.xib in Resources */,
 				A3B7D2F9207DFE210026A3AF /* CategoryCell.xib in Resources */,
 				A3B7D1F1207DFDBD0026A3AF /* SellerListViewCell.xib in Resources */,
-				571F965C216B9876007126D5 /* Pods in Resources */,
 				A3B7D21A207DFDBD0026A3AF /* TransactionDetailsTopCell.xib in Resources */,
 				A3B7D2EB207DFE210026A3AF /* AdditionalFeatureTableViewCell.xib in Resources */,
 				0C0570A720408BAC00EB527B /* Localizable.strings in Resources */,
@@ -2439,7 +2442,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4ED63DA6120F4CE460B5E4E8 /* [CP] Embed Pods Frameworks */ = {
+		6FCC6B7B4EA7D426A244805F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MobikulMPMagento2-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9AF53FA91B9D6214D94115CB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2460,7 +2481,6 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/ImageSlideshow/ImageSlideshow.framework",
 				"${BUILT_PRODUCTS_DIR}/OfflineBar/OfflineBar.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/Reachability/Reachability.framework",
@@ -2487,7 +2507,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleAPIClientForREST.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageSlideshow.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OfflineBar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
@@ -2503,25 +2522,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MobikulMPMagento2/Pods-MobikulMPMagento2-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		709558A441D5D5A27A802AF8 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MobikulMPMagento2-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9281166032035EC33BC33919 /* [CP] Copy Pods Resources */ = {
+		BF4229CAA9B9863C111805C3 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2559,6 +2560,7 @@
 				0C05710320408BDB00EB527B /* IQUITextFieldView+Additions.swift in Sources */,
 				5740146A214DCEC60004AC05 /* Chef_ProductTableViewCell.swift in Sources */,
 				A362A2A52127FA2000B6B398 /* PastelLabel.swift in Sources */,
+				29253680218206E200683BBB /* EmptyCell.swift in Sources */,
 				294127912178F44D0031CCFB /* CustomerProfileViewController.swift in Sources */,
 				A3B7D330207DFE210026A3AF /* PaymentTableViewCell.swift in Sources */,
 				0C05712D20408BDC00EB527B /* CHIPageControllable.swift in Sources */,
@@ -3044,7 +3046,7 @@
 		};
 		0C0570A120408A8800EB527B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F73CD5FF394C9B3B312D277A /* Pods-MobikulMPMagento2.debug.xcconfig */;
+			baseConfigurationReference = DE02AEF0C301449F0A01C29E /* Pods-MobikulMPMagento2.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -3069,7 +3071,7 @@
 		};
 		0C0570A220408A8800EB527B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F52F28CE020A99410C92B576 /* Pods-MobikulMPMagento2.release.xcconfig */;
+			baseConfigurationReference = 473653DB888614C0902A7BFD /* Pods-MobikulMPMagento2.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;

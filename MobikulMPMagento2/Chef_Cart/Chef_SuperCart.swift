@@ -10,6 +10,8 @@ import UIKit
 import FZAccordionTableView
 
 class Chef_SuperCart: UIViewController {
+    @IBOutlet weak var totalPrice: UILabel!
+    
     static fileprivate let kTableViewCellReuseIdentifier = "Cell"
     @IBOutlet fileprivate weak var tableView: FZAccordionTableView!
     let defaults = UserDefaults.standard
@@ -24,6 +26,11 @@ class Chef_SuperCart: UIViewController {
     var toUpdateItemId = NSMutableArray()
     var selectedSupplierId = "";
     var selectedSupplierName = "";
+    var itemId:String!
+    var totalPriceValue:Double = 0
+    override func viewDidAppear(_ animated: Bool) {
+         callingHttppApi()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.allowMultipleSectionsOpen = true
@@ -38,7 +45,6 @@ class Chef_SuperCart: UIViewController {
         emptyView.addressButton.addTarget(self, action: #selector(browseCategory(sender:)), for: .touchUpInside)
         whichApiToProcess = "sellerList"
         self.tableView.separatorColor = UIColor.clear
-        callingHttppApi()
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier! == "sellerprofile") {
@@ -52,6 +58,7 @@ class Chef_SuperCart: UIViewController {
         }
     }
     @objc func browseCategory(sender: UIButton){
+        self.navigationController?.popToRootViewController(animated: true)
         self.tabBarController!.selectedIndex = 1
     }
     @IBAction func updateCart(_ sender: UIButton){
@@ -163,7 +170,47 @@ class Chef_SuperCart: UIViewController {
                 }
             }
             
-        } else {
+        } else if self.whichApiToProcess == "removeitem"{
+            GlobalData.sharedInstance.showLoader()
+            self.view.isUserInteractionEnabled = false
+            var requstParams = [String:Any]();
+            if self.defaults.object(forKey: "storeId") != nil{
+                requstParams["storeId"] = self.defaults.object(forKey: "storeId") as! String
+            }
+            let quoteId = self.defaults.object(forKey:"quoteId")
+            let customerId = self.defaults.object(forKey:"customerId")
+            if(quoteId != nil){
+                requstParams["quoteId"] = quoteId
+            }
+            if customerId != nil{
+                requstParams["customerToken"] = customerId
+            }
+            if self.defaults.object(forKey: "currency") != nil{
+                requstParams["currency"] = self.defaults.object(forKey: "currency") as! String
+            }
+            requstParams["itemId"] = self.itemId
+            GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"mobikulhttp/checkout/removecartItem", currentView: self){success,responseObject in
+                if success == 1{
+                    if responseObject?.object(forKey: "storeId") != nil{
+                        let storeId:String = String(format: "%@", responseObject!.object(forKey: "storeId") as! CVarArg)
+                        if storeId != "0"{
+                            self.defaults .set(storeId, forKey: "storeId")
+                        }
+                    }
+                    
+                    self.view.isUserInteractionEnabled = true
+                    GlobalData.sharedInstance.dismissLoader()
+                    self.whichApiToProcess = "sellerList"
+                    self.callingHttppApi()
+                }else if success == 2{
+                    
+                    GlobalData.sharedInstance.dismissLoader()
+                    self.callingHttppApi()
+                }
+            }
+            
+        }
+        else {
             self.view.isUserInteractionEnabled = false
             var requstParams = [String:Any]();
             if self.defaults.object(forKey: "storeId") != nil{
@@ -193,6 +240,8 @@ class Chef_SuperCart: UIViewController {
                     print(responseObject)
                     self.view.isUserInteractionEnabled = true
                     GlobalData.sharedInstance.dismissLoader()
+                    
+                    
                     self.myCartViewModel = Chef_MyCartViewModel(data: JSON(responseObject as! NSDictionary))
                     self.doFurtherProcessingWithResult()
                     
@@ -212,6 +261,7 @@ class Chef_SuperCart: UIViewController {
             var originalSum:Double = 0.0
             print("cart COUNT !!!!!!!!!!!", self.myCartViewModel.getCartItems.count)
             if self.myCartViewModel.getCartItems.count > 0 {
+
                 for i in 0...self.sellerListViewModel.sellerListModel.count - 1 {
                     minorderQty = 0
                     tierSum = 0.0
@@ -252,6 +302,7 @@ class Chef_SuperCart: UIViewController {
                 self.tableView.dataSource = self
                 self.tableView.reloadData()
                 self.tableView.isHidden = false
+                self.totalPrice.text = "Total : \(String(self.myCartViewModel.getExtraCartData.grandValue))"
                 badge = String(self.myCartViewModel.getExtraCartData.cartCount)
                 //self.tabBarController!.tabBar.items?[3].badgeValue = String(self.myCartViewModel.getExtraCartData.cartCount)
             }else{
@@ -343,7 +394,7 @@ extension Chef_SuperCart : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return SCREEN_WIDTH/3
+        return 140
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -357,13 +408,26 @@ extension Chef_SuperCart : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
         return self.tableView(tableView, heightForHeaderInSection:section)
     }
+    func tableView(_ tableView: UITableView,
+                   didSelectRowAt indexPath: IndexPath)
+    {
+       
+        let currentCell = tableView.cellForRow(at: indexPath) as! Chef_SuperCartCell
+        UIView.animate(withDuration: 0.5, delay: 0, options: .layoutSubviews, animations: {
+           currentCell.deleteButton.isHidden = !currentCell.deleteButton.isHidden
+            currentCell.qtyView.isHidden = !currentCell.qtyView.isHidden
+        })
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: Chef_SuperCart.kTableViewCellReuseIdentifier, for: indexPath) as! Chef_SuperCartCell
         print(Chef_SuperCart.kTableViewCellReuseIdentifier)
         print("row numbers in section")
         print(indexPath.row)
+        cell.selectionStyle = .none
         let CartIndex = self.sellerListViewModel.sellerListModel[curSection].cartItemIndex[indexPath.row]
+        var totalValue:Double = 0
         cell.titleLabel.text = self.myCartViewModel.myCartModel[CartIndex].name
         if self.myCartViewModel.myCartModel[CartIndex].tierSubtotal != ""{
             
@@ -374,15 +438,23 @@ extension Chef_SuperCart : UITableViewDelegate, UITableViewDataSource {
             
             cell.pricewithsub.attributedText = attributedString
             //cell.pricewithsub.text = self.myCartViewModel.myCartModel[CartIndex].subtotal
-            cell.subtotal.text = "\(self.myCartViewModel.myCartModel[CartIndex].subtotal.prefix(1))\(self.myCartViewModel.myCartModel[CartIndex].tierSubtotal)"
+            cell.subtotal.text = "Total \(self.myCartViewModel.myCartModel[CartIndex].subtotal.prefix(1))\(self.myCartViewModel.myCartModel[CartIndex].tierSubtotal)"
+            totalValue = (self.myCartViewModel.myCartModel[CartIndex].qty as NSString).doubleValue * self.myCartViewModel.myCartModel[CartIndex].tier_price
         }
         else {
             cell.pricewithsub.isHidden = true
-            cell.subtotal.text = self.myCartViewModel.myCartModel[CartIndex].subtotal
+            cell.subtotal.text = "Total \(String(self.myCartViewModel.myCartModel[CartIndex].subtotal))"
+            totalValue = (self.myCartViewModel.myCartModel[CartIndex].qty as NSString).doubleValue * self.myCartViewModel.myCartModel[CartIndex].priceint
         }
         cell.priceLabel.text = "\(String(self.myCartViewModel.myCartModel[CartIndex].price))/\(String(self.myCartViewModel.myCartModel[CartIndex].unitString)) - \(String(self.myCartViewModel.myCartModel[CartIndex].taxClass))"
-        cell.moqbtn.setTitle("MOQ \(String(self.myCartViewModel.myCartModel[CartIndex].price))", for: .normal)
-        
+        let moqValue:Double = self.myCartViewModel.myCartModel[CartIndex].priceint * Double(self.myCartViewModel.myCartModel[CartIndex].moq)
+        if moqValue > totalValue {
+            cell.moqbtn.setTitle("MOQ \(String(self.myCartViewModel.myCartModel[CartIndex].price.prefix(1)))\(String(moqValue))-Total Cost:\(String(self.myCartViewModel.myCartModel[CartIndex].price.prefix(1)))\(String(totalValue)) Please add more to basket", for: .normal)
+            cell.moqbtn.setTitleColor(UIColor.red, for: .normal)
+            cell.moqbtn.layer.borderColor = UIColor.red.cgColor
+        }else {
+            cell.moqbtn.setTitle("MOQ \(String(self.myCartViewModel.myCartModel[CartIndex].price.prefix(1)))\(String(moqValue))", for: .normal)
+        }
         cell.supplierName.text = self.sellerListViewModel.sellerListModel[curSection].shopTitle
         cell.qtyButton.setTitle(self.myCartViewModel.myCartModel[CartIndex].qty, for: .normal)
         GlobalData.sharedInstance.getImageFromUrl(imageUrl: myCartViewModel.getCartItems[CartIndex].imageUrl, imageView: cell.productImage)
@@ -394,6 +466,8 @@ extension Chef_SuperCart : UITableViewDelegate, UITableViewDataSource {
         cell.ratingStar.setTitle("\(String(self.myCartViewModel.myCartModel[CartIndex].rating))", for: .normal)
         cell.minusButton.tag = CartIndex
         cell.minusButton.addTarget(self, action: #selector(minusButtonClick(sender:)), for: .touchUpInside)
+        cell.deleteButton.tag = CartIndex
+        cell.deleteButton.addTarget(self, action: #selector(removeCartItem(sender:)), for: .touchUpInside)
         if myCartViewModel.getCartItems[CartIndex].message.count > 0{
             var dict:JSON = myCartViewModel.getCartItems[CartIndex].message;
             if dict["type"].stringValue == "error"{
@@ -415,7 +489,7 @@ extension Chef_SuperCart : UITableViewDelegate, UITableViewDataSource {
         headerView.supplierName.setTitle(self.sellerListViewModel.sellerListModel[cartSellerIndex[section]].shopTitle, for: .normal)
         headerView.viewAllButton.addTarget(self, action: #selector(browseCatalogBtnClk(sender:)), for: .touchUpInside)
         headerView.discountProgressView.progress = Float(self.sellerListViewModel.sellerListModel[cartSellerIndex[section]].discountLevel)
-        headerView.discountPercent.text = "\(String(self.sellerListViewModel.sellerListModel[cartSellerIndex[section]].discountLevel * 100)) %"
+        headerView.discountPercent.text = "\(String(self.sellerListViewModel.sellerListModel[cartSellerIndex[section]].discountLevel * 100)) % Discount Level"
         headerView.moqLabel.isHidden = true
         GlobalData.sharedInstance.getImageFromUrl(imageUrl: self.sellerListViewModel.sellerListModel[cartSellerIndex[section]].logo, imageView: headerView.supplierImage)
         return headerView
@@ -429,6 +503,12 @@ extension Chef_SuperCart : UITableViewDelegate, UITableViewDataSource {
     @objc func plusButtonClick(sender: UIButton){
         let qty:String = String(Int(self.myCartViewModel.myCartModel[sender.tag].qty)! + 1)
         self.myCartViewModel.setQtyDataToCartModel(data: qty,pos: sender.tag)
+        self.tableView.reloadData()
+    }
+    @objc func removeCartItem(sender: UIButton){
+        self.itemId = self.myCartViewModel.myCartModel[sender.tag].id
+        whichApiToProcess = "removeitem"
+        callingHttppApi()
         self.tableView.reloadData()
     }
     @objc func minusButtonClick(sender: UIButton){

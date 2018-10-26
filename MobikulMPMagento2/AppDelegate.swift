@@ -50,7 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         
         UINavigationBar.appearance().tintColor = UIColor.white;
         UINavigationBar.appearance().setBackgroundImage(UIImage(named: "back_color"), for: UIBarMetrics.default)
-        
+        UINavigationBar.appearance().shadowImage = UIImage()
         //version update
         //self.setupSiren()
         

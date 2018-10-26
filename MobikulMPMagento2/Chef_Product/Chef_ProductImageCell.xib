@@ -40,18 +40,18 @@
                         <state key="normal" image="ic_wishlist_empty"/>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="23l-TF-h8l">
-                        <rect key="frame" x="19.5" y="241" width="120" height="29.5"/>
+                        <rect key="frame" x="19.5" y="251" width="120" height="39.5"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                         <state key="normal" title="COMPARE">
                             <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Xa-JC-FUU">
-                        <rect key="frame" x="19.5" y="201" width="120" height="30"/>
-                        <color key="backgroundColor" red="0.34553931659999998" green="0.59092947809999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <rect key="frame" x="19.5" y="201" width="120" height="40"/>
+                        <color key="backgroundColor" red="0.16078431372549018" green="0.65098039215686276" blue="0.95686274509803915" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="120" id="LJ7-t2-3B7"/>
-                            <constraint firstAttribute="height" constant="30" id="tvH-d2-AvZ"/>
+                            <constraint firstAttribute="height" constant="40" id="tvH-d2-AvZ"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                         <state key="normal" title="ADD">
@@ -156,7 +156,6 @@
                 <constraint firstItem="23l-TF-h8l" firstAttribute="centerX" secondItem="i4Z-9a-rsA" secondAttribute="centerX" id="AIH-8o-aBA"/>
                 <constraint firstItem="7Xa-JC-FUU" firstAttribute="height" secondItem="23l-TF-h8l" secondAttribute="height" id="BU9-JT-eFM"/>
                 <constraint firstItem="w0r-rY-MjL" firstAttribute="centerX" secondItem="i4Z-9a-rsA" secondAttribute="centerX" constant="-10" id="COk-bv-7Vi"/>
-                <constraint firstItem="i4Z-9a-rsA" firstAttribute="bottom" secondItem="23l-TF-h8l" secondAttribute="bottom" constant="29" id="CrW-VA-sN6"/>
                 <constraint firstItem="t3l-EQ-8Aw" firstAttribute="top" secondItem="i4Z-9a-rsA" secondAttribute="top" constant="10" id="EdN-eZ-mVd"/>
                 <constraint firstItem="V2n-2u-LWS" firstAttribute="top" secondItem="WyF-Sa-mkp" secondAttribute="bottom" constant="5" id="FXB-eZ-zTM"/>
                 <constraint firstItem="al9-A7-jG3" firstAttribute="leading" secondItem="f88-hd-2K0" secondAttribute="leading" id="Gcp-Lw-uPQ"/>

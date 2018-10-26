@@ -103,14 +103,17 @@ class Chef_HomeViewModel: NSObject {
     func setWishListItemIdToLatestProductModel(data:String,pos:Int){
         letestProductCollectionModel[pos].wishlistItemId = data;
     }
+    var isEmpty:Bool = false
 }
 extension Chef_HomeViewModel : UITableViewDelegate , UITableViewDataSource {
     public func numberOfSections(in tableView: UITableView) -> Int{
-        //return 3
-        if items.count == 0 || items.count == 1{
+        isEmpty = false
+        if items.count == 0{
+            isEmpty = true
+            print("EMPTY")
             return 0
         }
-        else if homeViewController.filtered == true || tableView.tag == 1000 {
+        else if homeViewController.filtered == true || tableView.tag == 1000 || items.count == 1{
             return 1
         }
         else{
@@ -121,7 +124,6 @@ extension Chef_HomeViewModel : UITableViewDelegate , UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        
         return 1
     }
     
@@ -136,6 +138,10 @@ extension Chef_HomeViewModel : UITableViewDelegate , UITableViewDataSource {
             cell.selectionStyle = .none
             return cell;
             
+        }
+        if items.count == 1 {
+            let cell:EmptyCell = tableView.dequeueReusableCell(withIdentifier: "emptycell") as! EmptyCell
+            return cell;
         }
         let cell:Chef_ProductTableViewCell = tableView.dequeueReusableCell(withIdentifier: Chef_ProductTableViewCell.identifier) as! Chef_ProductTableViewCell
         
@@ -172,6 +178,10 @@ extension Chef_HomeViewModel : UITableViewDelegate , UITableViewDataSource {
                 if items[i].type == .AllProduct {
                     index = i
                 }
+            }
+            if index == nil {
+                let cell:EmptyCell = tableView.dequeueReusableCell(withIdentifier: "emptycell") as! EmptyCell
+                return cell;
             }
         }
         else{
@@ -274,7 +284,12 @@ extension Chef_HomeViewModel : UITableViewDelegate , UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+        if items.count == 1 && tableView.tag != 1000{
+            return 120
+        }
+        else{
+            return UITableViewAutomaticDimension
+        }
         let item = items[indexPath.section]
         switch item.type {
         case .Banner:

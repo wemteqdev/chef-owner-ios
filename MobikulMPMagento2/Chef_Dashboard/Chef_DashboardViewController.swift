@@ -44,8 +44,11 @@ class Chef_DashboardViewController: UIViewController, Chef_DetailReviewHandlerDe
         
         gesture = UITapGestureRecognizer(target: self, action:  #selector (self.compareViewClk (_:)))
         cell.compareView.addGestureRecognizer(gesture)
-        if(self.isOwnerDetailPage){
+        if(self.isOwnerDetailPage || compareProductCollectionModel.count == 0){
             cell.compareView.isHidden = true
+        }
+        else {
+            cell.compareView.isHidden = false
         }
         cell.baseCompareView.backgroundColor = UIColor.white
         cell.baseDetailView.backgroundColor = UIColor.white
@@ -88,6 +91,12 @@ class Chef_DashboardViewController: UIViewController, Chef_DetailReviewHandlerDe
         productDetailTableView.reloadData()
     }
     var currentMainView: Int = 0
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var collectionViewHeightConstarints: NSLayoutConstraint!
+    
+    @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var supplierName: UILabel!
     @IBOutlet weak var shareBtn: UIButton!
     @IBOutlet weak var addCartButton: UIButton!
@@ -96,10 +105,11 @@ class Chef_DashboardViewController: UIViewController, Chef_DetailReviewHandlerDe
     @IBOutlet weak var productnameLabel: UILabel!
     @IBOutlet weak var productpriceLabel: UILabel!
     @IBOutlet weak var wishlistBtn: UIButton!
-    @IBOutlet weak var productImage: UIImageView!
+   // @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var productRateCount: UILabel!
     @IBOutlet weak var productDetailTableView: UITableView!
     @IBOutlet weak var productStarRating: HCSStarRatingView!
+    
     var supplierNameText:String!
     var catalogProductViewModel:CatalogProductViewModel!
     var compareProductCollectionModel = [Products]()
@@ -163,7 +173,7 @@ class Chef_DashboardViewController: UIViewController, Chef_DetailReviewHandlerDe
         return ""
     }
     func loadNavgiationButtons() {
-        /*
+        
         let btnCart = SSBadgeButton()
         btnCart.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
         btnCart.setImage(UIImage(named: "Action 4")?.withRenderingMode(.alwaysTemplate), for: .normal)
@@ -183,7 +193,7 @@ class Chef_DashboardViewController: UIViewController, Chef_DetailReviewHandlerDe
         self.navigationItem.setRightBarButtonItems([UIBarButtonItem(customView: btnCart), btnSearch], animated: true)
         
         self.navigationController?.navigationBar.tintColor = .white
-         */
+ 
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -194,7 +204,13 @@ class Chef_DashboardViewController: UIViewController, Chef_DetailReviewHandlerDe
         self.navigationItem.title = productName
         self.navigationController?.isNavigationBarHidden = false
         loadNavgiationButtons()
-        GlobalData.sharedInstance.getImageFromUrl(imageUrl:productImageUrl , imageView: self.productImage)
+        self.collectionView.register(CatalogProductImage.nib, forCellWithReuseIdentifier: CatalogProductImage.identifier)
+        scrollView.delegate = self
+        collectionViewHeightConstarints.constant = SCREEN_HEIGHT/3
+        collectionView.reloadData()
+        //GlobalData.sharedInstance.getImageFromUrl(imageUrl:productImageUrl , imageView: self.productImage)
+        
+        //self.scrollView.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor).isActive = true
         
         imageArrayUrl = [productImageUrl]
         productnameLabel.text = productName
@@ -421,7 +437,8 @@ class Chef_DashboardViewController: UIViewController, Chef_DetailReviewHandlerDe
                     let errorCode: Bool = data .object(forKey:"success") as! Bool
                     
                     if errorCode == true{
-                        GlobalData.sharedInstance.showSuccessSnackBar(msg: GlobalData.sharedInstance.language(key:"movedtowishlist".localized))
+                        //GlobalData.sharedInstance.showSuccessSnackBar(msg: GlobalData.sharedInstance.language(key:"movedtowishlist".localized))
+                        GlobalData.sharedInstance.showSuccessSnackBar(msg:"You added product \(self.productName) to you wishlist")
                         self.catalogProductViewModel.catalogProductModel.isInWishList = true
                         self.catalogProductViewModel.catalogProductModel.wishlistItemId = String(data.object(forKey:"itemId") as! Int)
                         
@@ -460,7 +477,7 @@ class Chef_DashboardViewController: UIViewController, Chef_DetailReviewHandlerDe
                     let errorCode: Bool = data .object(forKey:"success") as! Bool
                     
                     if errorCode == true{
-                        GlobalData.sharedInstance.showSuccessSnackBar(msg:GlobalData.sharedInstance.language(key: "successwishlistremove"))
+                        GlobalData.sharedInstance.showSuccessSnackBar(msg:"You removed product \(self.productName) from your wishlist")
                         
                         self.catalogProductViewModel.catalogProductModel.isInWishList = false
                         self.catalogProductViewModel.catalogProductModel.wishlistItemId = "0"
@@ -1004,6 +1021,16 @@ class Chef_DashboardViewController: UIViewController, Chef_DetailReviewHandlerDe
             }
         }
     }
+    func zoomRect(forScale scale: CGFloat, withCenter center: CGPoint) -> CGRect {
+        var zoomRect = CGRect(x: 0, y: 0, width: 0, height: 0)
+        let scroll = parentZoomingScrollView.viewWithTag(888888) as! UIScrollView
+        let childScroll = scroll.viewWithTag(90000 + currentTag) as! UIScrollView
+        zoomRect.size.height = childScroll.frame.size.height / scale
+        zoomRect.size.width = childScroll.frame.size.width / scale
+        zoomRect.origin.x = center.x - (zoomRect.size.width / 2.0)
+        zoomRect.origin.y = center.y - (zoomRect.size.height / 2.0)
+        return zoomRect
+    }
     func shareProduct() {
         let productUrl = catalogProductViewModel.catalogProductModel.shareUrl
         let activityItems = [productUrl]
@@ -1016,12 +1043,107 @@ class Chef_DashboardViewController: UIViewController, Chef_DetailReviewHandlerDe
             popup.present(from: CGRect(x: CGFloat(self.view.frame.size.width / 2), y: CGFloat(self.view.frame.size.height / 4), width: CGFloat(0), height: CGFloat(0)), in: self.view, permittedArrowDirections: .any, animated: true)
         }
     }
+    @objc func closeZoomTap(_ gestureRecognizer: UIGestureRecognizer) {
+        let currentWindow = UIApplication.shared.keyWindow!
+        currentWindow.viewWithTag(888)!.removeFromSuperview()
+    }
     @IBAction func wishlistBtnClicked(_ sender: UIButton) {
         self.AddToWishList()
     }
     
     @IBAction func shareBtnClicked(_ sender: UIButton) {
         self.shareProduct()
+    }
+    func zoomAction(tappedIndex: Int){
+        let homeDimView = UIView(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(SCREEN_WIDTH), height: CGFloat(SCREEN_HEIGHT)))
+        homeDimView.backgroundColor = UIColor.white
+        let currentWindow = UIApplication.shared.keyWindow
+        homeDimView.tag = 888
+        homeDimView.frame = (currentWindow?.bounds)!
+        let cancel = UIImageView(frame: CGRect(x: CGFloat(SCREEN_WIDTH - 40), y: CGFloat(30), width: CGFloat(20), height: CGFloat(20)))
+        cancel.image = UIImage(named: "ic_close")
+        cancel.isUserInteractionEnabled = true
+        homeDimView.addSubview(cancel)
+        let cancelTap = UITapGestureRecognizer(target: self, action: #selector(self.closeZoomTap))
+        cancelTap.numberOfTapsRequired = 1
+        cancel.addGestureRecognizer(cancelTap)
+        
+        var X:CGFloat = 0
+        
+        parentZoomingScrollView = UIScrollView(frame: CGRect(x: CGFloat(0), y: CGFloat(70), width: CGFloat(SCREEN_WIDTH), height: CGFloat(SCREEN_HEIGHT - 120)))
+        parentZoomingScrollView.isUserInteractionEnabled = true
+        parentZoomingScrollView.tag = 888888
+        parentZoomingScrollView.delegate = self
+        homeDimView.addSubview(parentZoomingScrollView)
+        
+        for i in 0..<imageArrayUrl.count {
+            childZoomingScrollView = UIScrollView(frame: CGRect(x: CGFloat(X), y: CGFloat(0), width: CGFloat(SCREEN_WIDTH), height: CGFloat(SCREEN_HEIGHT - 120)))
+            childZoomingScrollView.isUserInteractionEnabled = true
+            childZoomingScrollView.tag = 90000 + i
+            childZoomingScrollView.delegate = self
+            parentZoomingScrollView.addSubview(childZoomingScrollView)
+            imageZoom = UIImageView(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(SCREEN_WIDTH), height: CGFloat(SCREEN_HEIGHT - 120)))
+            imageZoom.image = UIImage(named: "ic_placeholder.png")
+            imageZoom.contentMode = .scaleAspectFit
+            GlobalData.sharedInstance.getImageFromUrl(imageUrl: imageArrayUrl[i], imageView: imageZoom)
+            
+            imageZoom.isUserInteractionEnabled = true
+            imageZoom.tag = 10
+            childZoomingScrollView.addSubview(imageZoom)
+            childZoomingScrollView.maximumZoomScale = 5.0
+            childZoomingScrollView.clipsToBounds = true
+            childZoomingScrollView.contentSize = CGSize(width: CGFloat(SCREEN_WIDTH), height: CGFloat(SCREEN_HEIGHT - 120))
+            let doubleTap = UITapGestureRecognizer(target: self, action: #selector(self.handleDoubleTap))
+            doubleTap.numberOfTapsRequired = 2
+            imageZoom.addGestureRecognizer(doubleTap)
+            X += SCREEN_WIDTH
+        }
+        
+        parentZoomingScrollView.contentSize = CGSize(width: CGFloat(X), height: CGFloat(SCREEN_WIDTH))
+        parentZoomingScrollView.isPagingEnabled = true
+        let Y: CGFloat = 70 + SCREEN_HEIGHT - 120 + 5
+        pager = UIPageControl(frame: CGRect(x: CGFloat(0), y: CGFloat(Y), width: CGFloat(SCREEN_WIDTH), height: CGFloat(50)))
+        //SET a property of UIPageControl
+        pager.backgroundColor = UIColor.clear
+        pager.numberOfPages = imageArrayUrl.count
+        //as we added 3 diff views
+        parentZoomingScrollView.setContentOffset(CGPoint(x: Int(SCREEN_WIDTH)*tappedIndex, y: 0), animated: false)
+        pager.currentPage = tappedIndex
+        pager.isHighlighted = true
+        pager.pageIndicatorTintColor = UIColor.black
+        pager.currentPageIndicatorTintColor = UIColor.red
+        homeDimView.addSubview(pager)
+        currentWindow?.addSubview(homeDimView)
+        
+        let newPosition = SCREEN_WIDTH * CGFloat(self.pageControl.currentPage)
+        let toVisible = CGRect(x: CGFloat(newPosition), y: CGFloat(70), width: CGFloat(SCREEN_WIDTH), height: CGFloat(SCREEN_HEIGHT - 120))
+        self.parentZoomingScrollView.scrollRectToVisible(toVisible, animated: true)
+    }
+    @objc func handleDoubleTap(_ gestureRecognizer: UIGestureRecognizer) {
+        let scroll = parentZoomingScrollView.viewWithTag(888888) as! UIScrollView
+        let childScroll = scroll.viewWithTag(90000 + currentTag) as! UIScrollView
+        let newScale: CGFloat = scroll.zoomScale * 1.5
+        let zoomRect = self.zoomRect(forScale: newScale, withCenter: gestureRecognizer.location(in: gestureRecognizer.view))
+        childScroll.zoom(to: zoomRect, animated: true)
+    }
+    @objc func openImage(_ sender : UITapGestureRecognizer){
+        self.zoomAction(tappedIndex:Int(sender.accessibilityHint!)!)
+        
+        //        let homeDimSuperView = UIView(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(SCREEN_WIDTH), height: CGFloat(SCREEN_HEIGHT)))
+        //        let homeDimView = UIView(frame: CGRect(x: CGFloat(40), y: CGFloat(80), width: CGFloat(SCREEN_WIDTH - 80), height: CGFloat(SCREEN_HEIGHT - 160)))
+        //        homeDimView.backgroundColor = UIColor.white
+        //        let currentWindow = UIApplication.shared.keyWindow
+        //        homeDimView.tag = 888
+        //        homeDimView.frame = (currentWindow?.bounds)!
+        //        homeDimView.layer.cornerRadius = 30
+        //        zoomImgVC = self.storyboard?.instantiateViewController(withIdentifier: "ZoomImageViewController") as! ZoomImageViewController
+        //        self.addChildViewController(zoomImgVC)
+        //        zoomImgVC.currentTag = Int(sender.accessibilityHint!)!
+        //        zoomImgVC.imageArrayUrl = imageArrayUrl
+        //        zoomImgVC.view.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(SCREEN_WIDTH), height: CGFloat(SCREEN_HEIGHT))
+        //        homeDimView.addSubview(zoomImgVC.view)
+        //        homeDimSuperView.addSubview(homeDimView)
+        //        self.view.addSubview(homeDimSuperView)
     }
     func doFurtherProcessingWithResult()    {
         print(compareProductCollectionModel)
@@ -1041,6 +1163,7 @@ class Chef_DashboardViewController: UIViewController, Chef_DetailReviewHandlerDe
 //        productRatingCountVal.text = "\(catalogProductViewModel.reviewList.count) " + "ratings".localized
 //
         productRateCount.text = ("\(catalogProductViewModel.reviewList.count)" + " " + "review".localized)
+        self.productDetailTableView.reloadData()
 //
 //        //add gesture on total reviews
 //        let addReviewGesture = UITapGestureRecognizer(target: self, action: #selector(CatalogProduct.totalReviewsClick(_:)))
@@ -1050,10 +1173,13 @@ class Chef_DashboardViewController: UIViewController, Chef_DetailReviewHandlerDe
 //        let addRatingsGesture = UITapGestureRecognizer(target: self, action: #selector(CatalogProduct.ratingViewClick(_:)))
 //        ratingView.addGestureRecognizer(addRatingsGesture)
 //
-//        imageArrayUrl = catalogProductViewModel.getBannerImageUrl
-//        collectionView.reloadData()
+        imageArrayUrl = catalogProductViewModel.getBannerImageUrl
+        collectionView.delegate = self
+        collectionView.dataSource = self
+      
+        collectionView.reloadData()
         productpriceLabel.text = catalogProductViewModel.catalogProductModel.formatedFinalPrice
-//        pageControl.numberOfPages = imageArrayUrl.count
+        pageControl.numberOfPages = imageArrayUrl.count
 //        activityIndicator.stopAnimating()
 //        stockLabelValue.text = catalogProductViewModel.catalogProductModel.stockMessage
 //        //        self.mainViewHeightConstarints.constant = 650 + SCREEN_HEIGHT/2
@@ -1153,7 +1279,7 @@ class Chef_DashboardViewController: UIViewController, Chef_DetailReviewHandlerDe
 //        if self.configjson["configurableData"]["attributes"].count > 0{
 //            self.createConfigurableView()
 //        }
-        self.productDetailTableView.reloadData()
+        
         GlobalData.sharedInstance.dismissLoader()
    }
     
@@ -1169,4 +1295,124 @@ class Chef_DashboardViewController: UIViewController, Chef_DetailReviewHandlerDe
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let backItem = UIBarButtonItem()
+        backItem.title = "Back"
+        navigationItem.backBarButtonItem = backItem
+    }
 }
+
+extension Chef_DashboardViewController: UICollectionViewDataSource , UICollectionViewDelegate , UICollectionViewDelegateFlowLayout    {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ view: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return imageArrayUrl.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width:SCREEN_WIDTH , height:SCREEN_HEIGHT/2)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CatalogProductImage.identifier, for: indexPath) as! CatalogProductImage
+        print("ImageCollectionCell", imageArrayUrl[indexPath.row])
+        
+        cell.imageView.image = UIImage(named: "ic_placeholder.png")
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(openImage))
+        tapGesture.accessibilityHint = "\(indexPath.row)"
+        cell.imageView.addGestureRecognizer(tapGesture)
+        GlobalData.sharedInstance.getImageFromUrl(imageUrl:imageArrayUrl[indexPath.row] , imageView: cell.imageView)
+        cell.imageView.clipsToBounds = true
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat{
+        return 0.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat   {
+        return 0.0
+    }
+    
+    //    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    //        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ZoomImageViewController") as! ZoomImageViewController
+    //        vc.currentTag = indexPath.row
+    //        self.navigationController?.pushViewController(vc, animated: true)
+    //    }
+}
+extension Chef_DashboardViewController {
+
+    func selectedConfigurImg()  {
+        
+        var count = 0
+        var tmpArr = [String]()
+        
+        for j in 0..<configurableDataIndex.count  {
+            count = 0
+            tmpArr.removeAll()
+            
+            let d = JSON((configurableDataIndex as! NSArray)[j])
+            
+            for (key,val):(String,JSON) in d   {
+                
+                if (JSON(configurableSelectedData)[key] != nil) , JSON(configurableSelectedData)[key].stringValue == val.stringValue , key != "product" {
+                    count += 1
+                    tmpArr.append(d["product"].stringValue)
+                }
+                print(key)
+            }
+            
+            if count == configurableSelectedData.count  {
+                break
+            }
+        }
+        
+        print("Count array key -->>>> \(tmpArr)")
+        
+        setNewImages(productId:tmpArr[0])
+    }
+
+    func setNewImages(productId: String) {
+        
+        if let imageArr = configurableDataImages[productId] as? NSArray {
+            self.imageArrayUrl.removeAll()
+            pageControl.numberOfPages = 0
+            
+            for i in 0..<imageArr.count {
+                
+                if JSON(imageArr)[i]["img"].stringValue != ""  {
+                    self.imageArrayUrl.append(JSON(imageArr)[i]["img"].stringValue)
+                }
+            }
+            
+            pageControl.numberOfPages = imageArrayUrl.count
+            self.collectionView.reloadData()
+        }
+    }
+}
+ extension Chef_DashboardViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.tag == 888888{
+            let pageWidth: CGFloat = self.parentZoomingScrollView.frame.size.width
+            let page = floor((self.parentZoomingScrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1
+            self.currentTag = NSInteger(page)
+            self.pager.currentPage = Int(page)
+        }
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        for cell: UICollectionViewCell in self.collectionView.visibleCells {
+            let indexPathValue = self.collectionView.indexPath(for: cell)!
+            print(indexPathValue.row)
+            self.pageControl.currentPage = Int(indexPathValue.row)
+            break
+        }
+    }
+}
+
+

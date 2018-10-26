@@ -89,21 +89,29 @@ class Chef_DashboardView: UIViewController{
             //self.viewSwipe.setNeedsDisplay()
         }
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let backItem = UIBarButtonItem()
+        backItem.title = "Back"
+        navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
         profile_view.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor).isActive = true
         self.navigationController?.isNavigationBarHidden = false
-        //navigationController?.navigationBar.barTintColor = UIColor(red: 30/255, green: 161/255, blue: 243/255, alpha: 1.0);
-        navigationController?.navigationBar.setBackgroundImage(UIImage(named: "back_color"), for: UIBarMetrics.default)
-        navigationController?.navigationBar.shadowImage = UIImage();
+        //navigationController?.navigationBar.barTintColor = UIColor().HexToColor(hexString: BUTTON_COLOR);
+        //navigationController?.navigationBar.setBackgroundImage(UIImage(named: "back_color"), for: UIBarMetrics.default)
+        //navigationController?.navigationBar.shadowImage = UIImage();
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         self.navigationItem.title = "Chef"
-        profile_view.backgroundColor = UIColor().HexToColor(hexString: BUTTON_COLOR);
+        //self.navigationController?.navigationBar.tintColor = UIColor().HexToColor(hexString: BUTTON_COLOR);
+        //profile_view.backgroundColor = UIColor().HexToColor(hexString: BUTTON_COLOR);
+        profile_view.backgroundColor = UIColor(red: 29/255, green: 151/255, blue: 239/255, alpha: 1.0);
         //profile_view.backgroundColor = UIColor(patternImage: UIImage(named: "back_color")!)
         self.profile_view.layer.shadowOpacity = 0;
         profile_image.layer.cornerRadius = 35;
         profile_image.layer.masksToBounds = true;
+        self.profile_view.layer.borderWidth = 0
         /*
          ownerProfileTableView.register(UINib(nibName: "OwnerProfileTableViewCell", bundle: nil), forCellReuseIdentifier: "OwnerProfileTableViewCell")
          ownerProfileTableView.rowHeight = UITableViewAutomaticDimension

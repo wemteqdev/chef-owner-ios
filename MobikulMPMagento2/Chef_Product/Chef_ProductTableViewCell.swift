@@ -247,6 +247,16 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
                         cell.addToCompareButton.setTitleColor(UIColor.gray, for: .normal)
                         cell.addToCompareButton.backgroundColor = UIColor.lightGray
                     }
+                    else {
+                        cell.addButton.isUserInteractionEnabled = true
+                        cell.addToCompareButton.isUserInteractionEnabled = true
+                        
+                        cell.addButton.setTitleColor(UIColor.white, for: .normal)
+                        cell.addButton.backgroundColor = UIColor().HexToColor(hexString: BUTTON_COLOR)
+                        cell.addToCompareButton.setTitleColor(UIColor.gray, for: .normal)
+                        cell.addToCompareButton.backgroundColor = UIColor.white
+                        
+                    }
                     return cell;
                 }
                 else{
@@ -310,6 +320,16 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
                         cell.addButton.backgroundColor = UIColor.lightGray
                         cell.compare_Button.setTitleColor(UIColor.gray, for: .normal)
                         cell.compare_Button.backgroundColor = UIColor.lightGray
+                    }
+                    else {
+                        cell.addButton.isUserInteractionEnabled = true
+                        cell.compare_Button.isUserInteractionEnabled = true
+                        
+                        cell.addButton.setTitleColor(UIColor.white, for: .normal)
+                        cell.addButton.backgroundColor = UIColor().HexToColor(hexString: BUTTON_COLOR)
+                        cell.compare_Button.setTitleColor(UIColor.gray, for: .normal)
+                        cell.compare_Button.backgroundColor = UIColor.white
+                        
                     }
                     //}
                     return cell
@@ -398,7 +418,7 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
         if homeViewController.change == false{
             return CGSize(width: collectionView.frame.size.width, height: 414/2 - 80 )
         }else{
-            return CGSize(width: 414/3 + 30 , height: 414/2 + 65 )
+            return CGSize(width: 414/3 + 30 , height: 414/2 + 100 )
             //return CGSize(width: collectionView.frame.size.width/2, height:SCREEN_WIDTH/2.5 + 120)
         }
     }

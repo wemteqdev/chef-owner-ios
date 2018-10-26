@@ -31,7 +31,43 @@ class CompareListViewController: UIViewController,UITableViewDelegate, UITableVi
         GlobalData.sharedInstance.removePreviousNetworkCall()
         GlobalData.sharedInstance.dismissLoader()
         tableView.register(UINib(nibName: "Chef_CompareCell", bundle: nil), forCellReuseIdentifier: "chef_compare")
+        loadNavgiationButtons()
         callingHttppApi()
+        
+    }
+    @objc func cartButtonClick(sender: UIButton){
+        //let vc = self.storyboard?.instantiateViewController(withIdentifier: "chef_cartexview") as! Chef_exMyCart
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "chef_supercartview") as! Chef_SuperCart
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    @objc func searchButtonClick(sender: UIButton){
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "chef_searchview") as! SearchSuggestion
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+    }
+    func loadNavgiationButtons() {
+        let btnCart = SSBadgeButton()
+        
+        btnCart.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
+        btnCart.setImage(UIImage(named: "Action 4")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        btnCart.badgeEdgeInsets = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 10)
+        btnCart.badge = badge
+        print("Load Navigation Button Function Badge Value")
+        print(badge)
+        
+        btnCart.addTarget(self, action: #selector(cartButtonClick(sender:)), for: .touchUpInside)
+        
+        var origImage = UIImage(named: "Action 2")
+        var tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
+        var btnSearch:UIBarButtonItem = UIBarButtonItem(image: tintedImage , style: .plain, target: self, action: #selector(searchButtonClick(sender:)))
+        
+        btnCart.tintColor = .white
+        btnSearch.tintColor = .white
+        self.navigationItem.setRightBarButtonItems([UIBarButtonItem(customView: btnCart), btnSearch], animated: true)
+        
+        self.navigationController?.navigationBar.tintColor = .white
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -145,7 +181,7 @@ class CompareListViewController: UIViewController,UITableViewDelegate, UITableVi
                     GlobalData.sharedInstance.dismissLoader()
                     self.view.isUserInteractionEnabled = true
                     if errorCode == true{
-                        GlobalData.sharedInstance.showSuccessSnackBar(msg:data .object(forKey:"message") as! String )
+                        GlobalData.sharedInstance.showSuccessSnackBar(msg:"You added selected products to your shopping cart" )
                         badge = String(data.object(forKey: "cartCount") as! Int)
                         let vc = self.storyboard?.instantiateViewController(withIdentifier: "chef_supercartview") as! Chef_SuperCart
                         
@@ -232,9 +268,8 @@ class CompareListViewController: UIViewController,UITableViewDelegate, UITableVi
         }
         else{
             cell.price.text = self.compareListViewModel.getProductList[indexPath.row].price
-            cell.Totalprice.text = "Total \((self.compareListViewModel.getProductList[indexPath.row].specialPrice as NSString).doubleValue * (self.compareListViewModel.getProductList[indexPath.row].qty as NSString).doubleValue)"
+            cell.Totalprice.text = "Total \(self.compareListViewModel.getProductList[indexPath.row].price.prefix(1))\((self.compareListViewModel.getProductList[indexPath.row].specialPrice as NSString).doubleValue * (self.compareListViewModel.getProductList[indexPath.row].qty as NSString).doubleValue)"
         }
-        
         cell.productname.text = self.compareListViewModel.getProductList[indexPath.row].productName
         cell.starRating.value = self.compareListViewModel.getProductList[indexPath.row].rating
         cell.kiloButton.setTitle(self.compareListViewModel.getProductList[indexPath.row].qty,for: .normal)
@@ -250,9 +285,9 @@ class CompareListViewController: UIViewController,UITableViewDelegate, UITableVi
         cell.minusButton.tag = indexPath.row
         cell.minusButton.addTarget(self, action: #selector(minusClick(sender:)), for: .touchUpInside)
         //cell.Totalprice.text = self.compareListViewModel.getProductList[indexPath.row].price *
-        cell.moqButton.setTitle("MOQ \(String(self.compareListViewModel.getProductList[indexPath.row].price))", for: .normal)
+        cell.moqButton.setTitle("MOQ \(self.compareListViewModel.getProductList[indexPath.row].price.prefix(1))\(String((self.compareListViewModel.getProductList[indexPath.row].specialPrice as NSString).doubleValue * Double(self.compareListViewModel.getProductList[indexPath.row].moq)))", for: .normal)
         cell.pricevat.text = "\(String(self.compareListViewModel.getProductList[indexPath.row].price))/\(String(self.compareListViewModel.getProductList[indexPath.row].unit)) - \(String(self.compareListViewModel.getProductList[indexPath.row].taxClass))"
-        GlobalData.sharedInstance.getImageFromUrl(imageUrl: compareListViewModel.getProductList[indexPath.row].imageUrl, imageView: cell.imageView!)
+        GlobalData.sharedInstance.getImageFromUrl(imageUrl: compareListViewModel.getProductList[indexPath.row].imageUrl, imageView: cell.productImage)
 //        cell.plusButton.addTarget(self, action: #selector(plusButtonClick(sender:)), for: .touchUpInside)
 //        cell.minusButton.addTarget(self, action: #selector(minusButtonClick(sender:)), for: .touchUpInside)
         

@@ -25,6 +25,7 @@ class ComapreListModel: NSObject {
     var qty:String = "0"
     var unit:String!
     var tierPrice:Double!
+    var moq:Int!
     init(data:JSON){
         self.productName = data["name"].stringValue
         self.price = data["formatedFinalPrice"].stringValue
@@ -42,6 +43,10 @@ class ComapreListModel: NSObject {
             self.tierPrice = 0
         }
         self.unit = data["unitString"].stringValue
+        self.moq = data["moq"].intValue
+        if self.moq == nil {
+            self.moq = 0
+        }
      }
     
 

@@ -25,7 +25,7 @@ var delegate:EditProfiledelegate!
         editView.layer.cornerRadius = 5;
         editView.layer.masksToBounds = true
         //editView.isHidden = true
-        visualView.backgroundColor = UIColor(red: 30/255, green: 161/255, blue: 243/255, alpha: 1.0);
+        visualView.backgroundColor = UIColor(red: 29/255, green: 151/255, blue: 239/255, alpha: 1.0);
         self.visualView.layer.shadowOpacity = 0;
         var gesture = UITapGestureRecognizer(target: self, action:  #selector (self.saveProfile (_:)))
         editView.addGestureRecognizer(gesture)

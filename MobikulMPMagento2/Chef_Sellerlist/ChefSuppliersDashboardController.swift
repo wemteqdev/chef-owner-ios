@@ -24,6 +24,40 @@ class ChefSuppliersDashboardController: UIViewController, UITableViewDelegate, U
     var suppliersInfo:SuppliersViewModel!;
     var selectedSupplierId = 0;
     var selectedSupplierName = "";
+    @objc func cartButtonClick(sender: UIButton){
+        //let vc = self.storyboard?.instantiateViewController(withIdentifier: "chef_cartexview") as! Chef_exMyCart
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "chef_supercartview") as! Chef_SuperCart
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    @objc func searchButtonClick(sender: UIButton){
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "chef_searchview") as! SearchSuggestion
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+    }
+    func loadNavgiationButtons() {
+        let btnCart = SSBadgeButton()
+        
+        btnCart.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
+        btnCart.setImage(UIImage(named: "Action 4")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        btnCart.badgeEdgeInsets = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 10)
+        btnCart.badge = badge
+        print("Load Navigation Button Function Badge Value")
+        print(badge)
+        
+        btnCart.addTarget(self, action: #selector(cartButtonClick(sender:)), for: .touchUpInside)
+        
+        var origImage = UIImage(named: "Action 2")
+        var tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
+        var btnSearch:UIBarButtonItem = UIBarButtonItem(image: tintedImage , style: .plain, target: self, action: #selector(searchButtonClick(sender:)))
+        
+        btnCart.tintColor = .white
+        btnSearch.tintColor = .white
+        self.navigationItem.setRightBarButtonItems([UIBarButtonItem(customView: btnCart), btnSearch], animated: true)
+        
+        self.navigationController?.navigationBar.tintColor = .white
+    }
     
     func viewMapClick(id:Int)
     {
@@ -122,6 +156,10 @@ class ChefSuppliersDashboardController: UIViewController, UITableViewDelegate, U
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let backItem = UIBarButtonItem()
+        backItem.title = "Back"
+        navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
+
         if(segue.identifier! == "sellerprofile") {
             let viewController:SellerDetailsViewController = segue.destination as UIViewController as! SellerDetailsViewController
             //viewController.profileUrl = sellerId;
@@ -135,7 +173,7 @@ class ChefSuppliersDashboardController: UIViewController, UITableViewDelegate, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        loadNavgiationButtons()
         navigationController?.navigationBar.setBackgroundImage(UIImage(named: "back_color"), for: UIBarMetrics.default)
         navigationController?.navigationBar.shadowImage = UIImage();
         searchBarView.backgroundColor = UIColor(red: 30/255, green: 161/255, blue: 243/255, alpha: 1.0);

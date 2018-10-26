@@ -8,7 +8,6 @@
 
 import UIKit
 import SwiftMessages
-import ImageSlideshow
 var badge:String? = nil
 class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource,chef_productViewControllerHandlerDelegate,bannerViewControllerHandlerDelegate,CategoryViewControllerHandlerDelegate,hotDealProductViewControllerHandlerDelegate,UISearchBarDelegate,RecentProductViewControllerHandlerDelegate, UITabBarControllerDelegate{
 
@@ -110,6 +109,11 @@ class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPicker
         else {
             categoryId = ""
         }
+        self.categorized = true
+        UIView.animate(withDuration: 0.3, delay: 0, options: .layoutSubviews, animations: {
+            self.BannerView.isHidden = true
+        })
+        
         callingHttppApi()
     }
     
@@ -197,10 +201,12 @@ class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPicker
     }
     var change:Bool = true
     var responseObject : AnyObject!
-    
+    var categorized:Bool = false
   
+    @IBOutlet weak var sortArrow: UIImageView!
     
-   
+
+    
     @IBOutlet weak var productTableView: UITableView!
     @IBOutlet weak var changeViewButton: UIButton!
     @IBOutlet weak var sortField: UITextField!
@@ -290,11 +296,14 @@ class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPicker
         filterButton.tintColor = .black
         
         homeViewModel = Chef_HomeViewModel()
+        productTableView.register(UINib(nibName: "EmptyCell", bundle: nil), forCellReuseIdentifier: "emptycell")
         productTableView?.register(BannerTableViewCell.nib, forCellReuseIdentifier: BannerTableViewCell.identifier)
         productTableView?.register(TopCategoryTableViewCell.nib, forCellReuseIdentifier: TopCategoryTableViewCell.identifier)
         productTableView?.register(Chef_ProductTableViewCell.nib, forCellReuseIdentifier: Chef_ProductTableViewCell.identifier)
         productTableView?.register(HotdealsTableViewCell.nib, forCellReuseIdentifier: HotdealsTableViewCell.identifier)
         productTableView?.register(RecentViewTableViewCell.nib, forCellReuseIdentifier: RecentViewTableViewCell.identifier)
+        
+        
         var navigationBarAppearace = UINavigationBar.appearance()
         
         navigationBarAppearace.tintColor = UIColor.white
@@ -454,7 +463,12 @@ class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPicker
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        UIView.setAnimationsEnabled(false)
+        self.navigationItem.prompt = nil
+        UIView.setAnimationsEnabled(true)
+       
         if (segue.identifier! == "productcategory") {
             let viewController:Productcategory = segue.destination as UIViewController as! Productcategory
             viewController.categoryName = self.categoryName
@@ -501,11 +515,27 @@ class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPicker
     {
         UIView.animate(withDuration: 0.3, delay: 0, options: .layoutSubviews, animations: {
             self.filterCoverView.isHidden = !self.filterCoverView.isHidden
-            self.BannerView.isHidden = !self.BannerView.isHidden
+            self.BannerView.isHidden = false
             self.filtered = !self.filtered;
-            
         })
+        change = false
+ 
+        print("ChangeView Button Clicked")
+        let topIndex = IndexPath(row: 0, section: 0)
+        //self.productTableView.scrollToRow(at: topIndex, at: .top, animated: true)
         self.productTableView.reloadDataWithAutoSizingCellWorkAround()
+        
+        if change == false{
+            let origImage = UIImage(named: "ic_list")
+            let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
+            changeViewButton.setImage(tintedImage, for: .normal)
+        }else{
+            let origImage = UIImage(named: "ic_grid")
+            let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
+            changeViewButton.setImage(tintedImage, for: .normal)
+        }
+        
+        
     }
     func callingExtraHttpApi(){
         self.view.isUserInteractionEnabled = false

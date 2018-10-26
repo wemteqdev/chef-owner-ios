@@ -23,19 +23,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="703" height="197"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your Review Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eUA-Lo-Ocg">
-                                <rect key="frame" x="16" y="30.5" width="145.5" height="30"/>
+                                <rect key="frame" x="16" y="65.5" width="667" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qYd-3r-dRu" customClass="HCSStarRatingView">
-                                <rect key="frame" x="603" y="65" width="80" height="20"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="H8M-Uf-0x4"/>
-                                    <constraint firstAttribute="height" constant="20" id="JLO-LT-SK8"/>
-                                </constraints>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You're reviewing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xrv-sP-fxP">
                                 <rect key="frame" x="20" y="5" width="125.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -43,7 +35,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d2P-Vk-Cqe">
-                                <rect key="frame" x="251" y="115" width="200" height="40"/>
+                                <rect key="frame" x="251" y="145.5" width="200" height="40"/>
                                 <color key="backgroundColor" red="0.16078431369999999" green="0.65098039220000004" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="WGs-3j-qg9"/>
@@ -55,7 +47,7 @@
                                 </state>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your Review Content" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fr9-i5-2Pa">
-                                <rect key="frame" x="16" y="70" width="557" height="30"/>
+                                <rect key="frame" x="16" y="105.5" width="667" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="1Ii-uD-ybY"/>
                                 </constraints>
@@ -63,20 +55,29 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qYd-3r-dRu" customClass="HCSStarRatingView">
+                                <rect key="frame" x="20" y="30.5" width="100" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="H8M-Uf-0x4"/>
+                                    <constraint firstAttribute="height" constant="30" id="JLO-LT-SK8"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="eUA-Lo-Ocg" firstAttribute="top" secondItem="xrv-sP-fxP" secondAttribute="bottom" constant="5" id="25e-71-lNX"/>
-                            <constraint firstItem="qYd-3r-dRu" firstAttribute="centerY" secondItem="fr9-i5-2Pa" secondAttribute="centerY" constant="-10" id="2tx-hp-0Nq"/>
                             <constraint firstItem="xrv-sP-fxP" firstAttribute="top" secondItem="4CH-TR-DeL" secondAttribute="top" constant="5" id="2z7-5n-9LR"/>
                             <constraint firstItem="fr9-i5-2Pa" firstAttribute="top" secondItem="eUA-Lo-Ocg" secondAttribute="bottom" constant="10" id="3a9-9E-4Zm"/>
+                            <constraint firstItem="qYd-3r-dRu" firstAttribute="leading" secondItem="xrv-sP-fxP" secondAttribute="leading" id="6oS-re-PCi"/>
                             <constraint firstItem="xrv-sP-fxP" firstAttribute="leading" secondItem="4CH-TR-DeL" secondAttribute="leading" constant="20" id="Br0-t8-FSp"/>
                             <constraint firstItem="d2P-Vk-Cqe" firstAttribute="centerX" secondItem="4CH-TR-DeL" secondAttribute="centerX" id="BwR-u6-BDv"/>
-                            <constraint firstItem="qYd-3r-dRu" firstAttribute="leading" secondItem="fr9-i5-2Pa" secondAttribute="trailing" constant="30" id="Odj-8f-fr8"/>
+                            <constraint firstAttribute="trailing" secondItem="fr9-i5-2Pa" secondAttribute="trailing" constant="20" id="Ob6-wr-gap"/>
                             <constraint firstItem="fr9-i5-2Pa" firstAttribute="leading" secondItem="eUA-Lo-Ocg" secondAttribute="leading" id="fmm-Sm-Ake"/>
-                            <constraint firstItem="d2P-Vk-Cqe" firstAttribute="top" secondItem="fr9-i5-2Pa" secondAttribute="bottom" constant="15" id="pSo-El-wzp"/>
+                            <constraint firstItem="eUA-Lo-Ocg" firstAttribute="top" secondItem="qYd-3r-dRu" secondAttribute="bottom" constant="5" id="gtZ-WN-nZy"/>
+                            <constraint firstItem="qYd-3r-dRu" firstAttribute="top" secondItem="xrv-sP-fxP" secondAttribute="bottom" constant="5" id="iaB-y2-6B0"/>
+                            <constraint firstItem="eUA-Lo-Ocg" firstAttribute="width" secondItem="fr9-i5-2Pa" secondAttribute="width" id="lUo-BX-u04"/>
+                            <constraint firstItem="d2P-Vk-Cqe" firstAttribute="top" secondItem="fr9-i5-2Pa" secondAttribute="bottom" constant="10" id="pSo-El-wzp"/>
                             <constraint firstItem="eUA-Lo-Ocg" firstAttribute="leading" secondItem="xrv-sP-fxP" secondAttribute="leading" constant="-4" id="uRe-8g-txS"/>
-                            <constraint firstAttribute="trailing" secondItem="qYd-3r-dRu" secondAttribute="trailing" constant="20" id="zzy-5R-xY4"/>
                         </constraints>
                     </view>
                 </subviews>
