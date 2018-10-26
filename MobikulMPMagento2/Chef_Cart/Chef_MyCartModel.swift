@@ -52,7 +52,10 @@ class Chef_MyCartModel: NSObject {
         if(self.tier_price == nil){
             self.tier_price = 0
         }
-        self.moq = data["minorderQty"].intValue
+        self.moq = data["moq"].intValue
+        if self.moq == nil {
+            self.moq = 0
+        }
         self.priceint = data["priceint"].doubleValue
         self.tierSubtotal = data["tier_subtotal"].stringValue
         self.unitString = data["unitString"].stringValue

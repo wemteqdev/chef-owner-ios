@@ -61,7 +61,7 @@ class SearchSuggestion: UIViewController,UISearchDisplayDelegate,UISearchBarDele
     
     @IBAction func cancelClick(_ sender: Any) {
         navigationController?.popViewController(animated: true)
-        tabBarController?.selectedIndex = 0
+        tabBarController?.selectedIndex = 1
     }
     
     override func viewWillAppear(_ animated: Bool) {

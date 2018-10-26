@@ -207,7 +207,7 @@ class SellerOrderDetailsController: UIViewController,UITableViewDelegate, UITabl
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 8
+        return 4
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
@@ -227,12 +227,14 @@ class SellerOrderDetailsController: UIViewController,UITableViewDelegate, UITabl
                 return 1
             }
         }else if section == 5{
+            return 0
             if self.sellerOrderDetailsViewModelData.shippingMethod == ""{
                 return 0
             }else{
                 return 1
             }
         }else if section == 7    {
+
             if self.sellerOrderDetailsViewModelData.buyerName != "" || self.sellerOrderDetailsViewModelData.buyerEmail != ""    {
                 return 1
             }else{
@@ -753,6 +755,7 @@ class SellerOrderDetailsController: UIViewController,UITableViewDelegate, UITabl
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if(segue.identifier! == "invoicedetails") {
             let viewController:SellerInvoiceDetailsController = segue.destination as UIViewController as! SellerInvoiceDetailsController
             viewController.invoiceId = self.sellerOrderDetailsViewModelData.invoiceId;

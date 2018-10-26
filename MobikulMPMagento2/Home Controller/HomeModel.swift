@@ -151,6 +151,7 @@ struct Products {
     var userStatus:Bool!
     var tierPrice:Double!
     var nonEditable:Bool!
+    var moq:Int!
     init(data:JSON) {
         self.hasOption = data["hasOption"].intValue
         self.name = data["name"].stringValue
@@ -193,6 +194,10 @@ struct Products {
         if self.nonEditable == nil
         {
             self.nonEditable = false
+        }
+        self.moq = data["moq"].intValue
+        if self.moq == nil {
+            self.moq = 0
         }
     }
 }

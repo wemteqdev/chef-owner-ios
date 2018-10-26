@@ -80,7 +80,7 @@ class MainTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
         else if currentMainView == 1 {
             if indexPath.row ==  catalogProductViewModel.catalogProductModel.reviewList.count
             {
-                return CGSize(width: collectionView.frame.width, height: 180 )
+                return CGSize(width: collectionView.frame.width, height: 210 )
             }
             return CGSize(width: collectionView.frame.width, height: 90 )
         }
@@ -163,7 +163,7 @@ class MainTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
             cell.reviewCount.text = "\(String(compareProductCollectionModel[indexPath.row].reviewCount)) reviews"
             cell.supplierName.text = compareProductCollectionModel[indexPath.row].supplierName
             //cell.moq.text = compareProductCollectionModel[indexPath.row].minAddToCartQty
-            cell.moq.text = "MOQ \(String(compareProductCollectionModel[indexPath.row].price))"
+            cell.moq.text = "MOQ \(String(compareProductCollectionModel[indexPath.row].price.prefix(1)))\(String(compareProductCollectionModel[indexPath.row].originalPrice * Double(compareProductCollectionModel[indexPath.row].moq)))"
             if compareProductCollectionModel[indexPath.row].isMin == true{
                 cell.discountLayer.isHidden = false
                 cell.discountLabel.isHidden = false

@@ -247,6 +247,16 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
                         cell.addToCompareButton.setTitleColor(UIColor.gray, for: .normal)
                         cell.addToCompareButton.backgroundColor = UIColor.lightGray
                     }
+                    else {
+                        cell.addButton.isUserInteractionEnabled = true
+                        cell.addToCompareButton.isUserInteractionEnabled = true
+                        
+                        cell.addButton.setTitleColor(UIColor.white, for: .normal)
+                        cell.addButton.backgroundColor = UIColor().HexToColor(hexString: BUTTON_COLOR)
+                        cell.addToCompareButton.setTitleColor(UIColor.gray, for: .normal)
+                        cell.addToCompareButton.backgroundColor = UIColor.white
+                        
+                    }
                     return cell;
                 }
                 else{
@@ -310,6 +320,16 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
                         cell.addButton.backgroundColor = UIColor.lightGray
                         cell.compare_Button.setTitleColor(UIColor.gray, for: .normal)
                         cell.compare_Button.backgroundColor = UIColor.lightGray
+                    }
+                    else {
+                        cell.addButton.isUserInteractionEnabled = true
+                        cell.compare_Button.isUserInteractionEnabled = true
+                        
+                        cell.addButton.setTitleColor(UIColor.white, for: .normal)
+                        cell.addButton.backgroundColor = UIColor().HexToColor(hexString: BUTTON_COLOR)
+                        cell.compare_Button.setTitleColor(UIColor.gray, for: .normal)
+                        cell.compare_Button.backgroundColor = UIColor.white
+                        
                     }
                     //}
                     return cell

@@ -89,6 +89,11 @@ class Chef_DashboardView: UIViewController{
             //self.viewSwipe.setNeedsDisplay()
         }
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let backItem = UIBarButtonItem()
+        backItem.title = "Back"
+        navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -256,6 +256,9 @@ class SellerOrderViewController: UIViewController,UITableViewDelegate, UITableVi
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let backItem = UIBarButtonItem()
+        backItem.title = "Back"
+        navigationItem.backBarButtonItem = backItem
         if (segue.identifier! == "filter") {
             let viewController:SellerOrderFilterController = segue.destination as UIViewController as! SellerOrderFilterController
            // viewController.sellerOrderViewModel = self.sellerOrderViewModel

@@ -9,6 +9,7 @@
 import UIKit
 
 class Chef_SuperCartCell: UITableViewCell {
+    @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var moqbtn: UIButton!
     @IBOutlet weak var pricewithsub: UILabel!
     @IBOutlet weak var ratingStarView: HCSStarRatingView!
@@ -17,6 +18,7 @@ class Chef_SuperCartCell: UITableViewCell {
     @IBOutlet var subtotal: UILabel!
     @IBOutlet var reviewLabel: UILabel!
 
+    @IBOutlet weak var qtyView: UIView!
     @IBOutlet var priceLabel: UILabel!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var qtyButton: UIButton!
@@ -33,13 +35,13 @@ class Chef_SuperCartCell: UITableViewCell {
         minusButton.layer.borderWidth = 1
         plusButton.layer.borderColor = UIColor().HexToColor(hexString: "9A9A9A").cgColor
         plusButton.layer.borderWidth = 1
-        
+        deleteButton.isHidden = true
         moqbtn.layer.borderColor = UIColor().HexToColor(hexString: "1AA33D").cgColor
         moqbtn.layer.borderWidth = 1
-        moqbtn.layer.cornerRadius = 2
+        moqbtn.layer.cornerRadius = moqbtn.frame.height/2 - 2
         moqbtn.layer.masksToBounds = true
         
-        ratingStar.layer.cornerRadius = 2
+        ratingStar.layer.cornerRadius = ratingStar.frame.height/2 - 2
         ratingStar.layer.masksToBounds = true
         
     }
