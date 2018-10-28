@@ -40,10 +40,7 @@ class CustomerLogin: UIViewController, GIDSignInUIDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.navigationBar.applyNavigationGradient(colors:GRADIENTCOLOR)
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
-        self.navigationController?.isNavigationBarHidden = true
-        
+      
     }
     /*
      func sign(inWillDispatch signIn: GIDSignIn!, error: Error!) {
@@ -114,7 +111,6 @@ class CustomerLogin: UIViewController, GIDSignInUIDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBarController?.tabBar.isHidden = true
         
         defaults.set("1", forKey: "storeId")
         //        GIDSignIn.sharedInstance().uiDelegate = self
@@ -209,24 +205,24 @@ class CustomerLogin: UIViewController, GIDSignInUIDelegate {
     override func viewDidAppear(_ animated: Bool) {
         
         
-        if(self.moveToSignal != "cart"){
-            /*
-             if defaults.object(forKey: "touchIdFlag") as! String == "1"{
-             let  AC = UIAlertController(title: GlobalData.sharedInstance.language(key: "alert"), message: GlobalData.sharedInstance.language(key: "loginbytouchid"), preferredStyle: .alert)
-             let okBtn = UIAlertAction(title: GlobalData.sharedInstance.language(key: "ok"), style:.default, handler: {(_ action: UIAlertAction) -> Void in
-             self.configureTouchIdBeforeLogin()
-             
-             })
-             let cancelBtn = UIAlertAction(title: GlobalData.sharedInstance.language(key: "cancel"), style:.destructive, handler: {(_ action: UIAlertAction) -> Void in
-             
-             })
-             AC.addAction(okBtn)
-             AC.addAction(cancelBtn)
-             self.present(AC, animated: true, completion: {  })
-             }
-             */
-            self.configureTouchIdBeforeLogin()
-        }
+//        if(self.moveToSignal != "cart"){
+//            /*
+//             if defaults.object(forKey: "touchIdFlag") as! String == "1"{
+//             let  AC = UIAlertController(title: GlobalData.sharedInstance.language(key: "alert"), message: GlobalData.sharedInstance.language(key: "loginbytouchid"), preferredStyle: .alert)
+//             let okBtn = UIAlertAction(title: GlobalData.sharedInstance.language(key: "ok"), style:.default, handler: {(_ action: UIAlertAction) -> Void in
+//             self.configureTouchIdBeforeLogin()
+//
+//             })
+//             let cancelBtn = UIAlertAction(title: GlobalData.sharedInstance.language(key: "cancel"), style:.destructive, handler: {(_ action: UIAlertAction) -> Void in
+//
+//             })
+//             AC.addAction(okBtn)
+//             AC.addAction(cancelBtn)
+//             self.present(AC, animated: true, completion: {  })
+//             }
+//             */
+//            self.configureTouchIdBeforeLogin()
+//        }
     }
     
     @IBAction func signupClick(_ sender: UIButton) {
