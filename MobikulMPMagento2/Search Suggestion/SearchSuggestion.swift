@@ -19,7 +19,8 @@ class SearchSuggestion: UIViewController,UISearchDisplayDelegate,UISearchBarDele
     var searchSuggestionViewModel:SearchSuggestionViewModel!
     var resultArray:Array = [AnyObject]()
     var categoryType = "searchquery"
-    var categoryName = GlobalData.sharedInstance.language(key:"searchresult")
+   // var categoryName = GlobalData.sharedInstance.language(key:"searchresult")
+    var categoryName = "Search Result"
     var categoryId = ""
     var searchQuery = ""
     var productImageUrl:String = ""
@@ -110,7 +111,7 @@ class SearchSuggestion: UIViewController,UISearchDisplayDelegate,UISearchBarDele
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText.count > 2{
+        if searchText.count > 0{
             searchBars.isLoading = true
             searchtext = searchText
             GlobalData.sharedInstance.removePreviousNetworkCall()
@@ -241,10 +242,13 @@ class SearchSuggestion: UIViewController,UISearchDisplayDelegate,UISearchBarDele
             self.performSegue(withIdentifier: "productcategory", sender: self)
         }else if indexPath.section == 1{
             let suggestedProducts:[SearchSuggestionModel] = resultArray[indexPath.section] as! [SearchSuggestionModel]
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "catalogproduct") as! CatalogProduct
+            //let vc = self.storyboard?.instantiateViewController(withIdentifier: "catalogproduct") as! CatalogProduct
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "chef_productdetail") as! Chef_DashboardViewController
             vc.productName = suggestedProducts[indexPath.row].productName
             vc.productId = suggestedProducts[indexPath.row].id
             vc.productImageUrl = suggestedProducts[indexPath.row].productImage
+            vc.supplierNameText = ""
+            vc.addShow = true
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
