@@ -134,7 +134,8 @@ class Chef_ProfileViewController: UIViewController, UITableViewDelegate, UITable
             if defaults.object(forKey: "customerName") != nil{
                 cell.profileName.text = defaults.object(forKey: "customerName") as? String
             }
-            if defaults.object(forKey: "profilePicture") != nil{
+            cell.profileImage.image = UIImage(named: "ic_camera")!
+            if defaults.object(forKey: "profilePicture") as? String != nil{
                 let imageUrl = defaults.object(forKey: "profilePicture") as? String
                 GlobalData.sharedInstance.getImageFromUrl(imageUrl: imageUrl!, imageView: cell.profileImage)
             }

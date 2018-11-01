@@ -142,6 +142,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 let imageUrl = defaults.object(forKey: "profileBanner") as? String
                 GlobalData.sharedInstance.getImageFromUrl(imageUrl: imageUrl!, imageView: cell.profileBannerImage)
             }
+            cell.visualView.backgroundColor = UIColor(red: 30/255, green: 161/255, blue: 243/255, alpha: 1.0);
             
             cell.selectionStyle = .none
             return cell

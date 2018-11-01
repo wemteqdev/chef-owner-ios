@@ -664,11 +664,12 @@ class Owner: UIViewController{
         } else {
             profile_name.text = "Owner"
         }
-        if defaults.object(forKey: "profilePicture") != nil{
+        profile_image.image = UIImage(named: "ic_camera")!
+        if defaults.object(forKey: "profilePicture") as? String != nil{
             let imageUrl = defaults.object(forKey: "profilePicture") as? String
-            GlobalData.sharedInstance.getImageFromUrl(imageUrl: imageUrl!, imageView: profile_image)
+            print("profile_image:", imageUrl);
+            GlobalData.sharedInstance.getImageFromUrl(imageUrl: imageUrl!, imageView: self.profile_image)
         }
-        
         profile_owner.text = "Owner"
         if (Owner.callingApiSucceed) {
             var chartData: [BarChartData] = self.createChartDataCollection();
