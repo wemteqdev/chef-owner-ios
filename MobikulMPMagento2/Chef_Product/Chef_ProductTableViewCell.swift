@@ -48,9 +48,9 @@ class Chef_ProductTableViewCell: UITableViewCell {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
  
         layout.minimumInteritemSpacing = 1
-        layout.minimumLineSpacing = 5
+        layout.minimumLineSpacing = 2
         prodcutCollectionView!.collectionViewLayout = layout
-        prodcutCollectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        prodcutCollectionView.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
        
         prodcutCollectionView.delegate = self
         prodcutCollectionView.dataSource = self

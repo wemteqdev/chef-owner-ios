@@ -17,10 +17,10 @@ class CreateChef: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource{
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if(pickerView.tag == 1000){
-            return self.createAccountModel.countryData.count;
+            return self.createAccountModel.countryData.count + 1;
         }
         else if pickerView.tag == 2000{
-            return self.createAccountModel.countryData[currentCountryRow].stateData.count
+            return self.createAccountModel.countryData[currentCountryRow].stateData.count + 1
         }
         else{
             return 0
@@ -207,9 +207,9 @@ class CreateChef: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource{
     }
     func doFurtherData(){
 
-            self.countryTextField.text = self.createAccountModel.countryData[0].name
+            self.countryTextField.text = ""
             self.currentCountryRow = 0;
-            self.countryId = self.createAccountModel.countryData[0].countryId
+            self.countryId = ""
 
     }
     @IBAction func submitClick(_ sender: Any) {
@@ -304,10 +304,20 @@ class CreateChef: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource{
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if(pickerView.tag == 1000){
-            return self.createAccountModel.countryData[row].name
+            if row == 0 {
+                return ""
+            }
+            else{
+                return self.createAccountModel.countryData[row - 1].name
+            }
         }
         else  if pickerView.tag == 2000{
-            return self.createAccountModel.countryData[currentCountryRow].stateData[row].name
+            if row == 0 {
+                return ""
+            }
+            else{
+                return self.createAccountModel.countryData[currentCountryRow].stateData[row - 1].name
+            }
         }
         else{
             return ""
@@ -316,20 +326,36 @@ class CreateChef: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource{
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
         if(pickerView.tag == 1000){
-            self.countryTextField.text =  self.createAccountModel.countryData[row].name;
-            self.countryId = self.createAccountModel.countryData[row].countryId
-            currentCountryRow = row
-            if self.createAccountModel.countryData[row].stateData.count > 0{
-                self.regionId = self.createAccountModel.countryData[row].stateData[0].regionId
-                self.stateTextField.text = self.createAccountModel.countryData[row].stateData[0].name
-            }else{
+            if row == 0 {
+                self.countryTextField.text = ""
                 self.stateTextField.text = ""
                 self.regionId = "0"
             }
+            else {
+                self.countryTextField.text =  self.createAccountModel.countryData[row - 1].name;
+                self.countryId = self.createAccountModel.countryData[row - 1].countryId
+                currentCountryRow = row - 1
+                if self.createAccountModel.countryData[row].stateData.count > 0{
+//                    self.regionId = self.createAccountModel.countryData[row - 1].stateData[0].regionId
+//                    self.stateTextField.text = self.createAccountModel.countryData[row - 1].stateData[0].name
+                    self.regionId = ""
+                    self.stateTextField.text = ""
+                }else{
+                    self.stateTextField.text = ""
+                    self.regionId = "0"
+                }
+            }
             
         }else if pickerView.tag == 2000{
-            self.stateTextField.text = self.createAccountModel.countryData[currentCountryRow].stateData[row].name;
-            self.regionId = self.createAccountModel.countryData[currentCountryRow].stateData[row].regionId;
+            if row == 0 {
+                self.countryTextField.text = ""
+                self.stateTextField.text = ""
+                self.regionId = "0"
+            }
+            else {
+                self.stateTextField.text = self.createAccountModel.countryData[currentCountryRow].stateData[row - 1].name;
+                self.regionId = self.createAccountModel.countryData[currentCountryRow].stateData[row - 1].regionId;
+            }
         }
         
     }

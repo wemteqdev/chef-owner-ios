@@ -321,9 +321,13 @@ class GlobalData: NSObject{
     
     
     func checkValidEmail(data:String) -> Bool{
-        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
-        let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegex)
-        return (emailTest.evaluate(with: data))
+        var emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}+\\.[A-Za-z]{2,4}"
+        var emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegex)
+        var isValid = false
+        isValid = isValid || (emailTest.evaluate(with: data))
+        emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
+        emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegex)
+        return isValid || (emailTest.evaluate(with: data))
     }
     
     func showLoader(){

@@ -122,7 +122,7 @@ struct FeatureCategories{
 }
 
 struct Products {
-    
+    var qty:Int = 0
     var hasOption:Int!
     var name:String!
     var price:String!

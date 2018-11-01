@@ -74,12 +74,12 @@
                   moduleName = "MobikulMPMagento2"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Volumes/WORK/chef-ios-app/MobikulMPMagento2/Owner/Chef%20Dashboard/ChefsDashboardController.swift"
-                  timestampString = "562388669.656572"
+                  timestampString = "562707389.412577"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "20"
                   endingLineNumber = "20"
-                  offsetFromSymbolStart = "652">
+                  offsetFromSymbolStart = "672">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -89,12 +89,12 @@
                   moduleName = "MobikulMPMagento2"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Volumes/WORK/chef-ios-app/MobikulMPMagento2/Owner/Chef%20Dashboard/ChefsDashboardController.swift"
-                  timestampString = "562388669.658856"
+                  timestampString = "562707389.414832"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "21"
                   endingLineNumber = "21"
-                  offsetFromSymbolStart = "12">
+                  offsetFromSymbolStart = "16">
                </Location>
             </Locations>
          </BreakpointContent>

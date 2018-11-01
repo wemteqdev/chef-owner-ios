@@ -199,7 +199,7 @@ class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPicker
     func categoryProductClick(name: String, ID: String) {
         
     }
-    var change:Bool = true
+    var change:Bool = false
     var responseObject : AnyObject!
     var categorized:Bool = false
   
@@ -488,34 +488,34 @@ class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPicker
     }
     @IBAction func changeView(_ sender: UIButton)
     {
-        if change == false{
-            
-            change = true
-        }else{
-            
-            change = false
-        }
-        print("ChangeView Button Clicked")
-        let topIndex = IndexPath(row: 0, section: 0)
-        self.productTableView.scrollToRow(at: topIndex, at: .top, animated: true)
-        self.productTableView.reloadDataWithAutoSizingCellWorkAround()
-        
-        if change == false{
-            let origImage = UIImage(named: "ic_list")
-            let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
-            changeViewButton.setImage(tintedImage, for: .normal)
-        }else{
-            let origImage = UIImage(named: "ic_grid")
-            let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
-            changeViewButton.setImage(tintedImage, for: .normal)
-        }
+//        if change == false{
+//
+//            change = true
+//        }else{
+//
+//            change = false
+//        }
+//        print("ChangeView Button Clicked")
+//        let topIndex = IndexPath(row: 0, section: 0)
+//        self.productTableView.scrollToRow(at: topIndex, at: .top, animated: true)
+//        self.productTableView.reloadDataWithAutoSizingCellWorkAround()
+//
+//        if change == false{
+//            let origImage = UIImage(named: "ic_list")
+//            let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
+//            changeViewButton.setImage(tintedImage, for: .normal)
+//        }else{
+//            let origImage = UIImage(named: "ic_grid")
+//            let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
+//            changeViewButton.setImage(tintedImage, for: .normal)
+//        }
         
     }
     @IBAction func filtered(_ sender: UIButton)
     {
         UIView.animate(withDuration: 0.3, delay: 0, options: .layoutSubviews, animations: {
             self.filterCoverView.isHidden = !self.filterCoverView.isHidden
-            self.BannerView.isHidden = false
+            self.BannerView.isHidden = !self.BannerView.isHidden
             self.filtered = !self.filtered;
         })
         change = false

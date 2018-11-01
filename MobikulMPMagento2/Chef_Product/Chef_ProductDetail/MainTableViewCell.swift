@@ -163,7 +163,14 @@ class MainTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
             cell.reviewCount.text = "\(String(compareProductCollectionModel[indexPath.row].reviewCount)) reviews"
             cell.supplierName.text = compareProductCollectionModel[indexPath.row].supplierName
             //cell.moq.text = compareProductCollectionModel[indexPath.row].minAddToCartQty
+            cell.qtyButton.setTitle(String(compareProductCollectionModel[indexPath.row].qty), for: .normal)
             cell.moq.text = "MOQ \(String(compareProductCollectionModel[indexPath.row].price.prefix(1)))\(String(compareProductCollectionModel[indexPath.row].originalPrice * Double(compareProductCollectionModel[indexPath.row].moq)))"
+            
+            cell.plusButton.tag = indexPath.row
+            cell.plusButton.addTarget(self, action: #selector(plusClk(sender:)), for: .touchUpInside)
+            
+            cell.minusButton.tag = indexPath.row
+            cell.minusButton.addTarget(self, action: #selector(minusClk(sender:)), for: .touchUpInside)
             if compareProductCollectionModel[indexPath.row].isMin == true{
                 cell.discountLayer.isHidden = false
                 cell.discountLabel.isHidden = false
@@ -186,6 +193,18 @@ class MainTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
             return cell
 
         }
+    }
+    @objc func plusClk(sender: UIButton){
+        compareProductCollectionModel[sender.tag].qty += 1
+        productDetailCollectionView.reloadData()
+    }
+    @objc func minusClk(sender: UIButton){
+        compareProductCollectionModel[sender.tag].qty -= 1
+        if compareProductCollectionModel[sender.tag].qty < 0
+        {
+            compareProductCollectionModel[sender.tag].qty = 0
+        }
+        productDetailCollectionView.reloadData()
     }
     @objc func signupSupplier(sender: UIButton){
         print("SIGN UP SUPPLIER")
@@ -253,7 +272,11 @@ class MainTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
         if defaults.object(forKey: "currency") != nil{
             requstParams["currency"] = defaults.object(forKey: "currency") as! String
         }
-        requstParams["qty"] = 1
+        requstParams["qty"] = compareProductCollectionModel[sender.tag].qty
+        if compareProductCollectionModel[sender.tag].qty < 1 {
+            GlobalData.sharedInstance.showErrorSnackBar(msg: "Please set quantity of product")
+            return
+        }
         
         GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"mobikulhttp/checkout/addtoCart", currentView: parentController){success,responseObject in
             if success == 1{

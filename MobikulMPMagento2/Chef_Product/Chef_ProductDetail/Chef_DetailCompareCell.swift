@@ -10,6 +10,9 @@ import UIKit
 
 class Chef_DetailCompareCell: UICollectionViewCell {
     
+    @IBOutlet weak var qtyButton: UIButton!
+    @IBOutlet weak var minusButton: UIButton!
+    @IBOutlet weak var plusButton: UIButton!
     @IBOutlet weak var discountLayer: UIView!
     @IBOutlet weak var discountLabel: UIButton!
     @IBOutlet weak var moq: UILabel!
@@ -30,6 +33,16 @@ class Chef_DetailCompareCell: UICollectionViewCell {
         discountLayer.isHidden = true
         addtocart.layer.cornerRadius = reviewRatingmark.frame.height / 2 - 1
         addtocart.layer.masksToBounds = true
+        
+        plusButton.layer.borderWidth = 1
+        plusButton.layer.borderColor = UIColor.lightGray.cgColor
+        
+        
+        minusButton.layer.borderWidth = 1
+        minusButton.layer.borderColor = UIColor.lightGray.cgColor
+        
+        qtyButton.layer.borderWidth = 1
+        qtyButton.layer.borderColor = UIColor.lightGray.cgColor
     }
 
 }

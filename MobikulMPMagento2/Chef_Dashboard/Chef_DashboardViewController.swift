@@ -206,12 +206,12 @@ class Chef_DashboardViewController: UIViewController, Chef_DetailReviewHandlerDe
         loadNavgiationButtons()
         self.collectionView.register(CatalogProductImage.nib, forCellWithReuseIdentifier: CatalogProductImage.identifier)
         scrollView.delegate = self
-        collectionViewHeightConstarints.constant = SCREEN_HEIGHT/3
+        //collectionViewHeightConstarints.constant = SCREEN_HEIGHT/3
         collectionView.reloadData()
         //GlobalData.sharedInstance.getImageFromUrl(imageUrl:productImageUrl , imageView: self.productImage)
         
         //self.scrollView.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor).isActive = true
-        
+        addCartButton.isHidden = true
         imageArrayUrl = [productImageUrl]
         productnameLabel.text = productName
         GlobalData.sharedInstance.removePreviousNetworkCall()
