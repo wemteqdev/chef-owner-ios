@@ -257,6 +257,12 @@ class CompareListViewController: UIViewController,UITableViewDelegate, UITableVi
         //    return compareListViewModel.getAttributsName[section - 1].attributesName
         //}
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("Compare Cell Clicked")
+    let currentCell = tableView.cellForRow(at: indexPath) as! Chef_CompareCell
+       currentCell.checkBtn.tag = indexPath.row
+       currentCell.checkBtn.sendActions(for: .touchUpInside)
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 //        let CellIdentifier: String = "cell"
@@ -286,11 +292,12 @@ class CompareListViewController: UIViewController,UITableViewDelegate, UITableVi
         cell.minusButton.addTarget(self, action: #selector(minusClick(sender:)), for: .touchUpInside)
         //cell.Totalprice.text = self.compareListViewModel.getProductList[indexPath.row].price *
         cell.moqButton.setTitle("MOQ \(self.compareListViewModel.getProductList[indexPath.row].price.prefix(1))\(String((self.compareListViewModel.getProductList[indexPath.row].specialPrice as NSString).doubleValue * Double(self.compareListViewModel.getProductList[indexPath.row].moq)))", for: .normal)
+        var unit:String = ""
         if self.compareListViewModel.getProductList[indexPath.row].unit != " " && self.compareListViewModel.getProductList[indexPath.row].unit != ""{
-            self.compareListViewModel.getProductList[indexPath.row].unit = "/\(String(self.compareListViewModel.getProductList[indexPath.row].unit))"
+            unit = "/\(String(self.compareListViewModel.getProductList[indexPath.row].unit))"
         }
         
-        cell.pricevat.text = "\(String(self.compareListViewModel.getProductList[indexPath.row].price))\(String(self.compareListViewModel.getProductList[indexPath.row].unit)) - \(String(self.compareListViewModel.getProductList[indexPath.row].taxClass))"
+        cell.pricevat.text = "\(String(self.compareListViewModel.getProductList[indexPath.row].price))\(String(unit)) - \(String(self.compareListViewModel.getProductList[indexPath.row].taxClass))"
         GlobalData.sharedInstance.getImageFromUrl(imageUrl: compareListViewModel.getProductList[indexPath.row].imageUrl, imageView: cell.productImage)
 //        cell.plusButton.addTarget(self, action: #selector(plusButtonClick(sender:)), for: .touchUpInside)
 //        cell.minusButton.addTarget(self, action: #selector(minusButtonClick(sender:)), for: .touchUpInside)

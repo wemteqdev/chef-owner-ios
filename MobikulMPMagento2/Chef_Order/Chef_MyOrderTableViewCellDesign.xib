@@ -107,7 +107,7 @@
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oni-xS-x96">
                         <rect key="frame" x="0.0" y="132.5" width="424" height="1"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.84705363069999995" green="0.9810029455" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="IQI-mA-zJK"/>
                         </constraints>
@@ -118,8 +118,16 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lfE-m0-bgV">
+                        <rect key="frame" x="0.0" y="78" width="424" height="10"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="10" id="Wzf-Jn-9nF"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="DR1-OS-xDq" firstAttribute="top" secondItem="lfE-m0-bgV" secondAttribute="bottom" constant="3" id="1fC-UN-UUV"/>
                     <constraint firstItem="gVq-Uo-1Zy" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="1/3" constant="10" id="6cf-xv-wqb"/>
                     <constraint firstItem="DR1-OS-xDq" firstAttribute="leading" secondItem="6k7-Nd-amI" secondAttribute="leading" id="7ec-PU-Iog"/>
                     <constraint firstItem="DQ2-Nr-Tff" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="9Nh-Ns-tfK"/>
@@ -144,8 +152,10 @@
                     <constraint firstItem="6k7-Nd-amI" firstAttribute="top" secondItem="YvQ-0g-rqH" secondAttribute="bottom" constant="5" id="dZB-9B-3Wg"/>
                     <constraint firstItem="ows-Bx-VvL" firstAttribute="bottom" secondItem="6k7-Nd-amI" secondAttribute="bottom" id="iwy-wG-QUc"/>
                     <constraint firstAttribute="bottom" secondItem="oni-xS-x96" secondAttribute="bottom" id="jPF-BJ-RKE"/>
+                    <constraint firstItem="lfE-m0-bgV" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="mck-zI-IP4"/>
                     <constraint firstAttribute="bottom" secondItem="Xbi-Sq-Uqh" secondAttribute="bottom" constant="20" symbolic="YES" id="qan-PT-SSE"/>
                     <constraint firstItem="oni-xS-x96" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="rWc-qS-5dr"/>
+                    <constraint firstItem="lfE-m0-bgV" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="tKy-4P-W8X"/>
                     <constraint firstItem="hfz-1B-GMT" firstAttribute="top" secondItem="gaN-jg-WVW" secondAttribute="bottom" constant="5" id="wt8-VG-5OW"/>
                     <constraint firstItem="oni-xS-x96" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="xuS-wB-hEa"/>
                     <constraint firstItem="Xbi-Sq-Uqh" firstAttribute="leading" secondItem="DR1-OS-xDq" secondAttribute="trailing" constant="3" id="xyY-nd-r3Z"/>
@@ -160,11 +170,14 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="borderView" destination="lfE-m0-bgV" id="3FV-u3-sQQ"/>
+                <outlet property="chefLable" destination="gaN-jg-WVW" id="33u-X3-qiW"/>
                 <outlet property="chefName" destination="6L3-FA-sKQ" id="Eh5-DJ-NGU"/>
                 <outlet property="orderId" destination="ows-Bx-VvL" id="H6s-j8-zZW"/>
                 <outlet property="ordertotal" destination="Xbi-Sq-Uqh" id="maH-S9-QOC"/>
                 <outlet property="placedonDate" destination="YvQ-0g-rqH" id="BGi-ar-zwi"/>
                 <outlet property="restaurant" destination="AKI-N9-515" id="mDO-pR-kPT"/>
+                <outlet property="restaurantLabel" destination="hfz-1B-GMT" id="sTd-Pi-lhb"/>
                 <outlet property="statusButton" destination="gVq-Uo-1Zy" id="omD-j4-tep"/>
                 <outlet property="supplierName" destination="DQ2-Nr-Tff" id="6aj-hb-SMr"/>
             </connections>

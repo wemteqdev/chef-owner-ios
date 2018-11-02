@@ -446,11 +446,12 @@ extension Chef_SuperCart : UITableViewDelegate, UITableViewDataSource {
             cell.subtotal.text = "Total \(String(self.myCartViewModel.myCartModel[CartIndex].subtotal))"
             totalValue = (self.myCartViewModel.myCartModel[CartIndex].qty as NSString).doubleValue * self.myCartViewModel.myCartModel[CartIndex].priceint
         }
+        var unit:String = ""
         if self.myCartViewModel.myCartModel[CartIndex].unitString != " " && self.myCartViewModel.myCartModel[CartIndex].unitString != ""{
-            self.myCartViewModel.myCartModel[CartIndex].unitString = "/\(String(self.myCartViewModel.myCartModel[CartIndex].unitString))"
+            unit = "/\(String(self.myCartViewModel.myCartModel[CartIndex].unitString))"
         }
         
-        cell.priceLabel.text = "\(String(self.myCartViewModel.myCartModel[CartIndex].price))\(String(self.myCartViewModel.myCartModel[CartIndex].unitString)) - \(String(self.myCartViewModel.myCartModel[CartIndex].taxClass))"
+        cell.priceLabel.text = "\(String(self.myCartViewModel.myCartModel[CartIndex].price))\(String(unit)) - \(String(self.myCartViewModel.myCartModel[CartIndex].taxClass))"
         let moqValue:Double = self.myCartViewModel.myCartModel[CartIndex].priceint * Double(self.myCartViewModel.myCartModel[CartIndex].moq)
         if moqValue > totalValue {
             cell.moqbtn.setTitle("MOQ \(String(self.myCartViewModel.myCartModel[CartIndex].price.prefix(1)))\(String(moqValue))-Total Cost:\(String(self.myCartViewModel.myCartModel[CartIndex].price.prefix(1)))\(String(totalValue)) Please add more to basket", for: .normal)
