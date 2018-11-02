@@ -22,6 +22,7 @@ var delegate:EditProfiledelegate!
         super.awakeFromNib()
         profileImage.layer.cornerRadius = 35;
         profileImage.layer.masksToBounds = true
+        profileImage.image = UIImage(named: "ic_camera")!
         editView.layer.cornerRadius = 5;
         editView.layer.masksToBounds = true
         //editView.isHidden = true
@@ -29,6 +30,7 @@ var delegate:EditProfiledelegate!
         self.visualView.layer.shadowOpacity = 0;
         var gesture = UITapGestureRecognizer(target: self, action:  #selector (self.saveProfile (_:)))
         editView.addGestureRecognizer(gesture)
+        editView.isHidden = true;
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

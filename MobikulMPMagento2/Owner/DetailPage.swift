@@ -309,15 +309,15 @@ class DetailPage: UIViewController{
         
         let changeLabel = UILabel()
         let changeStringLabel = UILabel()
-        changeLabel.textColor = UIColor(red: 39/255, green: 183/255, blue: 100/255, alpha: 1.0);
-        //changeLabel.text = String(format: "%d",diagramData.ordersCount);
         if(diagramData.percentage >= 0) {
-            changeLabel.text = String(format: "↑%0.1f%%", diagramData.percentage);
+            changeLabel.textColor = UIColor(red: 39/255, green: 183/255, blue: 100/255, alpha: 1.0);
+            changeLabel.text = String(format: "%0.1f%%", diagramData.percentage);
         } else {
-            changeLabel.text = String(format: "↓%0.1f%%", diagramData.percentage);
+            changeLabel.textColor = UIColor(red: 230/255, green: 0/255, blue: 0/255, alpha: 1.0);
+            changeLabel.text = String(format: "%0.1f%%", diagramData.percentage);
         }
         print("diagram percent:", changeLabel.text);
-        changeLabel.font = UIFont.boldSystemFont(ofSize: 15)
+        changeLabel.font = UIFont.boldSystemFont(ofSize: purchaseLabelHeight)
         changeLabel.textAlignment = .center
         
         changeLabel.heightAnchor.constraint(equalToConstant: purchaseLabelHeight).isActive = true
@@ -371,9 +371,9 @@ class DetailPage: UIViewController{
         
         let suppliersLabel = UILabel()
         let suppliersStringLabel = UILabel()
-        suppliersLabel.textColor = UIColor(red: 165/255, green: 96/255, blue: 245/255, alpha: 1.0);
-        //changeLabel.text = String(format: "%d",diagramData.ordersCount);
-        suppliersLabel.text = String(format: "16");
+        suppliersLabel.textColor = UIColor(red: 0/255, green: 0/255, blue: 230/255, alpha: 1.0);
+        suppliersLabel.text = String(format: "%d",diagramData.supplierCounts);
+        //suppliersLabel.text = String(format: "16");
         suppliersLabel.font = UIFont.boldSystemFont(ofSize: purchaseLabelHeight)
         suppliersLabel.textAlignment = .center
         
@@ -444,7 +444,7 @@ class DetailPage: UIViewController{
         
         totalOrderView.orderName.text = "Total Orders"
         totalOrderView.orderDescription.text = "This Month - " + nameOfMonth;
-        totalOrderView.ordersCount.text = "$ " + self.detailPageModelView.diagramMonthlyTotal.ordersTotal;
+        totalOrderView.ordersCount.text = self.detailPageModelView.currencySymbol + self.detailPageModelView.diagramMonthlyTotal.ordersTotal;
         
         horizontalStackView2.addArrangedSubview(creditNotesView)
         horizontalStackView2.addArrangedSubview(totalOrderView)

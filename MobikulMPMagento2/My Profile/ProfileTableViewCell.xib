@@ -47,7 +47,7 @@
                             <constraint firstItem="j2V-fW-712" firstAttribute="top" secondItem="7ee-gG-NXX" secondAttribute="bottom" id="qEw-fR-AKu"/>
                         </constraints>
                     </view>
-                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CRd-Pf-DzJ">
+                    <visualEffectView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CRd-Pf-DzJ">
                         <rect key="frame" x="543" y="10" width="70" height="30"/>
                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="tQu-Pe-SP0">
                             <rect key="frame" x="0.0" y="0.0" width="70" height="30"/>

@@ -111,7 +111,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0{
-            return 210
+            return 195
         }else{
             return 45
         }
@@ -131,9 +131,11 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             if defaults.object(forKey: "customerEmail") != nil{
                 cell.profileEmail.text = defaults.object(forKey: "customerEmail") as? String
             }
+	    cell.profileEmail.isHidden = true
             if defaults.object(forKey: "customerName") != nil{
                 cell.profileName.text = defaults.object(forKey: "customerName") as? String
             }
+	    cell.profileImage.image = UIImage(named: "ic_camera")!
             if defaults.object(forKey: "profilePicture") != nil{
                 let imageUrl = defaults.object(forKey: "profilePicture") as? String
                 GlobalData.sharedInstance.getImageFromUrl(imageUrl: imageUrl!, imageView: cell.profileImage)
@@ -424,7 +426,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             viewController.delegate = self;
         }
     }
-    /*
+    
     override func viewWillDisappear(_ animated: Bool) {
         if (navigationController?.viewControllers.contains(self) == false)
         {
@@ -432,7 +434,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             self.callingHttppApi();
         }
         super.viewWillDisappear(true)
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
+        //navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
     }
-     */
+    
 }

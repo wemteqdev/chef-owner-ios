@@ -24,7 +24,10 @@ class Chef_DashboardView: UIViewController{
     @IBOutlet weak var diagramTotalView: UIStackView!
     @IBOutlet weak var barChartView: UIStackView!
     @IBOutlet weak var indexChartView: UIStackView!
+    @IBOutlet weak var ordersTotalView: UIStackView!
     
+    @IBOutlet weak var salesInsightView: UIView!
+    @IBOutlet weak var topProductTableView: UITableView!
     @IBOutlet weak var profile_view: UIView!
     @IBOutlet weak var profile_image: UIImageView!
     @IBOutlet weak var profile_name: UILabel!
@@ -55,6 +58,7 @@ class Chef_DashboardView: UIViewController{
             barChartView.removeAllArrangedSubviews();
             indexChartView.removeAllArrangedSubviews();
             diagramTotalView.removeAllArrangedSubviews();
+            ordersTotalView.removeAllArrangedSubviews();
             for data in chartData {
                 self.addIndexElement(timeGraphData: data);
                 self.addGraphElement(timeGraphData: data);
@@ -75,6 +79,7 @@ class Chef_DashboardView: UIViewController{
             {
                 self.addDiagramTotalElement(diagramData: self.ownerDashboardModelView.diagramYearlyTotal);
             }
+            self.addOrderTotalView();
         }
     }
     @objc func swipwView(_ sender : UISwipeGestureRecognizer){
@@ -117,7 +122,7 @@ class Chef_DashboardView: UIViewController{
          ownerProfileTableView.rowHeight = UITableViewAutomaticDimension
          */
         queue.maxConcurrentOperationCount = 20;
-        
+        /*
         let directions: [UISwipeGestureRecognizerDirection] = [.up, .down]
         for direction in directions {
             swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(self.swipwView(_:)))
@@ -125,9 +130,13 @@ class Chef_DashboardView: UIViewController{
             scrollView.isUserInteractionEnabled = true
             swipeGesture.direction = direction
         }
+         */
         var gesture = UITapGestureRecognizer(target: self, action:  #selector (self.profileViewPage (_:)))
         profile_view.addGestureRecognizer(gesture)
         
+	var gesture2 = UITapGestureRecognizer(target: self, action:  #selector (self.salesInsightClick (_:)))
+        salesInsightView.addGestureRecognizer(gesture2)
+	
         self.callingHttppApi();
     }
     
@@ -135,6 +144,9 @@ class Chef_DashboardView: UIViewController{
         self.performSegue(withIdentifier: "toprofileview", sender: self)
     }
     
+    @objc func salesInsightClick(_ sender:UITapGestureRecognizer){
+        self.performSegue(withIdentifier: "detailPage", sender: self)
+    }
     @IBAction func logOutClicked(_ sender: Any) {
         let AC = UIAlertController(title: GlobalData.sharedInstance.language(key: "warninglogoutmessage"), message: "", preferredStyle: .alert)
         let ok = UIAlertAction(title: GlobalData.sharedInstance.language(key: "yes"), style: .default, handler: {(_ action: UIAlertAction) -> Void in
@@ -172,6 +184,7 @@ class Chef_DashboardView: UIViewController{
         }
         
         self.view.isUserInteractionEnabled = false
+	GlobalData.sharedInstance.showLoader()
         self.callingApiSucceed = false;
         GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"wemteqchef/chef/dashboard", currentView: self){success,responseObject in
             if success == 1{
@@ -194,6 +207,7 @@ class Chef_DashboardView: UIViewController{
                     self.barChartView.removeAllArrangedSubviews();
                     self.indexChartView.removeAllArrangedSubviews();
                     self.diagramTotalView.removeAllArrangedSubviews();
+                    self.ordersTotalView.removeAllArrangedSubviews();
                     
                     for data in chartData {
                         self.addIndexElement(timeGraphData: data)
@@ -216,6 +230,8 @@ class Chef_DashboardView: UIViewController{
                     {
                         self.addDiagramTotalElement(diagramData: self.ownerDashboardModelView.diagramYearlyTotal);
                     }
+                    self.addOrderTotalView();
+                    
                 }else{
                     GlobalData.sharedInstance.showErrorSnackBar(msg: dict["message"].stringValue)
                 }
@@ -225,7 +241,7 @@ class Chef_DashboardView: UIViewController{
                 self.callingHttppApi()
             }
         }
-        GlobalData.sharedInstance.showLoader()
+        //GlobalData.sharedInstance.showLoader()
     }
     
     private func createChartDataCollection () -> [BarChartData] {
@@ -335,6 +351,82 @@ class Chef_DashboardView: UIViewController{
         indexChartView.translatesAutoresizingMaskIntoConstraints = false;
     }
     
+    private func addOrderTotalView () {
+        
+        let horizontalStackView1: UIStackView = UIStackView()
+        horizontalStackView1.axis = .horizontal
+        horizontalStackView1.alignment = .fill
+        horizontalStackView1.distribution = .fillEqually
+        //horizontalStackView1.spacing = 8.0
+        
+        let yearlyOrderView = Bundle.main.loadNibNamed("OrderViewCell", owner: self, options: nil)?.first as! OrderViewCell
+        let monthlyOrderView = Bundle.main.loadNibNamed("OrderViewCell", owner: self, options: nil)?.first as! OrderViewCell
+        
+        yearlyOrderView.orderDescription.text = "This year " + self.ownerDashboardModelView.orderYearlyIndexString[self.ownerDashboardModelView.orderYearlyIndexString.count - 2] + "-" + self.ownerDashboardModelView.orderYearlyIndexString[self.ownerDashboardModelView.orderYearlyIndexString.count - 1];
+        yearlyOrderView.ordersCount.text = String(format: "%d", self.ownerDashboardModelView.diagramYearlyTotal.ordersCount);
+        
+        let now = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "LLLL"
+        let nameOfMonth = dateFormatter.string(from: now)
+        
+        monthlyOrderView.orderDescription.text = "This Month - " + nameOfMonth;
+        monthlyOrderView.orderDescription.textColor = UIColor.red;
+        monthlyOrderView.ordersCount.text = String(format: "%d", self.ownerDashboardModelView.diagramMonthlyTotal.ordersCount);
+        monthlyOrderView.ordersCount.textColor = UIColor.red;
+        
+        horizontalStackView1.addArrangedSubview(yearlyOrderView)
+        horizontalStackView1.addArrangedSubview(monthlyOrderView)
+        //horizontalStackView1.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        //horizontalStackView1.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        //horizontalStackView1.translatesAutoresizingMaskIntoConstraints = false;
+        
+        let horizontalStackView2: UIStackView = UIStackView()
+        horizontalStackView2.axis = .horizontal
+        horizontalStackView2.alignment = .fill
+        horizontalStackView2.distribution = .fillEqually
+        //horizontalStackView2.spacing = 8.0
+        
+        let creditNotesView = Bundle.main.loadNibNamed("OrderViewCell", owner: self, options: nil)?.first as! OrderViewCell
+        let totalOrderView = Bundle.main.loadNibNamed("OrderViewCell", owner: self, options: nil)?.first as! OrderViewCell
+        creditNotesView.orderName.text = "Credit notes"
+        creditNotesView.orderDescription.text = "This Month - " + nameOfMonth;
+        creditNotesView.orderDescription.textColor = UIColor.red;
+        creditNotesView.ordersCount.textColor = UIColor.red;
+        creditNotesView.ordersCount.text = String(format:"%d", self.ownerDashboardModelView.monthlyCreditMemosCount);
+        
+        totalOrderView.orderName.text = "Total Orders"
+        totalOrderView.orderDescription.text = "This Month - " + nameOfMonth;
+        totalOrderView.ordersCount.text = self.ownerDashboardModelView.currencySymbol + self.ownerDashboardModelView.diagramMonthlyTotal.ordersTotal;
+        
+        horizontalStackView2.addArrangedSubview(creditNotesView)
+        horizontalStackView2.addArrangedSubview(totalOrderView)
+        
+        let horizontalStackView3: UIStackView = UIStackView()
+        horizontalStackView3.axis = .horizontal
+        horizontalStackView3.alignment = .fill
+        horizontalStackView3.distribution = .fillEqually
+        //horizontalStackView2.spacing = 8.0
+        
+        let deliveryView = Bundle.main.loadNibNamed("OrderViewCell", owner: self, options: nil)?.first as! OrderViewCell
+        let pendingView = Bundle.main.loadNibNamed("OrderViewCell", owner: self, options: nil)?.first as! OrderViewCell
+        deliveryView.orderName.text = "Delivered"
+        deliveryView.orderDescription.text = "This Month - " + nameOfMonth;
+        deliveryView.ordersCount.text = String(format:"%d", self.ownerDashboardModelView.monthlyCompleteOrdersCount);
+        
+        pendingView.orderName.text = "Pending Delivery"
+        pendingView.orderDescription.text = "This Month - " + nameOfMonth;
+        pendingView.orderDescription.textColor = UIColor.red;
+        pendingView.ordersCount.textColor = UIColor.red;
+        pendingView.ordersCount.text = String(format:"%d", self.ownerDashboardModelView.monthlyPendingOrdersCount);
+        
+        horizontalStackView3.addArrangedSubview(deliveryView)
+        horizontalStackView3.addArrangedSubview(pendingView)
+        
+        ordersTotalView.addArrangedSubview(horizontalStackView1)
+        ordersTotalView.addArrangedSubview(horizontalStackView2)
+        ordersTotalView.addArrangedSubview(horizontalStackView3)
+    }
     private func addDiagramTotalElement (diagramData: DiagramTotalData) {
         let purchaseLabelHeight: CGFloat = 20.0
         
@@ -375,15 +467,16 @@ class Chef_DashboardView: UIViewController{
         
         let changeLabel = UILabel()
         let changeStringLabel = UILabel()
-        changeLabel.textColor = UIColor(red: 39/255, green: 183/255, blue: 100/255, alpha: 1.0);
+        
         //changeLabel.text = String(format: "%d",diagramData.ordersCount);
         if(diagramData.percentage >= 0) {
-            changeLabel.text = String(format: "↑%0.1f%%", diagramData.percentage);
+            changeLabel.textColor = UIColor(red: 39/255, green: 183/255, blue: 100/255, alpha: 1.0);
+            changeLabel.text = String(format: "%0.1f%%", diagramData.percentage);
         } else {
-            changeLabel.text = String(format: "↓%0.1f%%", diagramData.percentage);
+            changeLabel.textColor = UIColor(red: 230/255, green: 0/255, blue: 0/255, alpha: 1.0);
+            changeLabel.text = String(format: "%0.1f%%", diagramData.percentage);
         }
-        print("diagram percent:", changeLabel.text);
-        changeLabel.font = UIFont.boldSystemFont(ofSize: 15)
+        changeLabel.font = UIFont.boldSystemFont(ofSize: purchaseLabelHeight)
         changeLabel.textAlignment = .center
         
         changeLabel.heightAnchor.constraint(equalToConstant: purchaseLabelHeight).isActive = true
@@ -437,7 +530,7 @@ class Chef_DashboardView: UIViewController{
         
         let suppliersLabel = UILabel()
         let suppliersStringLabel = UILabel()
-        suppliersLabel.textColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1.0);
+        suppliersLabel.textColor = UIColor(red: 0/255, green: 0/255, blue: 230/255, alpha: 1.0);
         suppliersLabel.text = String(format: "%d",diagramData.supplierCounts);
         //suppliersLabel.text = String(format: "16");
         suppliersLabel.font = UIFont.boldSystemFont(ofSize: purchaseLabelHeight)
@@ -670,6 +763,7 @@ class Chef_DashboardView: UIViewController{
             self.barChartView.removeAllArrangedSubviews();
             self.indexChartView.removeAllArrangedSubviews();
             self.diagramTotalView.removeAllArrangedSubviews();
+            self.ordersTotalView.removeAllArrangedSubviews();
             
             for data in chartData {
                 self.addIndexElement(timeGraphData: data)
@@ -692,6 +786,7 @@ class Chef_DashboardView: UIViewController{
             {
                 self.addDiagramTotalElement(diagramData: self.ownerDashboardModelView.diagramYearlyTotal);
             }
+            self.addOrderTotalView();
         }
     }
     
