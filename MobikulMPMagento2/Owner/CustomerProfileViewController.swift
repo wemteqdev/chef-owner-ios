@@ -67,7 +67,10 @@ class CustomerProfileViewController: UIViewController, UITableViewDelegate, UITa
                 cell.editView.isHidden = true;
                 cell.profileEmail.isHidden = true;
                 cell.visualView.backgroundColor = UIColor(red: 30/255, green: 161/255, blue: 243/255, alpha: 1.0);
-                
+                print("isOwner:", defaults.object(forKey: "isOwner") as! String);
+                if(defaults.object(forKey: "isOwner") as! String == "f") {
+                    cell.visualView.backgroundColor = UIColor(red: 29/255, green: 151/255, blue: 239/255, alpha: 1.0);
+                }
                 if(customerImage != ""){
                     GlobalData.sharedInstance.getImageFromUrl(imageUrl: self.customerImage, imageView: cell.profileImage)
                 }

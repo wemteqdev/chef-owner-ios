@@ -129,6 +129,9 @@
 		29B11B122155603700980BA4 /* owner.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29B11B112155603600980BA4 /* owner.storyboard */; };
 		29B8B1D22169C281006B8730 /* SuppliersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B8B1D12169C280006B8730 /* SuppliersViewModel.swift */; };
 		29B8B1E62169ECC6006B8730 /* SupplierProductcategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B8B1DD2169ECC6006B8730 /* SupplierProductcategory.swift */; };
+		29FBB525218C23650093D1FB /* PurchaseProductDetailPageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FBB51A218C23630093D1FB /* PurchaseProductDetailPageCell.swift */; };
+		29FBB526218C23650093D1FB /* PurchaseProductDetailPageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29FBB523218C23640093D1FB /* PurchaseProductDetailPageCell.xib */; };
+		29FBB527218C23650093D1FB /* PurchaseProductDetailPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FBB524218C23650093D1FB /* PurchaseProductDetailPage.swift */; };
 		570A092A215EF1D400901621 /* Chef_MyCartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570A0928215EF1D100901621 /* Chef_MyCartTableViewCell.swift */; };
 		570A092B215EF1D500901621 /* Chef_MyCartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 570A0929215EF1D200901621 /* Chef_MyCartTableViewCell.xib */; };
 		571F9627216B20B5007126D5 /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571F9626216B20B5007126D5 /* LaunchScreenView.swift */; };
@@ -727,6 +730,9 @@
 		29B11B112155603600980BA4 /* owner.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = owner.storyboard; sourceTree = "<group>"; };
 		29B8B1D12169C280006B8730 /* SuppliersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuppliersViewModel.swift; sourceTree = "<group>"; };
 		29B8B1DD2169ECC6006B8730 /* SupplierProductcategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SupplierProductcategory.swift; path = "MobikulMPMagento2/Product category/SupplierProductcategory.swift"; sourceTree = SOURCE_ROOT; };
+		29FBB51A218C23630093D1FB /* PurchaseProductDetailPageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseProductDetailPageCell.swift; sourceTree = "<group>"; };
+		29FBB523218C23640093D1FB /* PurchaseProductDetailPageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PurchaseProductDetailPageCell.xib; sourceTree = "<group>"; };
+		29FBB524218C23650093D1FB /* PurchaseProductDetailPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseProductDetailPage.swift; sourceTree = "<group>"; };
 		570A0928215EF1D100901621 /* Chef_MyCartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chef_MyCartTableViewCell.swift; sourceTree = "<group>"; };
 		570A0929215EF1D200901621 /* Chef_MyCartTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Chef_MyCartTableViewCell.xib; sourceTree = "<group>"; };
 		571F9626216B20B5007126D5 /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
@@ -1347,6 +1353,9 @@
 		29B11AE921555C5000980BA4 /* Owner */ = {
 			isa = PBXGroup;
 			children = (
+				29FBB524218C23650093D1FB /* PurchaseProductDetailPage.swift */,
+				29FBB51A218C23630093D1FB /* PurchaseProductDetailPageCell.swift */,
+				29FBB523218C23640093D1FB /* PurchaseProductDetailPageCell.xib */,
 				29607F30218C028E003F155A /* DetailPageCell.swift */,
 				29607F31218C028E003F155A /* DetailPageCell.xib */,
 				29607F24218C0283003F155A /* ProductSaleDetailCell.swift */,
@@ -2419,6 +2428,7 @@
 				A3B7D249207DFDBD0026A3AF /* SellerProfileTopViewCell.xib in Resources */,
 				A3B7D2F5207DFE210026A3AF /* BannerImageCell.xib in Resources */,
 				29607F33218C028E003F155A /* DetailPageCell.xib in Resources */,
+				29FBB526218C23650093D1FB /* PurchaseProductDetailPageCell.xib in Resources */,
 				A3B7D205207DFDBD0026A3AF /* SellerDashBoardReportCell.xib in Resources */,
 				A3B7D247207DFDBD0026A3AF /* SellerProductTableViewCell.xib in Resources */,
 				A3B7D300207DFE210026A3AF /* ProductTableViewCell.xib in Resources */,
@@ -2620,6 +2630,7 @@
 				A3B7D335207DFE210026A3AF /* CompareListTableViewCell.swift in Sources */,
 				57F83DF82153D75200BC9DCB /* Chef_DashboardViewController.swift in Sources */,
 				A3B7D326207DFE210026A3AF /* BillingShippingModel.swift in Sources */,
+				29FBB525218C23650093D1FB /* PurchaseProductDetailPageCell.swift in Sources */,
 				A3B7D2E4207DFE210026A3AF /* ListCollectionViewCell.swift in Sources */,
 				A3B7D1E9207DFDBD0026A3AF /* ShipmentDetailsController.swift in Sources */,
 				0C05710C20408BDB00EB527B /* CHIPageControlPuya.swift in Sources */,
@@ -2842,6 +2853,7 @@
 				571F9671216C685A007126D5 /* AddSupplierAlertViewDelegate.swift in Sources */,
 				A3B7D1EF207DFDBD0026A3AF /* SellerListModel.swift in Sources */,
 				A3B7D24E207DFDBD0026A3AF /* SellerWebViewController.swift in Sources */,
+				29FBB527218C23650093D1FB /* PurchaseProductDetailPage.swift in Sources */,
 				A3B7D2F3207DFE210026A3AF /* RelatedProductController.swift in Sources */,
 				572187722152FA3300FACF86 /* Chef_ProductDetailViewController.swift in Sources */,
 				A3B7D33F207DFE210026A3AF /* CategoriesTableViewCell.swift in Sources */,

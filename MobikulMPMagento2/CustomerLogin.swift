@@ -387,8 +387,10 @@ class CustomerLogin: UIViewController, GIDSignInUIDelegate {
                 defaults.set("t", forKey: "isAdmin")
             }
             if responseData["isOwner"].intValue == 0{
+                defaults.set("f", forKey: "isOwner")
                 isOwner = false
             }else{
+                defaults.set("t", forKey: "isOwner")
                 isOwner = true
             }
             

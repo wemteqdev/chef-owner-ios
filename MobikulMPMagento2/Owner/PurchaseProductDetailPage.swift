@@ -1,5 +1,5 @@
 //
-//  self.swift
+//  Detail.swift
 //  MobikulMPMagento2
 //
 //  Created by andonina on 9/13/18.
@@ -16,32 +16,51 @@ import Foundation
 //
 
 import UIKit
-
-class Chef_DashboardView: UIViewController{
-    @IBOutlet weak var user_info_view: UIView!
-    @IBOutlet weak var user_photo: UIImageView!
+extension UIView {
+    func setHeightConstraint(constant: CGFloat) {
+        setConstraint(value: constant, attribute: .height)
+    }
+    
+    func setWidthConstraint(constant: CGFloat) {
+        setConstraint(value: constant, attribute: .width)
+    }
+    
+    private func removeConstraint(attribute: NSLayoutAttribute) {
+        constraints.forEach {
+            if $0.firstAttribute == attribute {
+                removeConstraint($0)
+            }
+        }
+    }
+    
+    private func setConstraint(value: CGFloat, attribute: NSLayoutAttribute) {
+        removeConstraint(attribute: attribute)
+        let constraint =
+            NSLayoutConstraint(item: self,
+                               attribute: attribute,
+                               relatedBy: NSLayoutRelation.equal,
+                               toItem: nil,
+                               attribute: NSLayoutAttribute.notAnAttribute,
+                               multiplier: 1,
+                               constant: value)
+        self.addConstraint(constraint)
+    }
+}
+class PurchaseProductDetailPage: UIViewController{
     @IBOutlet weak var showTypeController: UISegmentedControl!
     @IBOutlet weak var diagramTotalView: UIStackView!
     @IBOutlet weak var barChartView: UIStackView!
     @IBOutlet weak var indexChartView: UIStackView!
     @IBOutlet weak var ordersTotalView: UIStackView!
-    
     @IBOutlet weak var salesInsightView: UIView!
-    @IBOutlet weak var topProductTableView: UITableView!
-    @IBOutlet weak var profile_view: UIView!
-    @IBOutlet weak var profile_image: UIImageView!
-    @IBOutlet weak var profile_name: UILabel!
-    @IBOutlet weak var profile_owner: UILabel!
-    var swipeGesture  = UISwipeGestureRecognizer()
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var logOutView: UIBarButtonItem!
+    @IBOutlet weak var productsTotalView: UIStackView!
+    @IBOutlet weak var productsDetailView: UIStackView!
+    @IBOutlet weak var productsSalesLabel: UILabel!
     
     var mainCollection:JSON!
     var showType = 0;
     var orderTotal:NSMutableArray = []
-    static var ownerDashboardModelView: OwnerDashBoardViewModel!
-    static var callingApiSucceed: Bool = false;
-    
+
     @IBAction func SegmentValueChanged(_ sender: Any) {
         if showTypeController.selectedSegmentIndex == 0{
             showType = 0;
@@ -83,166 +102,19 @@ class Chef_DashboardView: UIViewController{
             self.addOrderTotalView();
         }
     }
-    @objc func swipwView(_ sender : UISwipeGestureRecognizer){
-        UIView.animate(withDuration: 1.0) {
-            if sender.direction == .up{
-                print("direction:", "up");
-                
-            }else if sender.direction == .down{
-                print("direction:", "down");
-            }
-            //self.viewSwipe.layoutIfNeeded()
-            //self.viewSwipe.setNeedsDisplay()
-        }
-    }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let backItem = UIBarButtonItem()
-        backItem.title = "Back"
-        navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        profile_view.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor).isActive = true
         self.navigationController?.isNavigationBarHidden = false
-        //navigationController?.navigationBar.barTintColor = UIColor().HexToColor(hexString: BUTTON_COLOR);
-        //navigationController?.navigationBar.setBackgroundImage(UIImage(named: "back_color"), for: UIBarMetrics.default)
-        //navigationController?.navigationBar.shadowImage = UIImage();
+        navigationController?.navigationBar.setBackgroundImage(UIImage(named: "back_color"), for: UIBarMetrics.default)
+        navigationController?.navigationBar.shadowImage = UIImage();
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
-        self.navigationItem.title = "Chef"
-        //self.navigationController?.navigationBar.tintColor = UIColor().HexToColor(hexString: BUTTON_COLOR);
-        //profile_view.backgroundColor = UIColor().HexToColor(hexString: BUTTON_COLOR);
-        profile_view.backgroundColor = UIColor(red: 29/255, green: 151/255, blue: 239/255, alpha: 1.0);
-        //profile_view.backgroundColor = UIColor(patternImage: UIImage(named: "back_color")!)
-        self.profile_view.layer.shadowOpacity = 0;
-        profile_image.layer.cornerRadius = 35;
-        profile_image.layer.masksToBounds = true;
-        self.profile_view.layer.borderWidth = 0
-        /*
-         ownerProfileTableView.register(UINib(nibName: "OwnerProfileTableViewCell", bundle: nil), forCellReuseIdentifier: "OwnerProfileTableViewCell")
-         ownerProfileTableView.rowHeight = UITableViewAutomaticDimension
-         */
+        
+        self.navigationItem.title = "Sales Insight"
+        
+        //self.salesInsightView.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor).isActive = true
         queue.maxConcurrentOperationCount = 20;
-        /*
-        let directions: [UISwipeGestureRecognizerDirection] = [.up, .down]
-        for direction in directions {
-            swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(self.swipwView(_:)))
-            scrollView.addGestureRecognizer(swipeGesture)
-            scrollView.isUserInteractionEnabled = true
-            swipeGesture.direction = direction
-        }
-         */
-        var gesture = UITapGestureRecognizer(target: self, action:  #selector (self.profileViewPage (_:)))
-        profile_view.addGestureRecognizer(gesture)
-        
-	var gesture2 = UITapGestureRecognizer(target: self, action:  #selector (self.salesInsightClick (_:)))
-        salesInsightView.addGestureRecognizer(gesture2)
-	
-        self.callingHttppApi();
-    }
-    
-    @objc func profileViewPage(_ sender:UITapGestureRecognizer){
-        self.performSegue(withIdentifier: "toprofileview", sender: self)
-    }
-    
-    @objc func salesInsightClick(_ sender:UITapGestureRecognizer){
-        self.performSegue(withIdentifier: "detailPage", sender: self)
-    }
-    @IBAction func logOutClicked(_ sender: Any) {
-        let AC = UIAlertController(title: GlobalData.sharedInstance.language(key: "warninglogoutmessage"), message: "", preferredStyle: .alert)
-        let ok = UIAlertAction(title: GlobalData.sharedInstance.language(key: "yes"), style: .default, handler: {(_ action: UIAlertAction) -> Void in
-            for key in UserDefaults.standard.dictionaryRepresentation().keys {
-                if(key.description == "storeId"||key.description == "language"||key.description == "AppleLanguages" || key.description == "currency" || key.description == "authKey" || key.description == "TouchEmailId" || key.description == "TouchPasswordValue" || key.description == "touchIdFlag" || key.description == "deviceToken" ){
-                    continue
-                }else{
-                    UserDefaults.standard.removeObject(forKey: key.description)
-                }
-            }
-            UserDefaults.standard.synchronize();
-            //self.performSegue(withIdentifier: "tologin", sender: self)
-            var rootVC : UIViewController?
-            rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "login") as! CustomerLogin
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.window?.rootViewController = rootVC
-        })
-        
-        let noBtn = UIAlertAction(title: GlobalData.sharedInstance.language(key: "no"), style: .destructive, handler: {(_ action: UIAlertAction) -> Void in
-        })
-        AC.addAction(ok)
-        AC.addAction(noBtn)
-        self.present(AC, animated: true, completion: {  })
-    }
-    
-    func callingHttppApi(){
-        var requstParams = [String:Any]();
-        
-        requstParams = [String:Any]();
-        requstParams["websiteId"] = DEFAULT_WEBSITE_ID
-        let customerId = defaults.object(forKey:"customerId");
-        if customerId != nil{
-            requstParams["customerToken"] = customerId
-            requstParams["customerId"] = customerId
-        }
-        
-        self.view.isUserInteractionEnabled = false
-	GlobalData.sharedInstance.showLoader()
-        Chef_DashboardView.callingApiSucceed = false;
-        GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"wemteqchef/chef/dashboard", currentView: self){success,responseObject in
-            if success == 1{
-                if responseObject?.object(forKey: "storeId") != nil{
-                    let storeId:String = String(format: "%@", responseObject!.object(forKey: "storeId") as! CVarArg)
-                    if storeId != "0"{
-                        defaults .set(storeId, forKey: "storeId")
-                    }
-                }
-                GlobalData.sharedInstance.dismissLoader()
-                self.view.isUserInteractionEnabled = true
-                Chef_DashboardView.callingApiSucceed = true
-                var dict = JSON(responseObject as! NSDictionary)
-                print("jsonData:", responseObject);
-                if dict["success"].boolValue == true{
-                    Chef_DashboardView.ownerDashboardModelView = OwnerDashBoardViewModel(data:dict)
-                    var chartData: [BarChartData] = self.createChartDataCollection();
-                    print("chartData", chartData)
-                    
-                    self.barChartView.removeAllArrangedSubviews();
-                    self.indexChartView.removeAllArrangedSubviews();
-                    self.diagramTotalView.removeAllArrangedSubviews();
-                    self.ordersTotalView.removeAllArrangedSubviews();
-                    
-                    for data in chartData {
-                        self.addIndexElement(timeGraphData: data)
-                        self.addGraphElement(timeGraphData: data);
-                    }
-                    if(self.showType == 0)
-                    {
-                        self.addDiagramTotalElement(diagramData: Chef_DashboardView.ownerDashboardModelView.diagramDailyTotal);
-                        print("diagram:", Chef_DashboardView.ownerDashboardModelView.diagramDailyTotal)
-                    }
-                    else if(self.showType == 1)
-                    {
-                        self.addDiagramTotalElement(diagramData: Chef_DashboardView.ownerDashboardModelView.diagramWeeklyTotal);
-                    }
-                    else if(self.showType == 2)
-                    {
-                        self.addDiagramTotalElement(diagramData: Chef_DashboardView.ownerDashboardModelView.diagramMonthlyTotal);
-                    }
-                    else if(self.showType == 3)
-                    {
-                        self.addDiagramTotalElement(diagramData: Chef_DashboardView.ownerDashboardModelView.diagramYearlyTotal);
-                    }
-                    self.addOrderTotalView();
-                    
-                }else{
-                    GlobalData.sharedInstance.showErrorSnackBar(msg: dict["message"].stringValue)
-                }
-                
-            }else if success == 2{
-                GlobalData.sharedInstance.dismissLoader()
-                self.callingHttppApi()
-            }
-        }
-        //GlobalData.sharedInstance.showLoader()
+
     }
     
     private func createChartDataCollection () -> [BarChartData] {
@@ -352,82 +224,6 @@ class Chef_DashboardView: UIViewController{
         indexChartView.translatesAutoresizingMaskIntoConstraints = false;
     }
     
-    private func addOrderTotalView () {
-        
-        let horizontalStackView1: UIStackView = UIStackView()
-        horizontalStackView1.axis = .horizontal
-        horizontalStackView1.alignment = .fill
-        horizontalStackView1.distribution = .fillEqually
-        //horizontalStackView1.spacing = 8.0
-        
-        let yearlyOrderView = Bundle.main.loadNibNamed("OrderViewCell", owner: self, options: nil)?.first as! OrderViewCell
-        let monthlyOrderView = Bundle.main.loadNibNamed("OrderViewCell", owner: self, options: nil)?.first as! OrderViewCell
-        
-        yearlyOrderView.orderDescription.text = "This year " + Chef_DashboardView.ownerDashboardModelView.orderYearlyIndexString[Chef_DashboardView.ownerDashboardModelView.orderYearlyIndexString.count - 2] + "-" + Chef_DashboardView.ownerDashboardModelView.orderYearlyIndexString[Chef_DashboardView.ownerDashboardModelView.orderYearlyIndexString.count - 1];
-        yearlyOrderView.ordersCount.text = String(format: "%d", Chef_DashboardView.ownerDashboardModelView.diagramYearlyTotal.ordersCount);
-        
-        let now = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "LLLL"
-        let nameOfMonth = dateFormatter.string(from: now)
-        
-        monthlyOrderView.orderDescription.text = "This Month - " + nameOfMonth;
-        monthlyOrderView.orderDescription.textColor = UIColor.red;
-        monthlyOrderView.ordersCount.text = String(format: "%d", Chef_DashboardView.ownerDashboardModelView.diagramMonthlyTotal.ordersCount);
-        monthlyOrderView.ordersCount.textColor = UIColor.red;
-        
-        horizontalStackView1.addArrangedSubview(yearlyOrderView)
-        horizontalStackView1.addArrangedSubview(monthlyOrderView)
-        //horizontalStackView1.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        //horizontalStackView1.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        //horizontalStackView1.translatesAutoresizingMaskIntoConstraints = false;
-        
-        let horizontalStackView2: UIStackView = UIStackView()
-        horizontalStackView2.axis = .horizontal
-        horizontalStackView2.alignment = .fill
-        horizontalStackView2.distribution = .fillEqually
-        //horizontalStackView2.spacing = 8.0
-        
-        let creditNotesView = Bundle.main.loadNibNamed("OrderViewCell", owner: self, options: nil)?.first as! OrderViewCell
-        let totalOrderView = Bundle.main.loadNibNamed("OrderViewCell", owner: self, options: nil)?.first as! OrderViewCell
-        creditNotesView.orderName.text = "Credit notes"
-        creditNotesView.orderDescription.text = "This Month - " + nameOfMonth;
-        creditNotesView.orderDescription.textColor = UIColor.red;
-        creditNotesView.ordersCount.textColor = UIColor.red;
-        creditNotesView.ordersCount.text = String(format:"%d", Chef_DashboardView.ownerDashboardModelView.monthlyCreditMemosCount);
-        
-        totalOrderView.orderName.text = "Total Orders"
-        totalOrderView.orderDescription.text = "This Month - " + nameOfMonth;
-        totalOrderView.ordersCount.text = Chef_DashboardView.ownerDashboardModelView.currencySymbol + Chef_DashboardView.ownerDashboardModelView.diagramMonthlyTotal.ordersTotal;
-        
-        horizontalStackView2.addArrangedSubview(creditNotesView)
-        horizontalStackView2.addArrangedSubview(totalOrderView)
-        
-        let horizontalStackView3: UIStackView = UIStackView()
-        horizontalStackView3.axis = .horizontal
-        horizontalStackView3.alignment = .fill
-        horizontalStackView3.distribution = .fillEqually
-        //horizontalStackView2.spacing = 8.0
-        
-        let deliveryView = Bundle.main.loadNibNamed("OrderViewCell", owner: self, options: nil)?.first as! OrderViewCell
-        let pendingView = Bundle.main.loadNibNamed("OrderViewCell", owner: self, options: nil)?.first as! OrderViewCell
-        deliveryView.orderName.text = "Delivered"
-        deliveryView.orderDescription.text = "This Month - " + nameOfMonth;
-        deliveryView.ordersCount.text = String(format:"%d", Chef_DashboardView.ownerDashboardModelView.monthlyCompleteOrdersCount);
-        
-        pendingView.orderName.text = "Pending Delivery"
-        pendingView.orderDescription.text = "This Month - " + nameOfMonth;
-        pendingView.orderDescription.textColor = UIColor.red;
-        pendingView.ordersCount.textColor = UIColor.red;
-        pendingView.ordersCount.text = String(format:"%d", Chef_DashboardView.ownerDashboardModelView.monthlyPendingOrdersCount);
-        
-        horizontalStackView3.addArrangedSubview(deliveryView)
-        horizontalStackView3.addArrangedSubview(pendingView)
-        
-        ordersTotalView.addArrangedSubview(horizontalStackView1)
-        ordersTotalView.addArrangedSubview(horizontalStackView2)
-        ordersTotalView.addArrangedSubview(horizontalStackView3)
-    }
     private func addDiagramTotalElement (diagramData: DiagramTotalData) {
         let purchaseLabelHeight: CGFloat = 20.0
         
@@ -540,7 +336,7 @@ class Chef_DashboardView: UIViewController{
         suppliersLabel.heightAnchor.constraint(equalToConstant: purchaseLabelHeight).isActive = true
         
         suppliersStringLabel.textColor = UIColor.darkText;
-        suppliersStringLabel.text = "Suppliers";
+        suppliersStringLabel.text = "Customers";
         suppliersStringLabel.font = UIFont.boldSystemFont(ofSize: 13)
         suppliersStringLabel.textAlignment = .center
         
@@ -684,87 +480,115 @@ class Chef_DashboardView: UIViewController{
         diagramTotalView.translatesAutoresizingMaskIntoConstraints = false;
     }
     
-    func doFurtherProcessingWithResult(data:AnyObject){
-        GlobalData.sharedInstance.dismissLoader()
-        print(data)
-        let responseData = JSON(data as! NSDictionary)
-        if responseData["success"].boolValue == true{
-            defaults.set(responseData["customerEmail"].stringValue, forKey: "customerEmail")
-            defaults.set(responseData["customerToken"].stringValue, forKey: "customerId")
-            defaults.set(responseData["customerName"].stringValue, forKey: "customerName")
-            profile_name.text = defaults.object(forKey: "customerName") as? String
-            
-            if(defaults.object(forKey: "quoteId") != nil){
-                defaults.set(nil, forKey: "quoteId")
-                defaults.synchronize();
+    private func addOrderTotalView () {
+        
+        let horizontalStackView1: UIStackView = UIStackView()
+        horizontalStackView1.axis = .horizontal
+        horizontalStackView1.alignment = .fill
+        horizontalStackView1.distribution = .fillEqually
+        //horizontalStackView1.spacing = 8.0
+        
+        let salesTodayView = Bundle.main.loadNibNamed("PurchaseProductDetailPageCell", owner: self, options: nil)?.first as! PurchaseProductDetailPageCell
+        let salesWeekView = Bundle.main.loadNibNamed("PurchaseProductDetailPageCell", owner: self, options: nil)?.first as! PurchaseProductDetailPageCell
+        
+        salesTodayView.orderName.text = "PURCHASES TODAY"
+        salesTodayView.ordersCount.text = Chef_DashboardView.ownerDashboardModelView.currencySymbol +  Chef_DashboardView.ownerDashboardModelView.diagramDailyTotal.ordersTotal;
+        
+        salesWeekView.orderName.text = "PURCHASES THIS WEEK"
+        salesWeekView.ordersCount.text = Chef_DashboardView.ownerDashboardModelView.currencySymbol +  Chef_DashboardView.ownerDashboardModelView.diagramWeeklyTotal.ordersTotal;
+        
+        horizontalStackView1.addArrangedSubview(salesTodayView)
+        horizontalStackView1.addArrangedSubview(salesWeekView)
+        
+        let horizontalStackView2: UIStackView = UIStackView()
+        horizontalStackView2.axis = .horizontal
+        horizontalStackView2.alignment = .fill
+        horizontalStackView2.distribution = .fillEqually
+        //horizontalStackView2.spacing = 8.0
+        
+        let ordersTodayView = Bundle.main.loadNibNamed("PurchaseProductDetailPageCell", owner: self, options: nil)?.first as! PurchaseProductDetailPageCell
+        let ordersWeekView = Bundle.main.loadNibNamed("PurchaseProductDetailPageCell", owner: self, options: nil)?.first as! PurchaseProductDetailPageCell
+        ordersTodayView.orderName.text = "ORDERS TODAY"
+        ordersTodayView.ordersCount.text = String(format: "%d", Chef_DashboardView.ownerDashboardModelView.diagramDailyTotal.ordersCount);
+        
+        ordersWeekView.orderName.text = "ORDERS THIS WEEK"
+        ordersWeekView.ordersCount.text = String(format: "%d", Chef_DashboardView.ownerDashboardModelView.diagramWeeklyTotal.ordersCount);
+        
+        horizontalStackView2.addArrangedSubview(ordersTodayView)
+        horizontalStackView2.addArrangedSubview(ordersWeekView)
+        
+        ordersTotalView.addArrangedSubview(horizontalStackView1)
+        ordersTotalView.addArrangedSubview(horizontalStackView2)
+    }
+    
+    func generateRandomColor() -> UIColor {
+        let hue : CGFloat = CGFloat(arc4random() % 256) / 256 // use 256 to get full range from 0.0 to 1.0
+        let saturation : CGFloat = CGFloat(arc4random() % 128) / 256 + 0.5 // from 0.5 to 1.0 to stay away from white
+        let brightness : CGFloat = CGFloat(arc4random() % 128) / 256 + 0.5 // from 0.5 to 1.0 to stay away from black
+        
+        return UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: 1)
+    }
+    
+    private func addProductTotalView () {
+        var totalProductCount = 0;
+        let size = productsTotalView.frame.size
+        
+        var productCount = 0;
+        for product in Chef_DashboardView.ownerDashboardModelView.topSellingProductData {
+            totalProductCount += Int(product.qty)!;
+            productCount += 1;
+            if(productCount > 5){
+                break;
             }
-            UserDefaults.standard.removeObject(forKey: "quoteId")
-            let profileImage = responseData["profileImage"].stringValue
-            let bannerImage  = responseData["bannerImage"].stringValue
-            
-            if profileImage != ""{
-                defaults.set(profileImage, forKey: "profilePicture")
+        }
+        if(productCount >= 5) {
+            productsSalesLabel.text = "Sales Products(Top 5)"
+        }
+        if(productCount == 0) {
+            productsSalesLabel.text = "Sales Products(No Product)"
+        }
+        print("stack width:", productsTotalView.frame.size.width);
+        print("total product count:", totalProductCount);
+        let colorArray = [
+            UIColor(red: 255/255, green: 138/255, blue: 0/255, alpha: 1.0),
+            UIColor(red: 39/255, green: 183/255, blue: 100/255, alpha: 1.0),
+            UIColor(red: 30/255, green: 161/255, blue: 243/255, alpha: 1.0),
+            UIColor(red: 165/255, green: 96/255, blue: 245/255, alpha: 1.0),
+            UIColor(red: 218/255, green: 218/255, blue: 218/255, alpha: 1.0)
+        ];
+        productCount = 0;
+        for product in Chef_DashboardView.ownerDashboardModelView.topSellingProductData {
+            let width = Double(size.width) * (Double)(Double(product.qty)! / Double(totalProductCount));
+            print("cell width:", width);
+            let view = UIView();
+            let color = generateRandomColor();
+            view.layer.backgroundColor = colorArray[productCount].cgColor;
+            view.layer.borderColor = colorArray[productCount].cgColor;
+            view.setWidthConstraint(constant: CGFloat(width))
+            productsTotalView.addArrangedSubview(view)
+            let descriptionView = Bundle.main.loadNibNamed("ProductSaleDetailCell", owner: self, options: nil)?.first as! ProductSaleDetailCell
+            descriptionView.colorView.layer.backgroundColor = colorArray[productCount].cgColor;
+            descriptionView.colorView.layer.borderColor = colorArray[productCount].cgColor;
+            descriptionView.qtyLabel.text = product.qty + ":" + String(totalProductCount);
+            descriptionView.productNameLabel.text = product.name;
+            descriptionView.setHeightConstraint(constant: CGFloat(40));
+            productsDetailView.addArrangedSubview(descriptionView);
+            productCount += 1;
+            if( productCount > 5 ){
+                break;
             }
-            if bannerImage != ""{
-                defaults.set(bannerImage, forKey: "profileBanner")
-            }
-            
-            if responseData["cartCount"].intValue > 0{
-                let cartCount  = responseData["cartCount"].stringValue
-                if cartCount != ""{
-                    self.tabBarController!.tabBar.items?[3].badgeValue = cartCount
-                }
-            }
-            
-            if responseData["isAdmin"].intValue == 0{
-                defaults.set("f", forKey: "isAdmin")
-            }else{
-                defaults.set("t", forKey: "isAdmin")
-            }
-            
-            if responseData["isSeller"].intValue == 0{
-                defaults.set("f", forKey: "isSeller")
-            }else{
-                defaults.set("t", forKey: "isSeller")
-            }
-            
-            if responseData["isPending"].intValue == 0{
-                defaults.set("f", forKey: "isPending")
-                
-            }else{
-                defaults.set("t", forKey: "isPending")
-            }
-            
-            defaults.synchronize()
-            
-        }else{
-            GlobalData.sharedInstance.showErrorSnackBar(msg: responseData["message"].stringValue)
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.callingHttppApi();
-        if defaults.object(forKey: "customerName") != nil{
-            profile_name.text = defaults.object(forKey: "customerName") as? String
-        } else {
-            profile_name.text = "Chef"
-        }
-        profile_image.image = UIImage(named: "ic_camera")!
-        if defaults.object(forKey: "profilePicture") as? String != nil{
-            let imageUrl = defaults.object(forKey: "profilePicture") as? String
-            print("profile_image:", imageUrl);
-            GlobalData.sharedInstance.getImageFromUrl(imageUrl: imageUrl!, imageView: self.profile_image)
-        }
-        
-        profile_owner.text = "Chef"
         if (Chef_DashboardView.callingApiSucceed) {
             var chartData: [BarChartData] = self.createChartDataCollection();
-            print("chartData", chartData)
-            
+            print("reloadData")
             self.barChartView.removeAllArrangedSubviews();
             self.indexChartView.removeAllArrangedSubviews();
             self.diagramTotalView.removeAllArrangedSubviews();
             self.ordersTotalView.removeAllArrangedSubviews();
+            self.productsTotalView.removeAllArrangedSubviews();
             
             for data in chartData {
                 self.addIndexElement(timeGraphData: data)
@@ -788,6 +612,7 @@ class Chef_DashboardView: UIViewController{
                 self.addDiagramTotalElement(diagramData: Chef_DashboardView.ownerDashboardModelView.diagramYearlyTotal);
             }
             self.addOrderTotalView();
+            self.addProductTotalView();
         }
     }
     

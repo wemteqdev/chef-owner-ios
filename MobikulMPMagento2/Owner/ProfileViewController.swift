@@ -131,11 +131,11 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             if defaults.object(forKey: "customerEmail") != nil{
                 cell.profileEmail.text = defaults.object(forKey: "customerEmail") as? String
             }
-	    cell.profileEmail.isHidden = true
+            cell.profileEmail.isHidden = true
             if defaults.object(forKey: "customerName") != nil{
                 cell.profileName.text = defaults.object(forKey: "customerName") as? String
             }
-	    cell.profileImage.image = UIImage(named: "ic_camera")!
+            cell.profileImage.image = UIImage(named: "ic_camera")!
             if defaults.object(forKey: "profilePicture") != nil{
                 let imageUrl = defaults.object(forKey: "profilePicture") as? String
                 GlobalData.sharedInstance.getImageFromUrl(imageUrl: imageUrl!, imageView: cell.profileImage)
@@ -145,7 +145,10 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 GlobalData.sharedInstance.getImageFromUrl(imageUrl: imageUrl!, imageView: cell.profileBannerImage)
             }
             cell.visualView.backgroundColor = UIColor(red: 30/255, green: 161/255, blue: 243/255, alpha: 1.0);
-            
+            print("isOwner:", defaults.object(forKey: "isOwner") as! String);
+            if(defaults.object(forKey: "isOwner") as! String == "f") {
+                cell.visualView.backgroundColor = UIColor(red: 29/255, green: 151/255, blue: 239/255, alpha: 1.0);
+            }
             cell.selectionStyle = .none
             return cell
         }
