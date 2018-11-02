@@ -692,7 +692,7 @@ class Chef_DashboardView: UIViewController{
             defaults.set(responseData["customerEmail"].stringValue, forKey: "customerEmail")
             defaults.set(responseData["customerToken"].stringValue, forKey: "customerId")
             defaults.set(responseData["customerName"].stringValue, forKey: "customerName")
-            profile_name.text = defaults.object(forKey: "customerName") as? String
+            profile_name.text = defaults.object(forKey: "companyName") as? String
             
             if(defaults.object(forKey: "quoteId") != nil){
                 defaults.set(nil, forKey: "quoteId")
@@ -744,10 +744,10 @@ class Chef_DashboardView: UIViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         self.callingHttppApi();
-        if defaults.object(forKey: "customerName") != nil{
-            profile_name.text = defaults.object(forKey: "customerName") as? String
+        if defaults.object(forKey: "companyName") != nil{
+            profile_name.text = defaults.object(forKey: "companyName") as? String
         } else {
-            profile_name.text = "Chef"
+            profile_name.text = "No Company Name"
         }
         profile_image.image = UIImage(named: "ic_camera")!
         if defaults.object(forKey: "profilePicture") as? String != nil{
@@ -756,7 +756,6 @@ class Chef_DashboardView: UIViewController{
             GlobalData.sharedInstance.getImageFromUrl(imageUrl: imageUrl!, imageView: self.profile_image)
         }
         
-        profile_owner.text = "Chef"
         if (Chef_DashboardView.callingApiSucceed) {
             var chartData: [BarChartData] = self.createChartDataCollection();
             print("chartData", chartData)

@@ -46,7 +46,7 @@ class EditProfileViewController: UIViewController, UIPickerViewDelegate, UIPicke
         saveButton.layer.masksToBounds = true;
         dataField.text = data;
         dataField.placeholder = placeholdString;
-        if(id == 3 || id == 7){
+        if(id == 4 || id == 8){
             dataField.keyboardType = UIKeyboardType.numberPad;
         }
     }

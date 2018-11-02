@@ -22,26 +22,30 @@ class Chef_ProfileViewController: UIViewController, UITableViewDelegate, UITable
             defaults.set(name, forKey: "customerName")
             break
         case 3:
+            accountInfoModel.companyName = data;
+            defaults.set(accountInfoModel.companyName, forKey: "companyName")
+            break
+        case 4:
             accountInfoModel.emailId = data;
             defaults.set(accountInfoModel.emailId, forKey: "customerEmail")
             break
-        case 4:
+        case 5:
             accountInfoModel.mobileNumber = data;
             break
-        case 5:
+        case 6:
             accountInfoModel.street = data;
             break
-        case 6:
+        case 7:
             accountInfoModel.city = data;
             break
-        case 7:
+        case 8:
             accountInfoModel.state = data;
             break
-        case 8:
+        case 9:
             accountInfoModel.postcode = data;
             break
             
-        case 9:
+        case 10:
             accountInfoModel.country = data;
             break
             
@@ -60,8 +64,8 @@ class Chef_ProfileViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     @IBOutlet weak var profileTableView: UITableView!
-    var supplierProfileData:NSMutableArray = ["Photo", "First Name", "Second Name", "Email", "Phone Number", "Address", "City", "State", "Post Code", "Country"]
-    var supplierProfileDataValue:NSMutableArray = ["", "", "", "", "", "", "", "", ""]
+    var supplierProfileData:NSMutableArray = ["Photo", "First Name", "Second Name", "CompanyName", "Email", "Phone Number", "Address", "City", "State", "Post Code", "Country"]
+    var supplierProfileDataValue:NSMutableArray = ["", "", "", "", "", "", "", "", "", ""]
     var accountInfoModel:AccountInformationModel!
     var didload:Bool = false
     var whichApiToProcess:String = "";
@@ -111,7 +115,7 @@ class Chef_ProfileViewController: UIViewController, UITableViewDelegate, UITable
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0{
-            return 210
+            return 195
         }else{
             return 45
         }
@@ -131,8 +135,9 @@ class Chef_ProfileViewController: UIViewController, UITableViewDelegate, UITable
             if defaults.object(forKey: "customerEmail") != nil{
                 cell.profileEmail.text = defaults.object(forKey: "customerEmail") as? String
             }
-            if defaults.object(forKey: "customerName") != nil{
-                cell.profileName.text = defaults.object(forKey: "customerName") as? String
+            cell.profileEmail.isHidden = true
+            if defaults.object(forKey: "companyName") != nil{
+                cell.profileName.text = defaults.object(forKey: "companyName") as? String
             }
             cell.profileImage.image = UIImage(named: "ic_camera")!
             if defaults.object(forKey: "profilePicture") as? String != nil{
@@ -166,26 +171,30 @@ class Chef_ProfileViewController: UIViewController, UITableViewDelegate, UITable
                     self.supplierProfileDataValue[indexPath.row - 2] = accountInfoModel.lastName;
                     break
                 case 3:
+                    cell.nameValue.text = accountInfoModel.companyName;
+                    self.supplierProfileDataValue[indexPath.row - 2] = accountInfoModel.companyName;
+                    break
+                case 4:
                     cell.nameValue.text = accountInfoModel.emailId
                     self.supplierProfileDataValue[indexPath.row - 2] = accountInfoModel.emailId;
                     break
-                case 4:
+                case 5:
                     cell.nameValue.text = accountInfoModel.mobileNumber
                     self.supplierProfileDataValue[indexPath.row - 2] = accountInfoModel.mobileNumber;
                     break
-                case 5:
+                case 6:
                     cell.nameValue.text = accountInfoModel.street
                     self.supplierProfileDataValue[indexPath.row - 2] = accountInfoModel.street;
                     break
-                case 6:
+                case 7:
                     cell.nameValue.text = accountInfoModel.city
                     self.supplierProfileDataValue[indexPath.row - 2] = accountInfoModel.city;
                     break
-                case 7:
+                case 8:
                     cell.nameValue.text = accountInfoModel.state
                     self.supplierProfileDataValue[indexPath.row - 2] = accountInfoModel.state;
                     break
-                case 8:
+                case 9:
                     cell.nameValue.text = accountInfoModel.postcode
                     self.supplierProfileDataValue[indexPath.row - 2] = accountInfoModel.postcode;
                     break
@@ -319,78 +328,88 @@ class Chef_ProfileViewController: UIViewController, UITableViewDelegate, UITable
     func callingHttppApi(){
         DispatchQueue.global().async(execute: {
             DispatchQueue.main.sync {
-                GlobalData.sharedInstance.showLoader()
-                if self.whichApiToProcess == "customerEditPost" && self.didload == true{
-                    var requstParams = [String:Any]();
-                    requstParams["storeId"] = defaults.object(forKey:"storeId") as! String
-                    requstParams["websiteId"] = DEFAULT_WEBSITE_ID
-                    requstParams["customerToken"] = defaults.object(forKey: "customerId") as! String
-                    requstParams["firstName"] = self.supplierProfileDataValue[0];
-                    requstParams["secondName"] = self.supplierProfileDataValue[1];
-                    requstParams["email"] = self.supplierProfileDataValue[2];
-                    requstParams["phoneNumber"] = self.supplierProfileDataValue[3];
-                    requstParams["address"] = self.supplierProfileDataValue[4];
-                    requstParams["city"] = self.supplierProfileDataValue[5];
-                    requstParams["state"] = self.supplierProfileDataValue[6];
-                    requstParams["postCode"] = self.supplierProfileDataValue[7];
-                    requstParams["Country"] = self.supplierProfileDataValue[8];
-                    
-                    GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"wemteqchef/customer/saveAccountInfo", currentView: self){success,responseObject in
-                        if success == 1{
-                            
-                            GlobalData.sharedInstance.dismissLoader()
-                            let dict = responseObject as! NSDictionary
-                            if dict.object(forKey: "success") as! Bool == true{
-                                GlobalData.sharedInstance.showSuccessMessageWithBack(view: self,message:dict.object(forKey: "message") as! String )
-                                
-                                let firstName = self.supplierProfileDataValue[0] as! String + " ";
-                                let secondName = self.supplierProfileDataValue[1] as! String;
-                                let name = firstName + secondName;
-                                defaults.set(name, forKey: "customerName")
-                                defaults.set(requstParams["email"] as! String, forKey: "customerEmail")
-                                let city = requstParams["city"] as! String
-                                let address = requstParams["address"] as! String + "," + city;
-                                defaults.set(address, forKey: "address")
-                                
-                                if(defaults.object(forKey: "quoteId") != nil){
-                                    defaults.set(nil, forKey: "quoteId")
-                                    defaults.synchronize();
-                                }
-                                UserDefaults.standard.removeObject(forKey: "quoteId")
-                                defaults.synchronize()
-                                //self.navigationController?.popViewController(animated: true)
-                            }else{
-                                GlobalData.sharedInstance.showErrorSnackBar(msg: dict.object(forKey: "message") as! String)
-                                defaults.set(self.originalName, forKey: "customerName")
-                                defaults.set(self.originalEmail, forKey: "customerEmail")
-                            }
-                            
-                        }else if success == 2{
-                            GlobalData.sharedInstance.dismissLoader()
-                            self.callingHttppApi()
+        GlobalData.sharedInstance.showLoader()
+        if self.whichApiToProcess == "customerEditPost" && self.didload == true{
+            var requstParams = [String:Any]();
+            requstParams["storeId"] = defaults.object(forKey:"storeId") as! String
+            requstParams["websiteId"] = DEFAULT_WEBSITE_ID
+            requstParams["customerToken"] = defaults.object(forKey: "customerId") as! String
+            requstParams["firstName"] = self.supplierProfileDataValue[0];
+            requstParams["secondName"] = self.supplierProfileDataValue[1];
+            requstParams["companyName"] = self.supplierProfileDataValue[2];
+            requstParams["email"] = self.supplierProfileDataValue[3];
+            requstParams["phoneNumber"] = self.supplierProfileDataValue[4];
+            requstParams["address"] = self.supplierProfileDataValue[5];
+            requstParams["city"] = self.supplierProfileDataValue[6];
+            requstParams["state"] = self.supplierProfileDataValue[7];
+            requstParams["postCode"] = self.supplierProfileDataValue[8];
+            requstParams["Country"] = self.supplierProfileDataValue[9];
+
+            GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"wemteqchef/customer/saveAccountInfo", currentView: self){success,responseObject in
+                if success == 1{
+
+                    GlobalData.sharedInstance.dismissLoader()
+                    print("response data:", responseObject)
+                    let dict = responseObject as! NSDictionary
+                    if dict.object(forKey: "success") as! Bool == true{
+                        GlobalData.sharedInstance.showSuccessMessageWithBack(view: self,message:dict.object(forKey: "message") as! String )
+
+                        let firstName = self.supplierProfileDataValue[0] as! String + " ";
+                        let secondName = self.supplierProfileDataValue[1] as! String;
+                        let name = firstName + secondName;
+                        defaults.set(name, forKey: "customerName")
+                        defaults.set(requstParams["email"] as! String, forKey: "customerEmail")
+                        let city = requstParams["city"] as! String
+                        let address = requstParams["address"] as! String + "," + city;
+                        defaults.set(address, forKey: "address")
+                        
+                        if(defaults.object(forKey: "quoteId") != nil){
+                            defaults.set(nil, forKey: "quoteId")
+                            defaults.synchronize();
                         }
-                    }
-                }else{
-                    var requstParams = [String:Any]();
-                    requstParams["storeId"] = defaults.object(forKey:"storeId") as! String
-                    requstParams["websiteId"] = DEFAULT_WEBSITE_ID
-                    requstParams["customerToken"] = defaults.object(forKey: "customerId") as! String
-                    GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"wemteqchef/customer/accountInfoData", currentView: self){success,responseObject in
-                        if success == 1{
-                            
-                            print((responseObject as! NSDictionary))
-                            self.accountInfoModel  = AccountInformationModel(data: JSON(responseObject as! NSDictionary))
-                            self.originalName = self.accountInfoModel.firstName + " " + self.accountInfoModel.lastName;
-                            self.originalEmail = self.accountInfoModel.emailId;
-                            self.doFurtherProcessingwithResult()
-                        }else if success == 2{
-                            GlobalData.sharedInstance.dismissLoader()
-                            self.callingHttppApi()
+                        UserDefaults.standard.removeObject(forKey: "quoteId")
+                        /*
+                        let profileImage = requstParams["profileImage"] as! String;
+                        
+                        if profileImage != ""{
+                            defaults.set(profileImage, forKey: "profilePicture")
                         }
+                        */
+                        defaults.synchronize()
+                        //self.navigationController?.popViewController(animated: true)
+
+                    }else{
+                        GlobalData.sharedInstance.showErrorSnackBar(msg: dict.object(forKey: "message") as! String)
+			defaults.set(self.originalName, forKey: "customerName")
+                        defaults.set(self.originalEmail, forKey: "customerEmail")
                     }
-                    
+
+                }else if success == 2{
+                    GlobalData.sharedInstance.dismissLoader()
+                    self.callingHttppApi()
                 }
             }
+        }else{
+            var requstParams = [String:Any]();
+            requstParams["storeId"] = defaults.object(forKey:"storeId") as! String
+            requstParams["websiteId"] = DEFAULT_WEBSITE_ID
+            requstParams["customerToken"] = defaults.object(forKey: "customerId") as! String
+            GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"wemteqchef/customer/accountInfoData", currentView: self){success,responseObject in
+                if success == 1{
+                    
+                    print((responseObject as! NSDictionary))
+                    self.accountInfoModel  = AccountInformationModel(data: JSON(responseObject as! NSDictionary))
+                    self.originalName = self.accountInfoModel.firstName + " " + self.accountInfoModel.lastName;
+                    self.originalEmail = self.accountInfoModel.emailId;
+                    self.doFurtherProcessingwithResult()
+                }else if success == 2{
+                    GlobalData.sharedInstance.dismissLoader()
+                    self.callingHttppApi()
+                }
+            }
+        
+        }
+      }
         });
     }
     func doFurtherProcessingwithResult(){
@@ -414,9 +433,9 @@ class Chef_ProfileViewController: UIViewController, UITableViewDelegate, UITable
             let viewController:EditProfileViewController = segue.destination as UIViewController as! EditProfileViewController
             viewController.id = self.indexforcell;
             viewController.data = self.supplierProfileDataValue[self.indexforcell] as! String;
-            if(self.indexforcell == 6) {
+            if(self.indexforcell == 7) {
                 //viewController.dataType = 2;
-            } else if(self.indexforcell == 8) {
+            } else if(self.indexforcell == 9) {
                 viewController.dataType = 1;
             }
             viewController.countryData = self.accountInfoModel.countryData;
@@ -424,15 +443,15 @@ class Chef_ProfileViewController: UIViewController, UITableViewDelegate, UITable
             viewController.delegate = self;
         }
     }
-    /*
-     override func viewWillDisappear(_ animated: Bool) {
-     if (navigationController?.viewControllers.contains(self) == false)
-     {
-     self.whichApiToProcess = "customerEditPost";
-     self.callingHttppApi();
-     }
-     super.viewWillDisappear(true)
-     navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
-     }
-     */
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        if (navigationController?.viewControllers.contains(self) == false)
+        {
+            self.whichApiToProcess = "customerEditPost";
+            self.callingHttppApi();
+        }
+        super.viewWillDisappear(true)
+        //navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
+    }
+    
 }

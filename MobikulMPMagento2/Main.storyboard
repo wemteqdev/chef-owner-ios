@@ -14004,13 +14004,13 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HPj-BK-e7e">
-                                        <rect key="frame" x="152" y="90" width="72" height="36"/>
+                                        <rect key="frame" x="152" y="100" width="72" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="owner" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Us-mG-kUa">
-                                        <rect key="frame" x="164.66666666666666" y="126.00000000000001" width="47.333333333333343" height="20.666666666666671"/>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="owner" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Us-mG-kUa">
+                                        <rect key="frame" x="164.66666666666666" y="136" width="47.333333333333343" height="20.666666666666657"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -14020,7 +14020,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="180" id="5ah-6e-I6l"/>
                                     <constraint firstItem="DHa-tE-2MR" firstAttribute="centerX" secondItem="XnT-q9-ck3" secondAttribute="centerX" id="Av3-7t-C9R"/>
-                                    <constraint firstItem="HPj-BK-e7e" firstAttribute="top" secondItem="DHa-tE-2MR" secondAttribute="bottom" id="Ikb-Fv-C77"/>
+                                    <constraint firstItem="HPj-BK-e7e" firstAttribute="top" secondItem="DHa-tE-2MR" secondAttribute="bottom" constant="10" id="Ikb-Fv-C77"/>
                                     <constraint firstItem="3Us-mG-kUa" firstAttribute="top" secondItem="HPj-BK-e7e" secondAttribute="bottom" id="fI6-vZ-jDT"/>
                                     <constraint firstItem="HPj-BK-e7e" firstAttribute="centerX" secondItem="XnT-q9-ck3" secondAttribute="centerX" id="js5-0g-nkT"/>
                                     <constraint firstItem="DHa-tE-2MR" firstAttribute="top" secondItem="XnT-q9-ck3" secondAttribute="top" constant="20" id="sjS-Dq-Rkp"/>
@@ -14046,8 +14046,8 @@
                                                                     <constraint firstAttribute="width" constant="40" id="wFs-Nv-CW7"/>
                                                                 </constraints>
                                                             </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sales Insights" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="STl-qT-bNj" userLabel="label_sales_insight">
-                                                                <rect key="frame" x="58.000000000000007" y="18.666666666666686" width="105.66666666666669" height="20.333333333333329"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Purchases Insights" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="STl-qT-bNj" userLabel="label_sales_insight">
+                                                                <rect key="frame" x="58.000000000000014" y="18.666666666666686" width="144.33333333333337" height="20.333333333333329"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -14753,7 +14753,7 @@
                                                 <rect key="frame" x="20" y="390" width="157.66666666666666" height="40"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                                         <color key="value" red="0.90184803299492389" green="0.90184803299492389" blue="0.90184803299492389" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -15154,7 +15154,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="gZV-OV-8Th"/>
-        <segue reference="k3f-34-Vh7"/>
+        <segue reference="29F-3K-eaY"/>
         <segue reference="6tN-Qy-AsZ"/>
         <segue reference="6H7-k0-P6o"/>
         <segue reference="DHe-33-5Ya"/>
@@ -15168,7 +15168,7 @@
         <segue reference="1IN-nY-tFS"/>
         <segue reference="1kv-3A-ZEC"/>
         <segue reference="5gt-HY-6Mn"/>
-        <segue reference="qLT-Cy-ujC"/>
+        <segue reference="9Ml-QC-GQ9"/>
         <segue reference="EhG-al-bPQ"/>
         <segue reference="9mc-gZ-S0N"/>
         <segue reference="8rv-DD-j17"/>

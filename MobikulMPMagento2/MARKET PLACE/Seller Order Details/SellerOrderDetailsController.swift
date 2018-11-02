@@ -339,7 +339,7 @@ class SellerOrderDetailsController: UIViewController,UITableViewDelegate, UITabl
             
         }else if indexPath.section == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "SellerItemsTableViewCell", for: indexPath) as! SellerItemsTableViewCell
-            cell.itemCellWidth.constant = SCREEN_WIDTH
+            cell.itemCellWidth.constant = SCREEN_WIDTH - 10
             if indexPath.row == 0 {
                cell.infoLabel.isHidden = false
                 cell.infoView.isHidden = true

@@ -60,6 +60,8 @@ class PurchaseProductDetailPage: UIViewController{
     var mainCollection:JSON!
     var showType = 0;
     var orderTotal:NSMutableArray = []
+    var ownerDashboardModelView: OwnerDashBoardViewModel!;
+    var callingApiSucceed = false;
 
     @IBAction func SegmentValueChanged(_ sender: Any) {
         if showTypeController.selectedSegmentIndex == 0{
@@ -72,7 +74,7 @@ class PurchaseProductDetailPage: UIViewController{
             showType = 3;
         }
         
-        if (Chef_DashboardView.callingApiSucceed){
+        if (self.callingApiSucceed){
             var chartData: [BarChartData] = self.createChartDataCollection();
             print("chartData", chartData)
             barChartView.removeAllArrangedSubviews();
@@ -85,19 +87,19 @@ class PurchaseProductDetailPage: UIViewController{
             }
             if(self.showType == 0)
             {
-                self.addDiagramTotalElement(diagramData: Chef_DashboardView.ownerDashboardModelView.diagramDailyTotal);
+                self.addDiagramTotalElement(diagramData: self.ownerDashboardModelView.diagramDailyTotal);
             }
             else if(self.showType == 1)
             {
-                self.addDiagramTotalElement(diagramData: Chef_DashboardView.ownerDashboardModelView.diagramWeeklyTotal);
+                self.addDiagramTotalElement(diagramData: self.ownerDashboardModelView.diagramWeeklyTotal);
             }
             else if(self.showType == 2)
             {
-                self.addDiagramTotalElement(diagramData: Chef_DashboardView.ownerDashboardModelView.diagramMonthlyTotal);
+                self.addDiagramTotalElement(diagramData: self.ownerDashboardModelView.diagramMonthlyTotal);
             }
             else if(self.showType == 3)
             {
-                self.addDiagramTotalElement(diagramData: Chef_DashboardView.ownerDashboardModelView.diagramYearlyTotal);
+                self.addDiagramTotalElement(diagramData: self.ownerDashboardModelView.diagramYearlyTotal);
             }
             self.addOrderTotalView();
         }
@@ -110,33 +112,40 @@ class PurchaseProductDetailPage: UIViewController{
         navigationController?.navigationBar.shadowImage = UIImage();
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         
-        self.navigationItem.title = "Sales Insight"
+        self.navigationItem.title = "Purchases Insight"
         
         //self.salesInsightView.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor).isActive = true
         queue.maxConcurrentOperationCount = 20;
 
+        if(defaults.object(forKey: "isOwner") as! String == "t") {//owner
+            self.ownerDashboardModelView = Owner.ownerDashboardModelView;
+            self.callingApiSucceed = Owner.callingApiSucceed;
+        } else { //chef
+            self.ownerDashboardModelView = Chef_DashboardView.ownerDashboardModelView;
+            self.callingApiSucceed = Chef_DashboardView.callingApiSucceed;
+        }
     }
     
     private func createChartDataCollection () -> [BarChartData] {
         
         var chatDataArray = [BarChartData]();
         
-        var orderTotal = Chef_DashboardView.ownerDashboardModelView.orderYearlyTotal;
-        var orderString = Chef_DashboardView.ownerDashboardModelView.orderYearlyIndexString;
+        var orderTotal = self.ownerDashboardModelView.orderYearlyTotal;
+        var orderString = self.ownerDashboardModelView.orderYearlyIndexString;
         if (showType == 0)
         {
-            orderTotal = Chef_DashboardView.ownerDashboardModelView.orderDailyTotal;
-            orderString = Chef_DashboardView.ownerDashboardModelView.orderDailyIndexString;
+            orderTotal = self.ownerDashboardModelView.orderDailyTotal;
+            orderString = self.ownerDashboardModelView.orderDailyIndexString;
         }
         else if(showType == 1)
         {
-            orderTotal = Chef_DashboardView.ownerDashboardModelView.orderWeeklyTotal;
-            orderString = Chef_DashboardView.ownerDashboardModelView.orderWeeklyIndexString;
+            orderTotal = self.ownerDashboardModelView.orderWeeklyTotal;
+            orderString = self.ownerDashboardModelView.orderWeeklyIndexString;
         }
         else if(showType == 2)
         {
-            orderTotal = Chef_DashboardView.ownerDashboardModelView.orderMonthlyTotal;
-            orderString = Chef_DashboardView.ownerDashboardModelView.orderMonthlyIndexString;
+            orderTotal = self.ownerDashboardModelView.orderMonthlyTotal;
+            orderString = self.ownerDashboardModelView.orderMonthlyIndexString;
         }
         print("orderTotal:", orderTotal)
         print("orderString:", orderString)
@@ -237,7 +246,7 @@ class PurchaseProductDetailPage: UIViewController{
         verticalStackView.spacing = 8.0
         
         purchaseLabel.textColor = UIColor(red: 255/255, green: 138/255, blue: 0/255, alpha: 1.0);
-        purchaseLabel.text = Chef_DashboardView.ownerDashboardModelView.currencySymbol + diagramData.ordersTotal;
+        purchaseLabel.text = self.ownerDashboardModelView.currencySymbol + diagramData.ordersTotal;
         purchaseLabel.font = UIFont.boldSystemFont(ofSize: purchaseLabelHeight)
         purchaseLabel.textAlignment = .center
         
@@ -492,10 +501,10 @@ class PurchaseProductDetailPage: UIViewController{
         let salesWeekView = Bundle.main.loadNibNamed("PurchaseProductDetailPageCell", owner: self, options: nil)?.first as! PurchaseProductDetailPageCell
         
         salesTodayView.orderName.text = "PURCHASES TODAY"
-        salesTodayView.ordersCount.text = Chef_DashboardView.ownerDashboardModelView.currencySymbol +  Chef_DashboardView.ownerDashboardModelView.diagramDailyTotal.ordersTotal;
+        salesTodayView.ordersCount.text = self.ownerDashboardModelView.currencySymbol +  self.ownerDashboardModelView.diagramDailyTotal.ordersTotal;
         
         salesWeekView.orderName.text = "PURCHASES THIS WEEK"
-        salesWeekView.ordersCount.text = Chef_DashboardView.ownerDashboardModelView.currencySymbol +  Chef_DashboardView.ownerDashboardModelView.diagramWeeklyTotal.ordersTotal;
+        salesWeekView.ordersCount.text = self.ownerDashboardModelView.currencySymbol +  self.ownerDashboardModelView.diagramWeeklyTotal.ordersTotal;
         
         horizontalStackView1.addArrangedSubview(salesTodayView)
         horizontalStackView1.addArrangedSubview(salesWeekView)
@@ -509,10 +518,10 @@ class PurchaseProductDetailPage: UIViewController{
         let ordersTodayView = Bundle.main.loadNibNamed("PurchaseProductDetailPageCell", owner: self, options: nil)?.first as! PurchaseProductDetailPageCell
         let ordersWeekView = Bundle.main.loadNibNamed("PurchaseProductDetailPageCell", owner: self, options: nil)?.first as! PurchaseProductDetailPageCell
         ordersTodayView.orderName.text = "ORDERS TODAY"
-        ordersTodayView.ordersCount.text = String(format: "%d", Chef_DashboardView.ownerDashboardModelView.diagramDailyTotal.ordersCount);
+        ordersTodayView.ordersCount.text = String(format: "%d", self.ownerDashboardModelView.diagramDailyTotal.ordersCount);
         
         ordersWeekView.orderName.text = "ORDERS THIS WEEK"
-        ordersWeekView.ordersCount.text = String(format: "%d", Chef_DashboardView.ownerDashboardModelView.diagramWeeklyTotal.ordersCount);
+        ordersWeekView.ordersCount.text = String(format: "%d", self.ownerDashboardModelView.diagramWeeklyTotal.ordersCount);
         
         horizontalStackView2.addArrangedSubview(ordersTodayView)
         horizontalStackView2.addArrangedSubview(ordersWeekView)
@@ -534,7 +543,7 @@ class PurchaseProductDetailPage: UIViewController{
         let size = productsTotalView.frame.size
         
         var productCount = 0;
-        for product in Chef_DashboardView.ownerDashboardModelView.topSellingProductData {
+        for product in self.ownerDashboardModelView.topSellingProductData {
             totalProductCount += Int(product.qty)!;
             productCount += 1;
             if(productCount > 5){
@@ -542,10 +551,10 @@ class PurchaseProductDetailPage: UIViewController{
             }
         }
         if(productCount >= 5) {
-            productsSalesLabel.text = "Sales Products(Top 5)"
+            productsSalesLabel.text = "Purchased Products(Top 5)"
         }
         if(productCount == 0) {
-            productsSalesLabel.text = "Sales Products(No Product)"
+            productsSalesLabel.text = "Purchased Products(No Product)"
         }
         print("stack width:", productsTotalView.frame.size.width);
         print("total product count:", totalProductCount);
@@ -557,8 +566,10 @@ class PurchaseProductDetailPage: UIViewController{
             UIColor(red: 218/255, green: 218/255, blue: 218/255, alpha: 1.0)
         ];
         productCount = 0;
-        for product in Chef_DashboardView.ownerDashboardModelView.topSellingProductData {
-            let width = Double(size.width) * (Double)(Double(product.qty)! / Double(totalProductCount));
+        let screenSize = UIScreen.main.bounds
+        let screenWidth = screenSize.width
+        for product in self.ownerDashboardModelView.topSellingProductData {
+            let width = Double(screenSize.width) * (Double)(Double(product.qty)! / Double(totalProductCount));
             print("cell width:", width);
             let view = UIView();
             let color = generateRandomColor();
@@ -581,7 +592,7 @@ class PurchaseProductDetailPage: UIViewController{
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if (Chef_DashboardView.callingApiSucceed) {
+        if (self.callingApiSucceed) {
             var chartData: [BarChartData] = self.createChartDataCollection();
             print("reloadData")
             self.barChartView.removeAllArrangedSubviews();
@@ -597,19 +608,19 @@ class PurchaseProductDetailPage: UIViewController{
             
             if(self.showType == 0)
             {
-                self.addDiagramTotalElement(diagramData: Chef_DashboardView.ownerDashboardModelView.diagramDailyTotal);
+                self.addDiagramTotalElement(diagramData: self.ownerDashboardModelView.diagramDailyTotal);
             }
             else if(self.showType == 1)
             {
-                self.addDiagramTotalElement(diagramData: Chef_DashboardView.ownerDashboardModelView.diagramWeeklyTotal);
+                self.addDiagramTotalElement(diagramData: self.ownerDashboardModelView.diagramWeeklyTotal);
             }
             else if(self.showType == 2)
             {
-                self.addDiagramTotalElement(diagramData: Chef_DashboardView.ownerDashboardModelView.diagramMonthlyTotal);
+                self.addDiagramTotalElement(diagramData: self.ownerDashboardModelView.diagramMonthlyTotal);
             }
             else if(self.showType == 3)
             {
-                self.addDiagramTotalElement(diagramData: Chef_DashboardView.ownerDashboardModelView.diagramYearlyTotal);
+                self.addDiagramTotalElement(diagramData: self.ownerDashboardModelView.diagramYearlyTotal);
             }
             self.addOrderTotalView();
             self.addProductTotalView();
