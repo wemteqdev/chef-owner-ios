@@ -409,7 +409,8 @@ class CustomerLogin: UIViewController, GIDSignInUIDelegate {
             }
             
             defaults.synchronize()
-            
+            self.goToDashBoardWithoutTouchId();
+            /*
             if defaults.object(forKey: "touchIdFlag") != nil && self.NotAgainCallTouchId == false{
                 if defaults.object(forKey: "touchIdFlag") as! String == "0"{
                     let  AC = UIAlertController(title: GlobalData.sharedInstance.language(key: "alert"), message: GlobalData.sharedInstance.language(key: "wouldyouliketoconnectappwithtouchid"), preferredStyle: .alert)
@@ -450,10 +451,12 @@ class CustomerLogin: UIViewController, GIDSignInUIDelegate {
             }else{
                 self.tabBarController?.tabBar.isHidden = false
                 self.navigationController?.popViewController(animated: true)
-            }
+            }*/
         }else{
             GlobalData.sharedInstance.showErrorSnackBar(msg: responseData["message"].stringValue)
         }
+ 
+        
     }
     
     
@@ -520,6 +523,7 @@ class CustomerLogin: UIViewController, GIDSignInUIDelegate {
     /////////////////////   After Login we are setting /////////////////////////////////////////////////////////////////////////////////
     
     func configureTouchIdafterLogin(){
+        
         var policy: LAPolicy?
         if #available(iOS 9.0, *) {
             // iOS 9+ users with Biometric and Passcode verification

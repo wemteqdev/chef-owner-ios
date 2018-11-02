@@ -23,7 +23,7 @@ class ComapreListModel: NSObject {
     var cartId:String!
     var checked:Bool = false
     var qty:String = "0"
-    var unit:String!
+    var unit:String = ""
     var tierPrice:Double!
     var moq:Int!
     init(data:JSON){
@@ -42,11 +42,12 @@ class ComapreListModel: NSObject {
         if self.tierPrice == nil {
             self.tierPrice = 0
         }
-        self.unit = data["unitString"].stringValue
         self.moq = data["moq"].intValue
         if self.moq == nil {
             self.moq = 0
         }
+        self.unit = data["unitString"].stringValue
+        
      }
     
 

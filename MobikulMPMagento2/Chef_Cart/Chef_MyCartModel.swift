@@ -27,7 +27,7 @@ class Chef_MyCartModel: NSObject {
     var moq:Int!
     var priceint:Double!
     var tierSubtotal:String = ""
-    var unitString:String!
+    var unitString:String = ""
     var taxClass:String!
     init(data:JSON) {
         self.id = data["id"].stringValue
@@ -43,6 +43,7 @@ class Chef_MyCartModel: NSObject {
         self.rating = data["rating"].doubleValue
         self.reviewCount = data["reviewcount"].stringValue
         self.unit = data["unit"].stringValue
+        
         self.unitMeasurement = data["unitMeasurement"].intValue
         self.taxClass = data["tax_class"].stringValue
         if self.taxClass == "" {
@@ -59,11 +60,12 @@ class Chef_MyCartModel: NSObject {
         self.priceint = data["priceint"].doubleValue
         self.tierSubtotal = data["tier_subtotal"].stringValue
         self.unitString = data["unitString"].stringValue
+        
+        
     }
 }
 
 class Chef_ExtraCartData:NSObject{
-    
     var discountValue:String!
     var discountLabel:String!
     var grandLabel:String!

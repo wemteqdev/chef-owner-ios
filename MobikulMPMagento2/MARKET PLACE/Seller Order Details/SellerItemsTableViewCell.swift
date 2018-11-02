@@ -9,41 +9,58 @@
 import UIKit
 
 class SellerItemsTableViewCell: UITableViewCell {
+    @IBOutlet weak var itemCellWidth:NSLayoutConstraint!
+    @IBOutlet weak var infoLabel: UILabel!
+    @IBOutlet weak var infoView: UIView!
 @IBOutlet weak var productName: UILabel!
-@IBOutlet weak var priceLabel: UILabel!
 @IBOutlet weak var priceLabelValue: UILabel!
-@IBOutlet weak var qtyLabel: UILabel!
 @IBOutlet weak var qtyLabelValue: UILabel!
-@IBOutlet weak var totalLabel: UILabel!
 @IBOutlet weak var totalLabelValue: UILabel!
-@IBOutlet weak var admincommissionLabel: UILabel!
 @IBOutlet weak var admincommissionLabelValue: UILabel!
-@IBOutlet weak var vendorTotalLabel: UILabel!
 @IBOutlet weak var vendorTotalLabelValue: UILabel!
-@IBOutlet weak var subtotalLabel: UILabel!
 @IBOutlet weak var subtotalLabelValue: UILabel!
-    
-    
-    
-    
-    
-    
+   @IBOutlet weak var totalLabels: UILabel!
+   @IBOutlet weak var packSizeLable: UILabel!
+    @IBOutlet weak var vatLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        totalLabels.isHidden = true
+       totalLabelValue.isHidden = true
+        vendorTotalLabelValue.isHidden = true
+        admincommissionLabelValue.isHidden = true
+        infoView.layer.borderWidth = 1
+        infoView.layer.borderColor = UIColor.lightGray.cgColor
         
-        priceLabel.text = GlobalData.sharedInstance.language(key: "price")
-        qtyLabel.text = GlobalData.sharedInstance.language(key: "qty")
-        totalLabel.text = GlobalData.sharedInstance.language(key: "totals")
-        admincommissionLabel.text = GlobalData.sharedInstance.language(key: "admincommission")
-        vendorTotalLabel.text = GlobalData.sharedInstance.language(key: "vendortotal")
-        subtotalLabel.text = GlobalData.sharedInstance.language(key: "subtotal")
+        totalLabels.layer.borderWidth = 1
+        totalLabels.layer.borderColor = UIColor.lightGray.cgColor
         
+        infoLabel.layer.borderWidth = 1
+        infoLabel.layer.borderColor = UIColor.lightGray.cgColor
+        infoLabel.isHidden = true
+        priceLabelValue.layer.borderWidth = 1
+        priceLabelValue.layer.borderColor = UIColor.lightGray.cgColor
+        
+        qtyLabelValue.layer.borderWidth = 1
+        qtyLabelValue.layer.borderColor = UIColor.lightGray.cgColor
+        
+        totalLabelValue.layer.borderWidth = 1
+        totalLabelValue.layer.borderColor = UIColor.lightGray.cgColor
+        
+        admincommissionLabelValue.layer.borderWidth = 1
+        admincommissionLabelValue.layer.borderColor = UIColor.lightGray.cgColor
+        
+        vendorTotalLabelValue.layer.borderWidth = 1
+        vendorTotalLabelValue.layer.borderColor = UIColor.lightGray.cgColor
+        
+        subtotalLabelValue.layer.borderWidth = 1
+        subtotalLabelValue.layer.borderColor = UIColor.lightGray.cgColor
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+       
+        
         // Configure the view for the selected state
     }
     

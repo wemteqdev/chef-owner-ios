@@ -189,6 +189,9 @@ struct Products {
         self.supplierId = data["supplierId"].stringValue
         self.discount = data["discount"].intValue
         self.unit = data["unitString"].stringValue
+        if self.unit != " " && self.unit != ""{
+            self.unit = "/\(String(self.unit))"
+        }
         self.userStatus = data["userStatus"].boolValue
         self.nonEditable = data["nonEditable"].boolValue
         if self.nonEditable == nil

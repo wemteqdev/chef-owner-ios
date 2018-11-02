@@ -159,7 +159,7 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
                     cell.reviewCnt.text =  "\(String(featuredProductCollectionModel[indexPath.row].reviewCount)) reviews"
                     cell.starRating.value = CGFloat(featuredProductCollectionModel[indexPath.row].rating)
                     cell.ratingbtn.setTitle(String(featuredProductCollectionModel[indexPath.row].rating), for: .normal)
-                    cell.price_vat.text = "\(String(featuredProductCollectionModel[indexPath.row].price))/\(String(featuredProductCollectionModel[indexPath.row].unit)) - \(String(featuredProductCollectionModel[indexPath.row].taxClass))"
+                    cell.price_vat.text = "\(String(featuredProductCollectionModel[indexPath.row].price))\(String(featuredProductCollectionModel[indexPath.row].unit)) - \(String(featuredProductCollectionModel[indexPath.row].taxClass))"
                     cell.supplierName.text =  featuredProductCollectionModel[indexPath.row].supplierName
                     print(featuredProductCollectionModel[indexPath.row].productID)
                     print("CATEGORIES FOR THIS ID")
@@ -272,7 +272,7 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
                     cell.reviewCnt.text =  "\(String(featuredProductCollectionModel[indexPath.row].reviewCount)) reviews"
                     cell.starRating.value = CGFloat(featuredProductCollectionModel[indexPath.row].rating)
                     cell.ratingbtn.setTitle(String(featuredProductCollectionModel[indexPath.row].rating), for: .normal)
-                    cell.pricevat.text = "\(String(featuredProductCollectionModel[indexPath.row].price))/\(String(featuredProductCollectionModel[indexPath.row].unit)) - \(String(featuredProductCollectionModel[indexPath.row].taxClass))"
+                    cell.pricevat.text = "\(String(featuredProductCollectionModel[indexPath.row].price))\(String(featuredProductCollectionModel[indexPath.row].unit)) - \(String(featuredProductCollectionModel[indexPath.row].taxClass))"
                     cell.supplierName.text =  featuredProductCollectionModel[indexPath.row].supplierName
                     //cell.descriptionData.text = featuredPrproduoductCollectionModel[indexPath.row].descriptionData
                    

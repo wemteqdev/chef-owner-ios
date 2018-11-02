@@ -53,7 +53,8 @@ class Chef_MyOrders: UIViewController ,UITableViewDelegate, UITableViewDataSourc
         super.viewDidLoad()
         myOrderTableView.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor).isActive = true
         self.navigationController?.isNavigationBarHidden = false
-        self.navigationItem.title = GlobalData.sharedInstance.language(key: "myorder")
+        //self.navigationItem.title = GlobalData.sharedInstance.language(key: "myorder")
+        self.navigationItem.title = "Orders"
         
         //navigationController?.navigationBar.applyNavigationGradient(colors:GRADIENTCOLOR)
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]

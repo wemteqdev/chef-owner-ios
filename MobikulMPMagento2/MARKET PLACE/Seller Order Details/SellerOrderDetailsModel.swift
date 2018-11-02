@@ -18,8 +18,8 @@ struct SellerOrderItemList{
     var totalPrice:String!
     var vendorTotal:String!
     var sellerQty = [SellerQty]()
-    
-    
+    var taxClass:String!
+    var packSize:String!
     init(data:JSON) {
         self.adminCommission = data["adminCommission"].stringValue
         self.price = data["price"].stringValue
@@ -28,6 +28,9 @@ struct SellerOrderItemList{
         self.subtotal = data["subTotal"].stringValue
         self.totalPrice = data["totalPrice"].stringValue
         self.vendorTotal = data["vendorTotal"].stringValue
+        
+        self.packSize = data["packSize"].stringValue
+        self.taxClass = data["tax_class"].stringValue
         
         if let arrayData = data["qty"].arrayObject{
             sellerQty =  arrayData.map({(value) -> SellerQty in

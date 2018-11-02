@@ -66,6 +66,7 @@ class CustomerProfileViewController: UIViewController, UITableViewDelegate, UITa
                 cell.profileEmail.text = self.accountInfoModel.emailId
                 cell.editView.isHidden = true;
                 cell.profileEmail.isHidden = true;
+                cell.visualView.backgroundColor = UIColor(red: 30/255, green: 161/255, blue: 243/255, alpha: 1.0);
                 
                 if(customerImage != ""){
                     GlobalData.sharedInstance.getImageFromUrl(imageUrl: self.customerImage, imageView: cell.profileImage)

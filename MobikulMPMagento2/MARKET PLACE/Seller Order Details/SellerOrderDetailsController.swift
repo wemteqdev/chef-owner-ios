@@ -11,7 +11,7 @@ import UIKit
 class SellerOrderDetailsController: UIViewController,UITableViewDelegate, UITableViewDataSource {
     
     var incrementId:String = ""
-    var supplierId:String = ""
+    var supplierId:String!
     @IBOutlet weak var sellerTableView: UITableView!
     var sellerOrderDetailsViewModelData:SellerOrderDetailsViewModelData!
     var carrierTextField = UITextField()
@@ -20,11 +20,14 @@ class SellerOrderDetailsController: UIViewController,UITableViewDelegate, UITabl
     
     var btnCellTotalHeight = 0
     var cellIndexes = [String:Int]()
-    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = false
-        navigationController?.navigationBar.applyNavigationGradient(colors:GRADIENTCOLOR)
+        navigationController?.navigationBar.setBackgroundImage(UIImage(named: "back_color"), for: UIBarMetrics.default)
+        navigationController?.navigationBar.shadowImage = UIImage();
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         self.navigationItem.title = GlobalData.sharedInstance.language(key: "orderdetails")
         
@@ -57,12 +60,14 @@ class SellerOrderDetailsController: UIViewController,UITableViewDelegate, UITabl
         self.view.isUserInteractionEnabled = false
         var requstParams = [String:Any]();
         requstParams["incrementId"] = incrementId
-        requstParams["supplierId"] = supplierId
+        
         let storeId = defaults.object(forKey: "storeId")
         if(storeId != nil){
             requstParams["storeId"] = storeId
         }
-        let customerId = defaults.object(forKey:"customerId");
+        //let customerId = defaults.object(forKey:"customerId");
+        let customerId = self.supplierId;
+        requstParams["fromCustomer"] = true
         if customerId != nil{
             requstParams["customerToken"] = customerId
         }
@@ -177,7 +182,7 @@ class SellerOrderDetailsController: UIViewController,UITableViewDelegate, UITabl
             }
         }
         else{
-            GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"wemteqchef/customer/vieworder", currentView: self){success,responseObject in
+            GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"wemteqchef/order/vieworder", currentView: self){success,responseObject in
                 if success == 1{
                     if responseObject?.object(forKey: "storeId") != nil{
                         let storeId:String = String(format: "%@", responseObject!.object(forKey: "storeId") as! CVarArg)
@@ -207,87 +212,85 @@ class SellerOrderDetailsController: UIViewController,UITableViewDelegate, UITabl
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return 3
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         
         if section == 0{
-            return self.sellerOrderDetailsViewModelData.sellerOrderItemList.count
-        }else if section == 2{
+            return self.sellerOrderDetailsViewModelData.sellerOrderItemList.count + 6
+        }else if section == 1{
             if self.sellerOrderDetailsViewModelData.billingAddress == "" {
                 return 0
             }else{
                 return 1
             }
-        }else if section == 3{
+        }else if section == 2{
             if self.sellerOrderDetailsViewModelData.shippingAddress == ""{
                 return 0
             }else{
                 return 1
             }
-        }else if section == 5{
-            return 0
+        }else if section == 4{
             if self.sellerOrderDetailsViewModelData.shippingMethod == ""{
                 return 0
             }else{
                 return 1
             }
-        }else if section == 7    {
-
+        }else if section == 6    {
             if self.sellerOrderDetailsViewModelData.buyerName != "" || self.sellerOrderDetailsViewModelData.buyerEmail != ""    {
                 return 1
             }else{
                 return 0
             }
-        }else if section == 6{
+        }else if section == 5{
             
             var returnCellCount = 0
             cellIndexes.removeAll()
             
-//            if self.sellerOrderDetailsViewModelData.creditMemoButton == 1{
-//                cellIndexes["creditMemo"] = returnCellCount
-//                returnCellCount += 1
-//            }
-//
-//            if self.sellerOrderDetailsViewModelData.sendEmailButton == 1{
-//                cellIndexes["sendMail"] = returnCellCount
-//                returnCellCount += 1
-//            }
-//
-//            if self.sellerOrderDetailsViewModelData.invoiceButton == 1{
-//                cellIndexes["invoice"] = returnCellCount
-//                returnCellCount += 1
-//            }
-//
-//            if self.sellerOrderDetailsViewModelData.shipmentButton == 1{
-//                cellIndexes["shipment"] = returnCellCount
-//                returnCellCount += 1
-//            }
-//
-//            if self.sellerOrderDetailsViewModelData.cancelButton == 1{
-//                cellIndexes["cancel"] = returnCellCount
-//                returnCellCount += 1
-//            }
-//
-//            var f = 0
-//
-//            if self.sellerOrderDetailsViewModelData.invoiceId != "0"{
-//                f = 1
-//            }
-//
-//            if self.sellerOrderDetailsViewModelData.shipmentId != "0"{
-//                f = 1
-//            }
-//
-//            if self.sellerOrderDetailsViewModelData.creditMemoTab != 0{
-//                f = 1
-//            }
-//
-//            if f == 1{
-//                cellIndexes["bottom"] = returnCellCount
-//                returnCellCount += 1
-//            }
+            if self.sellerOrderDetailsViewModelData.creditMemoButton == 1{
+                cellIndexes["creditMemo"] = returnCellCount
+                returnCellCount += 1
+            }
+            
+            if self.sellerOrderDetailsViewModelData.sendEmailButton == 1{
+                cellIndexes["sendMail"] = returnCellCount
+                returnCellCount += 1
+            }
+            
+            if self.sellerOrderDetailsViewModelData.invoiceButton == 1{
+                cellIndexes["invoice"] = returnCellCount
+                returnCellCount += 1
+            }
+            
+            if self.sellerOrderDetailsViewModelData.shipmentButton == 1{
+                cellIndexes["shipment"] = returnCellCount
+                returnCellCount += 1
+            }
+            
+            if self.sellerOrderDetailsViewModelData.cancelButton == 1{
+                cellIndexes["cancel"] = returnCellCount
+                returnCellCount += 1
+            }
+            
+            var f = 0
+            
+            if self.sellerOrderDetailsViewModelData.invoiceId != "0"{
+                f = 1
+            }
+            
+            if self.sellerOrderDetailsViewModelData.shipmentId != "0"{
+                f = 1
+            }
+            
+            if self.sellerOrderDetailsViewModelData.creditMemoTab != 0{
+                f = 1
+            }
+            
+            if f == 1{
+                cellIndexes["bottom"] = returnCellCount
+                returnCellCount += 1
+            }
             
             return returnCellCount
         }else {
@@ -297,16 +300,18 @@ class SellerOrderDetailsController: UIViewController,UITableViewDelegate, UITabl
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        
-        if indexPath.section == 3{
+        if indexPath.section == 0 {
+            return 60
+        }
+        else if indexPath.section == 2{
             if sellerOrderDetailsViewModelData.shippingAddress == ""{
                 return 0
             }
-        }else if indexPath.section == 5{
+        }else if indexPath.section == 4{
             if sellerOrderDetailsViewModelData.shipmentId != "0"{
                 return 0
             }
-        }else if indexPath.section == 6{
+        }else if indexPath.section == 5{
             return UITableViewAutomaticDimension
         }
         
@@ -316,7 +321,7 @@ class SellerOrderDetailsController: UIViewController,UITableViewDelegate, UITabl
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.section == 5{
+        if indexPath.section == 4{
             let cell:SellerShipmentTableViewCell = tableView.dequeueReusableCell(withIdentifier: "SellerShipmentTableViewCell") as! SellerShipmentTableViewCell
             cell.shipmentValue.text = sellerOrderDetailsViewModelData.shippingMethod
             if sellerOrderDetailsViewModelData.shipmentId != "0"{
@@ -334,45 +339,111 @@ class SellerOrderDetailsController: UIViewController,UITableViewDelegate, UITabl
             
         }else if indexPath.section == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "SellerItemsTableViewCell", for: indexPath) as! SellerItemsTableViewCell
-            cell.productName.text = self.sellerOrderDetailsViewModelData.sellerOrderItemList[indexPath.row].productName
-            cell.priceLabelValue.text = self.sellerOrderDetailsViewModelData.sellerOrderItemList[indexPath.row].price
-            cell.totalLabelValue.text = self.sellerOrderDetailsViewModelData.sellerOrderItemList[indexPath.row].totalPrice
-            cell.admincommissionLabelValue.text = self.sellerOrderDetailsViewModelData.sellerOrderItemList[indexPath.row].adminCommission
-            cell.vendorTotalLabelValue.text = self.sellerOrderDetailsViewModelData.sellerOrderItemList[indexPath.row].vendorTotal
-            cell.subtotalLabelValue.text = self.sellerOrderDetailsViewModelData.sellerOrderItemList[indexPath.row].subtotal
-            
-            
-            var optionData:String = ""
-            for i in 0..<self.sellerOrderDetailsViewModelData.sellerOrderItemList[indexPath.row].sellerQty.count{
-                let first = self.sellerOrderDetailsViewModelData.sellerOrderItemList[indexPath.row].sellerQty[i].label
-                let second = self.sellerOrderDetailsViewModelData.sellerOrderItemList[indexPath.row].sellerQty[i].value
-                optionData = optionData+first!+":"+second!+"\n"
+            cell.itemCellWidth.constant = SCREEN_WIDTH
+            if indexPath.row == 0 {
+               cell.infoLabel.isHidden = false
+                cell.infoView.isHidden = true
+                cell.priceLabelValue.text = "Cost(exc VAT)"
+                cell.totalLabelValue.text = "Total Cost"
+                cell.admincommissionLabelValue.text = "Commission"
+                cell.vendorTotalLabelValue.text = "Vendor Total"
+                cell.subtotalLabelValue.text = "Total(exc VAT)"
+                cell.qtyLabelValue.text = "Quantity"
             }
+            else if indexPath.row  == self.sellerOrderDetailsViewModelData.sellerOrderItemList.count + 1{
+                cell.infoLabel.isHidden = false
+                cell.infoView.isHidden = true
+                cell.infoLabel.text = ""
+                cell.totalLabels.isHidden = false
+                cell.totalLabels.text = "Sub-Total(exc VAT)"
+                cell.priceLabelValue.isHidden = true
+                cell.qtyLabelValue.isHidden = true
+                cell.subtotalLabelValue.text = self.sellerOrderDetailsViewModelData.subTotal
+            }
+            else if indexPath.row  == self.sellerOrderDetailsViewModelData.sellerOrderItemList.count + 2{
+                cell.infoLabel.isHidden = false
+                cell.infoView.isHidden = true
+                cell.infoLabel.text = ""
+                cell.totalLabels.isHidden = false
+                cell.totalLabels.text = "Shipping Cost"
+                cell.priceLabelValue.isHidden = true
+                cell.qtyLabelValue.isHidden = true
+                cell.subtotalLabelValue.text = self.sellerOrderDetailsViewModelData.shipping
+            }
+            else if indexPath.row  == self.sellerOrderDetailsViewModelData.sellerOrderItemList.count + 3{
+                cell.infoLabel.isHidden = false
+                cell.infoView.isHidden = true
+                cell.infoLabel.text = ""
+                cell.totalLabels.isHidden = false
+                cell.totalLabels.text = "Total VAT"
+                cell.priceLabelValue.isHidden = true
+                cell.qtyLabelValue.isHidden = true
+                cell.subtotalLabelValue.text = self.sellerOrderDetailsViewModelData.tax
+            }
+            else if indexPath.row  == self.sellerOrderDetailsViewModelData.sellerOrderItemList.count + 4{
+                cell.infoLabel.isHidden = false
+                cell.infoView.isHidden = true
+                cell.totalLabels.isHidden = false
+                cell.infoLabel.text = ""
+                cell.totalLabels.text = "Discount"
+                cell.priceLabelValue.isHidden = true
+                cell.qtyLabelValue.isHidden = true
+                cell.subtotalLabelValue.text = self.sellerOrderDetailsViewModelData.discount
+            }
+            else if indexPath.row  == self.sellerOrderDetailsViewModelData.sellerOrderItemList.count + 5{
+                cell.infoLabel.isHidden = false
+                cell.infoView.isHidden = true
+                cell.infoLabel.text = ""
+                cell.totalLabels.text = "Total Cost"
+                cell.totalLabels.isHidden = false
+                cell.priceLabelValue.isHidden = true
+                cell.qtyLabelValue.isHidden = true
+                cell.subtotalLabelValue.text = self.sellerOrderDetailsViewModelData.orderTotal
+            }
+            else {
+                cell.packSizeLable.text = self.sellerOrderDetailsViewModelData.sellerOrderItemList[indexPath.row - 1].packSize
+                cell.vatLabel.text = self.sellerOrderDetailsViewModelData.sellerOrderItemList[indexPath.row - 1].taxClass
+                cell.productName.text = self.sellerOrderDetailsViewModelData.sellerOrderItemList[indexPath.row - 1].productName
+                cell.priceLabelValue.text = self.sellerOrderDetailsViewModelData.sellerOrderItemList[indexPath.row - 1].price
+                cell.totalLabelValue.text = self.sellerOrderDetailsViewModelData.sellerOrderItemList[indexPath.row - 1].totalPrice
+                cell.admincommissionLabelValue.text = self.sellerOrderDetailsViewModelData.sellerOrderItemList[indexPath.row - 1].adminCommission
+                cell.vendorTotalLabelValue.text = self.sellerOrderDetailsViewModelData.sellerOrderItemList[indexPath.row - 1].vendorTotal
+                cell.subtotalLabelValue.text = self.sellerOrderDetailsViewModelData.sellerOrderItemList[indexPath.row - 1].subtotal
             
-            cell.qtyLabelValue.text = optionData
-
+                var optionData:String = ""
+                for i in 0..<self.sellerOrderDetailsViewModelData.sellerOrderItemList[indexPath.row - 1].sellerQty.count{
+                    optionData = self.sellerOrderDetailsViewModelData.sellerOrderItemList[indexPath.row - 1].sellerQty[0].value
+//                    let first = self.sellerOrderDetailsViewModelData.sellerOrderItemList[indexPath.row - 1].sellerQty[i].label
+//                    let second = self.sellerOrderDetailsViewModelData.sellerOrderItemList[indexPath.row - 1].sellerQty[i].value
+//                    optionData = optionData+first!+":"+second!+"\n"
+                }
+                cell.qtyLabelValue.text = optionData
+                
+            }
             cell.setNeedsDisplay()
             cell.setNeedsLayout()
             cell.layoutIfNeeded()
             cell.selectionStyle = .none
             return cell
             
-        }else if indexPath.section == 1{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SellerOrderDetailsTotalCell", for: indexPath) as! SellerOrderDetailsTotalCell
-            cell.subtaotalLabelValue.text = self.sellerOrderDetailsViewModelData.subTotal
-            cell.shipping_handlingLabelValue.text = self.sellerOrderDetailsViewModelData.shipping
-            cell.discountLabelValue.text = self.sellerOrderDetailsViewModelData.discount
-            cell.totalTaxValue.text = self.sellerOrderDetailsViewModelData.tax
-            cell.totalOrderAmountLabelValue.text = self.sellerOrderDetailsViewModelData.orderTotal
-            cell.totalVendorAmountLabelValue.text = self.sellerOrderDetailsViewModelData.vendorTotal
-            cell.totalAdminCommissionLabelValue.text = self.sellerOrderDetailsViewModelData.adminCommission
-            
-            cell.setNeedsDisplay()
-            cell.setNeedsLayout()
-            cell.layoutIfNeeded()
-            cell.selectionStyle = .none
-            return cell
-        }else if indexPath.section == 2{
+        }
+//           else if indexPath.section == 1{
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "SellerOrderDetailsTotalCell", for: indexPath) as! SellerOrderDetailsTotalCell
+//            cell.subtaotalLabelValue.text = self.sellerOrderDetailsViewModelData.subTotal
+//            cell.shipping_handlingLabelValue.text = self.sellerOrderDetailsViewModelData.shipping
+//            cell.discountLabelValue.text = self.sellerOrderDetailsViewModelData.discount
+//            cell.totalTaxValue.text = self.sellerOrderDetailsViewModelData.tax
+//            cell.totalOrderAmountLabelValue.text = self.sellerOrderDetailsViewModelData.orderTotal
+//            cell.totalVendorAmountLabelValue.text = self.sellerOrderDetailsViewModelData.vendorTotal
+//            cell.totalAdminCommissionLabelValue.text = self.sellerOrderDetailsViewModelData.adminCommission
+//
+//            cell.setNeedsDisplay()
+//            cell.setNeedsLayout()
+//            cell.layoutIfNeeded()
+//            cell.selectionStyle = .none
+//            return cell
+//        }
+        else if indexPath.section == 1{
             let cell:AddressUITableViewCell = tableView.dequeueReusableCell(withIdentifier: "address") as! AddressUITableViewCell
             cell.addressLabel.text = sellerOrderDetailsViewModelData.billingAddress
             
@@ -381,7 +452,7 @@ class SellerOrderDetailsController: UIViewController,UITableViewDelegate, UITabl
             cell.layoutIfNeeded()
             cell.selectionStyle = .none
             return cell
-        }else if indexPath.section == 3{
+        }else if indexPath.section == 2{
             let cell:AddressUITableViewCell = tableView.dequeueReusableCell(withIdentifier: "address") as! AddressUITableViewCell
             cell.addressLabel.text = sellerOrderDetailsViewModelData.shippingAddress
             
@@ -391,7 +462,7 @@ class SellerOrderDetailsController: UIViewController,UITableViewDelegate, UITabl
             cell.layoutIfNeeded()
             cell.selectionStyle = .none
             return cell
-        }else if indexPath.section == 4{
+        }else if indexPath.section == 3{
             let cell:AddressUITableViewCell = tableView.dequeueReusableCell(withIdentifier: "address") as! AddressUITableViewCell
             cell.addressLabel.text = sellerOrderDetailsViewModelData.paymentMethod
             
@@ -401,7 +472,7 @@ class SellerOrderDetailsController: UIViewController,UITableViewDelegate, UITabl
             cell.layoutIfNeeded()
             cell.selectionStyle = .none
             return cell
-        }else if indexPath.section == 6{
+        }else if indexPath.section == 5{
             
             if indexPath.row == cellIndexes["creditMemo"]   {
                 if self.sellerOrderDetailsViewModelData.creditMemoButton == 1{
@@ -619,27 +690,27 @@ class SellerOrderDetailsController: UIViewController,UITableViewDelegate, UITabl
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0{
             return GlobalData.sharedInstance.language(key: "itemlist");
-        }else if section == 3{
+        }else if section == 2{
             if self.sellerOrderDetailsViewModelData.shippingAddress == ""{
                 return ""
             }else{
                 return GlobalData.sharedInstance.language(key:"shippingaddress")
             }
-        }else if section == 2{
+        }else if section == 1{
             if self.sellerOrderDetailsViewModelData.billingAddress == ""{
                 return ""
             }else{
                 return GlobalData.sharedInstance.language(key:"billingaddress")
             }
-        }else if section == 4{
+        }else if section == 3{
             return GlobalData.sharedInstance.language(key:"billingmethod")
-        }else if section == 5{
+        }else if section == 4{
             if self.sellerOrderDetailsViewModelData.shippingMethod == ""{
                 return ""
             }else{
                 return GlobalData.sharedInstance.language(key:"shipmentmethod")
             }
-        }else if section == 7{
+        }else if section == 6{
             if self.sellerOrderDetailsViewModelData.buyerName != "" || self.sellerOrderDetailsViewModelData.buyerEmail != ""    {
                 return GlobalData.sharedInstance.language(key:"buyerinformation")
             }else{
@@ -655,31 +726,31 @@ class SellerOrderDetailsController: UIViewController,UITableViewDelegate, UITabl
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0{
             return 0
-        }else if section == 2 {
+        }else if section == 1 {
             if sellerOrderDetailsViewModelData.billingAddress != ""{
                 return 30
             }else{
                 return 0
             }
-        }else if section == 3    {
+        }else if section == 2    {
             if sellerOrderDetailsViewModelData.shippingAddress != ""{
                 return 30
             }else{
                 return 0
             }
-        }else if section == 4 {
+        }else if section == 3 {
             if sellerOrderDetailsViewModelData.paymentMethod != ""{
                 return 30
             }else{
                 return 0
             }
-        }else if section == 5{
+        }else if section == 4{
             if sellerOrderDetailsViewModelData.shipmentId != "0"{
                 return 0
             }else{
                 return 30
             }
-        }else if section == 6 {
+        }else if section == 5 {
             return 0
         }else{
             return 30
@@ -755,7 +826,6 @@ class SellerOrderDetailsController: UIViewController,UITableViewDelegate, UITabl
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if(segue.identifier! == "invoicedetails") {
             let viewController:SellerInvoiceDetailsController = segue.destination as UIViewController as! SellerInvoiceDetailsController
             viewController.invoiceId = self.sellerOrderDetailsViewModelData.invoiceId;

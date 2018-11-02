@@ -3584,7 +3584,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kIp-zO-kJs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3370" y="-48"/>
+            <point key="canvasLocation" x="-3388" y="6"/>
         </scene>
         <!--Customer Profile View Controller-->
         <scene sceneID="1BV-Q0-q2F">
@@ -4057,7 +4057,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="$4.50 - $6.50/kg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nvu-7C-5ql">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$4.50 - $6.50/kg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nvu-7C-5ql">
                                         <rect key="frame" x="241" y="298.66666666666669" width="104" height="16"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" red="1" green="0.2680753448" blue="0.10537877280000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -4097,7 +4097,7 @@
                                         <rect key="frame" x="0.0" y="334.66666666666674" width="375" height="399.33333333333326"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableView>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vpB-as-NNh">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vpB-as-NNh">
                                         <rect key="frame" x="280" y="250.66666666666669" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="OKv-7z-SmT"/>
@@ -4108,7 +4108,7 @@
                                             <action selector="wishlistBtnClicked:" destination="35i-NC-Eu3" eventType="touchUpInside" id="Zgx-P9-yia"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lKh-ma-8Rg">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lKh-ma-8Rg">
                                         <rect key="frame" x="325" y="255.66666666666669" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="FbB-OD-SM8"/>
@@ -9401,19 +9401,19 @@
                                                 </connections>
                                             </view>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="NAME" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZgM-be-wvf" customClass="SkyFloatingLabelTextField" customModule="MobikulMPMagento2" customModuleProvider="target">
-                                                <rect key="frame" x="10" y="304" width="354" height="39.333333333333314"/>
+                                                <rect key="frame" x="10" y="304" width="354" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="NAME" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6gg-ac-S5B" customClass="SkyFloatingLabelTextField" customModule="MobikulMPMagento2" customModuleProvider="target">
-                                                <rect key="frame" x="10" y="353.33333333333331" width="354" height="39"/>
+                                                <rect key="frame" x="10" y="344" width="354" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="NAME" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d8f-8U-UlM" customClass="SkyFloatingLabelTextField" customModule="MobikulMPMagento2" customModuleProvider="target">
-                                                <rect key="frame" x="10" y="404" width="354" height="39.333333333333314"/>
+                                                <rect key="frame" x="10" y="385.66666666666669" width="354" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -9449,7 +9449,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jgi-fn-iaP">
-                                        <rect key="frame" x="164.66666666666666" y="494.33333333333337" width="46" height="30"/>
+                                        <rect key="frame" x="164.66666666666666" y="466.66666666666663" width="46" height="30"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
                                             <action selector="SubmitClick:" destination="Pri-Af-dnd" eventType="touchUpInside" id="t0g-56-0rl"/>
@@ -13836,7 +13836,7 @@
                                 <rect key="frame" x="10" y="64" width="355" height="300"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F77-RD-1me" customClass="SkyFloatingLabelTextField" customModule="MobikulMPMagento2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="8" width="355" height="42.666666666666664"/>
+                                        <rect key="frame" x="0.0" y="8" width="355" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -14956,7 +14956,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="gZV-OV-8Th"/>
-        <segue reference="29F-3K-eaY"/>
+        <segue reference="k3f-34-Vh7"/>
         <segue reference="6tN-Qy-AsZ"/>
         <segue reference="6H7-k0-P6o"/>
         <segue reference="DHe-33-5Ya"/>
@@ -14970,9 +14970,9 @@
         <segue reference="1IN-nY-tFS"/>
         <segue reference="1kv-3A-ZEC"/>
         <segue reference="5gt-HY-6Mn"/>
-        <segue reference="9Ml-QC-GQ9"/>
-        <segue reference="73e-Tb-T2V"/>
-        <segue reference="nUl-D2-yel"/>
+        <segue reference="qLT-Cy-ujC"/>
+        <segue reference="EhG-al-bPQ"/>
+        <segue reference="B8A-dj-Mnc"/>
         <segue reference="8rv-DD-j17"/>
         <segue reference="Pe6-X1-otd"/>
     </inferredMetricsTieBreakers>

@@ -272,7 +272,7 @@ class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPicker
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       
+       changeViewButton.isHidden = true
         
         filterView.register(UINib(nibName: "CategoryCell", bundle: nil), forCellWithReuseIdentifier: "categorycell")
         filterCoverView.isHidden = true

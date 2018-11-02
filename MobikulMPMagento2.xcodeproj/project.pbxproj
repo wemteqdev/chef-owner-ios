@@ -179,7 +179,7 @@
 		57F83DF82153D75200BC9DCB /* Chef_DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F83DF72153D75200BC9DCB /* Chef_DashboardViewController.swift */; };
 		57F83DFB2153DEC900BC9DCB /* Chef_CompareCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F83DF92153DEC900BC9DCB /* Chef_CompareCell.swift */; };
 		57F83DFC2153DEC900BC9DCB /* Chef_CompareCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57F83DFA2153DEC900BC9DCB /* Chef_CompareCell.xib */; };
-		8BD6147850DEBF559641AD84 /* Pods_MobikulMPMagento2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47E46E7C6839A4DB8CDDB871 /* Pods_MobikulMPMagento2.framework */; };
+		6A269EF1789BD66ABEF6917C /* Pods_MobikulMPMagento2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 623C310D6333D0A82EB778D1 /* Pods_MobikulMPMagento2.framework */; };
 		A30ACC1120B7EB4200CCB618 /* RecentViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30ACC0720B7EB3C00CCB618 /* RecentViewTableViewCell.swift */; };
 		A30ACC1220B7EB4200CCB618 /* RecentViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A30ACC1020B7EB4100CCB618 /* RecentViewTableViewCell.xib */; };
 		A30ACC1620B7EB5000CCB618 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30ACC1420B7EB5000CCB618 /* DBManager.swift */; };
@@ -592,6 +592,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0AB0534EBECAEA5B4BDBFEDB /* Pods-MobikulMPMagento2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobikulMPMagento2.release.xcconfig"; path = "Pods/Target Support Files/Pods-MobikulMPMagento2/Pods-MobikulMPMagento2.release.xcconfig"; sourceTree = "<group>"; };
 		0C05708E20408A8800EB527B /* MobikulMPMagento2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobikulMPMagento2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C05709820408A8800EB527B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0C05709D20408A8800EB527B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -718,8 +719,6 @@
 		29B11B112155603600980BA4 /* owner.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = owner.storyboard; sourceTree = "<group>"; };
 		29B8B1D12169C280006B8730 /* SuppliersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuppliersViewModel.swift; sourceTree = "<group>"; };
 		29B8B1DD2169ECC6006B8730 /* SupplierProductcategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SupplierProductcategory.swift; path = "MobikulMPMagento2/Product category/SupplierProductcategory.swift"; sourceTree = SOURCE_ROOT; };
-		473653DB888614C0902A7BFD /* Pods-MobikulMPMagento2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobikulMPMagento2.release.xcconfig"; path = "Pods/Target Support Files/Pods-MobikulMPMagento2/Pods-MobikulMPMagento2.release.xcconfig"; sourceTree = "<group>"; };
-		47E46E7C6839A4DB8CDDB871 /* Pods_MobikulMPMagento2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MobikulMPMagento2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		570A0928215EF1D100901621 /* Chef_MyCartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chef_MyCartTableViewCell.swift; sourceTree = "<group>"; };
 		570A0929215EF1D200901621 /* Chef_MyCartTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Chef_MyCartTableViewCell.xib; sourceTree = "<group>"; };
 		571F9626216B20B5007126D5 /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
@@ -774,6 +773,7 @@
 		57F83DF72153D75200BC9DCB /* Chef_DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chef_DashboardViewController.swift; sourceTree = "<group>"; };
 		57F83DF92153DEC900BC9DCB /* Chef_CompareCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chef_CompareCell.swift; sourceTree = "<group>"; };
 		57F83DFA2153DEC900BC9DCB /* Chef_CompareCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Chef_CompareCell.xib; sourceTree = "<group>"; };
+		623C310D6333D0A82EB778D1 /* Pods_MobikulMPMagento2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MobikulMPMagento2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A30ACC0720B7EB3C00CCB618 /* RecentViewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentViewTableViewCell.swift; sourceTree = "<group>"; };
 		A30ACC1020B7EB4100CCB618 /* RecentViewTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecentViewTableViewCell.xib; sourceTree = "<group>"; };
 		A30ACC1420B7EB5000CCB618 /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
@@ -1064,7 +1064,7 @@
 		A3C189D6213AD147009B6702 /* LabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LabelCell.xib; sourceTree = "<group>"; };
 		A3C189D7213AD147009B6702 /* TextDetectorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextDetectorController.swift; sourceTree = "<group>"; };
 		A3C189D8213AD147009B6702 /* UIImage+TFLite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+TFLite.swift"; sourceTree = "<group>"; };
-		DE02AEF0C301449F0A01C29E /* Pods-MobikulMPMagento2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobikulMPMagento2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MobikulMPMagento2/Pods-MobikulMPMagento2.debug.xcconfig"; sourceTree = "<group>"; };
+		CA098BEF4C5453DD03DD2A62 /* Pods-MobikulMPMagento2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobikulMPMagento2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MobikulMPMagento2/Pods-MobikulMPMagento2.debug.xcconfig"; sourceTree = "<group>"; };
 		ECABAE2A205807DB00D71EDD /* PHFComposeBarView_Button.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHFComposeBarView_Button.m; sourceTree = "<group>"; };
 		ECABAE2B205807DC00D71EDD /* PHFDelegateChain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHFDelegateChain.m; sourceTree = "<group>"; };
 		ECABAE2C205807DC00D71EDD /* PHFComposeBarView_TextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHFComposeBarView_TextView.m; sourceTree = "<group>"; };
@@ -1086,7 +1086,7 @@
 			files = (
 				0C05726C20408FD600EB527B /* SwiftMessages.framework in Frameworks */,
 				0C05727120408FDA00EB527B /* Alamofire.framework in Frameworks */,
-				8BD6147850DEBF559641AD84 /* Pods_MobikulMPMagento2.framework in Frameworks */,
+				6A269EF1789BD66ABEF6917C /* Pods_MobikulMPMagento2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1100,6 +1100,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		07E113CF1444B07B0081BF26 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CA098BEF4C5453DD03DD2A62 /* Pods-MobikulMPMagento2.debug.xcconfig */,
+				0AB0534EBECAEA5B4BDBFEDB /* Pods-MobikulMPMagento2.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		0C05708520408A8800EB527B = {
 			isa = PBXGroup;
 			children = (
@@ -1110,8 +1119,8 @@
 				0C05709020408A8800EB527B /* MobikulMPMagento2 */,
 				A362A28D2127F8C500B6B398 /* NotificationService */,
 				0C05708F20408A8800EB527B /* Products */,
-				8596A325CBE0F8E83122BFD7 /* Pods */,
-				EEFE5886DCCCACFEB8FDA35D /* Frameworks */,
+				07E113CF1444B07B0081BF26 /* Pods */,
+				3AE57EFA0FD176A06E685E2B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1390,6 +1399,14 @@
 			path = "Restaurant Dashboard";
 			sourceTree = "<group>";
 		};
+		3AE57EFA0FD176A06E685E2B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				623C310D6333D0A82EB778D1 /* Pods_MobikulMPMagento2.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		572187662152F37000FACF86 /* Chef_ProductDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -1483,15 +1500,6 @@
 				294127A82179F0CC0031CCFB /* ChefSuppliersDashboardController.swift */,
 			);
 			path = Chef_Sellerlist;
-			sourceTree = "<group>";
-		};
-		8596A325CBE0F8E83122BFD7 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				DE02AEF0C301449F0A01C29E /* Pods-MobikulMPMagento2.debug.xcconfig */,
-				473653DB888614C0902A7BFD /* Pods-MobikulMPMagento2.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		A30ACC1320B7EB5000CCB618 /* Realm DB */ = {
@@ -2125,14 +2133,6 @@
 			path = "Strech TexField";
 			sourceTree = "<group>";
 		};
-		EEFE5886DCCCACFEB8FDA35D /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				47E46E7C6839A4DB8CDDB871 /* Pods_MobikulMPMagento2.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2140,14 +2140,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0C0570A020408A8800EB527B /* Build configuration list for PBXNativeTarget "MobikulMPMagento2" */;
 			buildPhases = (
-				6FCC6B7B4EA7D426A244805F /* [CP] Check Pods Manifest.lock */,
+				B153394D02A322D005322C39 /* [CP] Check Pods Manifest.lock */,
 				0C05708A20408A8800EB527B /* Sources */,
 				0C05708B20408A8800EB527B /* Frameworks */,
 				0C05708C20408A8800EB527B /* Resources */,
 				0C05727020408FD600EB527B /* Embed Frameworks */,
 				A3DB34E020A9981500232F04 /* Embed App Extensions */,
-				9AF53FA91B9D6214D94115CB /* [CP] Embed Pods Frameworks */,
-				BF4229CAA9B9863C111805C3 /* [CP] Copy Pods Resources */,
+				58D9045E47084F1B92073F06 /* [CP] Embed Pods Frameworks */,
+				9AE995CA58FBDCD74DC69FD5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2442,25 +2442,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		6FCC6B7B4EA7D426A244805F /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MobikulMPMagento2-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9AF53FA91B9D6214D94115CB /* [CP] Embed Pods Frameworks */ = {
+		58D9045E47084F1B92073F06 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2522,7 +2504,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MobikulMPMagento2/Pods-MobikulMPMagento2-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		BF4229CAA9B9863C111805C3 /* [CP] Copy Pods Resources */ = {
+		9AE995CA58FBDCD74DC69FD5 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2542,6 +2524,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MobikulMPMagento2/Pods-MobikulMPMagento2-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B153394D02A322D005322C39 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MobikulMPMagento2-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -3046,7 +3046,7 @@
 		};
 		0C0570A120408A8800EB527B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DE02AEF0C301449F0A01C29E /* Pods-MobikulMPMagento2.debug.xcconfig */;
+			baseConfigurationReference = CA098BEF4C5453DD03DD2A62 /* Pods-MobikulMPMagento2.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -3071,7 +3071,7 @@
 		};
 		0C0570A220408A8800EB527B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 473653DB888614C0902A7BFD /* Pods-MobikulMPMagento2.release.xcconfig */;
+			baseConfigurationReference = 0AB0534EBECAEA5B4BDBFEDB /* Pods-MobikulMPMagento2.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
