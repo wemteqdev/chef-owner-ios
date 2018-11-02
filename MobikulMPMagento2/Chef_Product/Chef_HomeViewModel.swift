@@ -40,21 +40,21 @@ class Chef_HomeViewModel: NSObject {
             let featureCategoryCollectionItem = HomeViewModelFeatureCategoriesItem(categories: data.featureCategories)
             //items.append(featureCategoryCollectionItem)
         }
-
-        
-        if !data.featuredProductCollectionModel.isEmpty {
-            let featureCollectionItem = HomeViewModelFeatureItem(categories: data.featuredProductCollectionModel)
-            items.append(featureCollectionItem)
+        if !data.recommendedProductCollectionModel.isEmpty {
+            let recommendedCollectionItem = HomeViewModelRecommendedItem(categories: data.recommendedProductCollectionModel)
+            items.append(recommendedCollectionItem)
         }
         if !data.allProductCollectionModel.isEmpty {
             let allCollectionItem = HomeViewModelAllItem(categories: data.allProductCollectionModel)
             allProductCollectionModel = data.allProductCollectionModel;
             items.append(allCollectionItem)
         }
-        if !data.recommendedProductCollectionModel.isEmpty {
-            let recommendedCollectionItem = HomeViewModelRecommendedItem(categories: data.recommendedProductCollectionModel)
-            items.append(recommendedCollectionItem)
+        if !data.featuredProductCollectionModel.isEmpty {
+            let featureCollectionItem = HomeViewModelFeatureItem(categories: data.featuredProductCollectionModel)
+            items.append(featureCollectionItem)
         }
+        
+        
         
         let latestCollectionItem = HomeViewModelLatestItem(categories: data.latestProductCollectionModel)
         //items.append(latestCollectionItem)
@@ -191,6 +191,7 @@ extension Chef_HomeViewModel : UITableViewDelegate , UITableViewDataSource {
 
         let item = items[index]
         
+        
         switch item.type {
         case .Banner:
             let cell:BannerTableViewCell = tableView.dequeueReusableCell(withIdentifier: BannerTableViewCell.identifier) as! BannerTableViewCell
@@ -240,6 +241,7 @@ extension Chef_HomeViewModel : UITableViewDelegate , UITableViewDataSource {
             print("feature")
             cell.featuredProductCollectionModel = ((item as? HomeViewModelFeatureItem)?.featuredProductCollectionModel)!
             cell.ProductLabel.text = "Featured Products"
+            print(cell.featuredProductCollectionModel.count)
             break
             
         case .RecentViewData:
@@ -268,27 +270,43 @@ extension Chef_HomeViewModel : UITableViewDelegate , UITableViewDataSource {
             if homeViewController.filtered == true {
                 cell.ProductLabel.text = "Products in Category"
             }
+            print(cell.featuredProductCollectionModel.count)
             break
              //return UITableViewCell()
         case .RecommendedProduct:
             print("recommended")
              cell.featuredProductCollectionModel = ((item as? HomeViewModelRecommendedItem)?.recommendedProductCollectionModel)!
+            print(cell.featuredProductCollectionModel.count)
             cell.ProductLabel.text = "Recommended Products"
             break
              //return UITableViewCell()
         }
         cell.homeViewModel = homeViewController.homeViewModel
         cell.homeViewController = homeViewController
+        cell.prodcutCollectionView.reloadData()
         cell.selectionStyle = .none
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+         var index:Int!
         if items.count == 1 && tableView.tag != 1000{
             return 120
         }
         else{
-            return UITableViewAutomaticDimension
+            if homeViewController.filtered == true {
+                for i in 0..<items.count {
+                    if items[i].type == .AllProduct {
+                        index = i
+                    }
+                }
+            }
+            else{
+                index = indexPath.section + 1
+            }
+            
+            let item = items[index]
+            return CGFloat(item.rowCount * 127 + 50)
         }
         let item = items[indexPath.section]
         switch item.type {

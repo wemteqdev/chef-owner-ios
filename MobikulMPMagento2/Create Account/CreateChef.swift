@@ -104,7 +104,7 @@ class CreateChef: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource{
 
 
                 requstParams["mobile"] = self.phonenumTextField.text
-                requstParams["companyName"] = self.phonenumTextField.text
+                requstParams["companyName"] = self.companynameTextField.text
                 requstParams["address"] = self.addrTextField.text
                 requstParams["city"] = self.cityTextField.text
                 if(self.regionType == 1){
@@ -151,6 +151,11 @@ class CreateChef: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource{
                                 self.defaults.set("t", forKey: "isPending")
                             }
                             
+                            if dict["isOwner"].intValue == 0{
+                                self.defaults.set("f", forKey: "isOwner")
+                            }else{
+                                self.defaults.set("t", forKey: "isOwner")
+                            }
                             
                             if dict["isAdmin"].intValue == 0{
                                 self.defaults.set("f", forKey: "isAdmin")

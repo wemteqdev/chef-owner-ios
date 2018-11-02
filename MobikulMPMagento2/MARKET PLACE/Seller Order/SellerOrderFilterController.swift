@@ -34,10 +34,10 @@ var delegate: ChefSellerOrderFilterDataHandle!
         ApplyButton.setTitleColor(UIColor().HexToColor(hexString: BUTTON_COLOR), for: .normal)
         filterLabel.text = GlobalData.sharedInstance.language(key: "filter")
         selectDateLabel.text = GlobalData.sharedInstance.language(key: "selectdate")
-        orderIdTextField.placeholder = GlobalData.sharedInstance.language(key: "enterorderid")
+        orderIdTextField.placeholder = "Filter by order id"
         fromDateTextField.placeholder = GlobalData.sharedInstance.language(key: "fromdate")
         toDateTextField.placeholder = GlobalData.sharedInstance.language(key: "todate")
-        orderStatusTextField.placeholder = GlobalData.sharedInstance.language(key: "orderstatus")
+        orderStatusTextField.placeholder = "Filter by order status"
         if sellerOrderViewModel.orderStatus.count > 0{
             orderStatusTextField.text = sellerOrderViewModel.orderStatus[0].label
             status = sellerOrderViewModel.orderStatus[0].status

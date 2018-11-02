@@ -24,19 +24,23 @@ class Chef_DashboardView: UIViewController{
     @IBOutlet weak var diagramTotalView: UIStackView!
     @IBOutlet weak var barChartView: UIStackView!
     @IBOutlet weak var indexChartView: UIStackView!
+    @IBOutlet weak var ordersTotalView: UIStackView!
     
+    @IBOutlet weak var salesInsightView: UIView!
+    @IBOutlet weak var topProductTableView: UITableView!
     @IBOutlet weak var profile_view: UIView!
     @IBOutlet weak var profile_image: UIImageView!
     @IBOutlet weak var profile_name: UILabel!
     @IBOutlet weak var profile_owner: UILabel!
     var swipeGesture  = UISwipeGestureRecognizer()
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var logOutView: UIBarButtonItem!
     
     var mainCollection:JSON!
     var showType = 0;
     var orderTotal:NSMutableArray = []
-    var ownerDashboardModelView: OwnerDashBoardViewModel!
-    var callingApiSucceed: Bool = false;
+    static var ownerDashboardModelView: OwnerDashBoardViewModel!
+    static var callingApiSucceed: Bool = false;
     
     @IBAction func SegmentValueChanged(_ sender: Any) {
         if showTypeController.selectedSegmentIndex == 0{
@@ -49,32 +53,34 @@ class Chef_DashboardView: UIViewController{
             showType = 3;
         }
         
-        if (self.callingApiSucceed){
+        if (Chef_DashboardView.callingApiSucceed){
             var chartData: [BarChartData] = self.createChartDataCollection();
             print("chartData", chartData)
             barChartView.removeAllArrangedSubviews();
             indexChartView.removeAllArrangedSubviews();
             diagramTotalView.removeAllArrangedSubviews();
+            ordersTotalView.removeAllArrangedSubviews();
             for data in chartData {
                 self.addIndexElement(timeGraphData: data);
                 self.addGraphElement(timeGraphData: data);
             }
             if(self.showType == 0)
             {
-                self.addDiagramTotalElement(diagramData: self.ownerDashboardModelView.diagramDailyTotal);
+                self.addDiagramTotalElement(diagramData: Chef_DashboardView.ownerDashboardModelView.diagramDailyTotal);
             }
             else if(self.showType == 1)
             {
-                self.addDiagramTotalElement(diagramData: self.ownerDashboardModelView.diagramWeeklyTotal);
+                self.addDiagramTotalElement(diagramData: Chef_DashboardView.ownerDashboardModelView.diagramWeeklyTotal);
             }
             else if(self.showType == 2)
             {
-                self.addDiagramTotalElement(diagramData: self.ownerDashboardModelView.diagramMonthlyTotal);
+                self.addDiagramTotalElement(diagramData: Chef_DashboardView.ownerDashboardModelView.diagramMonthlyTotal);
             }
             else if(self.showType == 3)
             {
-                self.addDiagramTotalElement(diagramData: self.ownerDashboardModelView.diagramYearlyTotal);
+                self.addDiagramTotalElement(diagramData: Chef_DashboardView.ownerDashboardModelView.diagramYearlyTotal);
             }
+            self.addOrderTotalView();
         }
     }
     @objc func swipwView(_ sender : UISwipeGestureRecognizer){
@@ -117,7 +123,7 @@ class Chef_DashboardView: UIViewController{
          ownerProfileTableView.rowHeight = UITableViewAutomaticDimension
          */
         queue.maxConcurrentOperationCount = 20;
-        
+        /*
         let directions: [UISwipeGestureRecognizerDirection] = [.up, .down]
         for direction in directions {
             swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(self.swipwView(_:)))
@@ -125,9 +131,13 @@ class Chef_DashboardView: UIViewController{
             scrollView.isUserInteractionEnabled = true
             swipeGesture.direction = direction
         }
+         */
         var gesture = UITapGestureRecognizer(target: self, action:  #selector (self.profileViewPage (_:)))
         profile_view.addGestureRecognizer(gesture)
         
+	var gesture2 = UITapGestureRecognizer(target: self, action:  #selector (self.salesInsightClick (_:)))
+        salesInsightView.addGestureRecognizer(gesture2)
+	
         self.callingHttppApi();
     }
     
@@ -135,6 +145,9 @@ class Chef_DashboardView: UIViewController{
         self.performSegue(withIdentifier: "toprofileview", sender: self)
     }
     
+    @objc func salesInsightClick(_ sender:UITapGestureRecognizer){
+        self.performSegue(withIdentifier: "detailPage", sender: self)
+    }
     @IBAction func logOutClicked(_ sender: Any) {
         let AC = UIAlertController(title: GlobalData.sharedInstance.language(key: "warninglogoutmessage"), message: "", preferredStyle: .alert)
         let ok = UIAlertAction(title: GlobalData.sharedInstance.language(key: "yes"), style: .default, handler: {(_ action: UIAlertAction) -> Void in
@@ -172,7 +185,8 @@ class Chef_DashboardView: UIViewController{
         }
         
         self.view.isUserInteractionEnabled = false
-        self.callingApiSucceed = false;
+	GlobalData.sharedInstance.showLoader()
+        Chef_DashboardView.callingApiSucceed = false;
         GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"wemteqchef/chef/dashboard", currentView: self){success,responseObject in
             if success == 1{
                 if responseObject?.object(forKey: "storeId") != nil{
@@ -183,17 +197,18 @@ class Chef_DashboardView: UIViewController{
                 }
                 GlobalData.sharedInstance.dismissLoader()
                 self.view.isUserInteractionEnabled = true
-                self.callingApiSucceed = true
+                Chef_DashboardView.callingApiSucceed = true
                 var dict = JSON(responseObject as! NSDictionary)
                 print("jsonData:", responseObject);
                 if dict["success"].boolValue == true{
-                    self.ownerDashboardModelView = OwnerDashBoardViewModel(data:dict)
+                    Chef_DashboardView.ownerDashboardModelView = OwnerDashBoardViewModel(data:dict)
                     var chartData: [BarChartData] = self.createChartDataCollection();
                     print("chartData", chartData)
                     
                     self.barChartView.removeAllArrangedSubviews();
                     self.indexChartView.removeAllArrangedSubviews();
                     self.diagramTotalView.removeAllArrangedSubviews();
+                    self.ordersTotalView.removeAllArrangedSubviews();
                     
                     for data in chartData {
                         self.addIndexElement(timeGraphData: data)
@@ -201,21 +216,23 @@ class Chef_DashboardView: UIViewController{
                     }
                     if(self.showType == 0)
                     {
-                        self.addDiagramTotalElement(diagramData: self.ownerDashboardModelView.diagramDailyTotal);
-                        print("diagram:", self.ownerDashboardModelView.diagramDailyTotal)
+                        self.addDiagramTotalElement(diagramData: Chef_DashboardView.ownerDashboardModelView.diagramDailyTotal);
+                        print("diagram:", Chef_DashboardView.ownerDashboardModelView.diagramDailyTotal)
                     }
                     else if(self.showType == 1)
                     {
-                        self.addDiagramTotalElement(diagramData: self.ownerDashboardModelView.diagramWeeklyTotal);
+                        self.addDiagramTotalElement(diagramData: Chef_DashboardView.ownerDashboardModelView.diagramWeeklyTotal);
                     }
                     else if(self.showType == 2)
                     {
-                        self.addDiagramTotalElement(diagramData: self.ownerDashboardModelView.diagramMonthlyTotal);
+                        self.addDiagramTotalElement(diagramData: Chef_DashboardView.ownerDashboardModelView.diagramMonthlyTotal);
                     }
                     else if(self.showType == 3)
                     {
-                        self.addDiagramTotalElement(diagramData: self.ownerDashboardModelView.diagramYearlyTotal);
+                        self.addDiagramTotalElement(diagramData: Chef_DashboardView.ownerDashboardModelView.diagramYearlyTotal);
                     }
+                    self.addOrderTotalView();
+                    
                 }else{
                     GlobalData.sharedInstance.showErrorSnackBar(msg: dict["message"].stringValue)
                 }
@@ -225,29 +242,29 @@ class Chef_DashboardView: UIViewController{
                 self.callingHttppApi()
             }
         }
-        GlobalData.sharedInstance.showLoader()
+        //GlobalData.sharedInstance.showLoader()
     }
     
     private func createChartDataCollection () -> [BarChartData] {
         
         var chatDataArray = [BarChartData]();
         
-        var orderTotal = self.ownerDashboardModelView.orderYearlyTotal;
-        var orderString = self.ownerDashboardModelView.orderYearlyIndexString;
+        var orderTotal = Chef_DashboardView.ownerDashboardModelView.orderYearlyTotal;
+        var orderString = Chef_DashboardView.ownerDashboardModelView.orderYearlyIndexString;
         if (showType == 0)
         {
-            orderTotal = self.ownerDashboardModelView.orderDailyTotal;
-            orderString = self.ownerDashboardModelView.orderDailyIndexString;
+            orderTotal = Chef_DashboardView.ownerDashboardModelView.orderDailyTotal;
+            orderString = Chef_DashboardView.ownerDashboardModelView.orderDailyIndexString;
         }
         else if(showType == 1)
         {
-            orderTotal = self.ownerDashboardModelView.orderWeeklyTotal;
-            orderString = self.ownerDashboardModelView.orderWeeklyIndexString;
+            orderTotal = Chef_DashboardView.ownerDashboardModelView.orderWeeklyTotal;
+            orderString = Chef_DashboardView.ownerDashboardModelView.orderWeeklyIndexString;
         }
         else if(showType == 2)
         {
-            orderTotal = self.ownerDashboardModelView.orderMonthlyTotal;
-            orderString = self.ownerDashboardModelView.orderMonthlyIndexString;
+            orderTotal = Chef_DashboardView.ownerDashboardModelView.orderMonthlyTotal;
+            orderString = Chef_DashboardView.ownerDashboardModelView.orderMonthlyIndexString;
         }
         print("orderTotal:", orderTotal)
         print("orderString:", orderString)
@@ -335,6 +352,82 @@ class Chef_DashboardView: UIViewController{
         indexChartView.translatesAutoresizingMaskIntoConstraints = false;
     }
     
+    private func addOrderTotalView () {
+        
+        let horizontalStackView1: UIStackView = UIStackView()
+        horizontalStackView1.axis = .horizontal
+        horizontalStackView1.alignment = .fill
+        horizontalStackView1.distribution = .fillEqually
+        //horizontalStackView1.spacing = 8.0
+        
+        let yearlyOrderView = Bundle.main.loadNibNamed("OrderViewCell", owner: self, options: nil)?.first as! OrderViewCell
+        let monthlyOrderView = Bundle.main.loadNibNamed("OrderViewCell", owner: self, options: nil)?.first as! OrderViewCell
+        
+        yearlyOrderView.orderDescription.text = "This year " + Chef_DashboardView.ownerDashboardModelView.orderYearlyIndexString[Chef_DashboardView.ownerDashboardModelView.orderYearlyIndexString.count - 2] + "-" + Chef_DashboardView.ownerDashboardModelView.orderYearlyIndexString[Chef_DashboardView.ownerDashboardModelView.orderYearlyIndexString.count - 1];
+        yearlyOrderView.ordersCount.text = String(format: "%d", Chef_DashboardView.ownerDashboardModelView.diagramYearlyTotal.ordersCount);
+        
+        let now = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "LLLL"
+        let nameOfMonth = dateFormatter.string(from: now)
+        
+        monthlyOrderView.orderDescription.text = "This Month - " + nameOfMonth;
+        monthlyOrderView.orderDescription.textColor = UIColor.red;
+        monthlyOrderView.ordersCount.text = String(format: "%d", Chef_DashboardView.ownerDashboardModelView.diagramMonthlyTotal.ordersCount);
+        monthlyOrderView.ordersCount.textColor = UIColor.red;
+        
+        horizontalStackView1.addArrangedSubview(yearlyOrderView)
+        horizontalStackView1.addArrangedSubview(monthlyOrderView)
+        //horizontalStackView1.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        //horizontalStackView1.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        //horizontalStackView1.translatesAutoresizingMaskIntoConstraints = false;
+        
+        let horizontalStackView2: UIStackView = UIStackView()
+        horizontalStackView2.axis = .horizontal
+        horizontalStackView2.alignment = .fill
+        horizontalStackView2.distribution = .fillEqually
+        //horizontalStackView2.spacing = 8.0
+        
+        let creditNotesView = Bundle.main.loadNibNamed("OrderViewCell", owner: self, options: nil)?.first as! OrderViewCell
+        let totalOrderView = Bundle.main.loadNibNamed("OrderViewCell", owner: self, options: nil)?.first as! OrderViewCell
+        creditNotesView.orderName.text = "Credit notes"
+        creditNotesView.orderDescription.text = "This Month - " + nameOfMonth;
+        creditNotesView.orderDescription.textColor = UIColor.red;
+        creditNotesView.ordersCount.textColor = UIColor.red;
+        creditNotesView.ordersCount.text = String(format:"%d", Chef_DashboardView.ownerDashboardModelView.monthlyCreditMemosCount);
+        
+        totalOrderView.orderName.text = "Total Orders"
+        totalOrderView.orderDescription.text = "This Month - " + nameOfMonth;
+        totalOrderView.ordersCount.text = Chef_DashboardView.ownerDashboardModelView.currencySymbol + Chef_DashboardView.ownerDashboardModelView.diagramMonthlyTotal.ordersTotal;
+        
+        horizontalStackView2.addArrangedSubview(creditNotesView)
+        horizontalStackView2.addArrangedSubview(totalOrderView)
+        
+        let horizontalStackView3: UIStackView = UIStackView()
+        horizontalStackView3.axis = .horizontal
+        horizontalStackView3.alignment = .fill
+        horizontalStackView3.distribution = .fillEqually
+        //horizontalStackView2.spacing = 8.0
+        
+        let deliveryView = Bundle.main.loadNibNamed("OrderViewCell", owner: self, options: nil)?.first as! OrderViewCell
+        let pendingView = Bundle.main.loadNibNamed("OrderViewCell", owner: self, options: nil)?.first as! OrderViewCell
+        deliveryView.orderName.text = "Delivered"
+        deliveryView.orderDescription.text = "This Month - " + nameOfMonth;
+        deliveryView.ordersCount.text = String(format:"%d", Chef_DashboardView.ownerDashboardModelView.monthlyCompleteOrdersCount);
+        
+        pendingView.orderName.text = "Pending Delivery"
+        pendingView.orderDescription.text = "This Month - " + nameOfMonth;
+        pendingView.orderDescription.textColor = UIColor.red;
+        pendingView.ordersCount.textColor = UIColor.red;
+        pendingView.ordersCount.text = String(format:"%d", Chef_DashboardView.ownerDashboardModelView.monthlyPendingOrdersCount);
+        
+        horizontalStackView3.addArrangedSubview(deliveryView)
+        horizontalStackView3.addArrangedSubview(pendingView)
+        
+        ordersTotalView.addArrangedSubview(horizontalStackView1)
+        ordersTotalView.addArrangedSubview(horizontalStackView2)
+        ordersTotalView.addArrangedSubview(horizontalStackView3)
+    }
     private func addDiagramTotalElement (diagramData: DiagramTotalData) {
         let purchaseLabelHeight: CGFloat = 20.0
         
@@ -348,7 +441,7 @@ class Chef_DashboardView: UIViewController{
         verticalStackView.spacing = 8.0
         
         purchaseLabel.textColor = UIColor(red: 255/255, green: 138/255, blue: 0/255, alpha: 1.0);
-        purchaseLabel.text = self.ownerDashboardModelView.currencySymbol + diagramData.ordersTotal;
+        purchaseLabel.text = Chef_DashboardView.ownerDashboardModelView.currencySymbol + diagramData.ordersTotal;
         purchaseLabel.font = UIFont.boldSystemFont(ofSize: purchaseLabelHeight)
         purchaseLabel.textAlignment = .center
         
@@ -375,15 +468,16 @@ class Chef_DashboardView: UIViewController{
         
         let changeLabel = UILabel()
         let changeStringLabel = UILabel()
-        changeLabel.textColor = UIColor(red: 39/255, green: 183/255, blue: 100/255, alpha: 1.0);
+        
         //changeLabel.text = String(format: "%d",diagramData.ordersCount);
         if(diagramData.percentage >= 0) {
-            changeLabel.text = String(format: "↑%0.1f%%", diagramData.percentage);
+            changeLabel.textColor = UIColor(red: 39/255, green: 183/255, blue: 100/255, alpha: 1.0);
+            changeLabel.text = String(format: "%0.1f%%", diagramData.percentage);
         } else {
-            changeLabel.text = String(format: "↓%0.1f%%", diagramData.percentage);
+            changeLabel.textColor = UIColor(red: 230/255, green: 0/255, blue: 0/255, alpha: 1.0);
+            changeLabel.text = String(format: "%0.1f%%", diagramData.percentage);
         }
-        print("diagram percent:", changeLabel.text);
-        changeLabel.font = UIFont.boldSystemFont(ofSize: 15)
+        changeLabel.font = UIFont.boldSystemFont(ofSize: purchaseLabelHeight)
         changeLabel.textAlignment = .center
         
         changeLabel.heightAnchor.constraint(equalToConstant: purchaseLabelHeight).isActive = true
@@ -437,7 +531,7 @@ class Chef_DashboardView: UIViewController{
         
         let suppliersLabel = UILabel()
         let suppliersStringLabel = UILabel()
-        suppliersLabel.textColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1.0);
+        suppliersLabel.textColor = UIColor(red: 0/255, green: 0/255, blue: 230/255, alpha: 1.0);
         suppliersLabel.text = String(format: "%d",diagramData.supplierCounts);
         //suppliersLabel.text = String(format: "16");
         suppliersLabel.font = UIFont.boldSystemFont(ofSize: purchaseLabelHeight)
@@ -598,7 +692,7 @@ class Chef_DashboardView: UIViewController{
             defaults.set(responseData["customerEmail"].stringValue, forKey: "customerEmail")
             defaults.set(responseData["customerToken"].stringValue, forKey: "customerId")
             defaults.set(responseData["customerName"].stringValue, forKey: "customerName")
-            profile_name.text = defaults.object(forKey: "customerName") as? String
+            profile_name.text = defaults.object(forKey: "companyName") as? String
             
             if(defaults.object(forKey: "quoteId") != nil){
                 defaults.set(nil, forKey: "quoteId")
@@ -650,10 +744,10 @@ class Chef_DashboardView: UIViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         self.callingHttppApi();
-        if defaults.object(forKey: "customerName") != nil{
-            profile_name.text = defaults.object(forKey: "customerName") as? String
+        if defaults.object(forKey: "companyName") != nil{
+            profile_name.text = defaults.object(forKey: "companyName") as? String
         } else {
-            profile_name.text = "Chef"
+            profile_name.text = "No Company Name"
         }
         profile_image.image = UIImage(named: "ic_camera")!
         if defaults.object(forKey: "profilePicture") as? String != nil{
@@ -662,14 +756,14 @@ class Chef_DashboardView: UIViewController{
             GlobalData.sharedInstance.getImageFromUrl(imageUrl: imageUrl!, imageView: self.profile_image)
         }
         
-        profile_owner.text = "Chef"
-        if (self.callingApiSucceed) {
+        if (Chef_DashboardView.callingApiSucceed) {
             var chartData: [BarChartData] = self.createChartDataCollection();
             print("chartData", chartData)
             
             self.barChartView.removeAllArrangedSubviews();
             self.indexChartView.removeAllArrangedSubviews();
             self.diagramTotalView.removeAllArrangedSubviews();
+            self.ordersTotalView.removeAllArrangedSubviews();
             
             for data in chartData {
                 self.addIndexElement(timeGraphData: data)
@@ -678,20 +772,21 @@ class Chef_DashboardView: UIViewController{
             
             if(self.showType == 0)
             {
-                self.addDiagramTotalElement(diagramData: self.ownerDashboardModelView.diagramDailyTotal);
+                self.addDiagramTotalElement(diagramData: Chef_DashboardView.ownerDashboardModelView.diagramDailyTotal);
             }
             else if(self.showType == 1)
             {
-                self.addDiagramTotalElement(diagramData: self.ownerDashboardModelView.diagramWeeklyTotal);
+                self.addDiagramTotalElement(diagramData: Chef_DashboardView.ownerDashboardModelView.diagramWeeklyTotal);
             }
             else if(self.showType == 2)
             {
-                self.addDiagramTotalElement(diagramData: self.ownerDashboardModelView.diagramMonthlyTotal);
+                self.addDiagramTotalElement(diagramData: Chef_DashboardView.ownerDashboardModelView.diagramMonthlyTotal);
             }
             else if(self.showType == 3)
             {
-                self.addDiagramTotalElement(diagramData: self.ownerDashboardModelView.diagramYearlyTotal);
+                self.addDiagramTotalElement(diagramData: Chef_DashboardView.ownerDashboardModelView.diagramYearlyTotal);
             }
+            self.addOrderTotalView();
         }
     }
     

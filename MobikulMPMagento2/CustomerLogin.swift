@@ -139,10 +139,14 @@ class CustomerLogin: UIViewController, GIDSignInUIDelegate {
         
         //emailIdField.floatLabelActiveColor = UIColor.black
         emailIdField.textColor = UIColor.white
-        
+        emailIdField.floatLabelActiveColor = UIColor.white
         
         //passwordtextField.floatLabelActiveColor = UIColor.black
         passwordtextField.textColor = UIColor.white
+        passwordtextField.floatLabelActiveColor = UIColor.white
+        
+        //passwordtextField.floatLabelActiveColor = UIColor.black
+
         
         
         loginButton.setTitleColor(UIColor().HexToColor(hexString: "5897FF"), for: .normal)
@@ -356,6 +360,7 @@ class CustomerLogin: UIViewController, GIDSignInUIDelegate {
             defaults.set(responseData["customerEmail"].stringValue, forKey: "customerEmail")
             defaults.set(responseData["customerToken"].stringValue, forKey: "customerId")
             defaults.set(responseData["customerName"].stringValue, forKey: "customerName")
+            defaults.set(responseData["company"].stringValue, forKey: "companyName")
             let address = responseData["address"]["street"].stringValue + "," + responseData["address"]["city"].stringValue;
             defaults.set(address, forKey: "address")
             
@@ -378,6 +383,7 @@ class CustomerLogin: UIViewController, GIDSignInUIDelegate {
                 let cartCount  = responseData["cartCount"].stringValue
                 if cartCount != ""{
                     /*self.tabBarController!.tabBar.items?[3].badgeValue = cartCount*/
+                    badge = cartCount
                 }
             }
             
@@ -387,8 +393,10 @@ class CustomerLogin: UIViewController, GIDSignInUIDelegate {
                 defaults.set("t", forKey: "isAdmin")
             }
             if responseData["isOwner"].intValue == 0{
+                defaults.set("f", forKey: "isOwner")
                 isOwner = false
             }else{
+                defaults.set("t", forKey: "isOwner")
                 isOwner = true
             }
             
