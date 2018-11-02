@@ -296,15 +296,10 @@ class MainTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
                 if errorCode == true{
                     GlobalData.sharedInstance.showSuccessSnackBar(msg:data .object(forKey:"message") as! String )
                     
-                   
-                    if badge == nil {
-                        badge = "1"
-                    }
-                    else{
-                        badge = String(Int(badge!)! + 1)
-                    }
-                    print("BADGE")
-                    print(badge)
+                    let vc = self.parentController.storyboard?.instantiateViewController(withIdentifier: "chef_supercartview") as! Chef_SuperCart
+                    
+                    self.parentController.navigationController?.pushViewController(vc, animated: true)
+                    
                 }
                 else{
                     GlobalData.sharedInstance.showErrorSnackBar(msg: data.object(forKey: "message") as! String)

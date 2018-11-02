@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -19,17 +19,17 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_placeholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="s0F-XS-Gj7">
-                        <rect key="frame" x="15" y="5" width="247" height="97"/>
+                        <rect key="frame" x="0.0" y="0.0" width="277" height="107"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </imageView>
                 </subviews>
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="s0F-XS-Gj7" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="Bg3-en-ItN"/>
-                <constraint firstItem="s0F-XS-Gj7" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="EoQ-rc-bQy"/>
-                <constraint firstAttribute="trailing" secondItem="s0F-XS-Gj7" secondAttribute="trailing" constant="15" id="OIE-hJ-FpN"/>
-                <constraint firstAttribute="bottom" secondItem="s0F-XS-Gj7" secondAttribute="bottom" constant="5" id="wuv-3n-CkK"/>
+                <constraint firstItem="s0F-XS-Gj7" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Bg3-en-ItN"/>
+                <constraint firstItem="s0F-XS-Gj7" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="EoQ-rc-bQy"/>
+                <constraint firstAttribute="trailing" secondItem="s0F-XS-Gj7" secondAttribute="trailing" id="OIE-hJ-FpN"/>
+                <constraint firstAttribute="bottom" secondItem="s0F-XS-Gj7" secondAttribute="bottom" id="wuv-3n-CkK"/>
             </constraints>
             <size key="customSize" width="277" height="107"/>
             <connections>

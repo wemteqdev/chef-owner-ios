@@ -56,7 +56,7 @@
                             <constraint firstItem="60R-au-drK" firstAttribute="centerY" secondItem="2i4-Xo-38w" secondAttribute="centerY" id="zaD-WG-hJU"/>
                         </constraints>
                     </view>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="4sm-8y-aSL">
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="4sm-8y-aSL">
                         <rect key="frame" x="0.0" y="48" width="615" height="413.5"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>

@@ -383,6 +383,7 @@ class CustomerLogin: UIViewController, GIDSignInUIDelegate {
                 let cartCount  = responseData["cartCount"].stringValue
                 if cartCount != ""{
                     /*self.tabBarController!.tabBar.items?[3].badgeValue = cartCount*/
+                    badge = cartCount
                 }
             }
             

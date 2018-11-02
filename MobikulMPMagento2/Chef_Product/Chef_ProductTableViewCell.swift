@@ -268,6 +268,7 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
                     //cell.imageView.image = UIImage(named: "ic_placeholder.png")
                     cell.name.text = featuredProductCollectionModel[indexPath.row].name
                     cell.price.text =  featuredProductCollectionModel[indexPath.row].price
+                    self.productCollectionViewHeight.constant = cell.frame.height
                     
                     cell.reviewCnt.text =  "\(String(featuredProductCollectionModel[indexPath.row].reviewCount)) reviews"
                     cell.starRating.value = CGFloat(featuredProductCollectionModel[indexPath.row].rating)
@@ -332,6 +333,7 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
                         
                     }
                     //}
+                    cell.layoutIfNeeded()
                     return cell
                 }
 

@@ -337,6 +337,7 @@ class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPicker
         callingHttppApi();
         self.productTableView.reloadDataWithAutoSizingCellWorkAround()
         self.BannerView.reloadDataWithAutoSizingCellWorkAround()
+        
         //ThemeManager.applyTheme(bar:(self.navigationController?.navigationBar)!)
     }
     
@@ -376,7 +377,7 @@ class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPicker
                 requstParams["currency"] = defaults.object(forKey: "currency") as! String
             }
             requstParams["websiteId"] = "1"
-            let width = String(format:"%f", SCREEN_WIDTH * UIScreen.main.scale)
+            let width = String(format:"%f", SCREEN_WIDTH * UIScreen.main.scale / 2)
             print("screen Width", SCREEN_WIDTH)
             requstParams["width"] = width
             requstParams["pageSize"] = String(self.limitedCount)
@@ -434,6 +435,7 @@ class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPicker
                                  //self.bannerCollectionModel = ((self.homeViewModel.items[0] as? HomeViewModelBannerItem)?.bannerCollectionModel)!
                                 //print("bannerCollectionModel",self.bannerCollectionModel)
                                 self.BannerView.reloadData()
+                                self.productTableView.reloadDataWithAutoSizingCellWorkAround()
                                 /*UIView.animate(withDuration: 0.5, animations: {
                                  self.launchView?.view.alpha = 0.0
                                  }) { _ in
@@ -522,7 +524,7 @@ class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPicker
  
         print("ChangeView Button Clicked")
         let topIndex = IndexPath(row: 0, section: 0)
-        //self.productTableView.scrollToRow(at: topIndex, at: .top, animated: true)
+        self.productTableView.scrollToRow(at: topIndex, at: .top, animated: true)
         self.productTableView.reloadDataWithAutoSizingCellWorkAround()
         
         if change == false{

@@ -29,7 +29,8 @@ class Chef_SuperCart: UIViewController {
     var itemId:String!
     var totalPriceValue:Double = 0
     override func viewDidAppear(_ animated: Bool) {
-         callingHttppApi()
+        whichApiToProcess = "sellerList"
+        callingHttppApi()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -458,7 +459,7 @@ extension Chef_SuperCart : UITableViewDelegate, UITableViewDataSource {
             cell.moqbtn.setTitleColor(UIColor.red, for: .normal)
             cell.moqbtn.layer.borderColor = UIColor.red.cgColor
         }else {
-            cell.moqbtn.setTitle("MOQ \(String(self.myCartViewModel.myCartModel[CartIndex].price.prefix(1)))\(String(moqValue))", for: .normal)
+            cell.moqbtn.setTitle(" MOQ \(String(self.myCartViewModel.myCartModel[CartIndex].price.prefix(1)))\(String(moqValue)) ", for: .normal)
         }
         cell.supplierName.text = self.sellerListViewModel.sellerListModel[curSection].shopTitle
         cell.qtyButton.setTitle(self.myCartViewModel.myCartModel[CartIndex].qty, for: .normal)
@@ -494,7 +495,8 @@ extension Chef_SuperCart : UITableViewDelegate, UITableViewDataSource {
         headerView.supplierName.setTitle(self.sellerListViewModel.sellerListModel[cartSellerIndex[section]].shopTitle, for: .normal)
         headerView.viewAllButton.addTarget(self, action: #selector(browseCatalogBtnClk(sender:)), for: .touchUpInside)
         headerView.discountProgressView.progress = Float(self.sellerListViewModel.sellerListModel[cartSellerIndex[section]].discountLevel)
-        headerView.discountPercent.text = "\(String(self.sellerListViewModel.sellerListModel[cartSellerIndex[section]].discountLevel * 100)) % Discount Level"
+        headerView.discountPercent.text = "\(String(Double(round(100*self.sellerListViewModel.sellerListModel[cartSellerIndex[section]].discountLevel * 100)/100))) % Discount Level"
+        Double(round(100*self.sellerListViewModel.sellerListModel[cartSellerIndex[section]].discountLevel * 100)/100)
         headerView.moqLabel.isHidden = true
         GlobalData.sharedInstance.getImageFromUrl(imageUrl: self.sellerListViewModel.sellerListModel[cartSellerIndex[section]].logo, imageView: headerView.supplierImage)
         return headerView

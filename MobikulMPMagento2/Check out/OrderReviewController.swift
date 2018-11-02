@@ -51,7 +51,7 @@ class OrderReviewController: UIViewController,UITableViewDelegate, UITableViewDa
         summaryImageView.layer.cornerRadius = 15;
         summaryImageView.layer.masksToBounds = true
         
-        self.navigationItem.title = GlobalData.sharedInstance.language(key: "orderreview")
+        self.navigationItem.title = "Order Review"
         navigationController?.navigationBar.applyNavigationGradient(colors:GRADIENTCOLOR)
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         
