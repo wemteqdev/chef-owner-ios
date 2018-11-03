@@ -293,6 +293,9 @@ extension Chef_HomeViewModel : UITableViewDelegate , UITableViewDataSource {
         if items.count == 1 && tableView.tag != 1000{
             return 120
         }
+        else if tableView.tag == 1000{
+            return UITableViewAutomaticDimension
+        }
         else{
             if homeViewController.filtered == true {
                 for i in 0..<items.count {
@@ -308,6 +311,7 @@ extension Chef_HomeViewModel : UITableViewDelegate , UITableViewDataSource {
             let item = items[index]
             return CGFloat(item.rowCount * 127 + 50)
         }
+        return UITableViewAutomaticDimension
         let item = items[indexPath.section]
         switch item.type {
         case .Banner:

@@ -3000,7 +3000,8 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="mYb-So-o2l">
                                 <rect key="frame" x="0.0" y="88" width="375" height="641"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -4052,7 +4053,7 @@
                                         <color key="currentPageIndicatorTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </pageControl>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fresh Oranges" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WUN-dp-jvD">
-                                        <rect key="frame" x="10" y="259.66666666666669" width="113" height="21"/>
+                                        <rect key="frame" x="30" y="259.66666666666669" width="113" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -4064,7 +4065,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iU8-av-5CC">
-                                        <rect key="frame" x="10" y="304.66666666666669" width="17" height="14"/>
+                                        <rect key="frame" x="30" y="304.66666666666669" width="17" height="14"/>
                                         <color key="backgroundColor" red="1" green="0.61568627450000002" blue="0.066666666669999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="14" id="fxC-f3-zcr"/>
@@ -4074,7 +4075,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sMS-W8-Md7" customClass="HCSStarRatingView">
-                                        <rect key="frame" x="29" y="304.66666666666669" width="50" height="14"/>
+                                        <rect key="frame" x="49" y="304.66666666666669" width="50" height="14"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" red="1" green="0.61568627450000002" blue="0.066666666669999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -4082,13 +4083,13 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="98 reviews" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CIs-bz-u2q">
-                                        <rect key="frame" x="84" y="305.66666666666669" width="53" height="12"/>
+                                        <rect key="frame" x="104" y="305.66666666666669" width="53" height="12"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Supplier Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zAi-ty-SQK">
-                                        <rect key="frame" x="10" y="280.66666666666669" width="77" height="14"/>
+                                        <rect key="frame" x="30" y="280.66666666666669" width="77" height="14"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <color key="textColor" red="0.34553931659999998" green="0.59092947809999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -4122,7 +4123,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="sMS-W8-Md7" firstAttribute="leading" secondItem="iU8-av-5CC" secondAttribute="trailing" constant="2" id="29A-R3-Qkf"/>
-                                    <constraint firstItem="WUN-dp-jvD" firstAttribute="leading" secondItem="zv4-8Q-spt" secondAttribute="leading" constant="10" id="8u4-Kw-fu8"/>
+                                    <constraint firstItem="WUN-dp-jvD" firstAttribute="leading" secondItem="zv4-8Q-spt" secondAttribute="leading" constant="20" id="8u4-Kw-fu8"/>
                                     <constraint firstItem="vpB-as-NNh" firstAttribute="centerY" secondItem="lKh-ma-8Rg" secondAttribute="centerY" id="944-cG-NWR"/>
                                     <constraint firstItem="hs7-RK-tpg" firstAttribute="leading" secondItem="4w5-wx-2IA" secondAttribute="leading" id="9mB-nD-t0S"/>
                                     <constraint firstItem="WUN-dp-jvD" firstAttribute="top" secondItem="eMI-Du-2DL" secondAttribute="bottom" constant="10" id="AWC-4x-BxL"/>
@@ -4140,7 +4141,7 @@
                                     <constraint firstItem="lKh-ma-8Rg" firstAttribute="centerY" secondItem="WUN-dp-jvD" secondAttribute="centerY" id="VJ0-6t-KEy"/>
                                     <constraint firstItem="Lr0-Vx-qj0" firstAttribute="top" secondItem="4w5-wx-2IA" secondAttribute="top" constant="5" id="WFV-9I-1Zo"/>
                                     <constraint firstItem="Lr0-Vx-qj0" firstAttribute="centerX" secondItem="4w5-wx-2IA" secondAttribute="centerX" id="ceN-b4-Ww5"/>
-                                    <constraint firstItem="Lr0-Vx-qj0" firstAttribute="trailing" secondItem="nvu-7C-5ql" secondAttribute="trailing" constant="30" id="cuo-Js-SQX"/>
+                                    <constraint firstItem="Lr0-Vx-qj0" firstAttribute="trailing" secondItem="nvu-7C-5ql" secondAttribute="trailing" constant="20" id="cuo-Js-SQX"/>
                                     <constraint firstItem="Lr0-Vx-qj0" firstAttribute="width" secondItem="zv4-8Q-spt" secondAttribute="width" id="fhx-I1-QSZ"/>
                                     <constraint firstItem="Lr0-Vx-qj0" firstAttribute="bottom" secondItem="eMI-Du-2DL" secondAttribute="bottom" id="gEq-E2-ZKz"/>
                                     <constraint firstItem="iU8-av-5CC" firstAttribute="top" secondItem="zAi-ty-SQK" secondAttribute="bottom" constant="10" id="i8s-rl-98m"/>
@@ -9531,7 +9532,8 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="Z8w-BF-nLJ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

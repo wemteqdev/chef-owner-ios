@@ -1285,6 +1285,7 @@ class Chef_DashboardViewController: UIViewController, Chef_DetailReviewHandlerDe
     
     @objc func cartButtonClick(sender: UIButton){
         //let vc = self.storyboard?.instantiateViewController(withIdentifier: "chef_cartexview") as! Chef_exMyCart
+        self.navigationController?.popToRootViewController(animated: true)
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "chef_supercartview") as! Chef_SuperCart
         
         self.navigationController?.pushViewController(vc, animated: true)
