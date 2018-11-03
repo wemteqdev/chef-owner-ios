@@ -64,7 +64,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     @IBOutlet weak var profileTableView: UITableView!
-    var supplierProfileData:NSMutableArray = ["Photo", "First Name", "Second Name", "CompanyName", "Email", "Phone Number", "Address", "City", "State", "Post Code", "Country"]
+    var supplierProfileData:NSMutableArray = ["Photo", "First Name", "Second Name", "Company Name", "Email", "Phone Number", "Address", "City", "State", "Post Code", "Country"]
     var supplierProfileDataValue:NSMutableArray = ["", "", "", "", "", "", "", "", "", ""]
     var accountInfoModel:AccountInformationModel!
     var didload:Bool = false

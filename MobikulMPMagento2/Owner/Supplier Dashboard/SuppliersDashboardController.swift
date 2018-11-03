@@ -297,12 +297,10 @@ class SuppliersDashboardController: UIViewController, UITableViewDelegate, UITab
                 print("supplierEmail: ", supplierInfo.email);
                 return supplierInfo.email.lowercased().contains(searchText.lowercased())
             })
-            
-            if(filtered.count == 0){
-                searchActive = false;
-            } else {
-                searchActive = true;
+            if searchText == "" {
+                filtered = self.suppliersInfo.suppliersInfo
             }
+            searchActive = true;
             
             self.suppliersTableView.reloadData()
         }

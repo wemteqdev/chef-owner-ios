@@ -122,10 +122,10 @@
                                 <rect key="frame" x="0.0" y="244" width="375" height="374"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1cm-d9-jXK">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="845"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="850"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7QH-SA-v21" userLabel="Content View">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="845"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="850"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jpt-Y4-vFj" userLabel="Sales Insights">
                                                         <rect key="frame" x="10" y="10" width="355" height="50"/>
@@ -180,13 +180,13 @@
                                                         </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="bottom" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="gm2-kN-JV0" userLabel="Index Chart View">
-                                                        <rect key="frame" x="10" y="390" width="355" height="35"/>
+                                                        <rect key="frame" x="10" y="390" width="355" height="40"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="35" id="62A-vw-0MF"/>
+                                                            <constraint firstAttribute="height" constant="40" id="62A-vw-0MF"/>
                                                         </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="6Jn-5h-nYO" userLabel="Order Total View">
-                                                        <rect key="frame" x="10" y="445" width="355" height="400"/>
+                                                        <rect key="frame" x="10" y="450" width="355" height="400"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="400" id="yaM-Wy-mBK"/>
                                                         </constraints>

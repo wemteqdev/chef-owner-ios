@@ -260,13 +260,10 @@ class ChefsDashboardController: UIViewController, UITableViewDelegate, UITableVi
             print("chefEmail: ", chefInfo.chefEmail);
             return chefInfo.chefEmail.lowercased().contains(searchText.lowercased())
         })
-        
-        
-        if(filtered.count == 0){
-            searchActive = false;
-        } else {
-            searchActive = true;
+        if searchText == "" {
+            filtered = self.chefDashboardModelView.chefInfos
         }
+        searchActive = true;
         
         self.chefsTableView.reloadData()
     }

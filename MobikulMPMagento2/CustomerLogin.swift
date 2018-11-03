@@ -360,7 +360,9 @@ class CustomerLogin: UIViewController, GIDSignInUIDelegate {
             defaults.set(responseData["customerEmail"].stringValue, forKey: "customerEmail")
             defaults.set(responseData["customerToken"].stringValue, forKey: "customerId")
             defaults.set(responseData["customerName"].stringValue, forKey: "customerName")
-            defaults.set(responseData["company"].stringValue, forKey: "companyName")
+            defaults.set(responseData["address"]["company"].stringValue, forKey: "companyName")
+            print("COMPANY NAME~~~~", responseData["address"]["company"])
+            print("DEFAULT COMPANY NAME~~~~", defaults.object(forKey: "companyName") as! String)
             let address = responseData["address"]["street"].stringValue + "," + responseData["address"]["city"].stringValue;
             defaults.set(address, forKey: "address")
             

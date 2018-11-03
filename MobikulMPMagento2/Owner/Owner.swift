@@ -348,14 +348,14 @@ class Owner: UIViewController{
     }
     
     private func addIndexElement (timeGraphData: BarChartData) {
-        let monthLabelHeight: CGFloat = 13.0
+        let monthLabelHeight: CGFloat = 15.0
         
         let monthLabel = UILabel()
         monthLabel.text = timeGraphData.indexData
         monthLabel.font = UIFont.systemFont(ofSize: monthLabelHeight)
         monthLabel.textAlignment = .center
         
-        monthLabel.heightAnchor.constraint(equalToConstant: monthLabelHeight).isActive = true
+        monthLabel.heightAnchor.constraint(equalToConstant: monthLabelHeight + 10).isActive = true
         
         indexChartView.addArrangedSubview(monthLabel)
         indexChartView.translatesAutoresizingMaskIntoConstraints = false;

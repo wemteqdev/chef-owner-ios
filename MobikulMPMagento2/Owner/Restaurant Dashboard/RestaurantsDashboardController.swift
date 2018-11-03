@@ -258,11 +258,10 @@ class RestaurantsDashboardController: UIViewController, UITableViewDelegate, UIT
             return restaurantInfo.restaurantName.lowercased().contains(searchText.lowercased())
         })
         
-        if(filtered.count == 0){
-            searchActive = false;
-        } else {
-            searchActive = true;
+        if searchText == "" {
+            filtered = self.restaurantDashboardModelView.restaurantInfos
         }
+        searchActive = true;
         
         self.restaurantsTableView.reloadData()
     }
