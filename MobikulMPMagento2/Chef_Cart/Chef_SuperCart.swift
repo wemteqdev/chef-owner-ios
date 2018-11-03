@@ -28,6 +28,7 @@ class Chef_SuperCart: UIViewController {
     var selectedSupplierName = "";
     var itemId:String!
     var totalPriceValue:Double = 0
+    var isProceedtoCheckout:Bool = true
     override func viewDidAppear(_ animated: Bool) {
         whichApiToProcess = "sellerList"
         callingHttppApi()
@@ -324,8 +325,8 @@ class Chef_SuperCart: UIViewController {
         
         //check for minimum order
         badge = nil;
-        if myCartViewModel.myCartExtraData.grandUnformatedValue < myCartViewModel.myCartExtraData.minimumAmount {
-            GlobalData.sharedInstance.showWarningSnackBar(msg: "minimumorderamountis".localized + " " + "\(myCartViewModel.myCartExtraData.minimumFormattedAmount!)")
+        if myCartViewModel.myCartExtraData.grandUnformatedValue < myCartViewModel.myCartExtraData.minimumAmount || !isProceedtoCheckout {
+            GlobalData.sharedInstance.showWarningSnackBar(msg: "Please Order over minimum order amonut")
         }else{
             let customerId = defaults.object(forKey:"customerId")
             if customerId != nil{
@@ -458,6 +459,7 @@ extension Chef_SuperCart : UITableViewDelegate, UITableViewDataSource {
             cell.moqbtn.setTitle("MOQ \(String(self.myCartViewModel.myCartModel[CartIndex].price.prefix(1)))\(String(moqValue))-Total Cost:\(String(self.myCartViewModel.myCartModel[CartIndex].price.prefix(1)))\(String(totalValue)) Please add more to basket", for: .normal)
             cell.moqbtn.setTitleColor(UIColor.red, for: .normal)
             cell.moqbtn.layer.borderColor = UIColor.red.cgColor
+            proceedToCheckout = false
         }else {
             cell.moqbtn.setTitle(" MOQ \(String(self.myCartViewModel.myCartModel[CartIndex].price.prefix(1)))\(String(moqValue)) ", for: .normal)
         }

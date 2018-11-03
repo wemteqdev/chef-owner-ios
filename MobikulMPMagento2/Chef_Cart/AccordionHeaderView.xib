@@ -41,7 +41,7 @@
                                     </state>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SQ6-lK-qh2">
-                                    <rect key="frame" x="410" y="33" width="150" height="28"/>
+                                    <rect key="frame" x="410" y="18" width="150" height="28"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="50" id="NnO-uZ-Bf5"/>
                                         <constraint firstAttribute="height" constant="28" id="p9d-Ai-Isp"/>
@@ -74,7 +74,7 @@
                                     </constraints>
                                 </progressView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TLA-zs-Whz">
-                                    <rect key="frame" x="565" y="32" width="30" height="30"/>
+                                    <rect key="frame" x="565" y="17" width="30" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="TLA-zs-Whz" secondAttribute="height" multiplier="1:1" id="TzU-MO-uxz"/>
                                     </constraints>
@@ -93,7 +93,7 @@
                                 <constraint firstAttribute="trailing" secondItem="TLA-zs-Whz" secondAttribute="trailing" constant="5" id="50S-oi-BZE"/>
                                 <constraint firstItem="Yxw-XE-Uu6" firstAttribute="leading" secondItem="xzm-lh-u8r" secondAttribute="leading" id="8BF-yX-lzq"/>
                                 <constraint firstItem="TLA-zs-Whz" firstAttribute="leading" secondItem="SQ6-lK-qh2" secondAttribute="trailing" constant="5" id="BAz-ko-2DW"/>
-                                <constraint firstItem="SQ6-lK-qh2" firstAttribute="centerY" secondItem="u9f-fn-Iqg" secondAttribute="centerY" id="FFa-36-vV2"/>
+                                <constraint firstItem="SQ6-lK-qh2" firstAttribute="centerY" secondItem="u9f-fn-Iqg" secondAttribute="centerY" constant="-15" id="FFa-36-vV2"/>
                                 <constraint firstItem="bdk-bh-vG9" firstAttribute="leading" secondItem="Yxw-XE-Uu6" secondAttribute="trailing" constant="19" id="I6m-zx-fh8"/>
                                 <constraint firstItem="UDn-uS-NE2" firstAttribute="top" secondItem="u9f-fn-Iqg" secondAttribute="top" constant="12" id="Iyx-kO-txI"/>
                                 <constraint firstItem="WtG-bS-bH3" firstAttribute="top" secondItem="u9f-fn-Iqg" secondAttribute="top" id="K11-1z-WJe"/>

@@ -1314,7 +1314,7 @@ extension Chef_DashboardViewController: UICollectionViewDataSource , UICollectio
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width:SCREEN_WIDTH , height:SCREEN_HEIGHT/2)
+        return CGSize(width:SCREEN_WIDTH , height:SCREEN_HEIGHT/3)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
