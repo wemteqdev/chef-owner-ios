@@ -19,7 +19,7 @@ struct SellerOrderItemList{
     var vendorTotal:String!
     var sellerQty = [SellerQty]()
     var taxClass:String!
-    var packSize:String!
+    var packSize:Double!
     init(data:JSON) {
         self.adminCommission = data["adminCommission"].stringValue
         self.price = data["price"].stringValue
@@ -29,7 +29,7 @@ struct SellerOrderItemList{
         self.totalPrice = data["totalPrice"].stringValue
         self.vendorTotal = data["vendorTotal"].stringValue
         
-        self.packSize = data["packSize"].stringValue
+        self.packSize = data["packSize"].doubleValue
         self.taxClass = data["tax_class"].stringValue
         
         if let arrayData = data["qty"].arrayObject{

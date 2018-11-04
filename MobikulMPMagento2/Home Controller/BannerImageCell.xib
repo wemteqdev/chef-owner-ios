@@ -18,7 +18,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="277" height="107"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_placeholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="s0F-XS-Gj7">
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="SH9-dM-4TQ">
+                        <rect key="frame" x="128" y="43.5" width="20" height="20"/>
+                    </activityIndicatorView>
+                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_loading" translatesAutoresizingMaskIntoConstraints="NO" id="s0F-XS-Gj7">
                         <rect key="frame" x="0.0" y="0.0" width="277" height="107"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </imageView>
@@ -26,19 +29,22 @@
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="SH9-dM-4TQ" firstAttribute="centerX" secondItem="s0F-XS-Gj7" secondAttribute="centerX" id="AKs-XP-rf6"/>
                 <constraint firstItem="s0F-XS-Gj7" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Bg3-en-ItN"/>
                 <constraint firstItem="s0F-XS-Gj7" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="EoQ-rc-bQy"/>
                 <constraint firstAttribute="trailing" secondItem="s0F-XS-Gj7" secondAttribute="trailing" id="OIE-hJ-FpN"/>
+                <constraint firstItem="SH9-dM-4TQ" firstAttribute="centerY" secondItem="s0F-XS-Gj7" secondAttribute="centerY" id="rtF-eY-2qo"/>
                 <constraint firstAttribute="bottom" secondItem="s0F-XS-Gj7" secondAttribute="bottom" id="wuv-3n-CkK"/>
             </constraints>
             <size key="customSize" width="277" height="107"/>
             <connections>
                 <outlet property="bannerImageView" destination="s0F-XS-Gj7" id="dbx-FR-Aiw"/>
+                <outlet property="indicatorView" destination="SH9-dM-4TQ" id="wgi-BT-CWc"/>
             </connections>
             <point key="canvasLocation" x="-111.5" y="-146.5"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="ic_placeholder.png" width="500" height="500"/>
+        <image name="ic_loading" width="630" height="637"/>
     </resources>
 </document>

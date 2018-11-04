@@ -39,7 +39,8 @@ class CatalogProductModel: NSObject {
     var groupedPrice:String!
     var formatedMinPrice:String!
     var formatedMaxPrice:String!
-    
+    var tierPrice:Double!
+    var unitString:String!
     init(data: JSON) {
         self.productName = data["name"].stringValue
         self.formatedFinalPrice = data["formatedFinalPrice"].stringValue
@@ -70,6 +71,11 @@ class CatalogProductModel: NSObject {
         self.groupedPrice = data["groupedPrice"].stringValue
         self.formatedMaxPrice = data["formatedMaxPrice"].stringValue
         self.formatedMinPrice = data["formatedMinPrice"].stringValue
+        self.tierPrice = data["tierPrice"].doubleValue
+        if self.tierPrice == nil {
+            self.tierPrice = 0
+        }
+        self.unitString = data["unitString"].stringValue
     }
 }
 

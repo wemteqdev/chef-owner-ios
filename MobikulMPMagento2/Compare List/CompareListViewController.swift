@@ -271,7 +271,7 @@ class CompareListViewController: UIViewController,UITableViewDelegate, UITableVi
         let cell:Chef_CompareCell = tableView.dequeueReusableCell(withIdentifier: "chef_compare") as! Chef_CompareCell
         if self.compareListViewModel.getProductList[indexPath.row].tierPrice > 0 {
             cell.price.text = "\(self.compareListViewModel.getProductList[indexPath.row].price.prefix(1))\(String(self.compareListViewModel.getProductList[indexPath.row].tierPrice))"
-            cell.Totalprice.text = "Total \(self.compareListViewModel.getProductList[indexPath.row].tierPrice * (self.compareListViewModel.getProductList[indexPath.row].qty as NSString).doubleValue)"
+            cell.Totalprice.text = "Total \(self.compareListViewModel.getProductList[indexPath.row].price.prefix(1))\(self.compareListViewModel.getProductList[indexPath.row].tierPrice * (self.compareListViewModel.getProductList[indexPath.row].qty as NSString).doubleValue)"
         }
         else{
             cell.price.text = self.compareListViewModel.getProductList[indexPath.row].price

@@ -186,6 +186,9 @@ struct Products {
             self.isMin = true
         }
         self.tierPrice = data["tierPrice"].doubleValue
+        if self.tierPrice == nil {
+            self.tierPrice = 0
+        }
         self.supplierId = data["supplierId"].stringValue
         self.discount = data["discount"].intValue
         self.unit = data["unitString"].stringValue

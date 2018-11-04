@@ -111,6 +111,7 @@ class Chef_DashboardViewController: UIViewController, Chef_DetailReviewHandlerDe
     @IBOutlet weak var productStarRating: HCSStarRatingView!
     
     var supplierNameText:String!
+    var unitString:String = ""
     var catalogProductViewModel:CatalogProductViewModel!
     var compareProductCollectionModel = [Products]()
     var productId:String = ""
@@ -531,8 +532,8 @@ class Chef_DashboardViewController: UIViewController, Chef_DetailReviewHandlerDe
             GlobalData.sharedInstance.showLoader()
             let width = String(format:"%f", SCREEN_WIDTH * UIScreen.main.scale)
             requstParams["width"] = width
-            let apiName1 = "mobikulhttp/catalog/productPageData" + "/productId=" + productId
-            GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"mobikulhttp/catalog/productPageData", currentView: self){success,responseObject in
+            let apiName1 = "wemteqchef/catalog/productPageData" + "/productId=" + productId
+            GlobalData.sharedInstance.callingHttpRequest(params:requstParams, apiname:"wemteqchef/catalog/productPageData", currentView: self){success,responseObject in
                 if success == 1{
                     self.view.isUserInteractionEnabled = true
                     print("ppp = ",apiName1)
@@ -1178,7 +1179,16 @@ class Chef_DashboardViewController: UIViewController, Chef_DetailReviewHandlerDe
         collectionView.dataSource = self
       
         collectionView.reloadData()
-        productpriceLabel.text = catalogProductViewModel.catalogProductModel.formatedFinalPrice
+        var unit:String = ""
+        if catalogProductViewModel.catalogProductModel.unitString != " " && catalogProductViewModel.catalogProductModel.unitString != ""{
+            unit = "/\(String(catalogProductViewModel.catalogProductModel.unitString))"
+        }
+        if catalogProductViewModel.catalogProductModel.tierPrice != 0 {
+            productpriceLabel.text = "\(String(catalogProductViewModel.catalogProductModel.formatedFinalPrice.prefix(1)))\(String(round(100*catalogProductViewModel.catalogProductModel.tierPrice)/100))\(unit)"
+        }
+        else {
+            productpriceLabel.text = "\(String(catalogProductViewModel.catalogProductModel.formatedFinalPrice))\(unit)"
+        }
         pageControl.numberOfPages = imageArrayUrl.count
 //        activityIndicator.stopAnimating()
 //        stockLabelValue.text = catalogProductViewModel.catalogProductModel.stockMessage

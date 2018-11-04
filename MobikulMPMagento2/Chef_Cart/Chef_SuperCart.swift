@@ -14,6 +14,9 @@ class Chef_SuperCart: UIViewController {
     
     static fileprivate let kTableViewCellReuseIdentifier = "Cell"
     @IBOutlet fileprivate weak var tableView: FZAccordionTableView!
+    
+   
+    
     let defaults = UserDefaults.standard
     var myCartViewModel:Chef_MyCartViewModel!
     var emptyView:EmptyNewAddressView!
@@ -35,6 +38,8 @@ class Chef_SuperCart: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationItem.title = "My Basket"
         tableView.allowMultipleSectionsOpen = true
         tableView.register(UINib(nibName: "AccordionHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: AccordionHeaderView.kAccordionHeaderViewReuseIdentifier)
 
@@ -431,23 +436,25 @@ extension Chef_SuperCart : UITableViewDelegate, UITableViewDataSource {
         let CartIndex = self.sellerListViewModel.sellerListModel[curSection].cartItemIndex[indexPath.row]
         var totalValue:Double = 0
         cell.titleLabel.text = self.myCartViewModel.myCartModel[CartIndex].name
-        if self.myCartViewModel.myCartModel[CartIndex].tierSubtotal != ""{
-            
-            let attributedString = NSMutableAttributedString(string:( self.myCartViewModel.myCartModel[CartIndex].subtotal ))
-            attributedString.addAttribute(NSAttributedStringKey.baselineOffset, value: 0, range: NSMakeRange(0, attributedString.length))
-            attributedString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: NSNumber(value: NSUnderlineStyle.styleThick.rawValue), range: NSMakeRange(0, attributedString.length))
-            attributedString.addAttribute(NSAttributedStringKey.strikethroughColor, value: UIColor.gray, range: NSMakeRange(0, attributedString.length))
-            
-            cell.pricewithsub.attributedText = attributedString
-            //cell.pricewithsub.text = self.myCartViewModel.myCartModel[CartIndex].subtotal
-            cell.subtotal.text = "Total \(self.myCartViewModel.myCartModel[CartIndex].subtotal.prefix(1))\(self.myCartViewModel.myCartModel[CartIndex].tierSubtotal)"
-            totalValue = (self.myCartViewModel.myCartModel[CartIndex].qty as NSString).doubleValue * self.myCartViewModel.myCartModel[CartIndex].tier_price
-        }
-        else {
+//        if self.myCartViewModel.myCartModel[CartIndex].tierSubtotal != ""{
+//
+//            let attributedString = NSMutableAttributedString(string:( self.myCartViewModel.myCartModel[CartIndex].subtotal ))
+//            attributedString.addAttribute(NSAttributedStringKey.baselineOffset, value: 0, range: NSMakeRange(0, attributedString.length))
+//            attributedString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: NSNumber(value: NSUnderlineStyle.styleThick.rawValue), range: NSMakeRange(0, attributedString.length))
+//            attributedString.addAttribute(NSAttributedStringKey.strikethroughColor, value: UIColor.gray, range: NSMakeRange(0, attributedString.length))
+//
+//            cell.pricewithsub.attributedText = attributedString
+//            //cell.pricewithsub.text = self.myCartViewModel.myCartModel[CartIndex].subtotal
+//            cell.subtotal.text = "Total \(self.myCartViewModel.myCartModel[CartIndex].subtotal.prefix(1))\(self.myCartViewModel.myCartModel[CartIndex].tierSubtotal)"
+//            totalValue = (self.myCartViewModel.myCartModel[CartIndex].qty as NSString).doubleValue * self.myCartViewModel.myCartModel[CartIndex].tier_price
+//            cell.subTotalwithoutSub.isHidden = true
+//        }
+//        else {
             cell.pricewithsub.isHidden = true
-            cell.subtotal.text = "Total \(String(self.myCartViewModel.myCartModel[CartIndex].subtotal))"
+            cell.subtotal.isHidden = true
+            cell.subTotalwithoutSub.text = "Total \(String(self.myCartViewModel.myCartModel[CartIndex].subtotal))"
             totalValue = (self.myCartViewModel.myCartModel[CartIndex].qty as NSString).doubleValue * self.myCartViewModel.myCartModel[CartIndex].priceint
-        }
+       // }
         var unit:String = ""
         if self.myCartViewModel.myCartModel[CartIndex].unitString != " " && self.myCartViewModel.myCartModel[CartIndex].unitString != ""{
             unit = "/\(String(self.myCartViewModel.myCartModel[CartIndex].unitString))"

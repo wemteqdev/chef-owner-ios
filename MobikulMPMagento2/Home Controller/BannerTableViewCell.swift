@@ -67,8 +67,12 @@ extension BannerTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "bannerImageCell", for: indexPath) as! BannerImageCell
         
-        
         GlobalData.sharedInstance.getImageFromUrl(imageUrl:bannerCollectionModel[indexPath.row].imageUrl , imageView: cell.bannerImageView)
+        cell.indicatorView.startAnimating()
+        if cell.bannerImageView.image != nil {
+            cell.indicatorView.isHidden = true
+            cell.indicatorView.stopAnimating()
+        }
         cell.layoutIfNeeded()
         
         return cell

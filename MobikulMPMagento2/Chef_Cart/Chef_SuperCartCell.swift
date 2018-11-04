@@ -18,6 +18,7 @@ class Chef_SuperCartCell: UITableViewCell {
     @IBOutlet var subtotal: UILabel!
     @IBOutlet var reviewLabel: UILabel!
 
+    @IBOutlet weak var subTotalwithoutSub: UILabel!
     @IBOutlet weak var qtyView: UIView!
     @IBOutlet var priceLabel: UILabel!
     @IBOutlet var titleLabel: UILabel!

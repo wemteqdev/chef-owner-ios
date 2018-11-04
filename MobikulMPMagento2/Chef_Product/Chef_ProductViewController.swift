@@ -150,7 +150,7 @@ class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPicker
         
     }
     
-    func productClick(name: String, image: String, id: String, supplierName: String, addShow: Bool) {
+    func productClick(name: String, image: String, id: String, supplierName: String, addShow: Bool, unitString: String) {
         //let vc = self.storyboard?.instantiateViewController(withIdentifier: "catalogproduct") as! CatalogProduct
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "chef_productdetail") as! Chef_DashboardViewController
         vc.productName = name
@@ -158,6 +158,7 @@ class Chef_ProductViewController: UIViewController,UIPickerViewDelegate,UIPicker
         vc.productId = id
         vc.supplierNameText = supplierName
         vc.addShow = addShow
+        vc.unitString = unitString
 
         self.navigationController?.pushViewController(vc, animated: true)
     }

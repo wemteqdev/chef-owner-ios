@@ -339,7 +339,7 @@ class SellerOrderDetailsController: UIViewController,UITableViewDelegate, UITabl
             
         }else if indexPath.section == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "SellerItemsTableViewCell", for: indexPath) as! SellerItemsTableViewCell
-            cell.itemCellWidth.constant = SCREEN_WIDTH - 5
+            cell.itemCellWidth.constant = SCREEN_WIDTH - 3
             if indexPath.row == 0 {
                cell.infoLabel.isHidden = false
                 cell.infoView.isHidden = true
@@ -355,7 +355,7 @@ class SellerOrderDetailsController: UIViewController,UITableViewDelegate, UITabl
                 cell.infoView.isHidden = true
                 cell.infoLabel.text = ""
                 cell.totalLabels.isHidden = false
-                cell.totalLabels.text = "Sub-Total(exc VAT)"
+                cell.totalLabels.text = "Sub-Total(exc VAT)  "
                 cell.priceLabelValue.isHidden = true
                 cell.qtyLabelValue.isHidden = true
                 cell.subtotalLabelValue.text = self.sellerOrderDetailsViewModelData.subTotal
@@ -365,7 +365,7 @@ class SellerOrderDetailsController: UIViewController,UITableViewDelegate, UITabl
                 cell.infoView.isHidden = true
                 cell.infoLabel.text = ""
                 cell.totalLabels.isHidden = false
-                cell.totalLabels.text = "Shipping Cost"
+                cell.totalLabels.text = "Shipping Cost  "
                 cell.priceLabelValue.isHidden = true
                 cell.qtyLabelValue.isHidden = true
                 cell.subtotalLabelValue.text = self.sellerOrderDetailsViewModelData.shipping
@@ -375,7 +375,7 @@ class SellerOrderDetailsController: UIViewController,UITableViewDelegate, UITabl
                 cell.infoView.isHidden = true
                 cell.infoLabel.text = ""
                 cell.totalLabels.isHidden = false
-                cell.totalLabels.text = "Total VAT"
+                cell.totalLabels.text = "Total VAT  "
                 cell.priceLabelValue.isHidden = true
                 cell.qtyLabelValue.isHidden = true
                 cell.subtotalLabelValue.text = self.sellerOrderDetailsViewModelData.tax
@@ -385,7 +385,7 @@ class SellerOrderDetailsController: UIViewController,UITableViewDelegate, UITabl
                 cell.infoView.isHidden = true
                 cell.totalLabels.isHidden = false
                 cell.infoLabel.text = ""
-                cell.totalLabels.text = "Discount"
+                cell.totalLabels.text = "Discount  "
                 cell.priceLabelValue.isHidden = true
                 cell.qtyLabelValue.isHidden = true
                 cell.subtotalLabelValue.text = self.sellerOrderDetailsViewModelData.discount
@@ -394,14 +394,14 @@ class SellerOrderDetailsController: UIViewController,UITableViewDelegate, UITabl
                 cell.infoLabel.isHidden = false
                 cell.infoView.isHidden = true
                 cell.infoLabel.text = ""
-                cell.totalLabels.text = "Total Cost"
+                cell.totalLabels.text = "Total Cost  "
                 cell.totalLabels.isHidden = false
                 cell.priceLabelValue.isHidden = true
                 cell.qtyLabelValue.isHidden = true
                 cell.subtotalLabelValue.text = self.sellerOrderDetailsViewModelData.orderTotal
             }
             else {
-                cell.packSizeLable.text = self.sellerOrderDetailsViewModelData.sellerOrderItemList[indexPath.row - 1].packSize
+                cell.packSizeLable.text = "\(String(Double(round(100*self.sellerOrderDetailsViewModelData.sellerOrderItemList[indexPath.row - 1].packSize)/100)))"
                 cell.vatLabel.text = self.sellerOrderDetailsViewModelData.sellerOrderItemList[indexPath.row - 1].taxClass
                 cell.productName.text = self.sellerOrderDetailsViewModelData.sellerOrderItemList[indexPath.row - 1].productName
                 cell.priceLabelValue.text = self.sellerOrderDetailsViewModelData.sellerOrderItemList[indexPath.row - 1].price

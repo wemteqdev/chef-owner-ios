@@ -8,7 +8,7 @@
 
 import UIKit
 @objc protocol chef_productViewControllerHandlerDelegate: class {
-    func productClick(name:String,image:String,id:String,supplierName:String,addShow:Bool)
+    func productClick(name:String,image:String,id:String,supplierName:String,addShow:Bool,unitString:String)
     func newAndFeartureAddToWishList(productID:String)
     func newAndFeartureAddToCompare(productID:String)
     func viewAllClick(type:String)
@@ -427,7 +427,7 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if showFeature == true{
-            delegate.productClick(name: featuredProductCollectionModel[indexPath.row].name, image: featuredProductCollectionModel[indexPath.row].image, id: featuredProductCollectionModel[indexPath.row].productID,supplierName: featuredProductCollectionModel[indexPath.row].supplierName, addShow: featuredProductCollectionModel[indexPath.row].nonEditable)
+            delegate.productClick(name: featuredProductCollectionModel[indexPath.row].name, image: featuredProductCollectionModel[indexPath.row].image, id: featuredProductCollectionModel[indexPath.row].productID,supplierName: featuredProductCollectionModel[indexPath.row].supplierName, addShow: featuredProductCollectionModel[indexPath.row].nonEditable, unitString:featuredProductCollectionModel[indexPath.row].unit)
             
         }else{
             
@@ -485,7 +485,7 @@ extension Chef_ProductTableViewCell: UICollectionViewDelegate, UICollectionViewD
     }
     @objc func addButtonClick(sender: UIButton){
         if showFeature == true{
-            delegate.productClick(name: featuredProductCollectionModel[sender.tag].name, image: featuredProductCollectionModel[sender.tag].image, id: featuredProductCollectionModel[sender.tag].productID, supplierName: featuredProductCollectionModel[sender.tag].supplierName,addShow: featuredProductCollectionModel[sender.tag].nonEditable )
+            delegate.productClick(name: featuredProductCollectionModel[sender.tag].name, image: featuredProductCollectionModel[sender.tag].image, id: featuredProductCollectionModel[sender.tag].productID, supplierName: featuredProductCollectionModel[sender.tag].supplierName,addShow: featuredProductCollectionModel[sender.tag].nonEditable,unitString: featuredProductCollectionModel[sender.tag].unit )
             
            
         }else{

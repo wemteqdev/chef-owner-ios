@@ -9,14 +9,14 @@
 import UIKit
 
 class BannerImageCell: UICollectionViewCell {
-
+@IBOutlet weak var indicatorView: UIActivityIndicatorView!
+    
 @IBOutlet weak var bannerImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         //bannerImageView?.layer.cornerRadius = 10
         //bannerImageView?.clipsToBounds = true
         //bannerImageView?.contentMode = .scaleAspectFit
-        
     }
 
 }

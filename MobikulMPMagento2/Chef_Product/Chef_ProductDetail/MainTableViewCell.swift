@@ -155,9 +155,14 @@ class MainTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
 
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "chef_dcomparecell", for: indexPath) as! Chef_DetailCompareCell
-            
-            cell.price.text = compareProductCollectionModel[indexPath.row].price
-            cell.pricevat.text = "\(String(compareProductCollectionModel[indexPath.row].price)) - \(String(compareProductCollectionModel[indexPath.row].taxClass))"
+            if compareProductCollectionModel[indexPath.row].tierPrice != 0{
+                cell.price.text = "\(compareProductCollectionModel[indexPath.row].price.prefix(1))\(String(compareProductCollectionModel[indexPath.row].tierPrice))"
+                cell.pricevat.text = "\(compareProductCollectionModel[indexPath.row].price.prefix(1))\(String(compareProductCollectionModel[indexPath.row].tierPrice)) - \(String(compareProductCollectionModel[indexPath.row].taxClass))"
+            }
+            else {
+                cell.price.text = compareProductCollectionModel[indexPath.row].price
+                cell.pricevat.text = "\(String(compareProductCollectionModel[indexPath.row].price)) - \(String(compareProductCollectionModel[indexPath.row].taxClass))"
+            }
             cell.reviewStar.value = CGFloat(compareProductCollectionModel[indexPath.row].rating)
             cell.reviewRatingmark.text = String(compareProductCollectionModel[indexPath.row].rating)
             cell.reviewCount.text = "\(String(compareProductCollectionModel[indexPath.row].reviewCount)) reviews"

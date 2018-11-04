@@ -107,7 +107,7 @@
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oni-xS-x96">
                         <rect key="frame" x="0.0" y="132.5" width="424" height="1"/>
-                        <color key="backgroundColor" red="0.84705363069999995" green="0.9810029455" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="IQI-mA-zJK"/>
                         </constraints>
