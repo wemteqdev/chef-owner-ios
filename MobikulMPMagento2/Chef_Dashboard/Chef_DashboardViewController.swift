@@ -199,6 +199,8 @@ class Chef_DashboardViewController: UIViewController, Chef_DetailReviewHandlerDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        productRate.layer.cornerRadius = 3
+        productRate.layer.masksToBounds = true
         productDetailTableView.register(UINib(nibName: "MainTableViewCell", bundle: nil), forCellReuseIdentifier: "detail_maintableviewcell")
         productDetailTableView.delegate = self
         productDetailTableView.dataSource = self
