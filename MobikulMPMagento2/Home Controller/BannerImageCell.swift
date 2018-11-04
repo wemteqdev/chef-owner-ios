@@ -17,6 +17,7 @@ class BannerImageCell: UICollectionViewCell {
         //bannerImageView?.layer.cornerRadius = 10
         //bannerImageView?.clipsToBounds = true
         //bannerImageView?.contentMode = .scaleAspectFit
+        bannerImageView.loadGif(asset: "ic_loading")
     }
 
 }

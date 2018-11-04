@@ -29,32 +29,9 @@ class SellerItemsTableViewCell: UITableViewCell {
        totalLabelValue.isHidden = true
         vendorTotalLabelValue.isHidden = true
         admincommissionLabelValue.isHidden = true
-        infoView.layer.borderWidth = 1
-        infoView.layer.borderColor = UIColor.lightGray.cgColor
         
-        totalLabels.layer.borderWidth = 1
-        totalLabels.layer.borderColor = UIColor.lightGray.cgColor
-        
-        infoLabel.layer.borderWidth = 1
-        infoLabel.layer.borderColor = UIColor.lightGray.cgColor
         infoLabel.isHidden = true
-        priceLabelValue.layer.borderWidth = 1
-        priceLabelValue.layer.borderColor = UIColor.lightGray.cgColor
         
-        qtyLabelValue.layer.borderWidth = 1
-        qtyLabelValue.layer.borderColor = UIColor.lightGray.cgColor
-        
-        totalLabelValue.layer.borderWidth = 1
-        totalLabelValue.layer.borderColor = UIColor.lightGray.cgColor
-        
-        admincommissionLabelValue.layer.borderWidth = 1
-        admincommissionLabelValue.layer.borderColor = UIColor.lightGray.cgColor
-        
-        vendorTotalLabelValue.layer.borderWidth = 1
-        vendorTotalLabelValue.layer.borderColor = UIColor.lightGray.cgColor
-        
-        subtotalLabelValue.layer.borderWidth = 1
-        subtotalLabelValue.layer.borderColor = UIColor.lightGray.cgColor
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
