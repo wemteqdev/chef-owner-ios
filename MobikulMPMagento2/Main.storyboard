@@ -8822,7 +8822,7 @@
                                                 </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EGS-D0-Oj2">
-                                                <rect key="frame" x="153" y="328" width="70" height="40"/>
+                                                <rect key="frame" x="152" y="328" width="70" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="DSv-XE-L2T"/>
                                                     <constraint firstAttribute="width" constant="70" id="cfR-qN-5Yq"/>
